@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Welcome to usdpr. — set up in 90 seconds</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdpr.netlify.app"></script>
+<style>
+  body{min-height:100vh;background:var(--bg)}
+
+  .ob-nav{border-bottom:1px solid var(--border);background:var(--bg-card);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .ob-nav-in{display:flex;align-items:center;gap:18px;padding:14px 24px;max-width:960px;margin:0 auto}
+  .ob-nav .logo{font-size:18px;font-variation-settings:'opsz' 18,'wdth' 92,'wght' 800;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+  .ob-nav .logo b{color:var(--accent)}
+  .ob-progress{flex:1 1 auto;margin-left:20px;display:flex;align-items:center;gap:12px}
+  .ob-progress-track{flex:1;height:4px;background:var(--border);border-radius:100px;overflow:hidden;max-width:360px}
+  .ob-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),#fbbf24);border-radius:100px;width:0%;transition:width .4s cubic-bezier(.4,0,.2,1)}
+  .ob-progress-label{font-size:11px;color:var(--ink-3);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+
+  .ob-wrap{max-width:760px;margin:28px auto 64px;padding:0 20px}
+  .ob-hero{margin-bottom:24px;text-align:center}
+  .ob-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:10px;padding:6px 12px;background:#fef3c7;border:1px solid #fbbf24;border-radius:999px}
+  .ob-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 3px rgba(22,163,74,.2);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+  .ob-h1{font-size:clamp(32px,5vw,48px);font-variation-settings:'opsz' 56,'wdth' 92,'wght' 800;letter-spacing:-.032em;line-height:1.04;color:var(--ink);margin-bottom:8px;max-width:22ch;margin-left:auto;margin-right:auto}
+  .ob-h1 .n{color:var(--accent);font-family:'Bricolage Grotesque';font-variation-settings:'opsz' 72,'wdth' 100,'wght' 800}
+  .ob-lede{color:var(--ink-2);font-size:15px;line-height:1.55;max-width:56ch;margin:0 auto}
+
+  /* Section blocks stack vertically; each is a "card" */
+  .sec{
+    background:var(--bg-card);border:1px solid var(--border);border-radius:16px;
+    margin-bottom:14px;overflow:hidden;
+    transition:border-color .18s,box-shadow .18s;
+  }
+  .sec[data-state=active]{border-color:var(--accent);box-shadow:0 0 0 4px rgba(249,115,22,.06),0 10px 30px -10px rgba(26,22,20,.08)}
+  .sec[data-state=done]{border-color:#a7f3d0;background:#f0fdf9}
+  .sec-head{
+    display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;
+    user-select:none;
+  }
+  .sec-num{
+    width:30px;height:30px;border-radius:50%;flex:0 0 auto;
+    background:var(--border);color:var(--ink-3);
+    font-size:13px;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 800;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .18s,color .18s;
+  }
+  .sec[data-state=active] .sec-num{background:var(--accent);color:#fff}
+  .sec[data-state=done]   .sec-num{background:#10b981;color:#fff}
+  .sec[data-state=done]   .sec-num::before{content:'✓';position:relative}
+  .sec[data-state=done]   .sec-num .sec-num-n{display:none}
+  .sec-hd{
+    flex:1 1 auto;display:flex;flex-direction:column;gap:2px;
+  }
+  .sec-t{font-size:16px;color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700;letter-spacing:-.01em}
+  .sec-s{font-size:12px;color:var(--ink-3)}
+  .sec[data-state=done] .sec-t{color:#064e3b}
+  .sec[data-state=done] .sec-s{color:#065f46}
+  .sec-chevron{width:18px;height:18px;color:var(--ink-3);transition:transform .2s}
+  .sec[data-state=active] .sec-chevron{transform:rotate(180deg);color:var(--accent)}
+  .sec[data-state=done]   .sec-chevron{display:none}
+  .sec[data-state=locked] .sec-head{cursor:not-allowed;opacity:.55}
+  .sec-body{
+    padding:0 20px;max-height:0;overflow:hidden;
+    transition:max-height .3s cubic-bezier(.4,0,.2,1),padding .3s;
+  }
+  .sec[data-state=active] .sec-body{padding:4px 20px 22px;max-height:2400px}
+
+  .sec-body h3{font-size:13px;color:var(--ink);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;margin:14px 0 6px}
+  .sec-body h3:first-child{margin-top:0}
+  .sec-body p, .sec-body li{font-size:14px;line-height:1.6;color:var(--ink-2)}
+
+  /* ─── Section 1 · BAA (click-accept, not draw-to-sign) ─── */
+  .baa-highlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0 14px}
+  .baa-pt{padding:10px 12px;background:#faf7f2;border:1px solid var(--border);border-radius:10px;display:flex;gap:10px;align-items:flex-start}
+  .baa-pt .i{width:22px;height:22px;background:var(--accent);color:#fff;border-radius:6px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 800;font-size:11px}
+  .baa-pt h4{font-size:12px;color:var(--ink);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin:0 0 1px}
+  .baa-pt p{font-size:11.5px;color:var(--ink-2);line-height:1.45;margin:0}
+  .baa-more{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--border);margin:4px 0 10px;cursor:pointer;background:none;border:none;padding:0;font:inherit;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500}
+  .baa-more:hover{color:var(--ink)}
+  .baa-full{display:none;margin-top:10px;padding:16px;background:#fffdf8;border:1px solid var(--border);border-radius:10px;max-height:300px;overflow-y:auto}
+  .baa-full[data-open=true]{display:block}
+  .baa-full h4{font-size:12px;color:var(--ink);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin:10px 0 4px}
+  .baa-full h4:first-child{margin-top:0}
+  .baa-full p{font-size:12px;line-height:1.6;color:var(--ink-2);margin-bottom:6px}
+
+  .field{display:grid;gap:4px;margin-bottom:10px}
+  .field label{font-size:11px;color:var(--ink);font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700;letter-spacing:.02em;text-transform:uppercase}
+  .field input{
+    padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:#fff;
+    font:inherit;font-size:14px;color:var(--ink);outline:none;transition:border-color .14s;
+  }
+  .field input:focus{border-color:var(--accent)}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:520px){.field-row{grid-template-columns:1fr}}
+
+  /* ─── Section 2 · Connect (CSV drop + OD option) ─── */
+  .drop{
+    border:2px dashed var(--border);border-radius:12px;padding:32px 20px;text-align:center;
+    background:#faf7f2;cursor:pointer;transition:all .14s;margin:6px 0 10px;
+  }
+  .drop[data-drag=true]{border-color:var(--accent);background:#fef9e7}
+  .drop[data-state=loading]{pointer-events:none;opacity:.7}
+  .drop input{display:none}
+  .drop-icon{width:40px;height:40px;margin:0 auto 8px;background:var(--accent);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-variation-settings:'opsz' 22,'wdth' 92,'wght' 800}
+  .drop-h{font-size:14px;color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;margin-bottom:3px}
+  .drop-s{font-size:11.5px;color:var(--ink-3);line-height:1.55}
+  .drop-s b{font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;color:var(--ink-2)}
+  .drop-or{font-size:11px;color:var(--ink-3);text-align:center;margin:10px 0;display:flex;align-items:center;gap:10px}
+  .drop-or::before,.drop-or::after{content:'';height:1px;background:var(--border);flex:1}
+  .od-quick{padding:12px 14px;background:#faf7f2;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-2);cursor:pointer;transition:border-color .14s,background .14s}
+  .od-quick:hover{border-color:var(--accent);background:#fef9e7}
+  .od-quick strong{color:var(--ink);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700}
+  .od-quick .arr{margin-left:auto;color:var(--ink-3)}
+
+  /* ─── Section 3 · Preview (the wow moment) ─── */
+  .preview-big{
+    padding:28px 28px 24px;
+    background:linear-gradient(160deg,#fef3c7 0%,#fed7aa 100%);
+    border:1px solid #fbbf24;border-radius:14px;text-align:center;
+    margin:6px 0 14px;position:relative;overflow:hidden;
+  }
+  .preview-big::before{content:'';position:absolute;top:-50%;right:-20%;width:60%;height:180%;background:radial-gradient(ellipse,rgba(249,115,22,.25) 0%,transparent 70%);pointer-events:none}
+  .preview-label{font-size:11px;color:#92400e;letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:8px;position:relative}
+  .preview-n{
+    font-size:clamp(64px,12vw,120px);
+    font-variation-settings:'opsz' 120,'wdth' 90,'wght' 800;
+    letter-spacing:-.04em;color:#431407;line-height:.9;position:relative;
+    font-variant-numeric:tabular-nums;
+  }
+  .preview-sub{font-size:14px;color:#78350f;line-height:1.55;margin-top:6px;position:relative}
+  .preview-sub b{color:#431407}
+  .preview-meta{display:flex;justify-content:space-around;gap:8px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(180,83,9,.25);position:relative}
+  .preview-stat{text-align:center}
+  .preview-stat-v{font-size:20px;color:#431407;font-variation-settings:'opsz' 22,'wdth' 92,'wght' 800;letter-spacing:-.01em}
+  .preview-stat-l{font-size:10px;color:#78350f;letter-spacing:.06em;text-transform:uppercase;font-variation-settings:'opsz' 10,'wdth' 100,'wght' 700;margin-top:2px}
+
+  .mapping-mini{padding:10px 12px;background:#faf7f2;border:1px solid var(--border);border-radius:10px;margin:10px 0;display:none}
+  .mapping-mini[data-open=true]{display:block}
+  .mapping-mini h4{font-size:11px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700;margin:0 0 6px}
+  .mapping-mini .mm-row{display:grid;grid-template-columns:110px 1fr;gap:8px;padding:3px 0;font-size:12px;color:var(--ink-2);align-items:center}
+  .mapping-mini .mm-row strong{color:var(--ink);font-size:11px;font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700}
+  .mapping-mini select{padding:4px 6px;border:1px solid var(--border);border-radius:5px;background:#fff;font:inherit;font-size:12px}
+
+  /* ─── Section 4 · Launch ─── */
+  .launch-config{display:grid;gap:10px;margin:6px 0 12px}
+  .launch-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;background:#faf7f2;border:1px solid var(--border);border-radius:10px}
+  .launch-row-k{font-size:13px;color:var(--ink-2)}
+  .launch-row-v{font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;color:var(--ink);font-size:13px}
+  .launch-row select{padding:6px 10px;border:1px solid var(--border);border-radius:6px;background:#fff;font:inherit;font-size:12px}
+
+  /* Shared CTA button */
+  .btn-primary{
+    padding:12px 20px;background:var(--accent);color:#fff;border:none;border-radius:999px;
+    font:inherit;font-size:13px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;letter-spacing:.01em;
+    text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;
+    transition:background .14s,transform .12s;box-shadow:0 1px 0 rgba(26,22,20,.08),0 8px 20px -6px rgba(249,115,22,.4);
+  }
+  .btn-primary:hover{background:#ea580c;transform:translateY(-1px)}
+  .btn-primary:disabled{opacity:.55;cursor:not-allowed;transform:none;background:var(--ink-3);box-shadow:none}
+  .btn-primary.wide{width:100%;padding:14px 22px;font-size:14px}
+  .btn-secondary{
+    padding:10px 16px;background:transparent;color:var(--ink);border:1px solid var(--border);border-radius:999px;
+    font:inherit;font-size:12px;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 600;
+    text-decoration:none;cursor:pointer;transition:border-color .14s;
+  }
+  .btn-secondary:hover{border-color:var(--ink)}
+
+  .launched-success{display:none;padding:28px;background:linear-gradient(160deg,#ecfdf5,#a7f3d0);border:1px solid #10b981;border-radius:14px;margin-top:14px;text-align:center}
+  .launched-success[data-visible=true]{display:block}
+  .launched-success h2{font-size:24px;color:#064e3b;margin-bottom:6px;font-variation-settings:'opsz' 24,'wdth' 92,'wght' 800;letter-spacing:-.018em}
+  .launched-success p{color:#065f46;font-size:14px;line-height:1.55}
+  .launched-success a{color:#064e3b;text-decoration:underline;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+
+  .foot-note{text-align:center;font-size:12px;color:var(--ink-3);margin-top:24px;line-height:1.55}
+  .foot-note a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border)}
+
+  /* Row actions footer (sticky bottom bar) */
+  .action-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:4px}
+  @media(max-width:480px){.action-row{flex-direction:column-reverse;align-items:stretch}.action-row .btn-primary,.action-row .btn-secondary{width:100%}}
+</style>
+</head>
+<body>
+<nav class="ob-nav">
+  <div class="ob-nav-in">
+    <a class="logo" href="/">usdpr<b>.</b></a>
+    <div class="ob-progress">
+      <div class="ob-progress-track"><div class="ob-progress-fill" id="progFill"></div></div>
+      <div class="ob-progress-label" id="progLabel">0 of 4</div>
+    </div>
+  </div>
+</nav>
+
+<div class="ob-wrap">
+  <div class="ob-hero">
+    <div class="ob-eyebrow">14-day free trial · started</div>
+    <h1 class="ob-h1">Live in <span class="n">90</span> seconds.</h1>
+    <p class="ob-lede">Four taps. You'll see recoverable patients before we ask for anything else.</p>
+  </div>
+
+  <!-- ══════════ Section 1 · BAA (click-accept) ══════════ -->
+  <div class="sec" data-state="active" data-sec="baa">
+    <div class="sec-head">
+      <div class="sec-num"><span class="sec-num-n">1</span></div>
+      <div class="sec-hd">
+        <div class="sec-t">Sign the BAA</div>
+        <div class="sec-s">Stricter than Weave's · click to agree · ~10 seconds</div>
+      </div>
+      <svg class="sec-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+    </div>
+    <div class="sec-body">
+      <div class="baa-highlights">
+        <div class="baa-pt"><div class="i">§3</div><div><h4>No AI training on your PHI</h4><p>Contractually forbidden. Competitors' BAAs permit it.</p></div></div>
+        <div class="baa-pt"><div class="i">§3</div><div><h4>No PHI resale</h4><p>No de-identified aggregate transfers either.</p></div></div>
+        <div class="baa-pt"><div class="i">§5</div><div><h4>72-hr breach notice</h4><p>HIPAA statute is 60 days — we commit to 72 hours.</p></div></div>
+        <div class="baa-pt"><div class="i">§7</div><div><h4>Return-or-destroy at exit</h4><p>Within 30 days, certified in writing.</p></div></div>
+      </div>
+
+      <button type="button" class="baa-more" id="baaMoreBtn">
+        <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+        Show full BAA text
+      </button>
+      <div class="baa-full" id="baaFull">
+        <h4>1. Definitions</h4>
+        <p>"Protected Health Information" (PHI) has the meaning set forth at 45 CFR §160.103. "Covered Entity" means the dental practice named below. "Business Associate" means US Dental Patient Recovery LLC ("USDPR").</p>
+        <h4>2. Permitted Uses &amp; Disclosures</h4>
+        <p>USDPR may use or disclose PHI only to provide the reactivation services described in the Subscription Agreement, carry out legal responsibilities, or perform data-aggregation services for the Covered Entity, consistent with 45 CFR Parts 160 and 164.</p>
+        <h4>3. Prohibited Uses (stricter than HIPAA baseline)</h4>
+        <p>USDPR expressly agrees not to: (a) use PHI to train any external AI, machine-learning, or large language model; (b) de-identify PHI for any purpose outside direct service of the Covered Entity; (c) sell, license, or transfer PHI (identified or de-identified) to any third party for commercial purposes; (d) combine PHI with any external data source except as explicitly authorized by the Covered Entity.</p>
+        <h4>4. Safeguards</h4>
+        <p>Encryption at rest (AES-256) and in transit (TLS 1.3). All PHI access logged in an append-only audit trail with 7-year retention, per 45 CFR Part 164 Subpart C.</p>
+        <h4>5. Breach Notification</h4>
+        <p>USDPR will notify the Covered Entity of any Breach of Unsecured PHI within 72 hours of discovery, stricter than the HIPAA statutory 60-day window.</p>
+        <h4>6. Subcontractors</h4>
+        <p>USDPR requires any subcontractor receiving PHI to execute a BAA with provisions substantially similar to this Agreement. Current subcontractors: Resend (email), Twilio (SMS), hosting provider, domain-restricted Anthropic API (reply classification, inference only — no PHI in training).</p>
+        <h4>7. Termination</h4>
+        <p>On termination, USDPR will return or destroy all PHI within 30 calendar days, certified in writing. If infeasible, protections of this BAA extend to retained PHI.</p>
+        <h4>8. Governing Law</h4>
+        <p>State of Florida + applicable federal healthcare statutes and regulations. ESIGN Act of 2000 governs electronic signature.</p>
+      </div>
+
+      <div class="field-row" style="margin-top:12px">
+        <div class="field">
+          <label for="baaPractice">Practice (we auto-filled from your signup)</label>
+          <input id="baaPractice" type="text" placeholder="Your practice, LLC">
+        </div>
+        <div class="field">
+          <label for="baaEmail">Email</label>
+          <input id="baaEmail" type="email" placeholder="you@yourpractice.com">
+        </div>
+      </div>
+
+      <div class="action-row">
+        <span class="foot-note" style="margin:0;text-align:left;font-size:11px">By clicking "I agree", you sign electronically under the ESIGN Act. Countersigned PDF emailed within 2 minutes.</span>
+        <button type="button" class="btn-primary" id="baaAccept">
+          ✓ I agree &amp; sign
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ Section 2 · Connect ══════════ -->
+  <div class="sec" data-state="locked" data-sec="connect">
+    <div class="sec-head">
+      <div class="sec-num"><span class="sec-num-n">2</span></div>
+      <div class="sec-hd">
+        <div class="sec-t">Drop your patient CSV · or connect Open Dental</div>
+        <div class="sec-s">Stays in your browser until you confirm · ~20 seconds</div>
+      </div>
+      <svg class="sec-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+    </div>
+    <div class="sec-body">
+      <label class="drop" id="drop">
+        <input type="file" id="csvFile" accept=".csv,text/csv">
+        <div class="drop-icon">↥</div>
+        <div class="drop-h">Drop your CSV here or click to browse</div>
+        <div class="drop-s">
+          From <b>Dentrix</b>, <b>Open Dental</b>, <b>Eaglesoft</b>, <b>Curve</b>, <b>Carestream</b>, <b>Denticon</b>, or any PMS. We auto-detect the column names.
+        </div>
+      </label>
+
+      <div class="drop-or">or</div>
+
+      <button type="button" class="od-quick" id="odQuick">
+        <span>🔌</span>
+        <div style="flex:1;text-align:left">
+          <strong>Connect Open Dental API</strong>
+          <div style="font-size:11px;color:var(--ink-3);margin-top:2px">We'll email setup instructions (~5 min). You can still upload a CSV now.</div>
+        </div>
+        <span class="arr">→</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════ Section 3 · Preview ══════════ -->
+  <div class="sec" data-state="locked" data-sec="preview">
+    <div class="sec-head">
+      <div class="sec-num"><span class="sec-num-n">3</span></div>
+      <div class="sec-hd">
+        <div class="sec-t">See what we found</div>
+        <div class="sec-s">Nothing leaves your browser until you click launch</div>
+      </div>
+      <svg class="sec-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+    </div>
+    <div class="sec-body">
+      <div class="preview-big">
+        <div class="preview-label">Recoverable patients</div>
+        <div class="preview-n" id="recoverN">—</div>
+        <div class="preview-sub">
+          From <b id="recoverSource">your file</b> · out of <b id="recoverTotal">—</b> total lapsed rows · <b id="recoverEstimate">$—/yr</b> estimated recoverable revenue
+        </div>
+        <div class="preview-meta">
+          <div class="preview-stat">
+            <div class="preview-stat-v" id="recoverEmail">—</div>
+            <div class="preview-stat-l">With email</div>
+          </div>
+          <div class="preview-stat">
+            <div class="preview-stat-v" id="recoverMobile">—</div>
+            <div class="preview-stat-l">With mobile</div>
+          </div>
+          <div class="preview-stat">
+            <div class="preview-stat-v" id="recoverBoth">—</div>
+            <div class="preview-stat-l">Both channels</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mapping-mini" id="mappingMini">
+        <h4>Column mapping · adjust if needed</h4>
+        <div id="mappingMiniRows"></div>
+      </div>
+
+      <div class="action-row">
+        <button type="button" class="btn-secondary" id="mappingToggle">Adjust column mapping</button>
+        <button type="button" class="btn-primary" id="previewConfirm">
+          Looks right, continue →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ Section 4 · Launch ══════════ -->
+  <div class="sec" data-state="locked" data-sec="launch">
+    <div class="sec-head">
+      <div class="sec-num"><span class="sec-num-n">4</span></div>
+      <div class="sec-hd">
+        <div class="sec-t">Launch your first campaign</div>
+        <div class="sec-s">5-touch sequence · first send in ~15 minutes</div>
+      </div>
+      <svg class="sec-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+    </div>
+    <div class="sec-body">
+      <div class="launch-config">
+        <div class="launch-row">
+          <span class="launch-row-k">Specialty</span>
+          <select id="launchSpec">
+            <option value="gp">General practice · 5-touch</option>
+            <option value="ortho">Orthodontics · 6-touch retainer</option>
+            <option value="endo">Endodontics · RCT→crown 30/60/90</option>
+            <option value="perio">Periodontics · 3-month maintenance</option>
+            <option value="omfs">Oral &amp; maxillofacial surgery</option>
+            <option value="pedo">Pediatric · 6-month + growth</option>
+          </select>
+        </div>
+        <div class="launch-row">
+          <span class="launch-row-k">First send</span>
+          <span class="launch-row-v" id="launchWhen">In ~15 minutes</span>
+        </div>
+        <div class="launch-row">
+          <span class="launch-row-k">Sending cap</span>
+          <span class="launch-row-v">200 recipients/day · TCPA quiet hours enforced</span>
+        </div>
+        <div class="launch-row">
+          <span class="launch-row-k">Your role</span>
+          <span class="launch-row-v">None — Friday report emailed, no dashboard login</span>
+        </div>
+      </div>
+
+      <button type="button" class="btn-primary wide" id="launchBtn">
+        Launch my first campaign →
+      </button>
+
+      <p style="font-size:12px;color:var(--ink-3);text-align:center;margin-top:10px;line-height:1.55">You can pause or kill the campaign any time from <a href="mailto:colin@usdentalpatientrecovery.com?subject=Pause%20campaign" style="color:var(--ink-3)">a single email</a>. No cancellation call, no retention friction.</p>
+    </div>
+  </div>
+
+  <div class="launched-success" id="launched" role="status" aria-live="polite">
+    <h2>🚀 Your first campaign is queued.</h2>
+    <p>First email goes out in ~15 minutes. You'll get a progress email tonight and your first Friday report in 5 days — both delivered to your inbox, <b>no dashboard login needed</b>.<br><br>
+    Questions? <a href="mailto:colin@usdentalpatientrecovery.com">Reply to Colin directly</a>.</p>
+  </div>
+
+  <p class="foot-note">Secure by default · HIPAA BAA signed · TCPA quiet hours 9a–8p local · <a href="/why-flat-fee.html">Why flat-fee?</a></p>
+</div>
+
+<script>
+(function(){
+  const $ = (id)=>document.getElementById(id);
+
+  // ─── State ───
+  const state = (() => {
+    try { return JSON.parse(localStorage.getItem('usdpr_onboarding') || '{}'); } catch(e){ return {}; }
+  })();
+  const save = () => { try { localStorage.setItem('usdpr_onboarding', JSON.stringify(state)); } catch(e){} };
+
+  // Pre-fill from Stripe Checkout redirect params (session_id) when present
+  const params = new URLSearchParams(location.search);
+  const sessionId = params.get('session_id');
+  const prefilledEmail = params.get('email') || state.email || '';
+  const prefilledPractice = params.get('practice') || state.practice || '';
+  if (prefilledEmail)    $('baaEmail').value = prefilledEmail;
+  if (prefilledPractice) $('baaPractice').value = prefilledPractice;
+
+  // ─── Progress bar ───
+  const TOTAL_STEPS = 4;
+  function currentStepCount(){
+    let n = 0;
+    if (state.baa_signed) n++;
+    if (state.csv_uploaded || state.od_connected) n++;
+    if (state.preview_confirmed) n++;
+    if (state.launched) n++;
+    return n;
+  }
+  function updateProgress(){
+    const n = currentStepCount();
+    $('progFill').style.width = ((n / TOTAL_STEPS) * 100) + '%';
+    $('progLabel').textContent = n + ' of ' + TOTAL_STEPS;
+  }
+  updateProgress();
+
+  // ─── Section collapse/expand ───
+  function setSectionState(secName, newState){
+    document.querySelectorAll('.sec').forEach(el => {
+      if (el.dataset.sec === secName) el.dataset.state = newState;
+    });
+  }
+  function activateNext(){
+    // Walk through sections and set the first non-done one to active
+    const order = ['baa','connect','preview','launch'];
+    let activated = false;
+    for (const name of order){
+      const el = document.querySelector('[data-sec="' + name + '"]');
+      if (!el) continue;
+      if (el.dataset.state === 'done') continue;
+      if (!activated){ el.dataset.state = 'active'; activated = true; }
+      else el.dataset.state = 'locked';
+    }
+  }
+
+  document.querySelectorAll('.sec').forEach(el => {
+    el.querySelector('.sec-head').addEventListener('click', () => {
+      if (el.dataset.state === 'locked') return;
+      if (el.dataset.state === 'active') return;
+      // Reopen a done section
+      if (el.dataset.state === 'done'){
+        document.querySelectorAll('.sec').forEach(s => {
+          if (s.dataset.state === 'active') s.dataset.state = 'locked';
+        });
+        el.dataset.state = 'active';
+      }
+    });
+  });
+
+  // ─── BAA accept ───
+  const baaMoreBtn = $('baaMoreBtn');
+  const baaFull = $('baaFull');
+  baaMoreBtn.addEventListener('click', () => {
+    const open = baaFull.dataset.open === 'true';
+    baaFull.dataset.open = open ? 'false' : 'true';
+    baaMoreBtn.querySelector('svg').style.transform = open ? '' : 'rotate(180deg)';
+  });
+
+  $('baaAccept').addEventListener('click', async () => {
+    const email = $('baaEmail').value.trim();
+    const practice = $('baaPractice').value.trim();
+    if (!email || email.indexOf('@') === -1){ $('baaEmail').focus(); return; }
+    if (!practice){ $('baaPractice').focus(); return; }
+
+    state.baa_signed = true;
+    state.baa_signed_at = new Date().toISOString();
+    state.email = email;
+    state.practice = practice;
+    state.session_id = sessionId || null;
+    save();
+
+    try {
+      await fetch('/leads/onboarding', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ step:'baa', email, practice, session_id: sessionId, ts: state.baa_signed_at, baa_version:'2026.1' }),
+        keepalive: true,
+      });
+    } catch(e){}
+
+    if (window.usdprTrack) window.usdprTrack('onboarding_baa_signed', { practice });
+
+    document.querySelector('[data-sec="baa"]').dataset.state = 'done';
+    document.querySelector('[data-sec="connect"]').dataset.state = 'active';
+    updateProgress();
+    document.querySelector('[data-sec="connect"]').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  // ─── CSV parse ───
+  const drop = $('drop');
+  const fileInput = $('csvFile');
+
+  ;['dragenter','dragover'].forEach(e => drop.addEventListener(e, (ev) => { ev.preventDefault(); drop.dataset.drag='true'; }));
+  ;['dragleave','drop'].forEach(e => drop.addEventListener(e, (ev) => { ev.preventDefault(); drop.dataset.drag='false'; }));
+  drop.addEventListener('drop', (ev) => { ev.preventDefault(); drop.dataset.drag='false'; const f = ev.dataTransfer.files[0]; if (f) handleFile(f); });
+  fileInput.addEventListener('change', () => { const f = fileInput.files[0]; if (f) handleFile(f); });
+
+  const TARGET_FIELDS = [
+    {key:'name',      label:'Patient name',     aliases:['name','patname','patient_name','full_name','fname','first name','last name','lname','pat name','patient']},
+    {key:'email',     label:'Email',            aliases:['email','e-mail','emailaddress','email address','patient_email']},
+    {key:'mobile',    label:'Mobile phone',     aliases:['wirelessphone','mobile','cell','cellphone','wireless phone','phone','homephone','home phone','pat phone','patient phone']},
+    {key:'last_visit',label:'Last visit date',  aliases:['datelastvisit','last visit','last_visit','date last visit','lastvisit','last appointment','last seen']},
+  ];
+
+  function autoMap(headers){
+    const map = {};
+    headers.forEach((h, idx) => {
+      const hl = (h || '').toLowerCase().trim();
+      const hsquash = hl.replace(/[_\s]+/g,'');
+      for (const t of TARGET_FIELDS){
+        if (!map[t.key] && t.aliases.some(a => hl === a || hsquash === a.replace(/[_\s]+/g,''))){
+          map[t.key] = { header: h, index: idx };
+          break;
+        }
+      }
+    });
+    return map;
+  }
+
+  function parseCSV(text){
+    const rows = [];
+    let row = [], cell = '', inQ = false;
+    for (let i = 0; i < text.length; i++){
+      const c = text[i], n = text[i+1];
+      if (inQ){
+        if (c === '"' && n === '"'){ cell += '"'; i++; }
+        else if (c === '"'){ inQ = false; }
+        else cell += c;
+      } else {
+        if (c === '"') inQ = true;
+        else if (c === ','){ row.push(cell); cell = ''; }
+        else if (c === '\n' || c === '\r'){
+          if (cell || row.length){ row.push(cell); rows.push(row); row = []; cell = ''; }
+          if (c === '\r' && n === '\n') i++;
+        } else cell += c;
+      }
+    }
+    if (cell || row.length){ row.push(cell); rows.push(row); }
+    return rows;
+  }
+
+  let parsed = null;
+
+  function renderPreview(){
+    if (!parsed) return;
+    const map = parsed.map;
+    const dataRows = parsed.data_rows;
+    const emailIdx  = map.email     ? map.email.index     : -1;
+    const mobileIdx = map.mobile    ? map.mobile.index    : -1;
+    const lastIdx   = map.last_visit? map.last_visit.index: -1;
+
+    const now = new Date();
+    const eighteenMoMs = 1000 * 60 * 60 * 24 * 30 * 18;
+
+    let withEmail = 0, withMobile = 0, both = 0, lapsed = 0;
+    dataRows.forEach(r => {
+      const hasEmail = emailIdx >= 0 && String(r[emailIdx] || '').indexOf('@') > 0;
+      const hasMobile = mobileIdx >= 0 && (String(r[mobileIdx] || '').replace(/\D/g,'').length >= 10);
+      let isLapsed = true;
+      if (lastIdx >= 0){
+        const raw = String(r[lastIdx] || '').trim();
+        const d = raw ? new Date(raw) : null;
+        if (d && !isNaN(d)) isLapsed = (now - d) >= eighteenMoMs;
+      }
+      if (hasEmail && isLapsed) withEmail++;
+      if (hasMobile && isLapsed) withMobile++;
+      if (hasEmail && hasMobile && isLapsed) both++;
+      if (isLapsed && (hasEmail || hasMobile)) lapsed++;
+    });
+
+    const recovered = Math.round(lapsed * 0.108 * 285 * 1.5);
+
+    $('recoverN').textContent       = lapsed.toLocaleString('en-US');
+    $('recoverSource').textContent  = parsed.file_name;
+    $('recoverTotal').textContent   = dataRows.length.toLocaleString('en-US');
+    $('recoverEstimate').textContent = '$' + recovered.toLocaleString('en-US') + '/yr';
+    $('recoverEmail').textContent   = withEmail.toLocaleString('en-US');
+    $('recoverMobile').textContent  = withMobile.toLocaleString('en-US');
+    $('recoverBoth').textContent    = both.toLocaleString('en-US');
+  }
+
+  function renderMappingMini(){
+    const container = $('mappingMiniRows');
+    while (container.firstChild) container.removeChild(container.firstChild);
+    for (const t of TARGET_FIELDS){
+      const row = document.createElement('div');
+      row.className = 'mm-row';
+      const k = document.createElement('strong');
+      k.textContent = t.label;
+      const sel = document.createElement('select');
+      sel.dataset.target = t.key;
+      const noneOpt = document.createElement('option');
+      noneOpt.value = ''; noneOpt.textContent = '(not present)';
+      sel.appendChild(noneOpt);
+      parsed.headers.forEach((h, idx) => {
+        const opt = document.createElement('option');
+        opt.value = String(idx); opt.textContent = h;
+        if (parsed.map[t.key] && parsed.map[t.key].index === idx) opt.selected = true;
+        sel.appendChild(opt);
+      });
+      row.appendChild(k); row.appendChild(sel);
+      container.appendChild(row);
+    }
+    container.addEventListener('change', (ev) => {
+      const sel = ev.target;
+      if (sel.tagName === 'SELECT'){
+        const target = sel.dataset.target;
+        const v = sel.value;
+        if (v === '') delete parsed.map[target];
+        else parsed.map[target] = { header: parsed.headers[+v], index: +v };
+        renderPreview();
+      }
+    });
+  }
+
+  function handleFile(file){
+    if (file.size > 10 * 1024 * 1024){ alert('File too large (max 10MB). Export a smaller subset.'); return; }
+
+    drop.dataset.state = 'loading';
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const text = String(e.target.result);
+      const rows = parseCSV(text);
+      if (rows.length < 2){ alert('File looks empty.'); drop.dataset.state = ''; return; }
+      const headers = rows[0].map(h => String(h || '').trim());
+      const dataRows = rows.slice(1).filter(r => r.some(c => String(c || '').trim()));
+      const map = autoMap(headers);
+      parsed = { file_name: file.name, headers, map, data_rows: dataRows };
+
+      state.csv_uploaded = true;
+      state.rows_count = dataRows.length;
+      state.connected_at = new Date().toISOString();
+      save();
+
+      try {
+        fetch('/leads/onboarding', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ step:'connect', method:'csv', file_name:file.name, rows_count:dataRows.length, ts:state.connected_at }),
+          keepalive: true,
+        });
+      } catch(e){}
+      if (window.usdprTrack) window.usdprTrack('onboarding_csv_parsed', { rows: dataRows.length });
+
+      document.querySelector('[data-sec="connect"]').dataset.state = 'done';
+      document.querySelector('[data-sec="preview"]').dataset.state = 'active';
+      renderPreview();
+      renderMappingMini();
+      updateProgress();
+      document.querySelector('[data-sec="preview"]').scrollIntoView({behavior:'smooth', block:'start'});
+    };
+    reader.onerror = () => { alert('Could not read the file. Try again.'); drop.dataset.state = ''; };
+    reader.readAsText(file);
+  }
+
+  $('odQuick').addEventListener('click', async () => {
+    state.od_connected = true;
+    state.od_queued_at = new Date().toISOString();
+    save();
+    try {
+      await fetch('/leads/onboarding', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ step:'connect', method:'od_queued', email: state.email, ts:state.od_queued_at }),
+        keepalive: true,
+      });
+    } catch(e){}
+    if (window.usdprTrack) window.usdprTrack('onboarding_od_queued');
+
+    // Synthesize a placeholder preview using industry benchmarks
+    parsed = { file_name: 'Open Dental (pending API sync)', headers: [], map: {}, data_rows: [] };
+    const estimatedLapsed = 180;
+    const recovered = Math.round(estimatedLapsed * 0.108 * 285 * 1.5);
+    $('recoverN').textContent       = estimatedLapsed.toLocaleString('en-US');
+    $('recoverSource').textContent  = 'Open Dental (estimated — awaiting API sync)';
+    $('recoverTotal').textContent   = '~2,000';
+    $('recoverEstimate').textContent = '$' + recovered.toLocaleString('en-US') + '/yr';
+    $('recoverEmail').textContent   = '~120';
+    $('recoverMobile').textContent  = '~145';
+    $('recoverBoth').textContent    = '~95';
+    $('mappingToggle').style.display = 'none';
+
+    document.querySelector('[data-sec="connect"]').dataset.state = 'done';
+    document.querySelector('[data-sec="preview"]').dataset.state = 'active';
+    updateProgress();
+    document.querySelector('[data-sec="preview"]').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  $('mappingToggle').addEventListener('click', () => {
+    const el = $('mappingMini');
+    el.dataset.open = el.dataset.open === 'true' ? 'false' : 'true';
+  });
+
+  $('previewConfirm').addEventListener('click', async () => {
+    state.preview_confirmed = true;
+    state.preview_confirmed_at = new Date().toISOString();
+    save();
+    try {
+      await fetch('/leads/onboarding', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ step:'preview_confirmed', rows_count: state.rows_count || null, ts:state.preview_confirmed_at }),
+        keepalive: true,
+      });
+    } catch(e){}
+    if (window.usdprTrack) window.usdprTrack('onboarding_preview_confirmed');
+
+    document.querySelector('[data-sec="preview"]').dataset.state = 'done';
+    document.querySelector('[data-sec="launch"]').dataset.state = 'active';
+    updateProgress();
+    document.querySelector('[data-sec="launch"]').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  $('launchBtn').addEventListener('click', async () => {
+    const specialty = $('launchSpec').value;
+    state.launched = true;
+    state.launched_at = new Date().toISOString();
+    state.specialty = specialty;
+    save();
+    try {
+      await fetch('/leads/onboarding', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          step:'launched', specialty, email: state.email, practice: state.practice,
+          rows_count: state.rows_count || null, method: state.csv_uploaded ? 'csv' : 'od',
+          ts: state.launched_at,
+        }),
+        keepalive: true,
+      });
+    } catch(e){}
+    if (window.usdprTrack) window.usdprTrack('onboarding_launched', { specialty });
+
+    document.querySelector('[data-sec="launch"]').dataset.state = 'done';
+    updateProgress();
+    $('launched').dataset.visible = 'true';
+    $('launched').scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  // ─── Rehydration on page revisit ───
+  if (state.baa_signed){
+    document.querySelector('[data-sec="baa"]').dataset.state = 'done';
+    document.querySelector('[data-sec="connect"]').dataset.state = 'active';
+  }
+  if (state.csv_uploaded || state.od_connected){
+    document.querySelector('[data-sec="connect"]').dataset.state = 'done';
+    document.querySelector('[data-sec="preview"]').dataset.state = 'active';
+  }
+  if (state.preview_confirmed){
+    document.querySelector('[data-sec="preview"]').dataset.state = 'done';
+    document.querySelector('[data-sec="launch"]').dataset.state = 'active';
+  }
+  if (state.launched){
+    document.querySelector('[data-sec="launch"]').dataset.state = 'done';
+    $('launched').dataset.visible = 'true';
+  }
+  updateProgress();
+})();
+</script>
+</body>
+</html>

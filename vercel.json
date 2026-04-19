@@ -8,8 +8,9 @@
     { "source": "/signup", "destination": "https://buy.stripe.com/test_fZu6oI0d03Aw2912uL4ZG01", "permanent": false, "has": [{"type":"query","key":"tier","value":"practice_pro"}] },
     { "source": "/signup", "destination": "https://buy.stripe.com/test_7sY5kEbVI7QM14Xd9p4ZG02", "permanent": false, "has": [{"type":"query","key":"tier","value":"dso"}] },
     { "source": "/demo", "destination": "/compare.html", "permanent": false },
-    { "source": "/onboarding", "destination": "/welcome.html", "permanent": false },
-    { "source": "/app/dashboard", "destination": "/welcome.html", "permanent": false },
+    { "source": "/welcome", "destination": "/onboarding/", "permanent": false },
+    { "source": "/onboard", "destination": "/onboarding/", "permanent": false },
+    { "source": "/app/dashboard", "destination": "/onboarding/", "permanent": false },
     { "source": "/states", "destination": "/states/index.html", "permanent": true },
     { "source": "/cities", "destination": "/cities/index.html", "permanent": true }
   ],

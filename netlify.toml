@@ -83,14 +83,21 @@
   to   = "/compare.html"
   status = 302
 
+# Post-Stripe redirect lands on the frictionless onboarding flow.
+# /welcome.html is also alive (legacy), but /onboarding/ is the canonical experience.
 [[redirects]]
-  from = "/onboarding"
-  to   = "/welcome.html"
+  from = "/welcome"
+  to   = "/onboarding/"
+  status = 302
+
+[[redirects]]
+  from = "/onboard"
+  to   = "/onboarding/"
   status = 302
 
 [[redirects]]
   from = "/app/dashboard"
-  to   = "/welcome.html"
+  to   = "/onboarding/"
   status = 302
 
 # Make /states/ and /cities/ work with or without trailing slash

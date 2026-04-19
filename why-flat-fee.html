@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Why USDPR prices patient reactivation as a flat monthly SaaS fee — not per patient or per appointment. Anti-kickback safe harbor, state patient-brokering statutes, and the FMV memo we publish for every practice.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Why flat-fee? The compliance case · usdpr.">
+<meta property="og:description" content="Per-patient pricing for dental patient marketing triggers federal anti-kickback safe-harbor exclusions and state patient-brokering statutes. USDPR prices a flat monthly SaaS fee. Here's the legal memo.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://usdpr.netlify.app/why-flat-fee.html">
+<meta property="og:image" content="/og.svg">
+<title>Why flat-fee? The compliance case for monthly SaaS pricing · usdpr.</title>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Why flat-fee? The compliance case for monthly SaaS pricing in dental patient reactivation","datePublished":"2026-04-19","dateModified":"2026-04-19","author":{"@type":"Organization","name":"US Dental Patient Recovery"},"publisher":{"@type":"Organization","name":"US Dental Patient Recovery","logo":{"@type":"ImageObject","url":"https://usdpr.netlify.app/brand/logo-wordmark.svg"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://usdpr.netlify.app/why-flat-fee.html"},"description":"The legal reasoning behind USDPR's flat monthly SaaS pricing and why per-patient dental marketing fees trigger federal anti-kickback and state patient-brokering statutes."}
+</script>
+
+<!-- FAQ schema for Google PAA capture -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is per-patient dental marketing pricing legal?","acceptedAnswer":{"@type":"Answer","text":"Per-patient pricing for patient-facing dental marketing triggers state patient-brokering statutes (e.g., Florida §817.505, California Business & Professions Code §650) and falls outside the federal Anti-Kickback Statute safe harbors in 42 CFR §1001.952. Enforcement actions in 2024-2025 by the Connecticut Attorney General and the Texas OAG against dental marketing vendors using per-referral fees confirm this is actively policed. Flat-fee SaaS subscriptions are the compliant alternative, treated as fair market value for software services independent of patient volume."}},{"@type":"Question","name":"What is an FMV memo and why does USDPR publish one?","acceptedAnswer":{"@type":"Answer","text":"An FMV (Fair Market Value) memo documents that a vendor's monthly subscription reflects the economic value of the software and services provided, independent of bookings generated. HHS OIG Advisory Opinion 25-08 (2025) clarified that flat-fee pricing alone is not sufficient to clear anti-kickback scrutiny — the vendor must also document real software value. USDPR publishes a template FMV memo every paying practice can attach to its compliance file."}},{"@type":"Question","name":"Why is USDPR's HIPAA BAA stricter than competitors?","acceptedAnswer":{"@type":"Answer","text":"USDPR's Business Associate Agreement forbids external AI training on PHI, forbids PHI resale or de-identification for secondary purposes, and commits to 72-hour breach notification (vs. the HIPAA statutory 60-day window). Competitors' BAAs commonly permit external AI use and broad de-identification — a practice's patient data could be used to train a third-party model. USDPR contractually cannot do either."}},{"@type":"Question","name":"Does USDPR comply with state SMS rules like Florida FTSA?","acceptedAnswer":{"@type":"Answer","text":"Yes. USDPR's SMS engine hard-codes the strictest overlap of state rules: 9am-8pm Monday-Saturday, noon-8pm Sunday, 3-message/24-hour caps per recipient, instant STOP handling (not the TCPA 10-day grace period). These limits satisfy Florida Telephone Solicitation Act, Texas SB 140, and the April 2026 FCC cross-campaign opt-out rule."}}]}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdpr.netlify.app"></script>
+<style>
+  .wff-hero{padding:clamp(56px,7vw,112px) 0 clamp(32px,4vw,56px);background:var(--bg);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+  .wff-hero::after{content:'';position:absolute;inset:auto -10% -40% auto;width:60%;height:80%;background:radial-gradient(ellipse,rgba(249,115,22,.10) 0%,transparent 65%);pointer-events:none;z-index:0}
+  .wff-hero > *{position:relative;z-index:1}
+  .wff-hero .mx{max-width:820px;margin:0 auto;padding:0 var(--gutter);display:grid;gap:18px}
+  .wff-hero .eyebrow{color:var(--accent);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .wff-hero h1{font-size:clamp(40px,6vw,84px);font-variation-settings:'opsz' 96,'wdth' 92,'wght' 800;letter-spacing:-.048em;line-height:.96;color:var(--ink);max-width:18ch}
+  .wff-hero h1 .accent{color:var(--accent)}
+  .wff-hero .lede{max-width:64ch;color:var(--ink-2);font-size:18px;line-height:1.55}
+
+  .wff-body{padding:clamp(40px,5vw,72px) 0}
+  .wff-body .mx{max-width:740px;margin:0 auto;padding:0 var(--gutter)}
+  .wff-body h2{font-size:clamp(28px,3.5vw,40px);font-variation-settings:'opsz' 48,'wdth' 95,'wght' 700;letter-spacing:-.024em;line-height:1.1;color:var(--ink);margin:40px 0 16px}
+  .wff-body h2:first-child{margin-top:0}
+  .wff-body h3{font-size:20px;font-variation-settings:'opsz' 20,'wdth' 100,'wght' 700;color:var(--ink);margin:28px 0 10px}
+  .wff-body p{font-size:16px;line-height:1.7;color:var(--ink-2);margin:0 0 14px}
+  .wff-body p strong, .wff-body li strong{color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+  .wff-body ul, .wff-body ol{padding-left:22px;margin:0 0 18px}
+  .wff-body li{font-size:16px;line-height:1.65;color:var(--ink-2);margin-bottom:8px}
+  .wff-body blockquote{
+    border-left:3px solid var(--accent);padding:12px 18px;color:var(--ink-2);
+    font-style:italic;margin:18px 0;background:#faf7f2;border-radius:0 10px 10px 0;
+  }
+  .wff-body code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:#faf7f2;padding:2px 6px;border-radius:4px;color:var(--ink)}
+  .wff-body a{color:var(--ink);border-bottom:1px solid var(--accent);text-decoration:none;transition:color .14s}
+  .wff-body a:hover{color:var(--accent)}
+
+  .wff-claim{
+    display:grid;gap:14px;padding:22px 24px;margin:24px 0;
+    background:var(--bg-card);border:1px solid var(--border);border-radius:14px;
+  }
+  .wff-claim-t{font-size:12px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+  .wff-claim h3{margin-top:0;color:var(--ink)}
+  .wff-claim .src{font-size:12px;color:var(--ink-3);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin-top:6px}
+
+  .wff-table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  .wff-table th{text-align:left;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;color:var(--ink);padding:10px 14px;border-bottom:1px solid var(--ink);background:var(--bg-card)}
+  .wff-table td{padding:10px 14px;border-bottom:1px dashed var(--border);color:var(--ink-2);line-height:1.55;vertical-align:top}
+  .wff-table td strong{color:var(--ink)}
+  .wff-table tr:last-child td{border-bottom:none}
+
+  .wff-cta{margin:40px 0 0;padding:28px 28px;background:var(--ink);color:#f6f4ef;border-radius:16px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .wff-cta h3{font-size:22px;font-variation-settings:'opsz' 24,'wdth' 95,'wght' 800;letter-spacing:-.016em;color:#fff;margin:0 0 4px}
+  .wff-cta p{color:rgba(246,244,239,.75);font-size:14px;line-height:1.5;margin:0;max-width:40ch}
+  .wff-cta a{background:var(--accent);color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-size:13px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;border-bottom:none;white-space:nowrap}
+  .wff-cta a:hover{background:#ea580c}
+</style>
+</head>
+<body>
+<header class="site-hdr">
+  <div class="mx hdr-inner">
+    <a class="brand" href="/"><span class="logo">usdpr<span class="logo-dot">.</span></span></a>
+    <nav class="hdr-nav">
+      <a href="/calculator.html">Calculator</a>
+      <a href="/recall-audit.html">Audit</a>
+      <a href="/pilot.html">Pilot</a>
+      <a href="/for-specialists.html">Specialists</a>
+      <a href="/resources.html">Resources</a>
+      <a class="hdr-cta" href="/signup?tier=practice_pro">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+<section class="wff-hero">
+  <div class="mx">
+    <span class="eyebrow">Compliance · the legal architecture</span>
+    <h1>Why we price flat. <span class="accent">And publish the memo.</span></h1>
+    <p class="lede">Every dental marketing vendor that charges per patient, per booking, or per referral is living inside a legal trap. Federal anti-kickback safe harbors, state patient-brokering statutes, and HHS OIG advisory opinions as recent as 2025 have all tightened on per-transaction fees for patient-facing healthcare marketing. USDPR prices a flat monthly SaaS fee — and publishes the Fair Market Value memo your compliance officer will ask for.</p>
+  </div>
+</section>
+
+<section class="wff-body">
+  <div class="mx">
+
+    <h2>The short version</h2>
+    <p><strong>Per-patient pricing is illegal or legally fragile in most US states for dental marketing.</strong> Flat-fee SaaS is the compliant alternative, and USDPR documents it with a published FMV memo and a stricter-than-industry HIPAA BAA.</p>
+
+    <ul>
+      <li>Federal 42 U.S.C. §1320a-7b (Anti-Kickback Statute) — per-transaction fees outside the safe harbors in 42 CFR §1001.952 are prohibited.</li>
+      <li>Florida §817.505 (Patient Brokering) — criminalizes per-patient referral compensation in healthcare settings.</li>
+      <li>California Business & Professions Code §650 — same.</li>
+      <li>HHS OIG Advisory Opinion 25-08 (2025) — clarified that flat-fee alone is not sufficient; the fee must reflect genuine software value independent of volume. USDPR's FMV memo documents this.</li>
+      <li>Connecticut Attorney General settlement (2024) + Texas OAG enforcement (2025) — dental marketing vendors punished for per-referral pricing ($116/referral in one case).</li>
+    </ul>
+
+    <div class="wff-claim">
+      <span class="wff-claim-t">USDPR policy</span>
+      <h3>We charge $297/$697/$1,997 per month, full stop.</h3>
+      <p>The monthly fee does not vary with how many patients are contacted, how many appointments are booked, or how much revenue is recovered. An empty practice pays the same as a full one. That is what makes our pricing defensible under the legal architecture.</p>
+    </div>
+
+    <h2>Why competitors' pricing is legally fragile</h2>
+    <p>Three of our biggest competitors still use volume-indexed pricing dressed up as "tiers":</p>
+
+    <table class="wff-table">
+      <tr><th>Vendor</th><th>Pricing shape</th><th>Legal exposure</th></tr>
+      <tr><td><strong>Dental Intelligence</strong></td><td>Monthly fee + $1,000 implementation + volume-based upsells</td><td>The implementation fee clears AKS; the volume-indexed upsells may not, depending on how they're structured.</td></tr>
+      <tr><td><strong>Several mid-market vendors</strong></td><td>Per-SMS / per-email overage fees above included volume</td><td>Per-message fees can be argued as infrastructure cost, but per-booking commissions are directly targeted by §817.505-style statutes.</td></tr>
+      <tr><td><strong>"Growth partnerships"</strong></td><td>Revenue-share on new patients recovered</td><td>Textbook patient-brokering. Settled multiple state AG cases 2024-2025.</td></tr>
+      <tr><td><strong>USDPR</strong></td><td>Flat monthly fee, no overages, no bookings share</td><td>Inside AKS safe harbor; FMV memo supports OIG AO 25-08 compliance.</td></tr>
+    </table>
+
+    <h2>The FMV memo</h2>
+
+    <p>Every paying USDPR practice receives a 2-page Fair Market Value memorandum on request, suitable for attachment to the practice's compliance binder. It documents:</p>
+
+    <ol>
+      <li>The software's function (multi-channel reactivation sequencing with AI-assisted reply handling)</li>
+      <li>The market comparables (published pricing for Weave, Solutionreach, RevenueWell, Adit, Dental Intelligence as of the quarter of purchase)</li>
+      <li>Why our monthly fee reflects the economic value of software + infrastructure <strong>independent of</strong> patient volume or bookings generated</li>
+      <li>Signed by the USDPR founder with a commitment to re-issue annually if pricing changes</li>
+    </ol>
+
+    <p>This is the document HHS OIG AO 25-08 (2025) effectively requires for any vendor that wants flat-fee compliance to hold up under enforcement scrutiny. No competitor publishes one.</p>
+
+    <h2>HIPAA — our BAA is stricter than the industry</h2>
+
+    <p>USDPR's Business Associate Agreement is public at <a href="/security.html">/security.html</a> and includes commitments competitors don't:</p>
+
+    <ul>
+      <li><strong>No external AI training on PHI.</strong> Competitor BAAs (Weave's is public) permit de-identification and external AI use. Ours forbids both.</li>
+      <li><strong>No PHI resale.</strong> Explicit contractual ban on sharing de-identified aggregate data with third parties for commercial purposes.</li>
+      <li><strong>72-hour breach notification.</strong> The HIPAA statutory window is 60 days. We commit contractually to 72 hours.</li>
+      <li><strong>PMS-level minimum-necessary.</strong> We pull only lapsed-patient fields (name, email, mobile, last-visit date, provider-of-record). Clinical fields (procedure codes, notes, diagnoses, ICD-10, CDT) stay inside the PMS.</li>
+    </ul>
+
+    <h2>SMS — strictest-state by default</h2>
+
+    <p>Our SMS engine hard-codes the strictest overlap of current US state rules:</p>
+
+    <ul>
+      <li><strong>Quiet hours:</strong> 9am–8pm Monday–Saturday, noon–8pm Sunday, local-to-patient time zone</li>
+      <li><strong>Volume cap:</strong> 3 SMS per recipient per 24 hours, 5 per 7 days</li>
+      <li><strong>STOP handling:</strong> unsubscribe honored within 2 minutes, not the TCPA 10-day grace period. Cross-campaign: a STOP to one sequence stops all future sends across every campaign (April 2026 FCC rule compliance)</li>
+      <li><strong>10DLC carrier registration:</strong> Every practice gets its own registered brand (not pooled), tied to its LLC</li>
+    </ul>
+
+    <p>These limits satisfy the Florida Telephone Solicitation Act, Texas SB 140, California Business & Professions Code §17538.41, and the April 2026 FCC cross-campaign opt-out rule — without per-state configuration by the practice.</p>
+
+    <h2>Who needs this</h2>
+
+    <p><strong>Most practice owners won't care</strong> — they pay the monthly fee, the software works, that's that.</p>
+
+    <p><strong>But three groups absolutely do care:</strong></p>
+
+    <ol>
+      <li><strong>DSO legal counsel</strong> — reviewing vendor agreements across multi-location groups, looking for audit-trail-ready compliance documentation.</li>
+      <li><strong>Practices under prior enforcement scrutiny</strong> — the handful of dentists who have had compliance issues know to ask for the FMV memo and the BAA.</li>
+      <li><strong>Practice owners selling in 18-24 months</strong> — DSO acquirers do compliance due diligence that will flag any per-patient vendor arrangements. Flat-fee + documented FMV removes that deal risk.</li>
+    </ol>
+
+    <div class="wff-cta">
+      <div>
+        <h3>Request the FMV memo template.</h3>
+        <p>No trial required. We send the unsigned template + a letter explaining when to use it. Your compliance officer will thank you.</p>
+      </div>
+      <a href="mailto:colin@usdentalpatientrecovery.com?subject=Request%3A%20FMV%20memo%20template&body=Practice%3A%20%0ASpecialty%3A%20%0APMS%3A%20%0A(we'll%20send%20the%20template%20plus%20a%202-min%20explainer)">Request the memo →</a>
+    </div>
+
+    <h2>Sources &amp; further reading</h2>
+
+    <ul>
+      <li><a href="https://oig.hhs.gov/compliance/advisory-opinions/" target="_blank" rel="noopener">HHS OIG Advisory Opinions</a> — full index, search for 25-08</li>
+      <li><a href="https://www.law.cornell.edu/cfr/text/42/1001.952" target="_blank" rel="noopener">42 CFR §1001.952</a> — Anti-Kickback Statute safe harbors</li>
+      <li><a href="https://www.flsenate.gov/Laws/Statutes/2024/817.505" target="_blank" rel="noopener">Florida Statutes §817.505</a> — Patient brokering</li>
+      <li><a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=650&lawCode=BPC" target="_blank" rel="noopener">California Business &amp; Professions Code §650</a></li>
+      <li><a href="https://www.fcc.gov/general/telemarketing-rules" target="_blank" rel="noopener">FCC Telemarketing Rules (2026 updates)</a></li>
+      <li><a href="https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/marketing/index.html" target="_blank" rel="noopener">HHS OCR marketing guidance under HIPAA §164.506(c)(2)</a></li>
+    </ul>
+
+    <p style="font-size:12px;color:var(--ink-3);margin-top:48px">This page is written by a founder, not an attorney. It summarizes the legal architecture USDPR has built around. It is not legal advice. Your practice's counsel should review any compliance-sensitive vendor arrangement before signature.</p>
+
+  </div>
+</section>
+
+<footer class="site-ftr">
+  <div class="mx">
+    <div class="foot-grid">
+      <div class="foot-col foot-brand">
+        <span class="logo">usdpr<span class="logo-dot">.</span></span>
+        <p>Patient reactivation, perfected. Orlando, FL.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><ul><li><a href="/">Home</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/recall-audit.html">Audit</a></li><li><a href="/pilot.html">Pilot</a></li><li><a href="/embed.html">Embed</a></li></ul></div>
+      <div class="foot-col"><h4>Compliance</h4><ul><li><a href="/why-flat-fee.html">Why flat-fee</a></li><li><a href="/security.html">Security</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li></ul></div>
+      <div class="foot-col"><h4>Company</h4><ul><li><a href="/resources.html">Resources</a></li><li><a href="/changelog.html">Changelog</a></li><li><a href="mailto:colin@usdentalpatientrecovery.com">Contact</a></li></ul></div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>TCPA compliant · HIPAA BAA · SOC 2 in progress</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

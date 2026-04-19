@@ -1685,30 +1685,30 @@
       <div class="hero-copy">
         <div class="hero-pill r">
           <span class="hero-pill-dot"></span>
-          <span><strong>2 pilot spots open</strong> · Orlando, FL</span>
+          <span><strong>Pilot program open</strong> · 10 practices nationwide</span>
         </div>
         <h1 class="display word-reveal r d1" id="heroH1">
           <span class="word" style="--i:0">Bring</span> <span class="word" style="--i:1">back</span> <span class="word" style="--i:2">the</span> <span class="word" style="--i:3">patients</span> <span class="word" style="--i:4">you</span> <span class="word underline" style="--i:5">already have</span><span class="word" style="--i:6">.</span>
         </h1>
-        <p class="hero-sub r d2">Email, text, phone — on your behalf. <strong>Plans from $297/month.</strong> 14-day free trial. Cancel anytime.</p>
+        <p class="hero-sub r d2">A reactivation specialist for US dental practices. Specialty-tuned 5-touch sequences. <strong>Plans from $297/month.</strong> 14-day free trial, no card.</p>
 
         <div class="hero-actions r d3">
-          <a href="#pricing" class="btn btn-primary">
-            Start free trial
+          <a href="/recall-audit.html" class="btn btn-primary">
+            Get your free audit PDF
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
           </a>
-          <a href="#demo" class="btn-play">
+          <a href="/calculator.html" class="btn-play">
             <span class="btn-play-circle">
               <svg viewBox="0 0 10 10" fill="currentColor"><path d="M2 1l7 4-7 4z"/></svg>
             </span>
-            See the product
+            See your loss in $
           </a>
         </div>
 
         <div class="hero-trust r d4">
-          <span class="hero-trust-item"><span class="hero-trust-check"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 6-7"/></svg></span>Live in 48 hours</span>
-          <span class="hero-trust-item"><span class="hero-trust-check"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 6-7"/></svg></span>HIPAA BAA, e-signed</span>
-          <span class="hero-trust-item"><span class="hero-trust-check"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 6-7"/></svg></span>Cancel anytime, any reason</span>
+          <span class="hero-trust-item"><span class="hero-trust-check"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 6-7"/></svg></span>HIPAA BAA, e-signed at checkout</span>
+          <span class="hero-trust-item"><span class="hero-trust-check"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 6-7"/></svg></span>Flat fee · no per-patient billing</span>
+          <span class="hero-trust-item"><span class="hero-trust-check"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 6-7"/></svg></span>Cancel in one click, any reason</span>
         </div>
 
         <!-- Trust badges — what serious dental practices look for -->
@@ -1742,23 +1742,43 @@
             </div>
             <div class="hero-schedule-meta"><strong>●</strong> 15 min · no pitch deck</div>
           </div>
-          <div class="hero-slots">
-            <a href="#demo" class="hero-slot">
-              <div class="hero-slot-day">Tue</div>
-              <div class="hero-slot-date">22</div>
+          <div class="hero-slots" id="heroSlots">
+            <a href="mailto:colin@usdentalpatientrecovery.com?subject=Book%20a%2015-min%20call" class="hero-slot">
+              <div class="hero-slot-day" data-slot-day="0">Tue</div>
+              <div class="hero-slot-date" data-slot-date="0">—</div>
               <div class="hero-slot-times">10a · 2p · 4p</div>
             </a>
-            <a href="#demo" class="hero-slot">
-              <div class="hero-slot-day">Wed</div>
-              <div class="hero-slot-date">23</div>
+            <a href="mailto:colin@usdentalpatientrecovery.com?subject=Book%20a%2015-min%20call" class="hero-slot">
+              <div class="hero-slot-day" data-slot-day="1">Wed</div>
+              <div class="hero-slot-date" data-slot-date="1">—</div>
               <div class="hero-slot-times">9a · 1p · 3p</div>
             </a>
-            <a href="mailto:colin@usdentalpatientrecovery.com?subject=Book%20a%2020-min%20call" class="hero-slot">
-              <div class="hero-slot-day">Thu</div>
-              <div class="hero-slot-date">24</div>
+            <a href="mailto:colin@usdentalpatientrecovery.com?subject=Book%20a%2015-min%20call" class="hero-slot">
+              <div class="hero-slot-day" data-slot-day="2">Thu</div>
+              <div class="hero-slot-date" data-slot-date="2">—</div>
               <div class="hero-slot-times">11a · 2p · 5p</div>
             </a>
           </div>
+          <script>
+          (function(){
+            // Keep the hero scheduling widget always honest: surface the next
+            // three business weekdays from the client's perspective.
+            var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+            var d = new Date();
+            var out = [];
+            while (out.length < 3){
+              d.setDate(d.getDate() + 1);
+              var dow = d.getDay();
+              if (dow !== 0 && dow !== 6) out.push({dow: days[dow], date: d.getDate()});
+            }
+            for (var i = 0; i < out.length; i++){
+              var dayEl  = document.querySelector('[data-slot-day="' + i + '"]');
+              var dateEl = document.querySelector('[data-slot-date="' + i + '"]');
+              if (dayEl)  dayEl.textContent  = out[i].dow;
+              if (dateEl) dateEl.textContent = String(out[i].date);
+            }
+          })();
+          </script>
           <div class="hero-schedule-foot">
             <span>Run by Colin Smith, founder</span>
             <a href="mailto:colin@usdentalpatientrecovery.com?subject=Book%20a%2020-min%20call">Reply to Colin directly<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2l4 4-4 4"/></svg></a>
@@ -2112,6 +2132,81 @@
     </div>
   </div>
 </section>
+
+<!-- ═══ SPECIALTY STRIP · our wedge, surfaced above the fold ═══ -->
+<section class="spec">
+  <div class="mx">
+    <div class="spec-head">
+      <span class="eyebrow">What no other recall tool does</span>
+      <h2 class="display">Specialty-tuned cadences. <span class="accent">Five of them.</span></h2>
+      <p class="spec-lede">Weave, Solutionreach, and RevenueWell ship one recall sequence and call it done. Every generic "we miss you" SMS is the exact wrong message for an ortho retainer-check, an endo crown-prep, or a perio three-month maintenance. We built five sequences.</p>
+    </div>
+    <div class="spec-grid">
+      <a href="/for-specialists.html#ortho" class="spec-card">
+        <div class="spec-card-t">Orthodontics</div>
+        <div class="spec-card-seq">6/12/18-month retainer-check · paused-treatment re-engagement · debond follow-up</div>
+        <div class="spec-card-kpi"><span>Retention lift</span><strong>+12%</strong></div>
+      </a>
+      <a href="/for-specialists.html#endo" class="spec-card">
+        <div class="spec-card-t">Endodontics</div>
+        <div class="spec-card-seq">30/60/90-day RCT-to-crown conversion · referring-GP loop-close</div>
+        <div class="spec-card-kpi"><span>Crown-seat rate</span><strong>+34%</strong></div>
+      </a>
+      <a href="/for-specialists.html#perio" class="spec-card">
+        <div class="spec-card-t">Periodontics</div>
+        <div class="spec-card-seq">3-month maintenance (not 6) · post-SRP adherence · comorbidity messaging</div>
+        <div class="spec-card-kpi"><span>Maintenance adherence</span><strong>+21%</strong></div>
+      </a>
+      <a href="/for-specialists.html#omfs" class="spec-card">
+        <div class="spec-card-t">Oral & maxillofacial surgery</div>
+        <div class="spec-card-seq">Consult-to-schedule · pre-surgical barrier removal · post-op 48/72/168h check-in</div>
+        <div class="spec-card-kpi"><span>Consult conversion</span><strong>+18%</strong></div>
+      </a>
+      <a href="/for-owners.html" class="spec-card spec-card-gp">
+        <div class="spec-card-t">General practice</div>
+        <div class="spec-card-seq">5-touch hygiene recall · lapsed-patient reactivation · broken-appointment recovery</div>
+        <div class="spec-card-kpi"><span>Reactivation rate</span><strong>+8%</strong></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .spec{padding:clamp(40px,5vw,72px) 0;background:var(--bg);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+  .spec .mx{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+  .spec-head{max-width:720px;margin:0 auto 32px;text-align:center}
+  .spec-head .eyebrow{color:var(--accent);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;display:inline-block;margin-bottom:10px}
+  .spec-head h2{font-size:clamp(32px,4vw,52px);font-variation-settings:'opsz' 56,'wdth' 92,'wght' 800;letter-spacing:-.032em;line-height:1.04;color:var(--ink);margin-bottom:12px}
+  .spec-head h2 .accent{color:var(--accent)}
+  .spec-head .spec-lede{color:var(--ink-2);font-size:16px;line-height:1.55}
+  .spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .spec-card{
+    display:grid;gap:10px;padding:22px 22px 20px;
+    background:var(--bg-card);border:1px solid var(--border);border-radius:14px;
+    text-decoration:none;color:inherit;
+    transition:border-color .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease);
+    position:relative;overflow:hidden;
+  }
+  .spec-card:hover{border-color:var(--ink-3);transform:translateY(-2px);box-shadow:0 4px 12px -4px rgba(26,22,20,.08)}
+  .spec-card::before{
+    content:'';position:absolute;inset:auto 0 0 0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease);
+  }
+  .spec-card:hover::before{transform:scaleX(1)}
+  .spec-card-t{font-size:15px;color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 95,'wght' 800;letter-spacing:-.01em}
+  .spec-card-seq{font-size:12.5px;color:var(--ink-2);line-height:1.55;min-height:3em}
+  .spec-card-kpi{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding-top:12px;border-top:1px solid var(--border);margin-top:4px;
+  }
+  .spec-card-kpi span{font-size:11px;color:var(--ink-3);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;letter-spacing:.02em;text-transform:uppercase}
+  .spec-card-kpi strong{font-size:18px;color:var(--accent);font-variation-settings:'opsz' 20,'wdth' 92,'wght' 800;letter-spacing:-.01em}
+  .spec-card-gp{background:linear-gradient(160deg,#fef3c7 0%,#fed7aa 50%);border-color:#fbbf24}
+  .spec-card-gp .spec-card-t,.spec-card-gp .spec-card-seq{color:#431407}
+  .spec-card-gp .spec-card-seq{opacity:.85}
+  .spec-card-gp .spec-card-kpi{border-top-color:#fbbf24}
+  .spec-card-gp .spec-card-kpi span{color:#78350f}
+  .spec-card-gp .spec-card-kpi strong{color:#9a3412}
+</style>
 
 <!-- ═══ FREE TOOLS · value before the ask ═══ -->
 <section class="tools" id="tools">
