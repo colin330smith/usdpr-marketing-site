@@ -38,14 +38,15 @@ function redact(body, depth) {
 
 function kindFor(path) {
   var p = (path || "").toLowerCase();
-  if (p.indexOf("/leads/audit")      !== -1) return "audit_submit";
-  if (p.indexOf("/leads/analytics")  !== -1) return "analytics";
-  if (p.indexOf("/leads/playbook")   !== -1) return "playbook_request";
-  if (p.indexOf("/leads/share")      !== -1) return "calculator_share";
-  if (p.indexOf("/cancel/action")    !== -1) return "cancel_action";
-  if (p.indexOf("/schedule/book")    !== -1) return "schedule_book";
-  if (p.indexOf("/referrals/submit") !== -1) return "referral_submit";
-  if (p.indexOf("/onboarding/step")  !== -1) return "onboarding_step";
+  if (p.indexOf("/leads/audit")       !== -1) return "audit_submit";
+  if (p.indexOf("/leads/analytics")   !== -1) return "analytics";
+  if (p.indexOf("/leads/playbook")    !== -1) return "playbook_request";
+  if (p.indexOf("/leads/share")       !== -1) return "calculator_share";
+  if (p.indexOf("/leads/unsubscribe") !== -1) return "unsubscribe";
+  if (p.indexOf("/cancel/action")     !== -1) return "cancel_action";
+  if (p.indexOf("/schedule/book")     !== -1) return "schedule_book";
+  if (p.indexOf("/referrals/submit")  !== -1) return "referral_submit";
+  if (p.indexOf("/onboarding/step")   !== -1) return "onboarding_step";
   return "unknown";
 }
 

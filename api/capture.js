@@ -29,14 +29,15 @@ function redact(body, depth) {
 
 function kindFor(path) {
   const p = (path || "").toLowerCase();
-  if (p.includes("/leads/audit"))      return "audit_submit";
-  if (p.includes("/leads/analytics"))  return "analytics";
-  if (p.includes("/leads/playbook"))   return "playbook_request";
-  if (p.includes("/leads/share"))      return "calculator_share";
-  if (p.includes("/cancel/action"))    return "cancel_action";
-  if (p.includes("/schedule/book"))    return "schedule_book";
-  if (p.includes("/referrals/submit")) return "referral_submit";
-  if (p.includes("/onboarding/step"))  return "onboarding_step";
+  if (p.includes("/leads/audit"))       return "audit_submit";
+  if (p.includes("/leads/analytics"))   return "analytics";
+  if (p.includes("/leads/playbook"))    return "playbook_request";
+  if (p.includes("/leads/share"))       return "calculator_share";
+  if (p.includes("/leads/unsubscribe")) return "unsubscribe";
+  if (p.includes("/cancel/action"))     return "cancel_action";
+  if (p.includes("/schedule/book"))     return "schedule_book";
+  if (p.includes("/referrals/submit"))  return "referral_submit";
+  if (p.includes("/onboarding/step"))   return "onboarding_step";
   return "unknown";
 }
 

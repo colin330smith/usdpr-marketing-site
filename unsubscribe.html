@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Unsubscribe · usdpr.</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<style>
+  body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px 16px}
+  .uns{max-width:560px;width:100%;background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:40px;box-shadow:0 1px 2px rgba(26,22,20,.04),0 10px 30px -10px rgba(26,22,20,.08)}
+  .uns .logo{font-size:20px;font-variation-settings:'opsz' 18,'wdth' 92,'wght' 800;letter-spacing:-.02em;color:var(--ink);margin-bottom:4px}
+  .uns .logo b{color:var(--accent)}
+  .uns .eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:24px}
+  .uns h1{font-size:32px;letter-spacing:-.028em;line-height:1.1;color:var(--ink);margin-bottom:12px;font-variation-settings:'opsz' 48,'wdth' 95,'wght' 800}
+  .uns .sub{color:var(--ink-2);font-size:15px;line-height:1.55;margin-bottom:24px}
+  .uns input{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:#fff;font:inherit;font-size:14px;outline:none;transition:border-color .14s;margin-bottom:14px}
+  .uns input:focus{border-color:var(--accent)}
+  .uns button{width:100%;padding:14px 22px;border:none;border-radius:999px;background:var(--accent);color:#fff;font:inherit;font-size:14px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;cursor:pointer;transition:background .14s}
+  .uns button:hover{background:#ea580c}
+  .uns button:disabled{opacity:.6;cursor:not-allowed}
+  .uns .success{display:none;padding:16px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:10px;color:#064e3b;font-size:14px;line-height:1.55;margin-bottom:16px}
+  .uns .success[data-visible=true]{display:block}
+  .uns .err{display:none;padding:16px;background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;color:#991b1b;font-size:14px;line-height:1.55;margin-bottom:16px}
+  .uns .err[data-visible=true]{display:block}
+  .uns .foot{font-size:12px;color:var(--ink-3);margin-top:24px;line-height:1.55;border-top:1px solid var(--border);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="uns">
+  <div class="logo">usdpr<b>.</b></div>
+  <div class="eyebrow">Unsubscribe</div>
+
+  <div class="success" id="unsSuccess" role="status" aria-live="polite">
+    <b>You're unsubscribed.</b> We've removed your address from all nurture sequences. You won't receive any further marketing emails from us. Your audit PDF, if you requested one, is still available by scrolling your inbox for the original delivery email.
+  </div>
+  <div class="err" id="unsErr" role="status" aria-live="polite"></div>
+
+  <div id="unsForm">
+    <h1>Leaving so soon?</h1>
+    <p class="sub">Enter the email address you want removed from our list. You'll stop receiving audit follow-ups and any future marketing. One click — no rethinking required.</p>
+    <label for="unsEmail" style="display:block;font-size:13px;color:var(--ink);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;margin-bottom:6px">Email address</label>
+    <input id="unsEmail" type="email" placeholder="you@practice.com" autocomplete="email" required>
+    <button id="unsBtn" type="button">Unsubscribe me →</button>
+  </div>
+
+  <div class="foot">
+    We honor unsubscribes within 2 business hours per CAN-SPAM §316.5. Your email is removed from our nurture DB. Transactional messages (password reset, billing, security) are not affected.
+    <br><br>
+    US Dental Patient Recovery · Orlando, FL · <a href="mailto:colin@usdentalpatientrecovery.com" style="color:var(--ink-3);text-decoration:underline">colin@usdentalpatientrecovery.com</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const prefill = params.get('email') || '';
+  const auto    = params.get('auto') === '1';
+  const emailEl = document.getElementById('unsEmail');
+  const btn     = document.getElementById('unsBtn');
+  const formWrap= document.getElementById('unsForm');
+  const success = document.getElementById('unsSuccess');
+  const err     = document.getElementById('unsErr');
+
+  if (prefill) emailEl.value = prefill;
+
+  async function submit(){
+    const email = emailEl.value.trim();
+    if (!email || email.indexOf('@') === -1){
+      emailEl.focus();
+      emailEl.setCustomValidity('Enter a valid email');
+      emailEl.reportValidity();
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = 'Removing…';
+    try {
+      const res = await fetch('/leads/unsubscribe', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ email, ts: new Date().toISOString(), source: 'unsubscribe_page' }),
+      });
+      if (res.ok) {
+        success.dataset.visible = 'true';
+        formWrap.style.display = 'none';
+      } else {
+        throw new Error('non-200');
+      }
+    } catch (e) {
+      err.dataset.visible = 'true';
+      err.textContent = 'Could not complete the unsubscribe. Email us directly at colin@usdentalpatientrecovery.com and we\u2019ll remove you manually within the hour.';
+      btn.disabled = false;
+      btn.textContent = 'Unsubscribe me →';
+    }
+  }
+
+  btn.addEventListener('click', submit);
+  emailEl.addEventListener('keydown', (e)=>{ if (e.key === 'Enter') submit(); });
+
+  if (auto && prefill) submit();
+})();
+</script>
+</body>
+</html>
