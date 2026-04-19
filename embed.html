@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Embed the free Dental Reactivation ROI Calculator on your dental blog, consultant site, or practice website — two lines of HTML, no login, attribution-free.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Embed the Dental ROI Calculator · usdpr.">
+<meta property="og:description" content="Two lines of HTML to give your dental-blog readers a free, interactive reactivation ROI calculator.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/embed.html">
+<meta property="og:image" content="/og.svg">
+<title>Embed the Dental ROI Calculator · usdpr.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<style>
+  .embed-hero{padding:clamp(56px,7vw,112px) 0 clamp(32px,4vw,48px);background:var(--bg);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+  .embed-hero .mx{display:grid;gap:20px;max-width:760px}
+  .embed-hero h1{font-size:clamp(42px,6vw,88px);font-variation-settings:'opsz' 96,'wdth' 92,'wght' 800;letter-spacing:-.048em;line-height:.96;color:var(--ink);max-width:16ch}
+  .embed-hero h1 .accent{color:var(--accent)}
+  .embed-hero .lede{max-width:60ch;color:var(--ink-2)}
+
+  .embed-section{padding:clamp(32px,5vw,72px) 0;border-bottom:1px solid var(--border)}
+  .embed-section .mx{max-width:960px;margin:0 auto;padding:0 var(--gutter);display:grid;gap:32px}
+  .embed-section h2{font-size:clamp(28px,3.6vw,40px);font-variation-settings:'opsz' 48,'wdth' 95,'wght' 700;letter-spacing:-.026em;line-height:1.08;color:var(--ink)}
+  .embed-section h3{font-size:18px;font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700;margin-bottom:8px}
+
+  .code-block{
+    background:var(--ink);color:#f6f4ef;padding:18px 20px;border-radius:14px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:13px;line-height:1.6;overflow-x:auto;
+    border:1px solid var(--border);
+  }
+  .code-block .tag{color:#fbbf24}
+  .code-block .attr{color:#fdba74}
+  .code-block .val{color:#86efac}
+  .copy-btn{
+    margin-top:10px;padding:8px 14px;border:1px solid var(--border);border-radius:999px;
+    background:var(--bg-card);color:var(--ink);font:inherit;font-size:12px;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;cursor:pointer;
+    transition:border-color .14s,color .14s;
+  }
+  .copy-btn:hover{border-color:var(--ink);color:var(--ink)}
+  .copy-btn[data-copied=true]{border-color:var(--accent);color:var(--accent)}
+
+  .preview-frame{
+    border:1px solid var(--border);border-radius:14px;
+    background:var(--bg-card);overflow:hidden;
+    box-shadow:0 1px 2px rgba(26,22,20,.04),0 10px 30px -10px rgba(26,22,20,.1);
+  }
+  .preview-frame iframe{display:block;width:100%;border:none;min-height:680px}
+
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .feat{padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--bg-card)}
+  .feat h4{font-size:14px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;margin-bottom:4px;color:var(--ink)}
+  .feat p{font-size:13px;color:var(--ink-2);line-height:1.5}
+</style>
+</head>
+<body>
+<header class="site-hdr">
+  <div class="mx hdr-inner">
+    <a class="brand" href="/"><span class="logo">usdpr<span class="logo-dot">.</span></span></a>
+    <nav class="hdr-nav">
+      <a href="/calculator.html">Calculator</a>
+      <a href="/pilot.html">Pilot</a>
+      <a href="/for-specialists.html">Specialists</a>
+      <a href="/for-managers.html">Managers</a>
+      <a href="/resources.html">Resources</a>
+      <a class="hdr-cta" href="/signup?tier=practice_pro">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+<section class="embed-hero">
+  <div class="mx">
+    <div class="eyebrow">For dental bloggers, consultants, and DSOs</div>
+    <h1>Embed the <span class="accent">reactivation ROI calculator</span> on any dental site</h1>
+    <p class="lede">Two lines of HTML. Your readers plug in their numbers, see their loss, and install themselves. You keep every visitor. We only ask for attribution in the footer.</p>
+  </div>
+</section>
+
+<section class="embed-section">
+  <div class="mx">
+    <div>
+      <h2>Paste this where you want it to appear</h2>
+      <p style="margin-top:8px;color:var(--ink-2);max-width:60ch">Works on WordPress, Squarespace, Wix, Ghost, Webflow, Notion, any CMS that accepts HTML/iframe.</p>
+    </div>
+    <div>
+      <h3>Basic embed (fixed height)</h3>
+      <pre class="code-block" id="snippet1"><span class="tag">&lt;iframe</span> <span class="attr">src</span>=<span class="val">"https://usdpr.netlify.app/embed/calculator.html"</span>
+        <span class="attr">width</span>=<span class="val">"100%"</span> <span class="attr">height</span>=<span class="val">"780"</span> <span class="attr">frameborder</span>=<span class="val">"0"</span>
+        <span class="attr">loading</span>=<span class="val">"lazy"</span> <span class="attr">title</span>=<span class="val">"Dental Reactivation ROI Calculator"</span><span class="tag">&gt;&lt;/iframe&gt;</span></pre>
+      <button class="copy-btn" data-copy="basic">Copy snippet</button>
+    </div>
+    <div>
+      <h3>Auto-resizing embed (recommended)</h3>
+      <pre class="code-block" id="snippet2"><span class="tag">&lt;iframe</span> <span class="attr">id</span>=<span class="val">"usdpr-calc"</span> <span class="attr">src</span>=<span class="val">"https://usdpr.netlify.app/embed/calculator.html"</span>
+        <span class="attr">width</span>=<span class="val">"100%"</span> <span class="attr">frameborder</span>=<span class="val">"0"</span> <span class="attr">loading</span>=<span class="val">"lazy"</span>
+        <span class="attr">title</span>=<span class="val">"Dental Reactivation ROI Calculator"</span><span class="tag">&gt;&lt;/iframe&gt;</span>
+<span class="tag">&lt;script&gt;</span>
+window.addEventListener(<span class="val">'message'</span>, (e) =&gt; {
+  if (e.data &amp;&amp; e.data.type === <span class="val">'usdpr-calc-height'</span>) {
+    document.getElementById(<span class="val">'usdpr-calc'</span>).style.height = e.data.height + <span class="val">'px'</span>;
+  }
+});
+<span class="tag">&lt;/script&gt;</span></pre>
+      <button class="copy-btn" data-copy="auto">Copy snippet</button>
+    </div>
+  </div>
+</section>
+
+<section class="embed-section">
+  <div class="mx">
+    <h2>Live preview</h2>
+    <div class="preview-frame">
+      <iframe id="usdpr-calc-preview" src="/embed/calculator.html" width="100%" frameborder="0" loading="lazy" title="Dental Reactivation ROI Calculator preview"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="embed-section">
+  <div class="mx">
+    <h2>Why embed it</h2>
+    <div class="features">
+      <div class="feat"><h4>Free forever</h4><p>No API key, no registration, no analytics tracking injected into your page.</p></div>
+      <div class="feat"><h4>Matches your readers' intent</h4><p>Any dentist reading about patient retention wants to quantify their own loss. The calculator converts intent into a number they act on.</p></div>
+      <div class="feat"><h4>You keep the visitor</h4><p>Your header, your nav, your content. The calculator is a widget, not a takeover.</p></div>
+      <div class="feat"><h4>Brand-safe</h4><p>Neutral amber/cream aesthetic, no ads, no popups, GDPR-friendly (no cookies set).</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-ftr">
+  <div class="mx">
+    <div class="foot-grid">
+      <div class="foot-col foot-brand">
+        <span class="logo">usdpr<span class="logo-dot">.</span></span>
+        <p>Dental patient reactivation, perfected. Orlando, FL.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><ul><li><a href="/">Home</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/pilot.html">Pilot</a></li><li><a href="/embed.html">Embed widget</a></li></ul></div>
+      <div class="foot-col"><h4>For</h4><ul><li><a href="/for-specialists.html">Specialists</a></li><li><a href="/for-managers.html">Office managers</a></li><li><a href="/for-dsos.html">DSOs</a></li></ul></div>
+      <div class="foot-col"><h4>Company</h4><ul><li><a href="/resources.html">Resources</a></li><li><a href="/changelog.html">Changelog</a></li><li><a href="mailto:colin@usdentalpatientrecovery.com">Contact</a></li></ul></div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>TCPA compliant · HIPAA BAA · SOC 2 in progress</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Copy snippet buttons
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const which = btn.dataset.copy;
+      const el = document.getElementById(which === 'basic' ? 'snippet1' : 'snippet2');
+      const text = el.textContent;
+      try{
+        await navigator.clipboard.writeText(text);
+        btn.dataset.copied = 'true';
+        btn.textContent = 'Copied';
+        setTimeout(()=>{ btn.dataset.copied='false'; btn.textContent='Copy snippet'; }, 1600);
+      }catch(e){
+        btn.textContent = 'Press Cmd+C';
+      }
+    });
+  });
+
+  // Auto-size preview iframe
+  window.addEventListener('message', (e) => {
+    if (e.data && e.data.type === 'usdpr-calc-height') {
+      const f = document.getElementById('usdpr-calc-preview');
+      if (f) f.style.height = e.data.height + 'px';
+    }
+  });
+})();
+</script>
+</body>
+</html>

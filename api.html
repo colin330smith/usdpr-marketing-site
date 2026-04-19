@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="usdpr. public REST API. OAuth 2.0, JSON. Campaigns, replies, bookings, exports, outbound webhooks. Included on every tier — not enterprise-gated.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="API docs · usdpr.">
+<meta property="og:description" content="Public REST API. OAuth 2.0. Included on every tier.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/api.html">
+<meta property="og:image" content="/og.svg">
+<link rel="canonical" href="https://usdpr.netlify.app/api.html">
+<title>API · usdpr.</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"APIReference","name":"usdpr. Public API","description":"REST API for US Dental Patient Recovery. OAuth 2.0, JSON, fully public on every tier. Campaigns, replies, bookings, analytics, outbound webhooks.","url":"https://usdpr.netlify.app/api.html"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdentalpatientrecovery.com"></script>
+<style>
+  .ap-hero{padding:clamp(40px,6vw,88px) 0 clamp(28px,4vw,48px);background:var(--bg);border-bottom:1px solid var(--border)}
+  .ap-hero-wrap{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+  .ap-kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:18px}
+  .ap-kicker::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .ap-hero h1{font-size:clamp(42px,6vw,96px);color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 85,'wght' 800;letter-spacing:-.048em;line-height:.96;max-width:16ch;margin-bottom:20px}
+  .ap-hero h1 .accent{color:var(--accent)}
+  .ap-hero .lede{font-size:clamp(16px,1.5vw,20px);color:var(--ink-2);max-width:60ch;line-height:1.55;font-variation-settings:'opsz' 19,'wdth' 100,'wght' 400}
+  .ap-hero .lede strong{color:var(--ink);font-variation-settings:'opsz' 19,'wdth' 100,'wght' 700}
+
+  .ap-body{max-width:var(--container-narrow);margin:0 auto;padding:clamp(40px,5vw,72px) var(--gutter)}
+  .ap-body h2{font-size:clamp(24px,3vw,36px);color:var(--ink);font-variation-settings:'opsz' 60,'wdth' 100,'wght' 700;letter-spacing:-.028em;line-height:1.1;margin:clamp(32px,4vw,48px) 0 16px;max-width:26ch}
+  .ap-body h2 .accent{color:var(--accent)}
+  .ap-body p{font-size:15px;line-height:1.65;color:var(--ink-2);margin-bottom:14px;max-width:62ch}
+  .ap-body p strong{color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+  .ap-body p code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.9em;background:var(--bg-soft);padding:2px 7px;border-radius:5px;border:1px solid var(--border);color:var(--ink)}
+
+  .ap-tbl-wrap{overflow:auto;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg)}
+  .ap-tbl{width:100%;min-width:640px;border-collapse:collapse;font-size:13.5px}
+  .ap-tbl th{background:var(--bg-soft);text-align:left;padding:12px 16px;color:var(--ink);font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;border-bottom:1px solid var(--border)}
+  .ap-tbl td{padding:12px 16px;border-top:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+  .ap-tbl td.m{width:80px;white-space:nowrap}
+  .ap-tbl td.ep{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12.5px;color:var(--ink);white-space:nowrap}
+  .verb{display:inline-block;padding:3px 9px;border-radius:4px;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-family:'JetBrains Mono',ui-monospace,monospace}
+  .verb.get{background:rgba(34,197,94,.14);color:#15803d;border:1px solid rgba(34,197,94,.3)}
+  .verb.post{background:rgba(249,115,22,.14);color:var(--accent);border:1px solid rgba(249,115,22,.3)}
+  .verb.put{background:rgba(59,130,246,.14);color:#2563eb;border:1px solid rgba(59,130,246,.3)}
+  .verb.delete{background:rgba(239,68,68,.14);color:#dc2626;border:1px solid rgba(239,68,68,.3)}
+
+  .ap-code{background:var(--ink-bg);color:var(--bg);padding:clamp(40px,5vw,64px) 0;border-top:1px solid #1a1d20;border-bottom:1px solid #1a1d20}
+  .ap-code-wrap{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+  .ap-code h2{color:var(--bg);font-size:clamp(24px,3vw,36px);font-variation-settings:'opsz' 60,'wdth' 100,'wght' 700;letter-spacing:-.03em;margin-bottom:18px;line-height:1.1}
+  .ap-code h2 .accent{color:var(--accent)}
+  .ap-code p{font-size:14.5px;color:rgba(246,244,239,.75);margin-bottom:14px;line-height:1.65;max-width:56ch}
+  .ap-code pre{background:#151a1c;border:1px solid #2a2d30;border-radius:10px;padding:22px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;line-height:1.65;color:#e4e1d5;overflow-x:auto;white-space:pre}
+  .ap-code .kw{color:#f97316}
+  .ap-code .str{color:#4ade80}
+  .ap-code .cmt{color:rgba(246,244,239,.4)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="/state-of-reactivation-2026.html" class="nav-link">Research</a>
+      <a href="/press.html" class="nav-link">Press</a>
+      <a href="/about.html" class="nav-link">Founder</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=auth" class="nav-cta">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+
+<section class="ap-hero">
+  <div class="ap-hero-wrap">
+    <span class="ap-kicker">Public API · v1 · OAuth 2.0 · JSON</span>
+    <h1>Every tier ships with the <span class="accent">full API</span>.</h1>
+    <p class="lede">Not an enterprise add-on. Not a "paid API credits" trap. <strong>Practice, Practice Pro, and DSO tiers all include the full public REST API</strong> — OAuth 2.0 auth, JSON over HTTPS, rate-limited at a reasonable default, outbound webhooks for every event.</p>
+  </div>
+</section>
+
+<main class="ap-body">
+  <h2>Auth</h2>
+  <p>Bearer token via <code>Authorization: Bearer &lt;api-key&gt;</code>. Generate keys from the dashboard → Settings → API keys. Keys are tenant-scoped and revocable instantly.</p>
+  <p>Rate limit: <strong>60 requests/minute per key</strong> default; burst 240. Contact <a href="mailto:colin@usdentalpatientrecovery.com?subject=API%20rate%20limit%20increase">Colin</a> for higher limits (DSO-tier default is 200 req/min).</p>
+
+  <h2>Base URL</h2>
+  <p>All endpoints live under <code>https://api.usdpr.netlify.app/v1</code>. Breaking changes bump the version; within v1 we maintain backwards compatibility for at least 12 months of deprecation notice.</p>
+
+  <h2>Endpoints (subset)</h2>
+  <div class="ap-tbl-wrap">
+    <table class="ap-tbl">
+      <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="m"><span class="verb post">POST</span></td>
+          <td class="ep">/api/v1/patients</td>
+          <td>Create or upsert a patient record (idempotent on external_id).</td>
+        </tr>
+        <tr>
+          <td class="m"><span class="verb get">GET</span></td>
+          <td class="ep">/api/v1/patients/{id}</td>
+          <td>Fetch a patient + their lifetime reactivation status.</td>
+        </tr>
+        <tr>
+          <td class="m"><span class="verb post">POST</span></td>
+          <td class="ep">/api/v1/campaigns</td>
+          <td>Start a reactivation campaign against a segment.</td>
+        </tr>
+        <tr>
+          <td class="m"><span class="verb get">GET</span></td>
+          <td class="ep">/api/v1/campaigns/{id}/metrics</td>
+          <td>Campaign KPIs — sent, delivered, opened, replied, booked, shown.</td>
+        </tr>
+        <tr>
+          <td class="m"><span class="verb post">POST</span></td>
+          <td class="ep">/api/v1/replies/{id}/approve</td>
+          <td>Approve an AI-drafted reply and send it.</td>
+        </tr>
+        <tr>
+          <td class="m"><span class="verb get">GET</span></td>
+          <td class="ep">/api/v1/bookings</td>
+          <td>List bookings with date filters + attribution to campaign + touch.</td>
+        </tr>
+        <tr>
+          <td class="m"><span class="verb get">GET</span></td>
+          <td class="ep">/api/v1/exports/{kind}</td>
+          <td>Trigger a CSV/JSON export of patients/messages/bookings.</td>
+        </tr>
+        <tr>
+          <td class="m"><span class="verb post">POST</span></td>
+          <td class="ep">/api/v1/webhooks</td>
+          <td>Register an outbound webhook (reply.received, booking.created, send.failed, etc.).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Outbound <span class="accent">webhooks</span></h2>
+  <p>Register one or more webhook URLs to receive real-time events: <code>reply.received</code>, <code>booking.created</code>, <code>campaign.completed</code>, <code>send.failed</code>, <code>export.ready</code>. Webhook payloads are HMAC-signed with SHA-256; verify with your registered secret.</p>
+</main>
+
+<section class="ap-code">
+  <div class="ap-code-wrap">
+    <h2>Sending a <span class="accent">campaign</span> — curl example.</h2>
+    <p>Start a 5-touch reactivation campaign against the B2 segment (overdue hygiene 90–365 days). The API returns a campaign id you can poll for metrics; webhooks fire on every reply + booking.</p>
+    <pre><span class="cmt"># Start a campaign</span>
+curl -X POST https://api.usdpr.netlify.app/v1/campaigns \
+  -H <span class="str">"Authorization: Bearer $USDPR_API_KEY"</span> \
+  -H <span class="str">"Content-Type: application/json"</span> \
+  -d <span class="str">'{"segment":"B2","touches":5,"channels":["email","sms","phone"]}'</span>
+
+<span class="cmt"># Poll metrics</span>
+curl https://api.usdpr.netlify.app/v1/campaigns/$ID/metrics \
+  -H <span class="str">"Authorization: Bearer $USDPR_API_KEY"</span></pre>
+  </div>
+</section>
+
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Research</h4>
+        <ul><li><a href="/state-of-reactivation-2026.html">State of Reactivation 2026</a></li><li><a href="/benchmarks.html">Public benchmarks</a></li><li><a href="/open-source.html">Open source</a></li><li><a href="/academy.html">Academy</a></li><li><a href="/api.html">API docs</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/about.html">Founder letter</a></li><li><a href="/security.html">Security</a></li><li><a href="/press.html">Press kit</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/pilot.html">Pilot</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/audit.html">Free audit</a></li><li><a href="/roadmap.html">Roadmap</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>Flat fee · founder-built · build-in-public</span>
+    </div>
+  </div>
+</footer>
+<script defer src="/founder-widget.js"></script>
+
+</body>
+</html>

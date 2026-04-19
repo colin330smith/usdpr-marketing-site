@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <title>usdpr. — Bring back your lost dental patients</title>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#f6f4ef"/>
+
+  <!-- Amber glow top-right -->
+  <defs>
+    <radialGradient id="glow" cx="0.85" cy="0.15" r="0.6">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Top rule -->
+  <line x1="80" y1="88" x2="1120" y2="88" stroke="#d1c9b8" stroke-width="1"/>
+
+  <!-- Top-left wordmark -->
+  <g transform="translate(80 72)">
+    <text font-family="'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif"
+          font-size="42" font-weight="800" fill="#0b0e0f"
+          letter-spacing="-1.8" font-stretch="92%">usdpr</text>
+    <circle cx="122" cy="-4" r="6" fill="#f97316"/>
+  </g>
+
+  <!-- Top-right metadata -->
+  <g transform="translate(1120 68)" text-anchor="end">
+    <text font-family="'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif"
+          font-size="14" font-weight="600" fill="#6b6e70"
+          letter-spacing="1.2">ORLANDO · FL · EST. 2026</text>
+  </g>
+
+  <!-- Eyebrow -->
+  <g transform="translate(80 180)">
+    <line x1="0" y1="0" x2="32" y2="0" stroke="#f97316" stroke-width="1.5"/>
+    <text x="46" y="5" font-family="'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif"
+          font-size="18" font-weight="600" fill="#f97316"
+          letter-spacing="0.18">PATIENT REACTIVATION · FOR PRIVATE DENTAL PRACTICES</text>
+  </g>
+
+  <!-- Massive headline -->
+  <g transform="translate(80 272)"
+     font-family="'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif"
+     font-size="104" font-weight="800" fill="#0b0e0f"
+     letter-spacing="-5" font-stretch="92%">
+    <text>Bring back the</text>
+    <text y="108">patients you</text>
+    <text y="216"><tspan fill="#0b0e0f">already </tspan><tspan fill="#f97316">have.</tspan></text>
+  </g>
+
+  <!-- Accent underline under "have" -->
+  <line x1="612" y1="498" x2="788" y2="498" stroke="#f97316" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- Bottom line rule -->
+  <line x1="80" y1="548" x2="1120" y2="548" stroke="#d1c9b8" stroke-width="1"/>
+
+  <!-- Bottom metadata row -->
+  <g transform="translate(80 586)">
+    <text font-family="'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif"
+          font-size="24" font-weight="700" fill="#0b0e0f"
+          letter-spacing="-0.8">Plans from $297/mo  ·  14-day free trial  ·  BAA signed first</text>
+  </g>
+  <g transform="translate(1120 592)" text-anchor="end">
+    <text font-family="'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif"
+          font-size="14" font-weight="600" fill="#6b6e70"
+          letter-spacing="1.2">USDENTALPATIENTRECOVERY.COM</text>
+  </g>
+</svg>

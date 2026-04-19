@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="A letter from Colin Smith, founder of US Dental Patient Recovery \u2014 why I built this, what I believe, and what I\u2019ll sign my name to.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="A letter from the founder \u00B7 usdpr.">
+<meta property="og:description" content="Why I built US Dental Patient Recovery \u2014 the real story, signed.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://usdpr.netlify.app/about.html">
+<meta property="og:image" content="/og.svg">
+<title>About \u00B7 A letter from the founder \u00B7 usdpr.</title>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AboutPage","name":"A letter from the founder","url":"https://usdpr.netlify.app/about.html","publisher":{"@type":"Organization","name":"US Dental Patient Recovery","url":"https://usdpr.netlify.app/","founder":{"@type":"Person","name":"Colin Smith","jobTitle":"Founder","email":"colin@usdentalpatientrecovery.com","address":{"@type":"PostalAddress","addressLocality":"Orlando","addressRegion":"FL","addressCountry":"US"}}}}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<style>
+  /* ───── Letter layout ─────────────────────────────────────────── */
+  .lt-wrap{
+    max-width:var(--container-narrow);margin:0 auto;
+    padding:clamp(40px,6vw,96px) var(--gutter) clamp(64px,8vw,112px);
+  }
+
+  /* Dateline + identity */
+  .lt-id{
+    display:grid;grid-template-columns:1fr auto;gap:16px;
+    padding-bottom:20px;margin-bottom:clamp(28px,4vw,48px);
+    border-bottom:1px solid var(--border);
+    align-items:end;
+  }
+  .lt-kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;
+  }
+  .lt-kicker::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .lt-date{
+    font-size:12px;color:var(--ink-3);line-height:1.5;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+    text-align:right;letter-spacing:.04em;text-transform:uppercase;
+  }
+  .lt-date strong{display:block;color:var(--ink);font-size:13px;letter-spacing:-.005em;text-transform:none;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+
+  /* Display headline */
+  .lt-h{
+    font-size:clamp(44px,7vw,112px);color:var(--ink);
+    font-variation-settings:'opsz' 96,'wdth' 85,'wght' 800;
+    letter-spacing:-.048em;line-height:.94;
+    max-width:14ch;margin-bottom:22px;
+  }
+  .lt-h .accent{color:var(--accent)}
+
+  /* Editorial strap (deck) */
+  .lt-deck{
+    font-size:clamp(18px,1.8vw,24px);
+    color:var(--ink-2);line-height:1.45;max-width:52ch;
+    font-variation-settings:'opsz' 22,'wdth' 100,'wght' 500;
+    letter-spacing:-.01em;
+    padding-bottom:clamp(20px,3vw,36px);
+    border-bottom:1px solid var(--border-soft);
+    margin-bottom:clamp(28px,3.5vw,48px);
+  }
+  .lt-deck em{font-style:italic;color:var(--ink);font-variation-settings:'opsz' 22,'wdth' 100,'wght' 500,'slnt' 0}
+  .lt-deck strong{color:var(--ink);font-variation-settings:'opsz' 22,'wdth' 100,'wght' 700}
+
+  /* Prose */
+  .lt-prose{
+    max-width:none;
+  }
+  .lt-prose p{
+    font-size:17px;line-height:1.7;color:var(--ink-2);
+    max-width:62ch;margin-bottom:20px;
+    font-variation-settings:'opsz' 17,'wdth' 100,'wght' 400;
+  }
+  .lt-prose p strong{color:var(--ink);font-variation-settings:'opsz' 17,'wdth' 100,'wght' 700}
+  .lt-prose p em{font-style:italic;color:var(--ink-2)}
+
+  /* Drop-cap opener */
+  .lt-prose p.open::first-letter{
+    font-size:5.6em;line-height:.9;
+    float:left;margin:.02em .1em 0 0;
+    color:var(--accent);
+    font-variation-settings:'opsz' 96,'wdth' 82,'wght' 800;
+    letter-spacing:-.04em;
+  }
+
+  /* Section heading in a letter */
+  .lt-prose h2{
+    font-size:clamp(24px,2.6vw,32px);color:var(--ink);line-height:1.15;
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 700;
+    letter-spacing:-.028em;
+    margin:clamp(32px,4vw,48px) 0 14px;
+  }
+  .lt-prose h2 .n{
+    display:inline-block;margin-right:10px;color:var(--accent);
+    font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .lt-prose ul{
+    list-style:none;margin:14px 0 22px;padding:0;max-width:62ch;
+  }
+  .lt-prose ul li{
+    display:grid;grid-template-columns:18px 1fr;gap:12px;
+    padding:6px 0;font-size:16px;line-height:1.6;color:var(--ink-2);
+  }
+  .lt-prose ul li::before{
+    content:'';width:14px;height:14px;border-radius:4px;
+    background:var(--accent-soft);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23f97316' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7l3 3 5-6'/%3E%3C/svg%3E");
+    background-position:center;background-repeat:no-repeat;margin-top:3px;
+  }
+  .lt-prose ul li strong{color:var(--ink);font-variation-settings:'opsz' 17,'wdth' 100,'wght' 700}
+
+  /* Pull-quote in-letter */
+  .lt-pull{
+    margin:clamp(28px,4vw,48px) 0;
+    padding:clamp(22px,3vw,32px) clamp(24px,3.5vw,40px);
+    border-left:3px solid var(--accent);
+    background:var(--bg-vellum);
+    border-radius:0 var(--r-md) var(--r-md) 0;
+  }
+  .lt-pull p{
+    font-size:clamp(19px,1.7vw,24px);
+    line-height:1.4;color:var(--ink);max-width:none;margin:0;
+    font-variation-settings:'opsz' 22,'wdth' 100,'wght' 500;
+    letter-spacing:-.015em;
+  }
+  .lt-pull p em{font-style:italic;font-variation-settings:'opsz' 22,'wdth' 100,'wght' 500}
+
+  /* Dialogue / story callout */
+  .lt-story{
+    margin:clamp(28px,4vw,48px) 0;
+    padding:clamp(24px,3vw,36px);
+    background:var(--bg-card);
+    border:1px solid var(--border);border-radius:var(--r-lg);
+  }
+  .lt-story-k{
+    font-size:11px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.09em;text-transform:uppercase;margin-bottom:10px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .lt-story-k::before{content:'';width:18px;height:1px;background:var(--ink-3)}
+  .lt-story p{font-size:16px;line-height:1.65;color:var(--ink-2);max-width:56ch}
+  .lt-story p:last-child{margin-bottom:0}
+
+  /* Pledge strip — the five commitments */
+  .lt-pledge{
+    margin:clamp(36px,4.5vw,64px) 0;
+    padding:clamp(28px,3.5vw,40px);
+    background:linear-gradient(135deg,var(--ink-bg) 0%,#151a1c 100%);
+    color:var(--bg);border-radius:18px;
+    position:relative;overflow:hidden;
+  }
+  .lt-pledge::after{
+    content:'';position:absolute;inset:auto -10% -30% auto;
+    width:70%;height:90%;
+    background:radial-gradient(ellipse,rgba(249,115,22,.18) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .lt-pledge > *{position:relative;z-index:1}
+  .lt-pledge-k{
+    font-size:11.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .lt-pledge-k::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .lt-pledge h2{
+    font-size:clamp(26px,3.2vw,40px);color:var(--bg);line-height:1.1;
+    font-variation-settings:'opsz' 60,'wdth' 90,'wght' 800;
+    letter-spacing:-.035em;margin-bottom:18px;max-width:20ch;
+  }
+  .lt-pledge ol{
+    list-style:none;counter-reset:lp;display:grid;gap:12px;
+  }
+  .lt-pledge ol li{
+    counter-increment:lp;
+    display:grid;grid-template-columns:40px 1fr;gap:14px;
+    padding:12px 0;
+    border-top:1px solid rgba(255,255,255,.08);
+    font-size:15.5px;line-height:1.55;color:rgba(246,244,239,.82);
+    font-variation-settings:'opsz' 16,'wdth' 100,'wght' 400;
+  }
+  .lt-pledge ol li:first-child{border-top:0;padding-top:0}
+  .lt-pledge ol li::before{
+    content:counter(lp, decimal-leading-zero);
+    color:var(--accent);font-size:15px;letter-spacing:-.01em;
+    font-variation-settings:'opsz' 16,'wdth' 92,'wght' 800;
+    padding-top:1px;
+  }
+  .lt-pledge ol li strong{color:var(--bg);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+
+  /* Signature block */
+  .lt-sig{
+    margin-top:clamp(32px,4vw,56px);
+    padding-top:clamp(28px,3.5vw,40px);
+    border-top:1px solid var(--border);
+    display:grid;gap:8px;
+  }
+  .lt-sig-pre{font-size:15px;color:var(--ink-2);max-width:48ch;line-height:1.6}
+  .lt-sig-mark{
+    font-size:clamp(36px,4.5vw,56px);
+    color:var(--accent);font-style:italic;letter-spacing:-.02em;
+    font-variation-settings:'opsz' 72,'wdth' 82,'wght' 500;
+    line-height:1;margin:8px 0 6px;
+  }
+  .lt-sig-name{font-size:14.5px;color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700;letter-spacing:-.005em}
+  .lt-sig-role{font-size:12.5px;color:var(--ink-3);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500}
+  .lt-sig-contact{
+    margin-top:12px;padding-top:12px;border-top:1px dashed var(--border);
+    font-size:13px;color:var(--ink-2);line-height:1.65;
+  }
+  .lt-sig-contact a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(249,115,22,.35);text-underline-offset:.2em}
+  .lt-sig-contact a:hover{text-decoration-color:var(--accent)}
+
+  /* Closing CTA */
+  .lt-close{
+    margin-top:clamp(48px,6vw,80px);
+    padding:clamp(28px,3.5vw,44px);
+    background:var(--bg-vellum);
+    border-radius:18px;text-align:center;
+  }
+  .lt-close h3{
+    font-size:clamp(24px,3vw,36px);color:var(--ink);line-height:1.15;
+    font-variation-settings:'opsz' 60,'wdth' 100,'wght' 700;
+    letter-spacing:-.032em;margin-bottom:10px;max-width:22ch;margin-inline:auto;
+  }
+  .lt-close h3 .accent{color:var(--accent)}
+  .lt-close p{font-size:15px;color:var(--ink-2);line-height:1.6;max-width:52ch;margin:0 auto 22px}
+  .lt-close .row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/#how" class="nav-link">How it works</a>
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="/calculator.html" class="nav-link">Calculator</a>
+      <a href="/compare.html" class="nav-link">Compare</a>
+      <a href="/security.html" class="nav-link">Security</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=about" class="nav-cta">Start free trial</a>
+    </nav>
+  </div>
+</header>
+
+<main class="lt-wrap">
+
+  <div class="lt-id">
+    <div>
+      <div class="lt-kicker">A letter from the founder</div>
+      <h1 class="lt-h">Why I'm the one <span class="accent">signing</span> this.</h1>
+    </div>
+    <div class="lt-date">
+      <strong>Colin Smith</strong>
+      Orlando, FL \u00B7 April 2026
+    </div>
+  </div>
+
+  <p class="lt-deck">
+    A short, <em>honest</em> letter about what I built, who it's for, and why a solo founder is <strong>a feature, not a bug</strong> \u2014 as long as you know which risks that trade-off hides and which it eliminates.
+  </p>
+
+  <div class="lt-prose">
+
+    <p class="open">I've been building this for eight months. I haven't taken outside money. I haven't hired a sales team. I haven't chased a demo call with a venture-backed DSO platform so I could co-brand in their deck. I'm one person in Orlando who saw a specific, expensive problem inside every dental practice in this country \u2014 a problem measured in <strong>lost revenue per month</strong>, not abstract pain points \u2014 and I chose to build a tool narrow enough and deep enough to solve it without the usual SaaS tax.</p>
+
+    <p>The problem is patient reactivation. The <em>math</em> of it is uncontested: the average US dental practice loses between 8% and 12% of its active patients every year to broken appointments and lapsed recalls. On a 2,000-patient practice, that's ~180 patients a year \u2014 worth roughly <strong>$77,000 in unrealized production</strong> at a conservative visit multiplier. Multiply that by the 180,000 practicing US dentists. The leak is bigger than the GDP of <em>several countries</em>.</p>
+
+    <p>The leak has existed since the recall postcard was invented. Every dental-practice owner knows about it. Most of them try to plug it with some combination of: the front desk making 20 calls between checkout and insurance verification, a generic tool pushing a quarterly "we miss you" SMS, and a yearly postcard mailer in January. These tactics aren't <em>wrong</em>. They're under-engineered for the job.</p>
+
+    <div class="lt-pull">
+      <p>Reactivation isn't a <em>message</em> problem. It's a <em>sequencing</em> problem. A single SMS reactivates at 1\u20132%. A dedicated multi-touch sequence \u2014 across email, SMS, phone \u2014 reactivates at 8\u201315%. Same list. Same front desk. Six times the result.</p>
+    </div>
+
+    <p>So I built the sequence. Then I built the compliance scaffolding around it, because dental outreach sits at the intersection of HIPAA, TCPA, CAN-SPAM, state dental-board rules, and state anti-kickback statutes. Getting any one of those wrong is a felony or a license issue. I built a PHI scrubber enforced at the database query layer. I built TCPA rate limits (1/day, 3/week per patient) enforced at the dispatcher level, not as a policy you could disable in an admin panel. I priced the product as a <strong>flat SaaS fee</strong> because Florida \u00A7817.505 and the Patient Brokering Act make per-patient referral fees a crime. That wasn't a marketing choice. It was the only model I could defend to an attorney.</p>
+
+    <h2><span class="n">01</span>Why a solo founder \u2014 and why that\u2019s deliberate.</h2>
+
+    <p>Most dental SaaS is sold by a sales rep who won't remember your name in 90 days. Most dental SaaS is supported by a tier-one help desk that can't fix anything \u2014 they escalate. Most dental SaaS is built by a product team five layers removed from the front desk actually running the tool. The output is a product that works 70% of the time, covers 40% of the jobs, and costs 3\u00D7 what it should because every layer charges a margin.</p>
+
+    <p>I'm building the opposite version. Here's what that means concretely, whether you like it or not:</p>
+
+    <ul>
+      <li><strong>One throat to choke.</strong> Something broken? Email me. I'll reply within two business hours or credit the day. No ticket queue, no "we've escalated it," no Salesforce workflow.</li>
+      <li><strong>Weekly changelog.</strong> I ship every week. Good week or bad. You can read every change at <a href="/changelog.html">/changelog</a>.</li>
+      <li><strong>Product built narrow, maintained deep.</strong> I don't ship features I wouldn't personally support forever. If it's in the product, I own it.</li>
+      <li><strong>No upsell team.</strong> You won't get a call from an "account executive" trying to upgrade you. You'll get emails from me, and they'll usually be about the Friday report.</li>
+      <li><strong>No VC clock.</strong> I haven't taken institutional money, so I don't have to chase a 10\u00D7 exit on someone else's timeline. That means I can build what actually helps a 4-chair practice, not what helps a pitch deck.</li>
+    </ul>
+
+    <p>The honest trade-off: if I get hit by a bus, you'd be in a bad spot for 72 hours. That's why the very first thing in the <a href="/trust.html">Trust hub</a> is a continuity plan, a data-export SLA measured in minutes, and written disaster-recovery procedures you can audit. Every risk I can mitigate, I have. I don't pretend the solo-founder risk doesn't exist; I designed the product so it doesn't hold your data hostage the day it matters.</p>
+
+    <div class="lt-story">
+      <div class="lt-story-k">One conversation, 2025</div>
+      <p>Last year an office manager told me her practice had written off the last quarter's broken-appointment list because "Margaret has moved on." Margaret hadn't moved on. Margaret had switched insurance, missed one follow-up call during her son's soccer season, and then felt too awkward to call back seven months later. One well-timed text \u2014 "we kept your chart, want to come back? \u2014 Dr. Patel" \u2014 brought Margaret back. She was worth $1,840 that year. She's worth ~$650/yr for the next decade.</p>
+      <p>There are a lot of Margarets. They\u2019re not inventory. They\u2019re not a funnel. They're someone who trusted your practice once and needs a graceful reason to come back. That's the job I'm trying to do well.</p>
+    </div>
+
+    <h2><span class="n">02</span>What I'll refuse to build.</h2>
+
+    <p>I get pitched features every week. A fair share of them I decline. Here's a partial list of the things that will <strong>not</strong> appear in this product while I'm the one signing the code:</p>
+
+    <ul>
+      <li><strong>Per-patient pricing or per-rebook success fees.</strong> A felony in Florida and a patient-brokering violation in most other states. The pitch is compelling ("align incentives!"). The reality is regulatory disaster.</li>
+      <li><strong>AI that auto-sends to a patient without template approval.</strong> "Saves time" \u2014 until it generates a HIPAA violation in a reply to grandma about her crown prep. Drafts, yes. Autonomous sends, no.</li>
+      <li><strong>Cross-tenant benchmarking that reveals other practices' data to yours.</strong> Every tenant\u2019s data is walled off. Permanently. I'll never ship a "practices like yours" feature that requires learning from your patients\u2019 records.</li>
+      <li><strong>A mandatory annual contract.</strong> Month-to-month forever, cancel in one click. If the tool isn't earning its month, you shouldn't be forced to renew.</li>
+      <li><strong>Dark-pattern retention.</strong> No friction on cancel. No "three emails to confirm" flow. Click, done, data exported in under an hour.</li>
+    </ul>
+
+    <p>I'll update this list publicly when I add to it. You can hold me to it.</p>
+
+    <h2><span class="n">03</span>What I'll commit to, in writing.</h2>
+
+    <div class="lt-pledge">
+      <div class="lt-pledge-k">Five pledges, signed</div>
+      <h2>Written into the Service Agreement. Refundable if I miss them.</h2>
+      <ol>
+        <li><strong>Founder response SLA.</strong> Email me during US business hours. Reply in under 2 hours or that day's fee comes off your invoice.</li>
+        <li><strong>Data portability SLA.</strong> Full export (CSV + JSON) emailed to you in under 1 hour, any time. Miss it \u2014 credit a month.</li>
+        <li><strong>Price-lock.</strong> Your rate is grandfathered for at least one full renewal cycle on any price change. 60-day written notice.</li>
+        <li><strong>30-day money-back pilot.</strong> First 10 practices: if we don\u2019t rebook 10 patients in the first paid month, we refund the whole month.</li>
+        <li><strong>Quarterly transparency.</strong> Starting Q4 2026, I publish uptime, send volume, refund rate, reactivation rate, and every incident \u2014 good numbers or bad.</li>
+      </ol>
+    </div>
+
+    <h2><span class="n">04</span>Who this isn't for.</h2>
+
+    <p>I'd rather lose a wrong-fit customer on the homepage than a month in. So, for clarity, usdpr. probably <em>isn't</em> for you if:</p>
+
+    <ul>
+      <li>You're evaluating a 20-feature all-in-one platform and reactivation is the fifth-priority checkbox. Buy Weave. They're great at the 20-feature version.</li>
+      <li>You need a fully managed service where a human writes each campaign for you. That's a different company \u2014 a done-for-you agency at ~$3k/mo. Email me and I'll introduce you to two good ones.</li>
+      <li>Your PMS is something exotic that's not on our roadmap (we ship CSV import for anything, but if your front desk will mutiny over a weekly export, we're not a fit yet).</li>
+      <li>You want a per-rebook success fee. Not legal. Not building it.</li>
+    </ul>
+
+    <h2><span class="n">05</span>What happens next if you start a trial.</h2>
+
+    <p>Here's the honest choreography of the next two weeks, laid out in advance so nothing surprises you:</p>
+
+    <ul>
+      <li><strong>Minute 1.</strong> Stripe Checkout (14-day free trial, no card), HelloSign BAA in your inbox. Sign it \u2014 takes 90 seconds. I don't touch any patient data until it's signed.</li>
+      <li><strong>Hour 1.</strong> Connect Open Dental direct-REST, or upload a CSV from any PMS. Auto column detect. Your list is ingested, segmented, and queued.</li>
+      <li><strong>Afternoon 1.</strong> You approve templates. Email campaigns go live <em>that afternoon</em>. First replies usually arrive within 2 hours.</li>
+      <li><strong>Day 3\u20135.</strong> First bookings get warmed-up and handed to your front desk. You see them on the dashboard, with the full conversation trail.</li>
+      <li><strong>Day 14\u201321.</strong> Twilio's 10DLC carrier approval lands; SMS layers in automatically. Email keeps running the whole time \u2014 you don\u2019t wait on the carrier.</li>
+      <li><strong>Day 7 + Day 14.</strong> Friday Report. What was contacted, who replied, who booked, who showed up, what dollar production came through. On your dashboard and in your inbox.</li>
+    </ul>
+
+    <p>If something in this sequence isn\u2019t working by day 30 \u2014 and you're one of the first 10 practices \u2014 I'll refund the paid month. No phone calls, no exit interview. One click, done. I'd rather have ten practices who are raving fans than a hundred who tolerate us. That math doesn\u2019t even require spreadsheet gymnastics: referral revenue from one truly happy practice beats churn from ten indifferent ones, every quarter.</p>
+
+    <div class="lt-pull">
+      <p>I'm asking you to <em>try</em> the product, not <em>believe</em> it. Day 14 you have data. Day 30 you have revenue \u2014 or your money back.</p>
+    </div>
+
+    <h2><span class="n">06</span>The smallest-possible promise.</h2>
+
+    <p>If you email me right now \u2014 not a form, not a chatbot, <a href="mailto:colin@usdentalpatientrecovery.com">my actual inbox</a> \u2014 I'll reply today. If you need the BAA reviewed before you start, I'll send it to your attorney. If your PMS export scares you, I'll get on a screen-share and pull it with you. If you have an objection about the 10DLC wait, I'll explain the workaround we've engineered (email goes live first; SMS catches up). If it's 11pm, I'll reply in the morning. If you're a practice in Florida and want a coffee in Orlando, I'll buy it.</p>
+
+    <p>That's the smallest, most honest thing I can promise: a human who is accountable for this specific product, returning your message, today.</p>
+
+    <div class="lt-sig">
+      <div class="lt-sig-pre">Thanks for reading to the end. If you\u2019d told me eight months ago I'd need to write a 1,500-word letter to earn the trust of a dentist in Tampa, I would have skipped it. It turns out, I don\u2019t think I should. So \u2014</div>
+      <div class="lt-sig-mark">Colin</div>
+      <div class="lt-sig-name">Colin Smith</div>
+      <div class="lt-sig-role">Founder \u00B7 US Dental Patient Recovery \u00B7 Orlando, FL</div>
+      <div class="lt-sig-contact">
+        <a href="mailto:colin@usdentalpatientrecovery.com">colin@usdentalpatientrecovery.com</a> \u00B7 <a href="/trust.html">the trust hub</a> \u00B7 <a href="/calculator.html">run your numbers</a> \u00B7 <a href="/signup?tier=practice_pro&amp;utm_source=about&amp;utm_campaign=letter_close">start the 14-day trial</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Closing CTA -->
+  <section class="lt-close">
+    <h3>Run the numbers, then try it for <span class="accent">14 days</span>.</h3>
+    <p>If the math doesn't hold up, you'll know by day 14. If it does, you'll have a revenue channel that keeps working. Either way, no card required and one-click cancel.</p>
+    <div class="row">
+      <a href="/signup?tier=practice_pro&amp;utm_source=about&amp;utm_campaign=closer" class="btn btn-primary">
+        Start the 14-day trial
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a href="/calculator.html" class="btn btn-ghost">Run the ROI calculator</a>
+      <a href="/trust.html" class="btn btn-ghost">Read the trust hub</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices. Orlando, Florida. BAA signed before any patient data moves.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/#how">How it works</a></li><li><a href="/#pricing">Pricing</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/compare.html">Compare</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/security.html">Security</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul><li><a href="/about.html">About</a></li><li><a href="/resources.html">Resources</a></li><li><a href="/changelog.html">Changelog</a></li><li><a href="mailto:colin@usdentalpatientrecovery.com">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>TCPA compliant · HIPAA BAA · SOC 2 in progress</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

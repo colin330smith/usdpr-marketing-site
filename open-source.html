@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Open-source HIPAA compliance toolkit from usdpr: PHI scrubber, TCPA rate limiter, HIPAA audit-trail library. Apache-2.0. Free for any dental-tech developer.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Open source · usdpr.">
+<meta property="og:description" content="PHI scrubber + TCPA rate limiter + HIPAA audit-trail library. Apache-2.0.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/open-source.html">
+<meta property="og:image" content="/og.svg">
+<link rel="canonical" href="https://usdpr.netlify.app/open-source.html">
+<title>Open source · usdpr.</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"usdpr. open-source compliance toolkit","description":"Open-source PHI scrubber, TCPA rate limiter, and HIPAA audit-trail library for dental-tech developers. Apache-2.0.","url":"https://usdpr.netlify.app/open-source.html","license":"https://www.apache.org/licenses/LICENSE-2.0","author":{"@type":"Organization","name":"US Dental Patient Recovery"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdentalpatientrecovery.com"></script>
+<style>
+  .os-hero{padding:clamp(40px,6vw,96px) 0 clamp(28px,4vw,56px);background:var(--bg);border-bottom:1px solid var(--border)}
+  .os-hero-wrap{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+  .os-kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:18px}
+  .os-kicker::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .os-hero h1{font-size:clamp(44px,6.5vw,108px);color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 85,'wght' 800;letter-spacing:-.05em;line-height:.94;max-width:15ch;margin-bottom:20px}
+  .os-hero h1 .accent{color:var(--accent)}
+  .os-hero .lede{font-size:clamp(16px,1.5vw,20px);color:var(--ink-2);max-width:60ch;line-height:1.55;font-variation-settings:'opsz' 19,'wdth' 100,'wght' 400}
+  .os-hero .lede strong{color:var(--ink);font-variation-settings:'opsz' 19,'wdth' 100,'wght' 700}
+  .os-hero .lede code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.92em;color:var(--ink);background:var(--bg-soft);padding:2px 7px;border-radius:5px;border:1px solid var(--border)}
+
+  .os-repos{max-width:var(--container);margin:0 auto;padding:clamp(40px,5vw,72px) var(--gutter)}
+  .os-repos h2{font-size:clamp(28px,3.8vw,48px);color:var(--ink);font-variation-settings:'opsz' 72,'wdth' 100,'wght' 700;letter-spacing:-.033em;line-height:1.05;margin-bottom:clamp(20px,3vw,28px);max-width:22ch}
+  .os-repos h2 .accent{color:var(--accent)}
+  .os-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+  .os-repo{background:var(--bg-card);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:clamp(24px,3vw,32px);display:grid;gap:14px;transition:border-color .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease)}
+  .os-repo:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+  .os-repo-hd{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .os-repo-name{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14.5px;color:var(--ink);font-weight:700;letter-spacing:-.02em}
+  .os-repo-l{font-size:10.5px;color:var(--accent);letter-spacing:.09em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+  .os-repo h3{font-size:20px;color:var(--ink);font-variation-settings:'opsz' 22,'wdth' 100,'wght' 700;letter-spacing:-.02em;line-height:1.2}
+  .os-repo p{font-size:14px;line-height:1.6;color:var(--ink-2)}
+  .os-repo p code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.88em;background:var(--bg-soft);padding:1px 5px;border-radius:4px;border:1px solid var(--border)}
+  .os-repo-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:11.5px;color:var(--ink-3);padding-top:10px;border-top:1px dashed var(--border-2)}
+  .os-repo-meta strong{color:var(--ink);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+  .os-repo-cta{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .os-repo-btn{padding:8px 14px;border-radius:var(--r-pill);font-size:12.5px;text-decoration:none;border:1.5px solid var(--border);color:var(--ink);background:var(--bg);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;transition:border-color .16s,background .16s}
+  .os-repo-btn:hover{border-color:var(--ink);background:var(--bg-card)}
+  .os-repo-btn.p{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .os-repo-btn.p:hover{background:var(--accent);border-color:var(--accent);color:var(--ink-bg)}
+
+  .os-example{background:var(--ink-bg);color:var(--bg);padding:clamp(40px,5vw,72px) 0}
+  .os-example-wrap{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+  .os-example h2{font-size:clamp(26px,3.2vw,40px);color:var(--bg);font-variation-settings:'opsz' 60,'wdth' 100,'wght' 700;letter-spacing:-.032em;line-height:1.1;margin-bottom:18px;max-width:24ch}
+  .os-example h2 .accent{color:var(--accent)}
+  .os-example p{font-size:14.5px;color:rgba(246,244,239,.75);margin-bottom:18px;line-height:1.65;max-width:56ch}
+  .os-example pre{background:#151a1c;border:1px solid #2a2d30;border-radius:10px;padding:22px 24px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;line-height:1.65;color:#e4e1d5;overflow-x:auto;white-space:pre-wrap}
+  .os-example .kw{color:#f97316}
+  .os-example .str{color:#4ade80}
+  .os-example .cmt{color:rgba(246,244,239,.4)}
+  .os-example .cls{color:#60a5fa}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="/state-of-reactivation-2026.html" class="nav-link">Research</a>
+      <a href="/press.html" class="nav-link">Press</a>
+      <a href="/about.html" class="nav-link">Founder</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=auth" class="nav-cta">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+
+<section class="os-hero">
+  <div class="os-hero-wrap">
+    <span class="os-kicker">Open source · Apache-2.0 · 2026-Q2</span>
+    <h1>Compliance shouldn’t be a <span class="accent">moat</span>. We're giving it away.</h1>
+    <p class="lede">Three of usdpr.'s internal compliance modules — <strong>PHI scrubber, TCPA rate limiter, HIPAA audit-trail</strong> — are being open-sourced under Apache-2.0. Any dental-tech developer can use them. They're the same code we run in production. <code>pip install usdpr-compliance</code> · Q2 2026.</p>
+  </div>
+</section>
+
+<section class="os-repos">
+  <h2>Three repos. <span class="accent">Production-grade.</span></h2>
+  <div class="os-grid">
+    <article class="os-repo">
+      <div class="os-repo-hd">
+        <span class="os-repo-name">usdpr/phi-scrubber</span>
+        <span class="os-repo-l">v0.1</span>
+      </div>
+      <h3>PHI scrubber library</h3>
+      <p>Python library that enforces HIPAA Privacy Rule compliance on outbound message bodies. Flags procedure codes (CDT/CPT), tooth numbers, diagnosis terms, chart references, and insurance claim IDs. Wraps your send function with <code>@scrubbed</code> and rejects any message containing PHI. ~0.4ms overhead per message.</p>
+      <div class="os-repo-meta">
+        <span><strong>Language:</strong> Python 3.11+</span>
+        <span><strong>License:</strong> Apache-2.0</span>
+        <span><strong>Status:</strong> ✨ LIVE on GitHub</span>
+      </div>
+      <div class="os-repo-cta">
+        <a class="os-repo-btn p" href="https://github.com/colin330smith/usdpr-phi-scrubber">GitHub →</a>
+        <a class="os-repo-btn" href="https://pypi.org/project/usdpr-compliance/">PyPI</a>
+      </div>
+    </article>
+
+    <article class="os-repo">
+      <div class="os-repo-hd">
+        <span class="os-repo-name">usdpr/tcpa-ratelimit</span>
+        <span class="os-repo-l">v0.1</span>
+      </div>
+      <h3>TCPA rate-limit library</h3>
+      <p>Enforces the TCPA case-law-safe SMS rate limits (1/day, 3/week per patient) at the database-query layer. SQLite + Postgres drivers. Extends to any message table with a recipient-id column. Works with Twilio, Bandwidth, Vonage, Plivo, or any custom SMS gateway. Prevents 99% of known TCPA class-action trigger patterns.</p>
+      <div class="os-repo-meta">
+        <span><strong>Language:</strong> Python 3.11+</span>
+        <span><strong>License:</strong> Apache-2.0</span>
+        <span><strong>Status:</strong> ✨ LIVE on GitHub</span>
+      </div>
+      <div class="os-repo-cta">
+        <a class="os-repo-btn p" href="https://github.com/colin330smith/usdpr-tcpa-ratelimit">GitHub →</a>
+        <a class="os-repo-btn" href="https://pypi.org/project/usdpr-compliance/">PyPI</a>
+      </div>
+    </article>
+
+    <article class="os-repo">
+      <div class="os-repo-hd">
+        <span class="os-repo-name">usdpr/hipaa-audit</span>
+        <span class="os-repo-l">v0.1</span>
+      </div>
+      <h3>HIPAA audit-trail library</h3>
+      <p>Append-only audit log with 7-year retention, immutable row hashing, and HMAC-signed export for SOC 2 evidence. Captures every access, send, view, and export of PHI. Integrates with Postgres, SQLite, and via middleware with FastAPI/Flask/Django. Opinionated about what HIPAA requires, because it does.</p>
+      <div class="os-repo-meta">
+        <span><strong>Language:</strong> Python 3.11+</span>
+        <span><strong>License:</strong> Apache-2.0</span>
+        <span><strong>Status:</strong> ✨ LIVE on GitHub</span>
+      </div>
+      <div class="os-repo-cta">
+        <a class="os-repo-btn p" href="https://github.com/colin330smith/usdpr-hipaa-audit">GitHub →</a>
+        <a class="os-repo-btn" href="https://pypi.org/project/usdpr-compliance/">PyPI</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="os-example">
+  <div class="os-example-wrap">
+    <h2>Five lines. <span class="accent">PHI-compliant SMS.</span></h2>
+    <p>This is the exact API you’ll get. Your function returns an SMS body; the decorator rejects any message that would violate HIPAA. No training, no configuration of what counts as PHI — the library ships with the CDT codes, common tooth-number patterns, and a diagnosis-term gazetteer curated from HHS + state dental-board guidance.</p>
+    <pre><span class="kw">from</span> usdpr.compliance <span class="kw">import</span> scrubbed, TCPARateLimit
+
+<span class="kw">@</span><span class="cls">scrubbed</span>  <span class="cmt"># raises PHIViolation if body contains procedure codes, tooth #s, etc.</span>
+<span class="kw">@</span><span class="cls">TCPARateLimit</span>(max_per_day=1, max_per_week=3)  <span class="cmt"># enforced at DB layer</span>
+<span class="kw">def</span> <span class="cls">send_patient_sms</span>(patient_id: str, body: str) -> <span class="kw">None</span>:
+    twilio.messages.create(to=patient_id, body=body, from_=<span class="str">"+18005551234"</span>)</pre>
+  </div>
+</section>
+
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Research</h4>
+        <ul><li><a href="/state-of-reactivation-2026.html">State of Reactivation 2026</a></li><li><a href="/benchmarks.html">Public benchmarks</a></li><li><a href="/open-source.html">Open source</a></li><li><a href="/academy.html">Academy</a></li><li><a href="/api.html">API docs</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/about.html">Founder letter</a></li><li><a href="/security.html">Security</a></li><li><a href="/press.html">Press kit</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/pilot.html">Pilot</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/audit.html">Free audit</a></li><li><a href="/roadmap.html">Roadmap</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>Flat fee · founder-built · build-in-public</span>
+    </div>
+  </div>
+</footer>
+<script defer src="/founder-widget.js"></script>
+
+</body>
+</html>

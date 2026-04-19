@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="The public roadmap for US Dental Patient Recovery. What&#x27;s shipped, what&#x27;s shipping, what&#x27;s next. Build-in-public, founder-maintained, updated weekly.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Public roadmap — usdpr.">
+<meta property="og:description" content="The public roadmap for US Dental Patient Recovery. What&#x27;s shipped, what&#x27;s shipping, what&#x27;s next. Build-in-public, founder-maintained, updated weekly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/roadmap.html">
+<meta property="og:image" content="/og.svg">
+<link rel="canonical" href="https://usdpr.netlify.app/roadmap.html">
+<title>Public roadmap — usdpr.</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Public roadmap \u2014 usdpr.","description":"The public roadmap for US Dental Patient Recovery. What's shipped, what's shipping, what's next. Build-in-public, founder-maintained, updated weekly.","url":"https://usdpr.netlify.app/roadmap.html"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdentalpatientrecovery.com"></script>
+<style>
+  .rm-hero{padding:clamp(40px,6vw,88px) 0 clamp(28px,4vw,48px);background:var(--bg-vellum);border-bottom:1px solid var(--border)}
+  .rm-hero-wrap{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+  .rm-kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:18px}
+  .rm-kicker::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .rm-hero h1{font-size:clamp(42px,6.5vw,104px);color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 85,'wght' 800;letter-spacing:-.048em;line-height:.96;max-width:16ch;margin-bottom:20px}
+  .rm-hero h1 .accent{color:var(--accent)}
+  .rm-hero .lede{font-size:clamp(16px,1.5vw,20px);color:var(--ink-2);max-width:56ch;line-height:1.55;font-variation-settings:'opsz' 19,'wdth' 100,'wght' 400}
+  .rm-hero .lede strong{color:var(--ink);font-variation-settings:'opsz' 19,'wdth' 100,'wght' 700}
+
+  .rm-body{max-width:var(--container-narrow);margin:0 auto;padding:clamp(40px,5vw,72px) var(--gutter)}
+  .rm-q{margin-bottom:clamp(28px,4vw,48px);padding-bottom:clamp(22px,3vw,32px);border-bottom:1px solid var(--border)}
+  .rm-q:last-of-type{border-bottom:0}
+  .rm-q-hd{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:18px}
+  .rm-q-k{font-size:clamp(22px,2.8vw,36px);color:var(--ink);font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;letter-spacing:-.034em;line-height:1.1}
+  .rm-q-count{font-size:11px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+  .rm-q-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+  .rm-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:18px 22px;transition:border-color .18s var(--ease)}
+  .rm-item:hover{border-color:var(--ink)}
+  .rm-item-t{font-size:15px;color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700;letter-spacing:-.012em;margin-bottom:6px;line-height:1.25}
+  .rm-item-b{font-size:13px;color:var(--ink-2);line-height:1.5}
+
+  .rm-shipped{background:var(--bg-soft);border-top:1px solid var(--border);padding:clamp(40px,5vw,72px) 0}
+  .rm-shipped-wrap{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+  .rm-shipped h2{font-size:clamp(26px,3.2vw,40px);color:var(--ink);font-variation-settings:'opsz' 60,'wdth' 100,'wght' 700;letter-spacing:-.03em;line-height:1.1;margin-bottom:18px;max-width:24ch}
+  .rm-shipped h2 .accent{color:var(--accent)}
+  .rm-tbl{width:100%;border-collapse:collapse;font-size:14px;border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;background:var(--bg-card)}
+  .rm-tbl th{background:var(--bg-soft);text-align:left;padding:12px 16px;color:var(--ink);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;border-bottom:1px solid var(--border)}
+  .rm-tbl td{padding:12px 16px;border-top:1px solid var(--border);color:var(--ink-2)}
+  .rm-tbl td.num{font-variant-numeric:tabular-nums;color:var(--ink);text-align:right;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="/pilot.html" class="nav-link">Pilot</a>
+      <a href="/calculator.html" class="nav-link">Calculator</a>
+      <a href="/about.html" class="nav-link">Founder</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=scope" class="nav-cta">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+
+<section class="rm-hero">
+  <div class="rm-hero-wrap">
+    <span class="rm-kicker">Public roadmap · updated weekly</span>
+    <h1>What's shipped. What's next. <span class="accent">In the open.</span></h1>
+    <p class="lede">Weekly updates on what we're building, in what order, and when. <strong>If it's on this page it's either shipped or committed.</strong> No aspirational roadmap. If we slip a date, the slip gets posted here too.</p>
+  </div>
+</section>
+
+<main class="rm-body">
+    <section class="rm-q">
+      <header class="rm-q-hd">
+        <span class="rm-q-k">Q2 2026 · shipping</span>
+        <span class="rm-q-count">5 items</span>
+      </header>
+      <div class="rm-q-items">
+        <article class="rm-item">
+          <div class="rm-item-t">Dentrix G7/G8 native connector</div>
+          <div class="rm-item-b">In partner onboarding. ETA end of Q2.</div>
+        </article>
+        <article class="rm-item">
+          <div class="rm-item-t">Eaglesoft native connector</div>
+          <div class="rm-item-b">Scaffolded; live integration Q3.</div>
+        </article>
+        <article class="rm-item">
+          <div class="rm-item-t">SOC 2 Type II audit period</div>
+          <div class="rm-item-b">Began April 2026, completing Q4 2026.</div>
+        </article>
+        <article class="rm-item">
+          <div class="rm-item-t">Academy launch</div>
+          <div class="rm-item-b">Free 5-module reactivation certification. Target May 2026.</div>
+        </article>
+        <article class="rm-item">
+          <div class="rm-item-t">Public benchmarks dashboard</div>
+          <div class="rm-item-b">Live quarterly anonymized benchmarks. Target June 2026.</div>
+        </article>
+      </div>
+    </section>
+    <section class="rm-q">
+      <header class="rm-q-hd">
+        <span class="rm-q-k">Q3 2026 · shipping</span>
+        <span class="rm-q-count">4 items</span>
+      </header>
+      <div class="rm-q-items">
+        <article class="rm-item">
+          <div class="rm-item-t">Curve Dental connector</div>
+          <div class="rm-item-b">Native integration, partner onboarding in progress.</div>
+        </article>
+        <article class="rm-item">
+          <div class="rm-item-t">Payments module</div>
+          <div class="rm-item-b">Stripe-backed patient payments inside the portal. Balance reminders + TCPA collections guardrails.</div>
+        </article>
+        <article class="rm-item">
+          <div class="rm-item-t">Multi-language SMS + email</div>
+          <div class="rm-item-b">Spanish-first, then 8 more languages auto-detected by patient preference.</div>
+        </article>
+        <article class="rm-item">
+          <div class="rm-item-t">Annual transparency report</div>
+          <div class="rm-item-b">First quarterly public report. Uptime, send volume, refund rate, reactivation rate.</div>
+        </article>
+      </div>
+    </section>
+    <section class="rm-q">
+      <header class="rm-q-hd">
+        <span class="rm-q-k">Q4 2026 · planned</span>
+        <span class="rm-q-count">4 items</span>
+      </header>
+      <div class="rm-q-items">
+        <article class="rm-item">
+          <div class="rm-item-t">Dentrix Ascend + cloud-PMS coverage</div>
+          <div class="rm-item-b">Covers the major cloud-PMS segment of the market.</div>
+        </article>
+        <article class="rm-item">
+          <div class="rm-item-t">Specialty-specific templates v2</div>
+          <div class="rm-item-b">Ortho retainer checks, endo RCT→crown follow-up, perio 3-month maintenance.</div>
+        </article>
+        <article class="rm-item">
+          <div class="rm-item-t">Public API v2 + GraphQL</div>
+          <div class="rm-item-b">Gets parity with competitor enterprise features on every tier.</div>
+        </article>
+        <article class="rm-item">
+          <div class="rm-item-t">Mobile operator app</div>
+          <div class="rm-item-b">iOS + Android native app for front-desk reply approval on the go.</div>
+        </article>
+      </div>
+    </section>
+    <section class="rm-q">
+      <header class="rm-q-hd">
+        <span class="rm-q-k">H1 2027 · direction</span>
+        <span class="rm-q-count">4 items</span>
+      </header>
+      <div class="rm-q-items">
+        <article class="rm-item">
+          <div class="rm-item-t">International beta</div>
+          <div class="rm-item-b">Canada + UK pilot (different compliance frameworks, English-first).</div>
+        </article>
+        <article class="rm-item">
+          <div class="rm-item-t">AI-voice outbound</div>
+          <div class="rm-item-b">Live, compliant AI voice for the phone touch — opt-in, guardrailed, supervisor-approved.</div>
+        </article>
+        <article class="rm-item">
+          <div class="rm-item-t">PMS write-back analytics</div>
+          <div class="rm-item-b">Reactivation impact written back into the PMS as reportable fields for dentists&#x27; own KPI boards.</div>
+        </article>
+        <article class="rm-item">
+          <div class="rm-item-t">Dental specialty product lines</div>
+          <div class="rm-item-b">Ortho/perio-specific product packaging. Separate SKU, same core engine.</div>
+        </article>
+      </div>
+    </section>
+</main>
+
+<section class="rm-shipped">
+  <div class="rm-shipped-wrap">
+    <h2>Recently <span class="accent">shipped</span>.</h2>
+    <table class="rm-tbl">
+      <thead><tr><th>Feature</th><th class="num">Shipped</th></tr></thead>
+      <tbody>
+        <tr><td>Founding-10 pilot program</td><td class="num">2026-04</td></tr>
+        <tr><td>Done-for-you concierge tier</td><td class="num">2026-04</td></tr>
+        <tr><td>Double-sided referral program</td><td class="num">2026-04</td></tr>
+        <tr><td>State of Reactivation 2026 research</td><td class="num">2026-04</td></tr>
+        <tr><td>SAML 2.0 SSO + SCIM provisioning</td><td class="num">2026-03</td></tr>
+        <tr><td>Reply-intent AI classification</td><td class="num">2026-03</td></tr>
+        <tr><td>Open Dental direct REST sync</td><td class="num">2026-02</td></tr>
+        <tr><td>5-touch sequencing engine</td><td class="num">2026-02</td></tr>
+        <tr><td>A2P 10DLC carrier registration</td><td class="num">2026-01</td></tr>
+        <tr><td>HIPAA BAA via HelloSign</td><td class="num">2025-Q4</td></tr>
+        <tr><td>TCPA rate-limit enforcement</td><td class="num">2025-Q4</td></tr>
+        <tr><td>SOC 2 Type I audit complete</td><td class="num">2026-Q1</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Scope</h4>
+        <ul><li><a href="/appointments.html">Appointments</a></li><li><a href="/reviews.html">Reviews</a></li><li><a href="/forms.html">Intake forms</a></li><li><a href="/portal.html">Patient portal</a></li><li><a href="/integrations.html">Integrations</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/about.html">Founder letter</a></li><li><a href="/state-of-reactivation-2026.html">State of Reactivation 2026</a></li><li><a href="/press.html">Press</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/pilot.html">Pilot</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/audit.html">Free audit</a></li><li><a href="/roadmap.html">Roadmap</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>Flat fee · month-to-month · founder-built</span>
+    </div>
+  </div>
+</footer>
+<script defer src="/founder-widget.js"></script>
+
+</body>
+</html>

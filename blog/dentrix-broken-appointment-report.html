@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Step-by-step guide to extracting the list that actually matters. Most Dentrix users pull the wrong report.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Dentrix broken appointment report — how to pull it, filter it, and actually use it">
+<meta property="og:description" content="Step-by-step guide to extracting the list that actually matters. Most Dentrix users pull the wrong report.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://usdpr.netlify.app/blog/dentrix-broken-appointment-report.html">
+<meta property="og:image" content="/og.svg">
+<link rel="canonical" href="https://usdpr.netlify.app/blog/dentrix-broken-appointment-report.html">
+<title>Dentrix broken appointment report — how to pull it, filter it, and actually use it · usdpr.</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Dentrix broken appointment report \u2014 how to pull it, filter it, and actually use it","description":"Step-by-step guide to extracting the list that actually matters. Most Dentrix users pull the wrong report.","author":{"@type":"Person","name":"Colin Smith"},"publisher":{"@type":"Organization","name":"usdpr.","logo":{"@type":"ImageObject","url":"https://usdpr.netlify.app/brand/logo-wordmark.svg"}},"datePublished":"2026-04-19","dateModified":"2026-04-19","inLanguage":"en-US","url":"https://usdpr.netlify.app/blog/dentrix-broken-appointment-report.html","mainEntityOfPage":"https://usdpr.netlify.app/blog/dentrix-broken-appointment-report.html","keywords":"dentrix broken appointment report"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does Dentrix have a reactivation report built in?","acceptedAnswer":{"@type":"Answer","text":"Dentrix has 'Continuing Care Appointments' which identifies patients overdue for recall, but does NOT distinguish by lapse window (you'll get a patient 30-day overdue AND a patient 2-year overdue in the same list). Manual sorting required."}},{"@type":"Question","name":"Can I automate the Dentrix broken-appointment export?","acceptedAnswer":{"@type":"Answer","text":"Dentrix Enterprise has a REST API (partner program required). Dentrix G7/G8 export is Excel/CSV manual. Scheduled SQL backups work if you have database access."}},{"@type":"Question","name":"What's the difference between Broken and No-Show in Dentrix?","acceptedAnswer":{"@type":"Answer","text":"Broken = patient cancelled on short notice (often same day). No-Show = patient didn't arrive and didn't call. Both are leads for reactivation. Cancelled (= patient rescheduled into another slot) is NOT."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdpr.netlify.app"></script>
+<style>
+  .bp-wrap{max-width:760px;margin:0 auto;padding:clamp(40px,5vw,72px) var(--gutter) clamp(56px,7vw,96px)}
+  .bp-kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:18px}
+  .bp-kicker::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .bp-h1{font-size:clamp(32px,4.8vw,56px);color:var(--ink);font-variation-settings:'opsz' 72,'wdth' 92,'wght' 800;letter-spacing:-.038em;line-height:1.05;margin-bottom:16px}
+  .bp-dek{font-size:clamp(17px,1.6vw,20px);color:var(--ink-2);line-height:1.55;margin-bottom:22px;padding-bottom:20px;border-bottom:1px solid var(--border);font-variation-settings:'opsz' 20,'wdth' 100,'wght' 400}
+  .bp-s{margin-bottom:clamp(24px,3vw,36px)}
+  .bp-s h2{font-size:clamp(22px,2.4vw,30px);color:var(--ink);font-variation-settings:'opsz' 36,'wdth' 100,'wght' 700;letter-spacing:-.028em;line-height:1.2;margin-bottom:12px;padding-top:12px}
+  .bp-s p{font-size:16px;line-height:1.7;color:var(--ink-2);margin-bottom:14px;max-width:64ch}
+  .bp-s p strong{color:var(--ink);font-variation-settings:'opsz' 17,'wdth' 100,'wght' 700}
+  .bp-s p a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(249,115,22,.35);text-underline-offset:.2em}
+  .bp-s ul{margin:12px 0 16px;padding-left:1.2em;max-width:64ch}
+  .bp-s li{font-size:15.5px;line-height:1.65;color:var(--ink-2);margin-bottom:6px}
+  .bp-s li strong{color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+  .bp-t{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden}
+  .bp-t th{text-align:left;padding:10px 12px;background:var(--bg-soft);color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;border-bottom:1px solid var(--border);font-size:12px}
+  .bp-t td{padding:10px 12px;border-top:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+  .bp-faq{margin-top:clamp(32px,4vw,56px);padding-top:24px;border-top:1px solid var(--border)}
+  .bp-faq h2{font-size:clamp(22px,2.4vw,30px);color:var(--ink);font-variation-settings:'opsz' 36,'wdth' 100,'wght' 700;margin-bottom:14px;letter-spacing:-.028em}
+  .bp-faq-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 20px;margin-bottom:8px}
+  .bp-faq-item summary{font-size:15.5px;color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700;letter-spacing:-.015em;cursor:pointer}
+  .bp-faq-item p{font-size:14.5px;line-height:1.65;color:var(--ink-2);margin-top:10px;max-width:60ch}
+  .bp-cta{margin-top:clamp(40px,5vw,64px);padding:clamp(24px,3vw,36px);background:var(--bg-vellum);border-radius:var(--r-lg);text-align:center}
+  .bp-cta h3{font-size:clamp(20px,2.4vw,28px);color:var(--ink);font-variation-settings:'opsz' 32,'wdth' 100,'wght' 700;letter-spacing:-.022em;margin-bottom:8px;line-height:1.2}
+  .bp-cta p{font-size:14.5px;color:var(--ink-2);max-width:52ch;margin:0 auto 18px;line-height:1.55}
+  .bp-cta .row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="/pilot.html" class="nav-link">Pilot</a>
+      <a href="/calculator.html" class="nav-link">Calculator</a>
+      <a href="/about.html" class="nav-link">Founder</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=blog_dentrix-broken-appointment-report" class="nav-cta">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+<article class="bp-wrap">
+  <div class="bp-kicker">Field guide · 2026-04-19</div>
+  <h1 class="bp-h1">Dentrix broken appointment report — how to pull it, filter it, and actually use it</h1>
+  <p class="bp-dek">Step-by-step guide to extracting the list that actually matters. Most Dentrix users pull the wrong report.</p>
+
+<section class="bp-s"><h2>The right report is not &#x27;Broken Appointments&#x27;</h2>
+<p>Dentrix ships a 'Broken Appointments' report in Reports → Appointments. Most practice managers pull it, sort by date, and walk away frustrated — it's noisy, mixes same-day cancellations with no-shows, and doesn't flag patients who've missed multiple. The report you actually want is <strong>Appointment Book → Appointment Status Report</strong> filtered on <strong>Status = Broken</strong> AND <strong>Date range = last 90 days</strong> AND <strong>Sort by Patient, descending count</strong>.</p>
+</section>
+<section class="bp-s"><h2>Step-by-step: pulling the actionable list</h2>
+<p>1. Open Dentrix Office Manager.
+2. Reports → Lists → Appointment Status Report.
+3. Filters:
+   - Date Range: today-90d to today-7d (excludes recent ones that may still reschedule)
+   - Appointment Status: Broken (check only this box; uncheck Cancelled, No-Show, Kept)
+   - Provider: all
+   - Operatory: all
+4. Output: Preview, then Export to CSV.
+5. Open CSV in Excel. Sort by Patient Last Name, then count broken appointments per patient.
+6. The list to call back: patients with 1 broken appt in the 60-90 day window AND no scheduled future appointment.</p>
+</section>
+<section class="bp-s"><h2>Why 60-90 days is the sweet spot</h2>
+<p>Patients broken 0-60 days ago typically reschedule themselves if they're motivated. Beyond 90 days, they've usually drifted to another practice or stopped caring. The 60-90 day window is when a well-timed call produces the highest conversion. Industry data: A1 segment (0-60d) converts ~25-35%; A2 (60-180d) converts ~12-18%. The sweet spot inside A2 is the 60-90d slice.</p>
+</section>
+<section class="bp-s"><h2>Exporting to your reactivation tool</h2>
+<p>Save the Dentrix export as a CSV. Fields usually include: first name, last name, email (if captured), phone, last appointment date, broken appointment date, provider. Rename the file to `reactivation-{date}.csv`. Most reactivation tools accept this format directly.</p>
+<p>If you use [usdpr.](/)the CSV importer auto-detects Dentrix field names. Direct Dentrix REST sync is scaffolded (ready Q2-Q3 2026).</p>
+</section>
+<section class="bp-s"><h2>Automating this workflow</h2>
+<p>Manual Dentrix exports eat 30-60 minutes per week. Tools like [usdpr.](/) automate the export + segment the list by A1/A2/B1/B2/B3 windows + run a 5-touch reactivation sequence. [Run your practice's numbers on the ROI calculator](/calculator.html).</p>
+</section>
+
+<section class="bp-faq"><h2>Frequently asked</h2><details class="bp-faq-item"><summary>Does Dentrix have a reactivation report built in?</summary><p>Dentrix has 'Continuing Care Appointments' which identifies patients overdue for recall, but does NOT distinguish by lapse window (you'll get a patient 30-day overdue AND a patient 2-year overdue in the same list). Manual sorting required.</p></details><details class="bp-faq-item"><summary>Can I automate the Dentrix broken-appointment export?</summary><p>Dentrix Enterprise has a REST API (partner program required). Dentrix G7/G8 export is Excel/CSV manual. Scheduled SQL backups work if you have database access.</p></details><details class="bp-faq-item"><summary>What&#x27;s the difference between Broken and No-Show in Dentrix?</summary><p>Broken = patient cancelled on short notice (often same day). No-Show = patient didn't arrive and didn't call. Both are leads for reactivation. Cancelled (= patient rescheduled into another slot) is NOT.</p></details></section>
+
+  <div class="bp-cta">
+    <h3>Want to put this on autopilot?</h3>
+    <p>The 5-touch reactivation sequence runs end-to-end in [usdpr.](/) — pre-written templates, reply-intent AI, TCPA rate limits enforced in code. 14-day free trial, no card.</p>
+    <div class="row">
+      <a href="/signup?tier=practice_pro&amp;utm_source=blog&amp;utm_campaign=dentrix-broken-appointment-report" class="btn btn-primary" data-track="Blog CTA signup">Start the 14-day trial</a>
+      <a href="/calculator.html?utm_source=blog&amp;utm_campaign=dentrix-broken-appointment-report" class="btn btn-ghost">Run the calculator first</a>
+    </div>
+  </div>
+</article>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Tools</h4>
+        <ul><li><a href="/calculator.html">Calculator</a></li><li><a href="/audit.html">Audit</a></li><li><a href="/playbook.html">Playbook</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/about.html">Founder letter</a></li><li><a href="/security.html">Security</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/pilot.html">Pilot</a></li><li><a href="/compare.html">Compare</a></li><li><a href="/schedule.html">Book a call</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>TCPA compliant · HIPAA BAA · SOC 2 in progress</span>
+    </div>
+  </div>
+</footer>
+<script defer src="/founder-widget.js"></script>
+</body>
+</html>

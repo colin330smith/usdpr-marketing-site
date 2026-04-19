@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Automated Google review requests for dental practices. Post-visit timing, BAA-covered, rate-limited. Pairs with reactivation under one billing line.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Review-request automation for dental practices">
+<meta property="og:description" content="Automated Google review requests for dental practices. Post-visit timing, BAA-covered, rate-limited. Pairs with reactivation under one billing line.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/reviews.html">
+<meta property="og:image" content="/og.svg">
+<link rel="canonical" href="https://usdpr.netlify.app/reviews.html">
+<title>Review-request automation for dental practices · usdpr.</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Review-request automation for dental practices","description":"Automated Google review requests for dental practices. Post-visit timing, BAA-covered, rate-limited. Pairs with reactivation under one billing line.","url":"https://usdpr.netlify.app/reviews.html"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdentalpatientrecovery.com"></script>
+<style>
+  .fp-hero{padding:clamp(44px,7vw,104px) 0 clamp(32px,4vw,56px);background:var(--bg);border-bottom:1px solid var(--border)}
+  .fp-hero-wrap{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+  .fp-kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:20px}
+  .fp-kicker::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .fp-hero h1{font-size:clamp(44px,7vw,112px);color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 84,'wght' 800;letter-spacing:-.05em;line-height:.94;max-width:15ch;margin-bottom:22px}
+  .fp-hero h1 .accent{color:var(--accent)}
+  .fp-hero .lede{font-size:clamp(17px,1.55vw,21px);color:var(--ink-2);max-width:58ch;line-height:1.55;margin-bottom:24px;font-variation-settings:'opsz' 20,'wdth' 100,'wght' 400}
+  .fp-hero .lede strong{color:var(--ink);font-variation-settings:'opsz' 20,'wdth' 100,'wght' 700}
+  .fp-cta{display:flex;flex-wrap:wrap;gap:10px}
+  .fp-features{max-width:var(--container);margin:0 auto;padding:clamp(40px,5vw,72px) var(--gutter)}
+  .fp-features h2{font-size:clamp(28px,3.8vw,52px);color:var(--ink);font-variation-settings:'opsz' 72,'wdth' 100,'wght' 700;letter-spacing:-.033em;line-height:1.05;max-width:22ch;margin-bottom:clamp(20px,3vw,32px)}
+  .fp-features h2 .accent{color:var(--accent)}
+  .fp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+  .fp-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(22px,2.8vw,30px);display:grid;gap:10px;transition:border-color .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease)}
+  .fp-card:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+  .fp-card-k{font-size:11px;color:var(--accent);letter-spacing:.1em;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;font-variant-numeric:tabular-nums}
+  .fp-card-t{font-size:18px;color:var(--ink);line-height:1.2;font-variation-settings:'opsz' 20,'wdth' 100,'wght' 700;letter-spacing:-.02em}
+  .fp-card-b{font-size:13.5px;line-height:1.6;color:var(--ink-2)}
+  .fp-card-b strong{color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .fp-card-b a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(249,115,22,.35);text-underline-offset:.18em}
+  .fp-why{background:var(--bg-vellum);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:clamp(40px,5vw,72px) 0}
+  .fp-why-wrap{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+  .fp-why blockquote{font-size:clamp(20px,2.2vw,28px);color:var(--ink);line-height:1.35;font-variation-settings:'opsz' 28,'wdth' 100,'wght' 500;letter-spacing:-.018em;max-width:36ch;padding-left:22px;border-left:3px solid var(--accent);margin:0}
+  .fp-close{max-width:var(--container-narrow);margin:0 auto;padding:clamp(40px,5vw,72px) var(--gutter);text-align:center}
+  .fp-close h2{font-size:clamp(30px,4.5vw,60px);color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 88,'wght' 800;letter-spacing:-.045em;line-height:.98;max-width:20ch;margin:0 auto 18px}
+  .fp-close h2 .accent{color:var(--accent)}
+  .fp-close p{font-size:15px;color:var(--ink-2);max-width:56ch;margin:0 auto 22px;line-height:1.55}
+  .fp-close .row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="/pilot.html" class="nav-link">Pilot</a>
+      <a href="/calculator.html" class="nav-link">Calculator</a>
+      <a href="/about.html" class="nav-link">Founder</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=scope" class="nav-cta">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+
+<section class="fp-hero">
+  <div class="fp-hero-wrap">
+    <span class="fp-kicker">Reviews module</span>
+    <h1>Review requests that <span class="accent">actually book stars.</span></h1>
+    <p class="lede">Most review tools send a generic 'how was your visit' blast the day of. usdpr. times it to the patient's specific <strong>post-treatment comfort window</strong>, honors the one-SMS-per-day TCPA cap alongside reactivation sends, and routes low-score replies into the retention queue before they hit Google.</p>
+    <div class="fp-cta">
+      <a href="/signup?tier=practice_pro&amp;utm_source=reviews&amp;utm_campaign=hero" class="btn btn-primary" data-track="Reviews module hero CTA">
+        Start 14-day trial
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a href="/schedule.html?utm_source=reviews" class="btn btn-ghost">Book a 15-min call</a>
+    </div>
+  </div>
+</section>
+
+<section class="fp-features">
+  <h2>Six things it <span class="accent">gets right</span>.</h2>
+  <div class="fp-grid">
+      <article class="fp-card">
+        <div class="fp-card-k">01</div>
+        <div class="fp-card-t">Post-visit timing</div>
+        <div class="fp-card-b">Day 1 for hygiene, Day 3 for restorative, Day 7 for endo (comfort gap). Per-procedure-type timing, not one-size-fits-all.</div>
+      </article>
+      <article class="fp-card">
+        <div class="fp-card-k">02</div>
+        <div class="fp-card-t">Google + G2 + Yelp + Facebook</div>
+        <div class="fp-card-b">Single-link landing page that funnels to whichever site the patient prefers. Reviews-by-site analytics in the dashboard.</div>
+      </article>
+      <article class="fp-card">
+        <div class="fp-card-k">03</div>
+        <div class="fp-card-t">Low-score interception</div>
+        <div class="fp-card-b">A patient who replies 'it was fine' or 1–3 stars gets a follow-up question inside the practice (not a push to Google). High-score replies (4–5) are one-click routed to the public review page.</div>
+      </article>
+      <article class="fp-card">
+        <div class="fp-card-k">04</div>
+        <div class="fp-card-t">Zero-double-send</div>
+        <div class="fp-card-b">Reminder + reactivation + review sends share the TCPA rate-limit ledger. A patient never gets 3 SMS on the same day from your practice because the app didn't know what the other apps did.</div>
+      </article>
+      <article class="fp-card">
+        <div class="fp-card-k">05</div>
+        <div class="fp-card-t">Reviews as ROI proof</div>
+        <div class="fp-card-b">Star count + rating delta appear in the Friday Report next to reactivation numbers so the practice owner sees both levers in one view.</div>
+      </article>
+      <article class="fp-card">
+        <div class="fp-card-k">06</div>
+        <div class="fp-card-t">Compliance by default</div>
+        <div class="fp-card-b">Cannot incentivize with discounts (FL §817.505 + Google TOS). Cannot exclude based on likely rating (FTC). Built-in guardrails.</div>
+      </article>
+  </div>
+</section>
+
+<section class="fp-why">
+  <div class="fp-why-wrap">
+    <blockquote>A reactivated patient is the single highest-converting audience for a Google review — they&#x27;re the ones who remembered you positively enough to come back. Ask them first. The raw conversion rate is 3–4× a cold visit-day ask.</blockquote>
+  </div>
+</section>
+
+<section class="fp-close">
+  <h2>One BAA. <span class="accent">One billing line.</span></h2>
+  <p>This module is included with every Practice Pro and DSO tier at no additional cost. Not an enterprise upsell. Not a per-location surcharge. Flat SaaS, covered under the same HIPAA BAA as reactivation.</p>
+  <div class="row">
+    <a href="/signup?tier=practice_pro&amp;utm_source=reviews&amp;utm_campaign=closer" class="btn btn-primary">Start the trial</a>
+    <a href="/calculator.html?utm_source=reviews" class="btn btn-ghost">Run the ROI</a>
+    <a href="/pilot.html?utm_source=reviews" class="btn btn-ghost">Read the pilot</a>
+  </div>
+</section>
+
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Scope</h4>
+        <ul><li><a href="/appointments.html">Appointments</a></li><li><a href="/reviews.html">Reviews</a></li><li><a href="/forms.html">Intake forms</a></li><li><a href="/portal.html">Patient portal</a></li><li><a href="/integrations.html">Integrations</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/about.html">Founder letter</a></li><li><a href="/state-of-reactivation-2026.html">State of Reactivation 2026</a></li><li><a href="/press.html">Press</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/pilot.html">Pilot</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/audit.html">Free audit</a></li><li><a href="/roadmap.html">Roadmap</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>Flat fee · month-to-month · founder-built</span>
+    </div>
+  </div>
+</footer>
+<script defer src="/founder-widget.js"></script>
+
+</body>
+</html>

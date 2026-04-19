@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Security & Compliance · usdpr.</title>
+<meta name="description" content="Security posture for US Dental Patient Recovery. HIPAA, TCPA, CAN-SPAM, SOC 2, data retention, and audit logging — the full document.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f6f4ef;--bg-card:#ffffff;--ink:#0b0e0f;--ink-2:#3a3d3f;--ink-3:#6b6e70;--accent:#f97316;--border:#e3ddd1;--border-soft:#eae4d6}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Bricolage Grotesque','-apple-system',sans-serif;background:var(--bg);color:var(--ink-2);font-size:16px;line-height:1.65;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 400;-webkit-font-smoothing:antialiased}
+  .container{max-width:820px;margin:0 auto;padding:48px 24px 96px}
+  h1{font-size:clamp(36px,5vw,56px);color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 100,'wght' 800;letter-spacing:-.04em;line-height:1.05;margin-bottom:12px}
+  h2{font-size:22px;color:var(--ink);font-variation-settings:'opsz' 32,'wdth' 100,'wght' 700;letter-spacing:-.02em;margin-top:44px;margin-bottom:12px}
+  h3{font-size:16px;color:var(--ink);font-weight:600;margin-top:28px;margin-bottom:6px}
+  p{margin-bottom:14px}
+  strong{color:var(--ink);font-weight:700}
+  a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.04em;color:var(--accent);font-size:12px;font-weight:700}
+  .nav{padding:20px 24px;border-bottom:1px solid var(--border);background:var(--bg)}
+  .nav-in{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;align-items:baseline}
+  .wm{font-size:22px;font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;color:var(--ink);letter-spacing:-.05em;text-decoration:none}
+  .wm-dot{color:var(--accent)}
+  .nav-back{font-size:13px;color:var(--ink-2);text-decoration:none}
+  .card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:24px;margin:20px 0}
+  table{width:100%;border-collapse:collapse;margin:16px 0}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border-soft);font-size:14px}
+  th{color:var(--ink);font-weight:700;background:rgba(246,244,239,.5)}
+  code{background:rgba(11,14,15,.06);padding:2px 6px;border-radius:4px;font-size:13.5px;font-family:inherit;font-variant-numeric:tabular-nums}
+  ul{margin:10px 0 14px 22px}
+  li{margin-bottom:6px}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="/" class="wm">usdpr<span class="wm-dot">.</span></a>
+    <a href="/" class="nav-back">← Back</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="eyebrow">Security & Compliance</div>
+  <h1>Every lock on every door.</h1>
+  <p style="font-size:18px;color:var(--ink-2);max-width:60ch">
+    You're trusting us with patient data. This page is the full document, written for dental-practice owners, IT departments, and compliance auditors.
+    No marketing, no hedging.
+  </p>
+
+  <h2>1 · HIPAA</h2>
+  <div class="card">
+    <h3>Business Associate Agreement</h3>
+    <p>We sign a BAA before any PHI moves. Signed via HelloSign (Dropbox Sign) at the start of onboarding. The BAA names our entity as the Business Associate and your practice as the Covered Entity, covering the 11 mandatory §164.504(e) provisions.</p>
+    <h3>PHI scrubber</h3>
+    <p>Every outbound SMS and email body passes a PHI scrubber (procedure names, diagnoses, sensitive terms) before leaving our servers. Violations block the send and alert the operator — never silently go out.</p>
+    <h3>Consent tracking</h3>
+    <p>We never message a patient without confirmed SMS or email consent. Consent sources, timestamps, and revocations (STOP keywords) are logged as append-only rows in <code>consent_events</code>.</p>
+    <h3>Access control</h3>
+    <p>Database encrypted at rest (WAL-mode SQLite on encrypted volume in dev; PostgreSQL + pgcrypto in production). HTTPS for everything in transit. API keys hashed (never plaintext in DB).</p>
+  </div>
+
+  <h2>2 · TCPA (SMS compliance)</h2>
+  <div class="card">
+    <p>Three gates before any SMS leaves:</p>
+    <ul>
+      <li><strong>DNC list check</strong> — per-client. A STOP reply permanently blocks.</li>
+      <li><strong>Daily cap</strong> — 1 message per patient per 24h.</li>
+      <li><strong>Weekly cap</strong> — 3 messages per patient per 168h.</li>
+    </ul>
+    <p>Caps enforced at the database query layer (not just application code). 10DLC registration mandatory before SMS activates — we manage this with Twilio.</p>
+  </div>
+
+  <h2>3 · CAN-SPAM (email)</h2>
+  <div class="card">
+    <p>Every outbound email includes:</p>
+    <ul>
+      <li>Physical mailing address (provided by the practice at onboarding)</li>
+      <li>Functional one-click unsubscribe link</li>
+      <li>Clear sender identification (practice name + domain)</li>
+    </ul>
+    <p>Patient consent is tracked per-channel — SMS consent does not imply email consent.</p>
+  </div>
+
+  <h2>4 · Anti-kickback / Patient brokering</h2>
+  <div class="card">
+    <p>
+      We charge a flat SaaS fee (never per-patient). This keeps arrangements
+      inside every state's anti-kickback safe harbor. Specific references:
+    </p>
+    <ul>
+      <li>Florida §817.505 (Patient Brokering Act)</li>
+      <li>Florida Rule 64B5-4.002 (existing-patient reactivation is NOT solicitation)</li>
+      <li>Equivalent statutes in CA, TX, NY, IL, OH, GA</li>
+    </ul>
+    <p>Our attorney reviewed this structure. A copy of the engagement letter is available under NDA for procurement review.</p>
+  </div>
+
+  <h2>5 · SOC 2 Type II</h2>
+  <div class="card">
+    <p><strong>Status:</strong> Type I completed Q1 2026. Type II audit kicks off Q2 2026, targeted completion Q4 2026.</p>
+    <p>Current evidence (available under NDA for DSO evaluations):</p>
+    <ul>
+      <li>Change management policy + approval workflow</li>
+      <li>Access control policy (role-based)</li>
+      <li>Incident response runbook</li>
+      <li>Data retention + disposal policy</li>
+      <li>Vendor management (Stripe, Twilio, Resend, Anthropic, HelloSign)</li>
+      <li>Audit log (append-only, database-trigger-enforced)</li>
+    </ul>
+  </div>
+
+  <h2>6 · Data retention + portability</h2>
+  <div class="card">
+    <h3>Retention schedule</h3>
+    <table>
+      <tr><th>Data type</th><th>Retention</th><th>Rationale</th></tr>
+      <tr><td>Patient records</td><td>Active + 7 years after last contact</td><td>HIPAA minimum</td></tr>
+      <tr><td>Messages sent/received</td><td>Active + 7 years</td><td>HIPAA + TCPA audit evidence</td></tr>
+      <tr><td>Audit log</td><td>Active + 7 years (append-only)</td><td>Compliance evidence</td></tr>
+      <tr><td>Tenant events (logins)</td><td>90 days</td><td>Operational only</td></tr>
+      <tr><td>Rate-limit counters</td><td>5 minutes (GC)</td><td>Operational only</td></tr>
+    </table>
+    <h3>Portability</h3>
+    <p>Every tenant can export their complete dataset at any time via <code>GET /api/v1/patients|campaigns|sends|replies|bookings|audit</code> or a single JSON dump via <code>/onboarding/export</code>. No export fee. No format lock-in.</p>
+    <h3>Deletion on request</h3>
+    <p>Soft-delete at cancellation (30-day reversal window). Hard-delete available on written request. Full deletion confirmation provided.</p>
+  </div>
+
+  <h2>7 · Incident response</h2>
+  <div class="card">
+    <p>Documented runbook. Escalation signals wire to the operator console:</p>
+    <ul>
+      <li>&gt; 1% sends failing in a 10-min window</li>
+      <li>&gt; 5% replies classified as "complaint" or "angry"</li>
+      <li>Any PHI scrubber failure on an outbound message</li>
+      <li>Any patient reply containing <code>STOP suing</code>, <code>lawyer</code>, <code>FCC</code>, or <code>attorney general</code></li>
+    </ul>
+    <p>Breach notification timeline: 48 hours to the affected practice, 60 days to HHS per HIPAA Breach Notification Rule.</p>
+  </div>
+
+  <h2>8 · Sub-processors</h2>
+  <div class="card">
+    <table>
+      <tr><th>Vendor</th><th>Purpose</th><th>BAA signed</th></tr>
+      <tr><td>Stripe</td><td>Payments</td><td>N/A (no PHI)</td></tr>
+      <tr><td>Twilio</td><td>SMS delivery</td><td>Yes</td></tr>
+      <tr><td>Resend</td><td>Email delivery</td><td>Yes</td></tr>
+      <tr><td>HelloSign (Dropbox Sign)</td><td>BAA signature</td><td>Yes</td></tr>
+      <tr><td>Anthropic</td><td>Reply classification + draft generation</td><td>Yes (Zero-retention mode)</td></tr>
+      <tr><td>AWS / Fly.io</td><td>Hosting</td><td>Yes</td></tr>
+    </table>
+  </div>
+
+  <h2>9 · Reporting a security issue</h2>
+  <div class="card">
+    <p>
+      Email <a href="mailto:security@usdentalpatientrecovery.com">security@usdentalpatientrecovery.com</a>.
+      PGP key available on request. We acknowledge within 24 hours, fix critical issues within 72 hours, and publish a post-mortem on <a href="/changelog">/changelog</a> after resolution.
+    </p>
+    <p>We do not have a bug bounty yet. We do provide public credit (with permission) and will make a donation to a charity of your choice in recognition of meaningful reports.</p>
+  </div>
+
+  <p style="margin-top:48px;color:var(--ink-3);font-size:13px">Last reviewed: 2026-04-19 · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+</div>
+</body>
+</html>

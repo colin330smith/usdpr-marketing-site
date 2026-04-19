@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Done-for-you patient reactivation from usdpr. Founder-run campaigns, white-glove onboarding, custom templates, weekly concierge tuning. For practices that want zero front-desk lift.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Done-for-you \u00B7 usdpr.">
+<meta property="og:description" content="Founder-run reactivation. White-glove onboarding. Custom templates. Zero front-desk lift.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/done-for-you.html">
+<meta property="og:image" content="/og.svg">
+<title>Done-for-you reactivation \u00B7 usdpr.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdentalpatientrecovery.com"></script>
+<style>
+  .df-hero{position:relative;overflow:hidden;padding:clamp(40px,6vw,112px) 0 clamp(28px,4vw,56px);background:var(--ink-bg);color:var(--bg);border-bottom:1px solid #1a1d20}
+  .df-hero::after{content:'';position:absolute;inset:auto -15% -50% auto;width:70%;height:110%;background:radial-gradient(ellipse,rgba(249,115,22,.22) 0%,transparent 60%);pointer-events:none;z-index:0}
+  .df-hero::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .2 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");opacity:.04}
+  .df-hero > *{position:relative;z-index:1}
+  .df-hero-wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+  .df-kicker{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;background:rgba(249,115,22,.14);color:var(--accent);border:1px solid rgba(249,115,22,.3);border-radius:var(--r-pill);font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;margin-bottom:22px}
+  .df-kicker::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .df-hero h1{font-size:clamp(46px,7.5vw,128px);color:var(--bg);font-variation-settings:'opsz' 96,'wdth' 82,'wght' 800;letter-spacing:-.054em;line-height:.9;max-width:13ch;margin-bottom:20px}
+  .df-hero h1 .accent{color:var(--accent)}
+  .df-hero-lede{font-size:clamp(17px,1.6vw,22px);color:rgba(246,244,239,.82);line-height:1.55;max-width:56ch;margin-bottom:28px;font-variation-settings:'opsz' 20,'wdth' 100,'wght' 400}
+  .df-hero-lede strong{color:var(--bg);font-variation-settings:'opsz' 20,'wdth' 100,'wght' 700}
+  .df-hero-cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .df-hero-cta .btn-primary{background:var(--accent);color:var(--ink-bg);border-color:var(--accent)}
+  .df-hero-cta .btn-primary:hover{background:var(--bg);border-color:var(--bg);color:var(--ink-bg);transform:translateY(-1px)}
+  .df-hero-cta .btn-ghost{color:var(--bg);border-color:rgba(246,244,239,.25)}
+  .df-hero-cta .btn-ghost:hover{border-color:var(--bg);background:rgba(246,244,239,.06)}
+
+  /* Who this is for */
+  .df-who{max-width:var(--container);margin:0 auto;padding:clamp(48px,6vw,80px) var(--gutter)}
+  .df-who-hd{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:clamp(20px,3vw,32px);padding-bottom:14px;border-bottom:1px solid var(--border)}
+  .df-who-hd h2{font-size:clamp(28px,3.8vw,56px);color:var(--ink);font-variation-settings:'opsz' 72,'wdth' 100,'wght' 700;letter-spacing:-.034em;line-height:1.04;max-width:22ch;margin-top:8px}
+  .df-who-hd h2 .accent{color:var(--accent)}
+  .df-who-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.df-who-grid{grid-template-columns:1fr}}
+  .df-who-c{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(22px,3vw,32px)}
+  .df-who-c.yes{border:1.5px solid var(--accent);background:linear-gradient(180deg,var(--accent-soft) 0%,var(--bg-card) 40%)}
+  .df-who-k{font-size:11px;color:var(--ink-3);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+  .df-who-c.yes .df-who-k{color:var(--accent)}
+  .df-who-c h3{font-size:20px;color:var(--ink);font-variation-settings:'opsz' 24,'wdth' 100,'wght' 700;letter-spacing:-.022em;margin-bottom:14px;line-height:1.2;max-width:22ch}
+  .df-who-c ul{list-style:none;display:grid;gap:9px}
+  .df-who-c li{display:grid;grid-template-columns:18px 1fr;gap:12px;font-size:14px;line-height:1.55;color:var(--ink-2)}
+  .df-who-c li::before{content:'';width:14px;height:14px;border-radius:4px;margin-top:3px}
+  .df-who-c.yes li::before{background:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23f97316' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7l3 3 5-6'/%3E%3C/svg%3E");background-position:center;background-repeat:no-repeat}
+  .df-who-c.no li::before{background:var(--bg-soft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%236b6e70' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M4 4l6 6M10 4l-6 6'/%3E%3C/svg%3E");background-position:center;background-repeat:no-repeat}
+  .df-who-c li strong{color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+
+  /* What's included */
+  .df-inc{background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:clamp(48px,6vw,80px) 0}
+  .df-inc-wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+  .df-inc-hd{margin-bottom:clamp(24px,3vw,36px)}
+  .df-inc-hd h2{font-size:clamp(28px,3.8vw,52px);color:var(--ink);font-variation-settings:'opsz' 72,'wdth' 100,'wght' 700;letter-spacing:-.034em;line-height:1.04;max-width:22ch;margin-top:8px}
+  .df-inc-hd h2 .accent{color:var(--accent)}
+  .df-inc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+  .df-inc-c{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:22px 24px;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+  .df-inc-c:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+  .df-inc-n{font-size:11px;color:var(--accent);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .df-inc-n .i{font-size:26px;line-height:1;color:var(--ink);font-variation-settings:'opsz' 36,'wdth' 88,'wght' 800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .df-inc-t{font-size:17px;color:var(--ink);line-height:1.25;font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700;letter-spacing:-.018em;margin-bottom:6px}
+  .df-inc-b{font-size:13.5px;line-height:1.6;color:var(--ink-2)}
+  .df-inc-b strong{color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+
+  /* Pricing */
+  .df-price{max-width:var(--container);margin:0 auto;padding:clamp(48px,6vw,80px) var(--gutter)}
+  .df-price-hd{margin-bottom:clamp(20px,3vw,32px)}
+  .df-price-hd h2{font-size:clamp(28px,3.8vw,52px);color:var(--ink);font-variation-settings:'opsz' 72,'wdth' 100,'wght' 700;letter-spacing:-.034em;line-height:1.04;max-width:22ch;margin-top:8px}
+  .df-price-hd h2 .accent{color:var(--accent)}
+  .df-price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  @media(max-width:900px){.df-price-grid{grid-template-columns:1fr}}
+  .df-tier{background:var(--bg-card);border:1.5px solid var(--border);border-radius:18px;padding:clamp(24px,3vw,32px);display:grid;gap:12px;transition:transform .2s var(--ease),box-shadow .2s var(--ease);position:relative}
+  .df-tier:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+  .df-tier.hi{border:2px solid var(--ink);background:linear-gradient(180deg,var(--accent-soft) 0%,var(--bg-card) 20%);box-shadow:var(--shadow-lg)}
+  .df-tier.hi::before{content:'Most practices';position:absolute;top:-12px;left:24px;padding:4px 12px;background:var(--ink);color:var(--bg);font-size:10.5px;border-radius:var(--r-pill);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:.08em;text-transform:uppercase}
+  .df-tier-k{font-size:11px;color:var(--accent);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:.1em;text-transform:uppercase}
+  .df-tier-n{font-size:22px;color:var(--ink);line-height:1.15;font-variation-settings:'opsz' 24,'wdth' 100,'wght' 700;letter-spacing:-.022em;margin-bottom:2px}
+  .df-tier-v{font-size:clamp(40px,5vw,64px);color:var(--ink);line-height:.95;font-variation-settings:'opsz' 96,'wdth' 90,'wght' 800;letter-spacing:-.044em;font-variant-numeric:tabular-nums;display:flex;align-items:baseline}
+  .df-tier-v .d{font-size:.42em;color:var(--ink-3);margin-right:4px;font-variation-settings:'opsz' 36,'wdth' 100,'wght' 800}
+  .df-tier-v .mo{font-size:.28em;color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase;font-variation-settings:'opsz' 16,'wdth' 100,'wght' 600;margin-left:8px}
+  .df-tier-who{font-size:13px;color:var(--ink-2);line-height:1.55;margin-bottom:6px}
+  .df-tier-who strong{color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .df-tier ul{list-style:none;display:grid;gap:6px;padding:12px 0;border-top:1px dashed var(--border-2)}
+  .df-tier li{display:grid;grid-template-columns:16px 1fr;gap:10px;font-size:13px;line-height:1.55;color:var(--ink-2)}
+  .df-tier li::before{content:'';width:14px;height:14px;border-radius:4px;margin-top:3px;background:var(--accent-soft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23f97316' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7l3 3 5-6'/%3E%3C/svg%3E");background-position:center;background-repeat:no-repeat}
+  .df-tier li strong{color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .df-tier .btn{margin-top:6px}
+
+  /* Comparison to agency */
+  .df-vs{background:var(--bg-vellum);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:clamp(48px,6vw,80px) 0}
+  .df-vs-wrap{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+  .df-vs-hd{margin-bottom:clamp(20px,3vw,28px)}
+  .df-vs-hd h2{font-size:clamp(26px,3.5vw,42px);color:var(--ink);font-variation-settings:'opsz' 60,'wdth' 100,'wght' 700;letter-spacing:-.032em;line-height:1.08;max-width:26ch;margin-top:8px}
+  .df-vs-hd h2 .accent{color:var(--accent)}
+  .df-vs-table{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
+  .df-vs-row{display:grid;grid-template-columns:1.3fr 1fr 1fr;padding:14px 20px;border-top:1px solid var(--border);align-items:center;gap:14px}
+  .df-vs-row:first-of-type{border-top:0;background:var(--bg-soft)}
+  .df-vs-row:first-of-type > *{font-size:11px;color:var(--ink-3);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:.08em;text-transform:uppercase}
+  @media(max-width:600px){.df-vs-row{grid-template-columns:1fr;gap:4px;padding:14px 16px}}
+  .df-vs-k{font-size:13.5px;color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;letter-spacing:-.01em}
+  .df-vs-v{font-size:13.5px;color:var(--ink-2);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500}
+  .df-vs-row:first-of-type .df-vs-v{color:var(--ink-3)}
+  .df-vs-v.win{color:var(--accent);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+
+  /* Closing */
+  .df-close{max-width:var(--container-narrow);margin:0 auto;padding:clamp(48px,6vw,80px) var(--gutter);text-align:center}
+  .df-close h2{font-size:clamp(32px,5vw,72px);color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 88,'wght' 800;letter-spacing:-.046em;line-height:.98;max-width:20ch;margin:0 auto 18px}
+  .df-close h2 .accent{color:var(--accent)}
+  .df-close p{font-size:16px;color:var(--ink-2);max-width:58ch;margin:0 auto clamp(22px,3vw,32px);line-height:1.55}
+  .df-close p strong{color:var(--ink)}
+  .df-close .row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="/pilot.html" class="nav-link">Pilot</a>
+      <a href="/calculator.html" class="nav-link">Calculator</a>
+      <a href="/compare.html" class="nav-link">Compare</a>
+      <a href="/schedule.html?utm_source=dfy" class="nav-cta">Book a scoping call</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="df-hero">
+  <div class="df-hero-wrap">
+    <div class="df-kicker">Done-for-you reactivation \u00B7 premium tier</div>
+    <h1>You hand us the list. <span class="accent">We do the rest.</span></h1>
+    <p class="df-hero-lede">Every self-serve plan runs reactivation on autopilot. <strong>Done-for-you</strong> adds a founder-run concierge layer on top: we write your templates in your voice, run the campaigns week-over-week, tune segmentation live, and <strong>review every reply before it sends</strong>. Built for practices that want zero front-desk lift and the sharpest possible reactivation rate.</p>
+    <div class="df-hero-cta">
+      <a href="/schedule.html?utm_source=dfy&amp;utm_campaign=hero" class="btn btn-primary" data-track="DFY hero CTA">
+        Book a DFY scoping call
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a href="mailto:colin@usdentalpatientrecovery.com?subject=Done-for-you%20%E2%80%94%20interest%20check" class="btn btn-ghost">Email Colin first</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="df-who">
+  <div class="df-who-hd">
+    <div>
+      <span class="eyebrow">Is this you?</span>
+      <h2>When <span class="accent">Done-for-you</span> makes sense \u2014 and when it doesn\u2019t.</h2>
+    </div>
+  </div>
+  <div class="df-who-grid">
+    <article class="df-who-c yes">
+      <div class="df-who-k">Say yes if</div>
+      <h3>These describe your practice.</h3>
+      <ul>
+        <li><strong>Zero front-desk lift</strong> is non-negotiable \u2014 you want outreach happening without your team approving queues.</li>
+        <li><strong>Your brand voice matters.</strong> You want templates written in your tone, not template-library defaults, tuned monthly.</li>
+        <li><strong>You've tried reactivation tools before and bounced</strong> \u2014 because the work still landed on the office manager.</li>
+        <li><strong>You want a strategic partner, not just software.</strong> Monthly campaign reviews. Segmentation tuning. Channel-mix recommendations.</li>
+        <li><strong>You're on Practice Pro or DSO scale</strong> \u2014 this tier earns back its cost at ~3,000+ active patients.</li>
+        <li><strong>You're an ortho / prostho / OMFS practice</strong> where specialty-aware campaign writing is table stakes.</li>
+      </ul>
+    </article>
+    <article class="df-who-c no">
+      <div class="df-who-k">Say no if</div>
+      <h3>These describe your needs.</h3>
+      <ul>
+        <li><strong>Your patient count is under 1,500.</strong> The self-serve Practice tier ($297/mo) is the right fit.</li>
+        <li><strong>You enjoy the control of approving replies yourself.</strong> Self-serve keeps you in the loop on every send.</li>
+        <li><strong>You're shopping for a $50/mo tool.</strong> DFY is not cheap. If budget is the constraint, self-serve is still great.</li>
+        <li><strong>You want a general marketing agency</strong> \u2014 Google Ads, SEO, new-patient acquisition. We don\u2019t do those. We do reactivation, deep.</li>
+        <li><strong>You want per-patient pricing.</strong> Not legal. Not building it. <a href="/trust.html">See compliance</a>.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="df-inc">
+  <div class="df-inc-wrap">
+    <div class="df-inc-hd">
+      <span class="eyebrow">What\u2019s included</span>
+      <h2>Six concierge services on <span class="accent">every DFY tenant</span>.</h2>
+    </div>
+
+    <div class="df-inc-grid">
+      <article class="df-inc-c">
+        <div class="df-inc-n"><span class="i">01</span>Onboarding</div>
+        <div class="df-inc-t">White-glove setup, live</div>
+        <div class="df-inc-b"><strong>Three live sessions</strong> with Colin: PMS mapping, template voice calibration, cohort segmentation. Your list is launch-ready at the end of week one, without a single form filled by you.</div>
+      </article>
+      <article class="df-inc-c">
+        <div class="df-inc-n"><span class="i">02</span>Template authoring</div>
+        <div class="df-inc-t">Written in your voice</div>
+        <div class="df-inc-b">Founder-written email + SMS + phone scripts <strong>tuned to your practice's voice</strong>. Review and green-light once; they ship. Re-tuned monthly based on reply data.</div>
+      </article>
+      <article class="df-inc-c">
+        <div class="df-inc-n"><span class="i">03</span>Reply triage</div>
+        <div class="df-inc-t">Founder-reviewed, pre-send</div>
+        <div class="df-inc-b">Every AI-drafted reply gets a human glance before it leaves. <strong>Nothing weird goes out.</strong> Anything tricky is escalated to your office manager with a recommended action.</div>
+      </article>
+      <article class="df-inc-c">
+        <div class="df-inc-n"><span class="i">04</span>Weekly tuning</div>
+        <div class="df-inc-t">Segmentation + cadence</div>
+        <div class="df-inc-b">Weekly review of reply + book rates by segment and channel. <strong>Slow cohorts get re-engaged</strong>, weak templates get rewritten, cadence windows get tightened. Live, hands-on.</div>
+      </article>
+      <article class="df-inc-c">
+        <div class="df-inc-n"><span class="i">05</span>Monthly strategy call</div>
+        <div class="df-inc-t">30-min, founder-direct</div>
+        <div class="df-inc-b">A 30-minute call where <strong>Colin walks you through last month's numbers</strong> \u2014 what worked, what didn't, what to change. Not a CSM. Not a ticket. The person building the product.</div>
+      </article>
+      <article class="df-inc-c">
+        <div class="df-inc-n"><span class="i">06</span>Quarterly benchmark</div>
+        <div class="df-inc-t">Your numbers vs. peers</div>
+        <div class="df-inc-b"><strong>Anonymized, opt-in benchmarking</strong> against other DFY practices of similar size and specialty. See whether your reactivation rate is top-decile or has room. Data stays walled between tenants.</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="df-price">
+  <div class="df-price-hd">
+    <span class="eyebrow">Done-for-you pricing</span>
+    <h2>One flat add-on. <span class="accent">Scales with your tier.</span></h2>
+  </div>
+
+  <div class="df-price-grid">
+    <article class="df-tier">
+      <span class="df-tier-k">Practice DFY</span>
+      <div class="df-tier-n">Solo practice \u00B7 up to 2,000 patients</div>
+      <div class="df-tier-v"><span class="d">$</span>1,497<span class="mo">/mo</span></div>
+      <div class="df-tier-who">Replaces Practice ($297) + adds DFY concierge. <strong>All-in flat fee</strong>, same 14-day trial.</div>
+      <ul>
+        <li>White-glove onboarding (3 sessions)</li>
+        <li>Founder-written templates</li>
+        <li>Reply triage + pre-send review</li>
+        <li>Weekly cadence tuning</li>
+        <li>Monthly 30-min strategy call</li>
+      </ul>
+      <a href="/schedule.html?utm_source=dfy&amp;utm_campaign=price_solo" class="btn btn-primary" data-track="DFY solo CTA">
+        Book scoping call
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </article>
+
+    <article class="df-tier hi">
+      <span class="df-tier-k">Practice Pro DFY</span>
+      <div class="df-tier-n">Growing practice \u00B7 up to 10,000 patients</div>
+      <div class="df-tier-v"><span class="d">$</span>2,997<span class="mo">/mo</span></div>
+      <div class="df-tier-who">Replaces Practice Pro ($697) + adds DFY concierge. <strong>Most DFY practices land here.</strong></div>
+      <ul>
+        <li>Everything in Practice DFY</li>
+        <li>Specialty-aware template library</li>
+        <li>GP-referral relationship reporting</li>
+        <li>Quarterly anonymized benchmarking</li>
+        <li>Priority on new PMS integrations</li>
+      </ul>
+      <a href="/schedule.html?utm_source=dfy&amp;utm_campaign=price_pro" class="btn btn-primary" data-track="DFY pro CTA">
+        Book scoping call
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </article>
+
+    <article class="df-tier">
+      <span class="df-tier-k">DSO DFY</span>
+      <div class="df-tier-n">Multi-location group \u00B7 custom scope</div>
+      <div class="df-tier-v"><span class="d">$</span>4,997<span class="mo">/mo+</span></div>
+      <div class="df-tier-who">Base + $497/additional location DFY. Custom scope available. <strong>Founder-bandwidth capped at 5 DSOs.</strong></div>
+      <ul>
+        <li>Everything in Practice Pro DFY, per location</li>
+        <li>Cross-location strategic review (monthly)</li>
+        <li>DSO-level exec reporting</li>
+        <li>SSO + SCIM + dedicated SLA</li>
+        <li>Roadmap co-design with Colin</li>
+      </ul>
+      <a href="/schedule.html?utm_source=dfy&amp;utm_campaign=price_dso" class="btn btn-primary" data-track="DFY dso CTA">
+        Book scoping call
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </article>
+  </div>
+</section>
+
+<!-- VS AGENCY -->
+<section class="df-vs">
+  <div class="df-vs-wrap">
+    <div class="df-vs-hd">
+      <span class="eyebrow">Versus hiring a dental marketing agency</span>
+      <h2>The full-stack comparison \u2014 the math, <span class="accent">not the pitch</span>.</h2>
+    </div>
+
+    <div class="df-vs-table">
+      <div class="df-vs-row">
+        <div class="df-vs-k">Criterion</div>
+        <div class="df-vs-v">Dental marketing agency</div>
+        <div class="df-vs-v">usdpr. Done-for-you</div>
+      </div>
+      <div class="df-vs-row">
+        <div class="df-vs-k">Monthly cost</div>
+        <div class="df-vs-v">$3,000\u2013$6,000</div>
+        <div class="df-vs-v win">$1,497\u2013$2,997</div>
+      </div>
+      <div class="df-vs-row">
+        <div class="df-vs-k">Reactivation-specific depth</div>
+        <div class="df-vs-v">Generalist \u2014 bundled w/ Google Ads + SEO</div>
+        <div class="df-vs-v win">Reactivation-only. Deep.</div>
+      </div>
+      <div class="df-vs-row">
+        <div class="df-vs-k">HIPAA BAA</div>
+        <div class="df-vs-v">Varies \u2014 check your current MSA</div>
+        <div class="df-vs-v win">Signed before any PHI moves</div>
+      </div>
+      <div class="df-vs-row">
+        <div class="df-vs-k">Per-patient fees</div>
+        <div class="df-vs-v">Some charge "success fee" per booking</div>
+        <div class="df-vs-v win">Never. Flat fee. Full stop.</div>
+      </div>
+      <div class="df-vs-row">
+        <div class="df-vs-k">Cancel terms</div>
+        <div class="df-vs-v">3\u201312 month contracts standard</div>
+        <div class="df-vs-v win">Month-to-month, one-click</div>
+      </div>
+      <div class="df-vs-row">
+        <div class="df-vs-k">You own the outputs</div>
+        <div class="df-vs-v">Agency may retain templates + assets</div>
+        <div class="df-vs-v win">Everything exports free, anytime</div>
+      </div>
+      <div class="df-vs-row">
+        <div class="df-vs-k">Who you actually talk to</div>
+        <div class="df-vs-v">Account exec \u2192 coordinator \u2192 specialist</div>
+        <div class="df-vs-v win">Colin. Direct.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSER -->
+<section class="df-close">
+  <h2 style="margin-top:10px">The zero-lift version. <span class="accent">Founder-run.</span></h2>
+  <p>If "I don't want my front desk touching another tool" is the deciding factor, this is the SKU. Book a 15-min scoping call \u2014 <strong>I'll tell you within 10 minutes</strong> whether DFY is right for your practice, or whether self-serve is the better call. No pitch.</p>
+  <div class="row">
+    <a href="/schedule.html?utm_source=dfy&amp;utm_campaign=closer" class="btn btn-primary" data-track="DFY closer CTA">
+      Book a DFY scoping call
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+    <a href="/calculator.html?utm_source=dfy" class="btn btn-ghost">Run the numbers first</a>
+    <a href="/signup?tier=practice_pro&amp;utm_source=dfy_fallback" class="btn btn-ghost">Self-serve is fine \u2014 start trial</a>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve and done-for-you patient reactivation for US dental practices.</div>
+      </div>
+      <div class="foot-col">
+        <h4>For you</h4>
+        <ul><li><a href="/for-owners.html">Practice owners</a></li><li><a href="/for-managers.html">Office managers</a></li><li><a href="/for-dsos.html">DSOs</a></li><li><a href="/for-specialists.html">Specialists</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/pilot.html">Pilot</a></li><li><a href="/done-for-you.html">Done-for-you</a></li><li><a href="/calculator.html">Calculator</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/about.html">Founder letter</a></li><li><a href="/security.html">Security</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>Done-for-you \u00B7 flat fee \u00B7 founder-run</span>
+    </div>
+  </div>
+</footer>
+<script defer src="/founder-widget.js"></script>
+</body>
+</html>

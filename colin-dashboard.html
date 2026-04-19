@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="theme-color" content="#0b0e0f">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Revenue Ops \u00B7 usdpr. \u00B7 internal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<style>
+  /* ───── Dark dashboard — internal only ─────────────────────────── */
+  body{background:#0b0e0f;color:rgba(246,244,239,.72);min-height:100vh}
+  a{color:inherit}
+  ::selection{background:rgba(249,115,22,.4);color:#fff}
+
+  .cd-nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,14,15,.9);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid #1a1d20;
+  }
+  .cd-nav-in{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 24px;gap:16px;max-width:1480px;margin:0 auto;
+  }
+  .cd-nav-l{display:flex;align-items:center;gap:16px;color:#f6f4ef;font-size:13px;font-variation-settings:'opsz' 14,'wdth' 92,'wght' 700}
+  .cd-nav-l .wm{font-size:20px;font-variation-settings:'opsz' 48,'wdth' 88,'wght' 800;letter-spacing:-.048em;color:#f6f4ef;text-decoration:none}
+  .cd-nav-l .wm .d{color:var(--accent)}
+  .cd-nav-l .pipe{color:#3a3d3f;margin:0 4px}
+  .cd-nav-l .b{color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-size:10.5px;font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700;padding:3px 10px;background:rgba(249,115,22,.14);border:1px solid rgba(249,115,22,.3);border-radius:var(--r-pill)}
+  .cd-nav-r{display:flex;align-items:center;gap:14px;font-size:12px;color:rgba(246,244,239,.55);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500}
+  .cd-nav-r .live{display:inline-flex;align-items:center;gap:6px}
+  .cd-nav-r .live::before{content:'';width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.25);animation:cd-pulse 2.6s ease-in-out infinite}
+  @keyframes cd-pulse{0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.25)}50%{box-shadow:0 0 0 8px rgba(34,197,94,0)}}
+
+  .cd-wrap{max-width:1480px;margin:0 auto;padding:24px;display:grid;gap:16px}
+
+  /* ───── KPI grid — top line numbers ─────────────────────────────── */
+  .cd-kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+  @media(max-width:1200px){.cd-kpis{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:640px){.cd-kpis{grid-template-columns:repeat(2,1fr)}}
+  .cd-kpi{
+    background:#111416;border:1px solid #1a1d20;border-radius:14px;padding:16px 18px;
+    display:grid;gap:4px;position:relative;overflow:hidden;
+    transition:border-color .18s var(--ease);
+  }
+  .cd-kpi:hover{border-color:#2a2d30}
+  .cd-kpi-k{font-size:10.5px;color:rgba(246,244,239,.5);letter-spacing:.08em;text-transform:uppercase;font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700}
+  .cd-kpi-v{font-size:30px;color:#f6f4ef;line-height:1;font-variation-settings:'opsz' 48,'wdth' 88,'wght' 800;letter-spacing:-.035em;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:3px}
+  .cd-kpi-v .d{color:rgba(246,244,239,.4);font-size:.55em;font-variation-settings:'opsz' 24,'wdth' 100,'wght' 800}
+  .cd-kpi-v .suf{color:rgba(246,244,239,.4);font-size:.33em;letter-spacing:.04em;text-transform:uppercase;margin-left:6px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 600}
+  .cd-kpi-d{font-size:11.5px;color:#9a9c9d;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;display:flex;align-items:center;gap:6px}
+  .cd-kpi-d.up{color:#4ade80}
+  .cd-kpi-d.down{color:#f87171}
+  .cd-kpi-d::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor}
+  .cd-kpi.hi{background:linear-gradient(135deg,#1a1d20 0%,#11131a 100%);border-color:rgba(249,115,22,.4)}
+  .cd-kpi.hi .cd-kpi-v{color:var(--accent)}
+
+  /* ───── Primary grid — funnel + tasks ───────────────────────────── */
+  .cd-main{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px}
+  @media(max-width:1020px){.cd-main{grid-template-columns:1fr}}
+
+  .cd-card{background:#111416;border:1px solid #1a1d20;border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:16px}
+  .cd-card-hd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:12px;border-bottom:1px solid #1a1d20}
+  .cd-card-t{font-size:12px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;display:flex;align-items:center;gap:8px}
+  .cd-card-t::before{content:'\u00A7';color:#3a3d3f;letter-spacing:0}
+  .cd-card-meta{font-size:11.5px;color:rgba(246,244,239,.45);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500}
+
+  /* Funnel rows */
+  .cd-funnel{display:grid;gap:10px}
+  .cd-fun-row{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:10px 0;border-top:1px solid #1a1d20}
+  .cd-fun-row:first-of-type{border-top:0;padding-top:0}
+  .cd-fun-k{font-size:13px;color:#f6f4ef;line-height:1.3;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;letter-spacing:-.005em;min-width:160px}
+  .cd-fun-k small{display:block;color:rgba(246,244,239,.45);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;margin-top:2px;font-variation-settings:'opsz' 11,'wdth' 100,'wght' 600}
+  .cd-fun-bar{position:relative;height:18px;background:#1a1d20;border-radius:4px;overflow:hidden}
+  .cd-fun-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent) 0%,#ea580c 100%);transition:width .4s var(--ease)}
+  .cd-fun-bar-label{position:absolute;left:10px;top:0;line-height:18px;font-size:10.5px;color:#0b0e0f;font-variation-settings:'opsz' 11,'wdth' 100,'wght' 800;letter-spacing:-.005em}
+  .cd-fun-v{font-size:20px;color:#f6f4ef;line-height:1;font-variation-settings:'opsz' 24,'wdth' 92,'wght' 800;letter-spacing:-.025em;font-variant-numeric:tabular-nums;min-width:50px;text-align:right}
+  .cd-fun-v .pct{display:block;font-size:10.5px;color:rgba(246,244,239,.45);letter-spacing:.04em;margin-top:2px;font-variation-settings:'opsz' 11,'wdth' 100,'wght' 600}
+
+  /* Task list */
+  .cd-tasks{display:grid;gap:8px}
+  .cd-task{display:grid;grid-template-columns:auto 1fr auto;gap:12px;padding:10px 0;border-top:1px solid #1a1d20;align-items:center}
+  .cd-task:first-of-type{border-top:0;padding-top:0}
+  .cd-task-mark{
+    width:22px;height:22px;border-radius:50%;border:1.5px solid #2a2d30;flex:none;
+    background:transparent;cursor:pointer;color:#2a2d30;
+    display:inline-flex;align-items:center;justify-content:center;
+    transition:all .18s var(--ease);font-family:inherit;
+  }
+  .cd-task-mark:hover{border-color:var(--accent);color:var(--accent)}
+  .cd-task-mark.on{background:var(--accent);border-color:var(--accent);color:#0b0e0f}
+  .cd-task-mark svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .18s}
+  .cd-task-mark.on svg{opacity:1}
+  .cd-task-l{font-size:13.5px;color:#f6f4ef;line-height:1.4;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500}
+  .cd-task-l strong{font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .cd-task-l small{display:block;color:rgba(246,244,239,.45);font-size:11px;margin-top:2px;font-variation-settings:'opsz' 11,'wdth' 100,'wght' 500}
+  .cd-task.on .cd-task-l{color:rgba(246,244,239,.35);text-decoration:line-through}
+  .cd-task-p{
+    font-size:10.5px;padding:3px 8px;border-radius:var(--r-pill);letter-spacing:.06em;text-transform:uppercase;
+    font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700;
+  }
+  .cd-task-p.hi{color:var(--accent);background:rgba(249,115,22,.14);border:1px solid rgba(249,115,22,.3)}
+  .cd-task-p.md{color:#4ade80;background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.3)}
+  .cd-task-p.lo{color:rgba(246,244,239,.5);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+
+  /* Pipeline */
+  .cd-pipe{display:grid;gap:10px}
+  .cd-pipe-row{display:grid;grid-template-columns:1fr auto auto;gap:14px;padding:12px 14px;background:#0e1112;border:1px solid #1a1d20;border-radius:10px;align-items:center;transition:border-color .18s}
+  .cd-pipe-row:hover{border-color:#2a2d30}
+  .cd-pipe-who{font-size:13.5px;color:#f6f4ef;line-height:1.25;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;letter-spacing:-.01em}
+  .cd-pipe-who small{display:block;color:rgba(246,244,239,.5);font-size:11px;margin-top:2px;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500}
+  .cd-pipe-st{font-size:10.5px;padding:3px 10px;border-radius:var(--r-pill);letter-spacing:.06em;text-transform:uppercase;font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700;min-width:80px;text-align:center}
+  .cd-pipe-st.trial{background:rgba(249,115,22,.16);color:var(--accent);border:1px solid rgba(249,115,22,.3)}
+  .cd-pipe-st.scoping{background:rgba(59,130,246,.16);color:#60a5fa;border:1px solid rgba(59,130,246,.3)}
+  .cd-pipe-st.closed{background:rgba(34,197,94,.16);color:#4ade80;border:1px solid rgba(34,197,94,.3)}
+  .cd-pipe-st.risk{background:rgba(248,113,113,.16);color:#fca5a5;border:1px solid rgba(248,113,113,.3)}
+  .cd-pipe-mrr{font-size:14px;color:#f6f4ef;font-variant-numeric:tabular-nums;text-align:right;min-width:78px;font-variation-settings:'opsz' 15,'wdth' 100,'wght' 800;letter-spacing:-.01em}
+
+  /* Sources */
+  .cd-sources{display:grid;gap:8px}
+  .cd-src{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;padding:8px 0;border-top:1px solid #1a1d20}
+  .cd-src:first-of-type{border-top:0;padding-top:0}
+  .cd-src-n{font-size:13px;color:#f6f4ef;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500}
+  .cd-src-pct{font-size:11px;color:rgba(246,244,239,.45);letter-spacing:.04em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600}
+  .cd-src-v{font-size:14px;color:#f6f4ef;font-variant-numeric:tabular-nums;min-width:36px;text-align:right;font-variation-settings:'opsz' 15,'wdth' 100,'wght' 800}
+
+  /* Activity feed */
+  .cd-feed{display:grid;gap:10px}
+  .cd-ev{display:grid;grid-template-columns:60px 1fr;gap:14px;padding:8px 0;border-top:1px solid #1a1d20}
+  .cd-ev:first-of-type{border-top:0;padding-top:0}
+  .cd-ev-t{font-size:11px;color:rgba(246,244,239,.45);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;letter-spacing:.04em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+  .cd-ev-l{font-size:13px;color:#f6f4ef;line-height:1.5;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500}
+  .cd-ev-l strong{color:var(--accent);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+
+  /* Target tracker */
+  .cd-tgt{background:linear-gradient(135deg,#111416 0%,#0b0e0f 100%);border:1px solid rgba(249,115,22,.3);border-radius:14px;padding:22px 24px;position:relative;overflow:hidden}
+  .cd-tgt::after{content:'';position:absolute;inset:auto -10% -40% auto;width:60%;height:90%;background:radial-gradient(ellipse,rgba(249,115,22,.18) 0%,transparent 60%);pointer-events:none}
+  .cd-tgt > *{position:relative;z-index:1}
+  .cd-tgt-k{font-size:11px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+  .cd-tgt-t{font-size:14px;color:#f6f4ef;margin-bottom:14px;font-variation-settings:'opsz' 15,'wdth' 100,'wght' 600;line-height:1.35}
+  .cd-tgt-row{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:baseline;margin-bottom:10px}
+  .cd-tgt-now{font-size:26px;color:#f6f4ef;line-height:1;font-variation-settings:'opsz' 36,'wdth' 90,'wght' 800;letter-spacing:-.028em;font-variant-numeric:tabular-nums}
+  .cd-tgt-now .d{color:rgba(246,244,239,.4);font-size:.5em}
+  .cd-tgt-tgt{font-size:12px;color:rgba(246,244,239,.55);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 600}
+  .cd-tgt-tgt strong{color:#f6f4ef;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 800}
+  .cd-tgt-bar{height:6px;border-radius:100px;background:#1a1d20;overflow:hidden}
+  .cd-tgt-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent) 0%,#ea580c 100%);border-radius:100px;transition:width .5s var(--ease)}
+
+  /* Links */
+  .cd-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
+  .cd-link{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:12px 14px;background:#0e1112;border:1px solid #1a1d20;border-radius:8px;text-decoration:none;transition:all .18s var(--ease)}
+  .cd-link:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .cd-link-t{font-size:12.5px;color:#f6f4ef;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;letter-spacing:-.005em}
+  .cd-link-t small{display:block;color:rgba(246,244,239,.45);font-size:10.5px;margin-top:1px;letter-spacing:.04em;text-transform:uppercase;font-variation-settings:'opsz' 11,'wdth' 100,'wght' 600}
+  .cd-link-arr{color:rgba(246,244,239,.3);font-size:14px;line-height:1}
+  .cd-link:hover .cd-link-arr{color:var(--accent)}
+
+  .cd-foot{padding:24px;text-align:center;color:rgba(246,244,239,.35);font-size:11px;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;letter-spacing:.04em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<nav class="cd-nav">
+  <div class="cd-nav-in">
+    <div class="cd-nav-l">
+      <a href="/" class="wm">usdpr<span class="d">.</span></a>
+      <span class="pipe">/</span>
+      <span>Revenue Ops</span>
+      <span class="b">Internal</span>
+    </div>
+    <div class="cd-nav-r">
+      <span class="live">Live \u00B7 <span id="updated">just now</span></span>
+      <span class="pipe">|</span>
+      <span>Colin \u00B7 sole operator</span>
+    </div>
+  </div>
+</nav>
+
+<main class="cd-wrap">
+
+  <!-- KPI STRIP -->
+  <section class="cd-kpis">
+    <article class="cd-kpi hi">
+      <div class="cd-kpi-k">MRR</div>
+      <div class="cd-kpi-v"><span class="d">$</span><span id="mrr">1,394</span></div>
+      <div class="cd-kpi-d up">+$1,394 this week \u00B7 <strong>2 pilots closed</strong></div>
+    </article>
+    <article class="cd-kpi">
+      <div class="cd-kpi-k">Paying practices</div>
+      <div class="cd-kpi-v"><span id="paying">2</span><span class="suf">of 10 pilot</span></div>
+      <div class="cd-kpi-d up">+2 this week</div>
+    </article>
+    <article class="cd-kpi">
+      <div class="cd-kpi-k">Trials active</div>
+      <div class="cd-kpi-v"><span id="trials">7</span><span class="suf">day 1\u20139</span></div>
+      <div class="cd-kpi-d up">+4 this week</div>
+    </article>
+    <article class="cd-kpi">
+      <div class="cd-kpi-k">Pipeline value</div>
+      <div class="cd-kpi-v"><span class="d">$</span><span id="pipeline">14,836</span></div>
+      <div class="cd-kpi-d up">7 trials \u00D7 avg ARPU</div>
+    </article>
+    <article class="cd-kpi">
+      <div class="cd-kpi-k">Leads (7d)</div>
+      <div class="cd-kpi-v"><span id="leads">38</span></div>
+      <div class="cd-kpi-d up">+18 vs prior wk</div>
+    </article>
+    <article class="cd-kpi">
+      <div class="cd-kpi-k">Churn (30d)</div>
+      <div class="cd-kpi-v"><span id="churn">0</span><span class="suf">rate 0%</span></div>
+      <div class="cd-kpi-d">\u2014 none yet</div>
+    </article>
+  </section>
+
+  <!-- TARGET TRACKER -->
+  <section class="cd-tgt">
+    <div class="cd-tgt-k">Founding-10 pilot progress</div>
+    <div class="cd-tgt-t">10 pilot practices \u2192 lifetime $697/mo lock. Next 8 slots determine the next ~$5,576/mo MRR.</div>
+    <div class="cd-tgt-row">
+      <div class="cd-tgt-now"><span class="d">$</span>1,394</div>
+      <div class="cd-tgt-tgt">of <strong>$6,970 MRR</strong> when pilot-10 closes</div>
+      <div class="cd-tgt-now" style="font-size:16px"><span id="pct">20</span>%</div>
+    </div>
+    <div class="cd-tgt-bar"><div class="cd-tgt-bar-fill" id="targetFill" style="width:20%"></div></div>
+  </section>
+
+  <!-- MAIN GRID: funnel + next actions -->
+  <section class="cd-main">
+
+    <article class="cd-card">
+      <div class="cd-card-hd">
+        <div class="cd-card-t">Funnel \u00B7 rolling 7d</div>
+        <div class="cd-card-meta">Source: analytics.js \u00B7 Plausible</div>
+      </div>
+
+      <div class="cd-funnel">
+        <div class="cd-fun-row">
+          <div class="cd-fun-k">Visits<small>all pages</small></div>
+          <div class="cd-fun-bar"><div class="cd-fun-bar-fill" style="width:100%"></div><div class="cd-fun-bar-label">100%</div></div>
+          <div class="cd-fun-v">847<span class="pct">\u2014</span></div>
+        </div>
+        <div class="cd-fun-row">
+          <div class="cd-fun-k">Calculator used<small>/calculator</small></div>
+          <div class="cd-fun-bar"><div class="cd-fun-bar-fill" style="width:38%"></div><div class="cd-fun-bar-label">38%</div></div>
+          <div class="cd-fun-v">322<span class="pct">of visits</span></div>
+        </div>
+        <div class="cd-fun-row">
+          <div class="cd-fun-k">Playbook requested<small>gated lead capture</small></div>
+          <div class="cd-fun-bar"><div class="cd-fun-bar-fill" style="width:18%"></div><div class="cd-fun-bar-label">18%</div></div>
+          <div class="cd-fun-v">149<span class="pct">of visits</span></div>
+        </div>
+        <div class="cd-fun-row">
+          <div class="cd-fun-k">Pilot page view<small>/pilot</small></div>
+          <div class="cd-fun-bar"><div class="cd-fun-bar-fill" style="width:14%"></div><div class="cd-fun-bar-label">14%</div></div>
+          <div class="cd-fun-v">119<span class="pct">of visits</span></div>
+        </div>
+        <div class="cd-fun-row">
+          <div class="cd-fun-k">Signup started<small>/signup click</small></div>
+          <div class="cd-fun-bar"><div class="cd-fun-bar-fill" style="width:6.2%"></div><div class="cd-fun-bar-label">6.2%</div></div>
+          <div class="cd-fun-v">53<span class="pct">of visits</span></div>
+        </div>
+        <div class="cd-fun-row">
+          <div class="cd-fun-k">Trial activated<small>Stripe webhook</small></div>
+          <div class="cd-fun-bar"><div class="cd-fun-bar-fill" style="width:4.5%"></div><div class="cd-fun-bar-label">4.5%</div></div>
+          <div class="cd-fun-v">38<span class="pct">of visits</span></div>
+        </div>
+        <div class="cd-fun-row">
+          <div class="cd-fun-k">Paid conversion<small>first invoice</small></div>
+          <div class="cd-fun-bar"><div class="cd-fun-bar-fill" style="width:0.2%"></div><div class="cd-fun-bar-label">0.2%</div></div>
+          <div class="cd-fun-v">2<span class="pct">of visits</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="cd-card">
+      <div class="cd-card-hd">
+        <div class="cd-card-t">Next actions \u00B7 today</div>
+        <div class="cd-card-meta"><strong id="doneCount">0</strong> / <span id="totalCount">0</span> done</div>
+      </div>
+
+      <div class="cd-tasks" id="taskList">
+        <div class="cd-task" data-task="sms-01"><button type="button" class="cd-task-mark"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 7-7"/></svg></button><div class="cd-task-l"><strong>SMS 5 warm trial users on day 1</strong><small>Trials with no activity in the last 24h: 3 practices. Text from cell, ask about PMS export.</small></div><div class="cd-task-p hi">Priority</div></div>
+        <div class="cd-task" data-task="sms-02"><button type="button" class="cd-task-mark"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 7-7"/></svg></button><div class="cd-task-l"><strong>Reply to 4 playbook requests</strong><small>Personal email, not templated. Mention their practice by name. Offer a 15-min scoping call.</small></div><div class="cd-task-p hi">Priority</div></div>
+        <div class="cd-task" data-task="post-01"><button type="button" class="cd-task-mark"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 7-7"/></svg></button><div class="cd-task-l"><strong>Post pilot-progress update on LinkedIn</strong><small>"2 slots filled, 8 open \u2014 here's what's different at slot 3". Include the pilot page link.</small></div><div class="cd-task-p md">Distro</div></div>
+        <div class="cd-task" data-task="post-02"><button type="button" class="cd-task-mark"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 7-7"/></svg></button><div class="cd-task-l"><strong>Post in r/Dentistry</strong><small>Use the data-first template (not promo). Lead with industry reactivation benchmarks.</small></div><div class="cd-task-p md">Distro</div></div>
+        <div class="cd-task" data-task="outreach-01"><button type="button" class="cd-task-mark"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 7-7"/></svg></button><div class="cd-task-l"><strong>Send 25 cold emails</strong><small>Use cold_outreach.py \u2014 touch 1 to a fresh list of 25 Florida practices. Focus: 2,000\u20137,000 patient range.</small></div><div class="cd-task-p hi">Priority</div></div>
+        <div class="cd-task" data-task="dso-01"><button type="button" class="cd-task-mark"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 7-7"/></svg></button><div class="cd-task-l"><strong>Scoping call with DSO lead (2pm)</strong><small>12-location group in Tampa. Send the for-dsos link ahead. Prepare cross-location demo walkthrough.</small></div><div class="cd-task-p hi">Priority</div></div>
+        <div class="cd-task" data-task="review-01"><button type="button" class="cd-task-mark"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 7-7"/></svg></button><div class="cd-task-l"><strong>Ask pilot-1 for G2 review</strong><small>Day 30 milestone. Use automated review_solicitation template. Offer the $25 gift card.</small></div><div class="cd-task-p lo">Compounding</div></div>
+        <div class="cd-task" data-task="perf-01"><button type="button" class="cd-task-mark"><svg viewBox="0 0 16 16"><path d="M3 8l3 3 7-7"/></svg></button><div class="cd-task-l"><strong>Ship weekly changelog post</strong><small>What shipped this week. Build-in-public signal for ICPs watching.</small></div><div class="cd-task-p md">Distro</div></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="cd-card">
+    <div class="cd-card-hd">
+      <div class="cd-card-t">Active pipeline</div>
+      <div class="cd-card-meta">7 trials \u00B7 2 scoping calls \u00B7 1 at-risk</div>
+    </div>
+
+    <div class="cd-pipe">
+      <div class="cd-pipe-row"><div class="cd-pipe-who">Mosaic Dental Center<small>Orlando, FL \u00B7 1,800 patients \u00B7 Practice Pro</small></div><div class="cd-pipe-st closed">Paying</div><div class="cd-pipe-mrr">$697/mo</div></div>
+      <div class="cd-pipe-row"><div class="cd-pipe-who">Bay Area Family Dentistry<small>Tampa, FL \u00B7 4,200 patients \u00B7 Practice Pro</small></div><div class="cd-pipe-st closed">Paying</div><div class="cd-pipe-mrr">$697/mo</div></div>
+      <div class="cd-pipe-row"><div class="cd-pipe-who">Sunshine Smiles<small>Miami, FL \u00B7 2,400 patients \u00B7 day 9 of trial</small></div><div class="cd-pipe-st trial">Trial</div><div class="cd-pipe-mrr">$697/mo</div></div>
+      <div class="cd-pipe-row"><div class="cd-pipe-who">Oak Ridge Dental<small>Austin, TX \u00B7 3,100 patients \u00B7 day 5 of trial</small></div><div class="cd-pipe-st trial">Trial</div><div class="cd-pipe-mrr">$697/mo</div></div>
+      <div class="cd-pipe-row"><div class="cd-pipe-who">North Shore Orthodontics<small>Chicago, IL \u00B7 1,200 patients \u00B7 day 3 of trial</small></div><div class="cd-pipe-st trial">Trial</div><div class="cd-pipe-mrr">$697/mo</div></div>
+      <div class="cd-pipe-row"><div class="cd-pipe-who">Coastline DSO<small>FL+GA \u00B7 12 locations \u00B7 scoping call Thu 2pm</small></div><div class="cd-pipe-st scoping">Scoping</div><div class="cd-pipe-mrr">$5,068/mo</div></div>
+      <div class="cd-pipe-row"><div class="cd-pipe-who">Desert Endo Group<small>Phoenix, AZ \u00B7 specialty tier \u00B7 scoping Fri 11am</small></div><div class="cd-pipe-st scoping">Scoping</div><div class="cd-pipe-mrr">$1,997/mo</div></div>
+      <div class="cd-pipe-row"><div class="cd-pipe-who">Capital Pediatric Dentistry<small>Raleigh, NC \u00B7 day 8 \u00B7 no activity 3d</small></div><div class="cd-pipe-st risk">At-risk</div><div class="cd-pipe-mrr">$697/mo</div></div>
+    </div>
+  </section>
+
+  <!-- SOURCES + FEED GRID -->
+  <section class="cd-main">
+
+    <article class="cd-card">
+      <div class="cd-card-hd">
+        <div class="cd-card-t">Top sources \u00B7 7d</div>
+        <div class="cd-card-meta">By trial-activation</div>
+      </div>
+
+      <div class="cd-sources">
+        <div class="cd-src"><div class="cd-src-n">/pilot.html \u00B7 LinkedIn</div><div class="cd-src-pct">24%</div><div class="cd-src-v">9</div></div>
+        <div class="cd-src"><div class="cd-src-n">/calculator.html \u00B7 Direct</div><div class="cd-src-pct">21%</div><div class="cd-src-v">8</div></div>
+        <div class="cd-src"><div class="cd-src-n">/for-dsos.html \u00B7 Cold email</div><div class="cd-src-pct">18%</div><div class="cd-src-v">7</div></div>
+        <div class="cd-src"><div class="cd-src-n">/playbook.html \u00B7 Reddit</div><div class="cd-src-pct">13%</div><div class="cd-src-v">5</div></div>
+        <div class="cd-src"><div class="cd-src-n">/for-owners.html \u00B7 Google</div><div class="cd-src-pct">11%</div><div class="cd-src-v">4</div></div>
+        <div class="cd-src"><div class="cd-src-n">/ \u00B7 Direct</div><div class="cd-src-pct">8%</div><div class="cd-src-v">3</div></div>
+        <div class="cd-src"><div class="cd-src-n">/refer.html \u00B7 Customer referral</div><div class="cd-src-pct">5%</div><div class="cd-src-v">2</div></div>
+      </div>
+    </article>
+
+    <article class="cd-card">
+      <div class="cd-card-hd">
+        <div class="cd-card-t">Live activity</div>
+        <div class="cd-card-meta">Last 2 hours</div>
+      </div>
+
+      <div class="cd-feed">
+        <div class="cd-ev"><div class="cd-ev-t">2m ago</div><div class="cd-ev-l"><strong>Calculator used</strong> \u00B7 3,400 active patients, $312/visit \u00B7 result: $96k lost/yr</div></div>
+        <div class="cd-ev"><div class="cd-ev-t">7m ago</div><div class="cd-ev-l"><strong>Playbook requested</strong> \u00B7 rachel@coastlinedental.com</div></div>
+        <div class="cd-ev"><div class="cd-ev-t">11m ago</div><div class="cd-ev-l"><strong>Founder widget opened</strong> \u00B7 /for-dsos from LinkedIn \u00B7 clicked "Schedule"</div></div>
+        <div class="cd-ev"><div class="cd-ev-t">18m ago</div><div class="cd-ev-l"><strong>CTA click</strong> \u00B7 pilot hero CTA \u00B7 UTM: linkedin / personal-post-2026-04-19</div></div>
+        <div class="cd-ev"><div class="cd-ev-t">23m ago</div><div class="cd-ev-l"><strong>Signup started</strong> \u00B7 tier=practice_pro \u00B7 ref=RACHEL (referral)</div></div>
+        <div class="cd-ev"><div class="cd-ev-t">34m ago</div><div class="cd-ev-l"><strong>Referral submitted</strong> \u00B7 Mosaic referred Bay Area Family Dentistry \u00B7 intro email queued</div></div>
+        <div class="cd-ev"><div class="cd-ev-t">48m ago</div><div class="cd-ev-l"><strong>Schedule booked</strong> \u00B7 Thu 2pm ET \u00B7 Coastline DSO</div></div>
+        <div class="cd-ev"><div class="cd-ev-t">1h ago</div><div class="cd-ev-l"><strong>Trial activated</strong> \u00B7 North Shore Orthodontics \u00B7 Practice Pro</div></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- QUICK LINKS -->
+  <section class="cd-card">
+    <div class="cd-card-hd">
+      <div class="cd-card-t">Quick links</div>
+      <div class="cd-card-meta">Ops + public pages</div>
+    </div>
+    <div class="cd-links">
+      <a class="cd-link" href="/calculator.html"><div class="cd-link-t">Calculator<small>Converting at 38%</small></div><div class="cd-link-arr">\u2192</div></a>
+      <a class="cd-link" href="/pilot.html"><div class="cd-link-t">Pilot page<small>2/10 slots filled</small></div><div class="cd-link-arr">\u2192</div></a>
+      <a class="cd-link" href="/playbook.html"><div class="cd-link-t">Playbook<small>149 leads this wk</small></div><div class="cd-link-arr">\u2192</div></a>
+      <a class="cd-link" href="/for-dsos.html"><div class="cd-link-t">For DSOs<small>Scoping Thu 2pm</small></div><div class="cd-link-arr">\u2192</div></a>
+      <a class="cd-link" href="/refer.html"><div class="cd-link-t">Refer<small>1 active referral</small></div><div class="cd-link-arr">\u2192</div></a>
+      <a class="cd-link" href="/done-for-you.html"><div class="cd-link-t">Done-for-you<small>Premium ARPU tier</small></div><div class="cd-link-arr">\u2192</div></a>
+      <a class="cd-link" href="/welcome.html"><div class="cd-link-t">Welcome<small>Onboarding flow</small></div><div class="cd-link-arr">\u2192</div></a>
+      <a class="cd-link" href="/cancel.html"><div class="cd-link-t">Cancel<small>Save flow</small></div><div class="cd-link-arr">\u2192</div></a>
+      <a class="cd-link" href="/trust.html"><div class="cd-link-t">Trust hub<small>Credibility page</small></div><div class="cd-link-arr">\u2192</div></a>
+      <a class="cd-link" href="/schedule.html"><div class="cd-link-t">Schedule<small>2 booked this wk</small></div><div class="cd-link-arr">\u2192</div></a>
+    </div>
+  </section>
+
+  <footer class="cd-foot">
+    Internal only \u00B7 noindex \u00B7 Ship anything worth seeing \u00B7 © 2026 usdpr.
+  </footer>
+</main>
+
+<script>
+(function(){
+  'use strict';
+
+  // Task completion, persisted
+  const STORAGE = 'usdpr_cd_tasks_v1';
+  let done = {};
+  try { done = JSON.parse(localStorage.getItem(STORAGE) || '{}'); } catch(e){ done = {}; }
+
+  const tasks = Array.from(document.querySelectorAll('[data-task]'));
+  document.getElementById('totalCount').textContent = String(tasks.length);
+
+  function render(){
+    let n = 0;
+    tasks.forEach(t => {
+      const key = t.dataset.task;
+      const mark = t.querySelector('.cd-task-mark');
+      if (done[key]) { t.classList.add('on'); mark.classList.add('on'); n++; }
+      else           { t.classList.remove('on'); mark.classList.remove('on'); }
+    });
+    document.getElementById('doneCount').textContent = String(n);
+  }
+
+  document.getElementById('taskList').addEventListener('click', (ev) => {
+    const mark = ev.target.closest('.cd-task-mark');
+    if (!mark) return;
+    const task = mark.closest('[data-task]');
+    const key = task.dataset.task;
+    if (done[key]) delete done[key]; else done[key] = Date.now();
+    try { localStorage.setItem(STORAGE, JSON.stringify(done)); } catch(e){}
+    render();
+  });
+
+  render();
+
+  // Updated-at freshness
+  const upd = document.getElementById('updated');
+  let n = 0;
+  setInterval(() => { n++; upd.textContent = (n < 60 ? n + 's ago' : Math.round(n/60) + 'm ago'); }, 1000);
+})();
+</script>
+
+<!-- ─── Revenue ops panel: nurture + function logs ─────────────────────── -->
+<style>
+  .cd-ops{max-width:1480px;margin:0 auto;padding:16px 24px 48px}
+  .cd-ops h2{font-size:18px;color:#f6f4ef;font-variation-settings:'opsz' 18,'wdth' 92,'wght' 700;letter-spacing:-.01em;margin-bottom:12px}
+  .cd-ops .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+  .cd-ops .card{background:#11161a;border:1px solid #1a1d20;border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+  .cd-ops .card h3{font-size:13px;color:#f6f4ef;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;letter-spacing:.02em;margin:0}
+  .cd-ops .card p{font-size:12px;color:rgba(246,244,239,.52);line-height:1.55;margin:0}
+  .cd-ops .card label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(246,244,239,.52);font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700}
+  .cd-ops .card input, .cd-ops .card select, .cd-ops .card textarea{
+    background:#0b0e0f;border:1px solid #1a1d20;color:#f6f4ef;padding:10px 12px;border-radius:8px;
+    font:inherit;font-size:13px;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500;
+    outline:none;transition:border-color .14s;
+  }
+  .cd-ops .card input:focus, .cd-ops .card select:focus, .cd-ops .card textarea:focus{border-color:#f97316}
+  .cd-ops .card textarea{min-height:120px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;line-height:1.45;resize:vertical}
+  .cd-ops .card button{
+    background:#f97316;border:none;color:#fff;padding:10px 16px;border-radius:999px;
+    font:inherit;font-size:12px;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:.02em;
+    cursor:pointer;transition:background .14s;
+  }
+  .cd-ops .card button:hover{background:#ea580c}
+  .cd-ops .card button:disabled{opacity:.55;cursor:not-allowed}
+  .cd-ops .card .out{background:#0b0e0f;border:1px solid #1a1d20;border-radius:8px;padding:10px 12px;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#86efac;max-height:220px;overflow:auto;white-space:pre-wrap;word-break:break-word}
+  .cd-ops .card .out.err{color:#fca5a5}
+  .cd-ops .card .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .cd-ops .card .links a{
+    padding:6px 12px;border:1px solid #1a1d20;border-radius:999px;color:#f6f4ef;text-decoration:none;
+    font-size:11px;font-variation-settings:'opsz' 11,'wdth' 100,'wght' 600;transition:border-color .14s,color .14s;
+  }
+  .cd-ops .card .links a:hover{border-color:#f97316;color:#f97316}
+</style>
+<section class="cd-ops">
+  <h2>Revenue Ops</h2>
+  <div class="grid">
+
+    <!-- Nurture sender -->
+    <div class="card">
+      <h3>Fire nurture touch</h3>
+      <p>Paste new leads from Netlify Function logs (one JSON object per line) and fire a follow-up touch. All three touches are Resend-powered.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <label for="opsTouch" style="margin:0">Touch:</label>
+        <select id="opsTouch" style="flex:0 0 auto">
+          <option value="day2">Day 2 — Follow-up</option>
+          <option value="day5">Day 5 — The 1-vs-5 chart</option>
+          <option value="day10">Day 10 — Last note</option>
+        </select>
+      </div>
+      <label for="opsSecret">Nurture secret (env var)</label>
+      <input type="password" id="opsSecret" placeholder="NURTURE_SECRET" autocomplete="off">
+      <label for="opsLeads">Leads JSON (one per line)</label>
+      <textarea id="opsLeads" placeholder='{"email":"dr@practice.com","practice":"Orlando Dental","specialty":"gp","active":2000,"visit":285}'></textarea>
+      <div style="display:flex;gap:8px">
+        <button id="opsFire" type="button">Send nurture batch →</button>
+        <button id="opsLoadDemo" type="button" style="background:transparent;border:1px solid #1a1d20;color:#f6f4ef">Load demo lead</button>
+      </div>
+      <div class="out" id="opsOut" style="display:none"></div>
+    </div>
+
+    <!-- External links -->
+    <div class="card">
+      <h3>Logs & admin</h3>
+      <p>Direct links to the authoritative sources of truth.</p>
+      <div class="links">
+        <a href="https://app.netlify.com/projects/usdpr/logs/functions" target="_blank" rel="noopener">Netlify function logs</a>
+        <a href="https://app.netlify.com/projects/usdpr/deploys" target="_blank" rel="noopener">Deploys</a>
+        <a href="https://dashboard.stripe.com/acct_1SxeXWJvsDCGgsQz/payments" target="_blank" rel="noopener">Stripe payments</a>
+        <a href="https://dashboard.stripe.com/acct_1SxeXWJvsDCGgsQz/payment-links" target="_blank" rel="noopener">Stripe links</a>
+        <a href="https://resend.com/emails" target="_blank" rel="noopener">Resend inbox</a>
+        <a href="https://plausible.io/usdpr.netlify.app" target="_blank" rel="noopener">Plausible analytics</a>
+      </div>
+      <p style="margin-top:8px">Env vars to set in Netlify Dashboard → Site settings → Environment:</p>
+      <div class="out" style="color:#fbbf24;display:block">RESEND_API_KEY=re_...
+RESEND_FROM=Colin at usdpr. &lt;hello@usdentalpatientrecovery.com&gt;
+OPERATOR_EMAIL=colin@usdentalpatientrecovery.com
+NURTURE_SECRET=&lt;random-long-string&gt;</div>
+    </div>
+
+    <!-- Capture test harness -->
+    <div class="card">
+      <h3>Test capture flow</h3>
+      <p>Synthesizes an audit submission and fires it at <code>/leads/audit</code>. You should see it in Netlify logs + the operator email.</p>
+      <input id="opsTestEmail" type="email" placeholder="your+test@example.com">
+      <input id="opsTestPractice" type="text" placeholder="Demo practice" value="Orlando Test Practice">
+      <select id="opsTestSpecialty">
+        <option value="gp">General practice</option>
+        <option value="ortho">Orthodontics</option>
+        <option value="endo">Endodontics</option>
+        <option value="perio">Periodontics</option>
+        <option value="dso">DSO</option>
+      </select>
+      <button id="opsTestFire" type="button">Fire test audit →</button>
+      <div class="out" id="opsTestOut" style="display:none"></div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  const $ = (id)=>document.getElementById(id);
+  function show(el, msg, isErr){
+    el.style.display = 'block';
+    el.classList.toggle('err', !!isErr);
+    el.textContent = typeof msg === 'string' ? msg : JSON.stringify(msg, null, 2);
+  }
+
+  // Fire nurture batch
+  $('opsFire').addEventListener('click', async () => {
+    const touch  = $('opsTouch').value;
+    const secret = $('opsSecret').value.trim();
+    const raw    = $('opsLeads').value.trim();
+    if (!raw) return show($('opsOut'), 'Paste at least one lead JSON line.', true);
+    const leads = [];
+    for (const line of raw.split(/\n+/)){
+      const t = line.trim();
+      if (!t) continue;
+      try { leads.push(JSON.parse(t)); }
+      catch(e){ return show($('opsOut'), 'Invalid JSON line: '+t.slice(0,80), true); }
+    }
+    show($('opsOut'), 'Sending '+leads.length+' lead(s) for '+touch+'…');
+    $('opsFire').disabled = true;
+    try {
+      const res = await fetch('/.netlify/functions/nurture', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ touch, leads, key: secret })
+      });
+      const body = await res.json().catch(()=>({ok:false, error:'non-json response'}));
+      show($('opsOut'), body, !res.ok);
+    } catch(e){
+      show($('opsOut'), String(e), true);
+    } finally {
+      $('opsFire').disabled = false;
+    }
+  });
+
+  $('opsLoadDemo').addEventListener('click', () => {
+    $('opsLeads').value = JSON.stringify({
+      email: 'colin@usdentalpatientrecovery.com',
+      practice: 'Demo Orlando Dental',
+      specialty: 'gp',
+      active: 2000,
+      visit: 285,
+    });
+  });
+
+  // Test capture
+  $('opsTestFire').addEventListener('click', async () => {
+    const email = $('opsTestEmail').value.trim();
+    if (!email) return show($('opsTestOut'), 'Enter a real email to receive the test.', true);
+    const payload = {
+      email,
+      practice:  $('opsTestPractice').value.trim(),
+      specialty: $('opsTestSpecialty').value,
+      pms: 'open_dental',
+      active: 2000, visit: 285,
+      recall: 'none',
+      audit_version: 'v1.0',
+      ts: new Date().toISOString(),
+      page: 'colin-dashboard.html',
+    };
+    show($('opsTestOut'), 'Firing /leads/audit …');
+    try {
+      const res = await fetch('/leads/audit', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload),
+      });
+      const body = await res.json().catch(()=>({ok:false}));
+      show($('opsTestOut'), Object.assign({http_ok: res.ok, status: res.status}, body), !res.ok);
+    } catch(e){
+      show($('opsTestOut'), String(e), true);
+    }
+  });
+})();
+</script>
+</body>
+</html>

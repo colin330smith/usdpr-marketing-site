@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 396" width="1584" height="396">
+  <title>usdpr. — LinkedIn banner</title>
+
+  <!-- Background -->
+  <rect width="1584" height="396" fill="#f6f4ef"/>
+
+  <!-- Amber glow top-right -->
+  <defs>
+    <radialGradient id="glow" cx="0.88" cy="0.15" r="0.55">
+      <stop offset="0%" stop-color="#f97316" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1584" height="396" fill="url(#glow)"/>
+
+  <!-- Vertical rule (LinkedIn profile pic sits at left ~80px) -->
+  <line x1="100" y1="68" x2="1484" y2="68" stroke="#d1c9b8" stroke-width="1"/>
+
+  <!-- Top row: wordmark + meta -->
+  <g transform="translate(420 58)">
+    <text font-family="'Bricolage Grotesque', sans-serif"
+          font-size="38" font-weight="800" fill="#0b0e0f"
+          letter-spacing="-1.8" font-stretch="92%">usdpr</text>
+    <circle cx="132" cy="-7" r="6" fill="#f97316"/>
+  </g>
+
+  <g transform="translate(1484 50)" text-anchor="end">
+    <text font-family="'Bricolage Grotesque', sans-serif"
+          font-size="14" font-weight="600" fill="#6b6e70"
+          letter-spacing="1.4">US DENTAL PATIENT RECOVERY · ORLANDO · FL</text>
+  </g>
+
+  <!-- Eyebrow -->
+  <g transform="translate(420 148)">
+    <line x1="0" y1="0" x2="32" y2="0" stroke="#f97316" stroke-width="1.5"/>
+    <text x="48" y="5" font-family="'Bricolage Grotesque', sans-serif"
+          font-size="16" font-weight="600" fill="#f97316"
+          letter-spacing="0.16">PATIENT REACTIVATION · FOR PRIVATE DENTAL PRACTICES</text>
+  </g>
+
+  <!-- Big headline -->
+  <g transform="translate(420 200)"
+     font-family="'Bricolage Grotesque', sans-serif"
+     font-size="62" font-weight="800" fill="#0b0e0f"
+     letter-spacing="-2.8" font-stretch="92%">
+    <text>Bring back the patients</text>
+    <text y="70">you <tspan fill="#f97316">already have.</tspan></text>
+  </g>
+
+  <!-- Accent underline under "have" -->
+  <line x1="664" y1="348" x2="886" y2="348" stroke="#f97316" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Bottom metadata -->
+  <g transform="translate(420 376)">
+    <text font-family="'Bricolage Grotesque', sans-serif"
+          font-size="16" font-weight="600" fill="#0b0e0f"
+          letter-spacing="-0.4">Plans from $297/mo  ·  14-day free trial  ·  BAA signed first  ·  usdentalpatientrecovery.com</text>
+  </g>
+</svg>

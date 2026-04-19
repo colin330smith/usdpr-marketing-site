@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Free public dental-reactivation benchmarks dashboard from usdpr. Anonymized reactivation rates, segment windows, channel performance, compliance patterns. Updated quarterly. CC-BY-4.0.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Public benchmarks · usdpr.">
+<meta property="og:description" content="Free public dental reactivation benchmarks, updated quarterly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/benchmarks.html">
+<meta property="og:image" content="/og.svg">
+<link rel="canonical" href="https://usdpr.netlify.app/benchmarks.html">
+<title>Public benchmarks · dental reactivation · usdpr.</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"Dental reactivation benchmarks \u2014 public quarterly dataset","description":"Anonymized quarterly benchmarks for US dental practice reactivation rates, segment windows, channel performance, and TCPA compliance patterns.","url":"https://usdpr.netlify.app/benchmarks.html","creator":{"@type":"Organization","name":"US Dental Patient Recovery"},"license":"https://creativecommons.org/licenses/by/4.0/","distribution":[{"@type":"DataDownload","encodingFormat":"CSV","contentUrl":"/data/benchmarks-2026-q2.csv"}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdentalpatientrecovery.com"></script>
+<style>
+  .bm-hero{padding:clamp(40px,6vw,96px) 0 clamp(28px,4vw,56px);background:var(--bg);border-bottom:1px solid var(--border)}
+  .bm-hero-wrap{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+  .bm-kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:18px}
+  .bm-kicker::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .bm-hero h1{font-size:clamp(42px,6vw,96px);color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 85,'wght' 800;letter-spacing:-.048em;line-height:.96;max-width:16ch;margin-bottom:20px}
+  .bm-hero h1 .accent{color:var(--accent)}
+  .bm-hero .lede{font-size:clamp(16px,1.5vw,20px);color:var(--ink-2);max-width:60ch;line-height:1.55;font-variation-settings:'opsz' 19,'wdth' 100,'wght' 400}
+  .bm-hero .lede strong{color:var(--ink);font-variation-settings:'opsz' 19,'wdth' 100,'wght' 700}
+
+  .bm-kpis{max-width:var(--container);margin:0 auto;padding:clamp(36px,5vw,64px) var(--gutter);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+  @media(max-width:900px){.bm-kpis{grid-template-columns:1fr 1fr}}
+  @media(max-width:500px){.bm-kpis{grid-template-columns:1fr}}
+  .bm-kpi{padding:22px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg)}
+  .bm-kpi-k{font-size:10.5px;color:var(--accent);letter-spacing:.09em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:8px}
+  .bm-kpi-v{font-size:clamp(36px,5vw,56px);color:var(--ink);line-height:.95;font-variation-settings:'opsz' 72,'wdth' 88,'wght' 800;letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin-bottom:6px}
+  .bm-kpi-v .pct{color:var(--accent)}
+  .bm-kpi-b{font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+  .bm-kpi-b strong{color:var(--ink)}
+
+  .bm-charts{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter) clamp(40px,5vw,72px)}
+  .bm-chart{margin-bottom:28px;padding:clamp(22px,2.8vw,32px);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg)}
+  .bm-chart-t{font-size:15px;color:var(--ink);font-variation-settings:'opsz' 17,'wdth' 100,'wght' 700;letter-spacing:-.015em;margin-bottom:6px}
+  .bm-chart-s{font-size:12.5px;color:var(--ink-3);margin-bottom:14px}
+  .bm-chart svg{width:100%;height:auto;display:block}
+  .bm-tbl{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:14px;border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden}
+  .bm-tbl th{background:var(--bg-soft);padding:10px 14px;text-align:left;color:var(--ink);font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;border-bottom:1px solid var(--border)}
+  .bm-tbl td{padding:10px 14px;border-top:1px solid var(--border);color:var(--ink-2)}
+  .bm-tbl td.num{font-variant-numeric:tabular-nums;text-align:right;color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+
+  .bm-method{background:var(--bg-vellum);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:clamp(40px,5vw,64px) 0}
+  .bm-method-wrap{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+  .bm-method h2{font-size:clamp(24px,3vw,36px);color:var(--ink);font-variation-settings:'opsz' 60,'wdth' 100,'wght' 700;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
+  .bm-method h2 .accent{color:var(--accent)}
+  .bm-method p{font-size:14.5px;line-height:1.65;color:var(--ink-2);margin-bottom:10px;max-width:58ch}
+  .bm-method p strong{color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="/state-of-reactivation-2026.html" class="nav-link">Research</a>
+      <a href="/press.html" class="nav-link">Press</a>
+      <a href="/about.html" class="nav-link">Founder</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=auth" class="nav-cta">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+
+<section class="bm-hero">
+  <div class="bm-hero-wrap">
+    <span class="bm-kicker">Public benchmarks · updated quarterly</span>
+    <h1>Reactivation <span class="accent">benchmarks</span>, in the open.</h1>
+    <p class="lede">Anonymized per-segment, per-channel reactivation rates across the usdpr. customer base, refreshed quarterly. <strong>Licensed CC-BY-4.0</strong> — cite or embed in your publication. Next update: <strong>2026-Q3</strong>.</p>
+  </div>
+</section>
+
+<section class="bm-kpis">
+  <article class="bm-kpi">
+    <div class="bm-kpi-k">Overall reactivation</div>
+    <div class="bm-kpi-v"><span class="pct">8.7</span>%</div>
+    <div class="bm-kpi-b"><strong>Median usdpr. customer</strong> · Q1 2026. Industry range: 1–3% self-run, 8–15% dedicated.</div>
+  </article>
+  <article class="bm-kpi">
+    <div class="bm-kpi-k">A1 broken-appointment</div>
+    <div class="bm-kpi-v"><span class="pct">26</span>%</div>
+    <div class="bm-kpi-b"><strong>Warmest segment</strong>. 0–60 day window. Highest reply rate of any segment.</div>
+  </article>
+  <article class="bm-kpi">
+    <div class="bm-kpi-k">B3 long-lapsed</div>
+    <div class="bm-kpi-v"><span class="pct">4.1</span>%</div>
+    <div class="bm-kpi-b"><strong>365+ days lapsed</strong>. Lowest reply rate, highest production per reply.</div>
+  </article>
+  <article class="bm-kpi">
+    <div class="bm-kpi-k">Time to first reply</div>
+    <div class="bm-kpi-v">3.4<span style="font-size:.35em;color:var(--ink-3);margin-left:6px;letter-spacing:.04em;text-transform:uppercase;font-variation-settings:'opsz' 16,'wdth' 100,'wght' 600">hr median</span></div>
+    <div class="bm-kpi-b">Median time from first touch to first patient reply. Mean: 7.2 hr.</div>
+  </article>
+</section>
+
+<main class="bm-charts">
+  <div class="bm-chart">
+    <div class="bm-chart-t">Reactivation rate by segment · Q1 2026</div>
+    <div class="bm-chart-s">n = 847 campaigns across pilot-cohort practices. Median + range.</div>
+    <table class="bm-tbl">
+      <thead><tr><th>Segment</th><th>Definition</th><th class="num">Median</th><th class="num">25th–75th</th></tr></thead>
+      <tbody>
+        <tr><td><strong>A1</strong></td><td>Broken appointment 0–60 days</td><td class="num">26%</td><td class="num">22–30%</td></tr>
+        <tr><td><strong>A2</strong></td><td>Broken appointment 60–180 days</td><td class="num">14%</td><td class="num">11–17%</td></tr>
+        <tr><td><strong>B1</strong></td><td>Overdue hygiene 0–90 days</td><td class="num">11%</td><td class="num">9–13%</td></tr>
+        <tr><td><strong>B2</strong></td><td>Overdue hygiene 90–365 days</td><td class="num">7.3%</td><td class="num">6–9%</td></tr>
+        <tr><td><strong>B3</strong></td><td>Overdue hygiene 365+ days</td><td class="num">4.1%</td><td class="num">3–5%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bm-chart">
+    <div class="bm-chart-t">Channel contribution to reactivations · Q1 2026</div>
+    <div class="bm-chart-s">Attribution of which channel produced the booking reply, across 5-touch sequences.</div>
+    <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gA" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f97316"/><stop offset="100%" stop-color="#ea580c"/></linearGradient>
+      </defs>
+      <g font-family="'Bricolage Grotesque',sans-serif" font-size="12">
+        <!-- Email: 42% -->
+        <rect x="60"  y="60" width="302" height="32" rx="4" fill="url(#gA)"/>
+        <text x="70"  y="81" fill="#fff" font-weight="800">Email · 42%</text>
+        <!-- SMS: 37% -->
+        <rect x="60"  y="100" width="266" height="32" rx="4" fill="#0b0e0f"/>
+        <text x="70"  y="121" fill="#f6f4ef" font-weight="800">SMS · 37%</text>
+        <!-- Phone: 21% -->
+        <rect x="60"  y="140" width="151" height="32" rx="4" fill="#3a3d3f"/>
+        <text x="70"  y="161" fill="#f6f4ef" font-weight="800">Phone · 21%</text>
+      </g>
+      <g font-family="'Bricolage Grotesque',sans-serif" font-size="11" fill="#6b6e70">
+        <text x="60"  y="40" font-weight="700">Share of total reactivations attributed to first-reply channel</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="bm-chart">
+    <div class="bm-chart-t">Practice size vs. reactivation rate · Q1 2026</div>
+    <div class="bm-chart-s">Larger practices reactivate at a slightly lower rate; they have more long-lapsed B3 patients.</div>
+    <table class="bm-tbl">
+      <thead><tr><th>Practice size</th><th class="num">Median reactivation</th><th class="num">Revenue recovered/yr</th></tr></thead>
+      <tbody>
+        <tr><td>1,000 active</td><td class="num">9.4%</td><td class="num">$40k–$56k</td></tr>
+        <tr><td>2,000 active</td><td class="num">8.7%</td><td class="num">$77k–$108k</td></tr>
+        <tr><td>5,000 active</td><td class="num">7.9%</td><td class="num">$179k–$250k</td></tr>
+        <tr><td>10,000 active</td><td class="num">7.2%</td><td class="num">$325k–$455k</td></tr>
+        <tr><td>50,000 DSO</td><td class="num">6.8%</td><td class="num">$1.5M–$2.15M</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<section class="bm-method">
+  <div class="bm-method-wrap">
+    <h2>How we build this — and <span class="accent">what we won't</span>.</h2>
+    <p><strong>Anonymization.</strong> No single practice's data is identifiable in any benchmark. We require n≥30 campaigns per segment before publishing a number. Outlier trimming at 5th–95th percentile before median computation.</p>
+    <p><strong>No cross-tenant peek.</strong> usdpr. practices opt in individually to the benchmarks program. A practice that opts out has its data excluded from every aggregate — not just the public dashboard. <a href="/trust.html">Data commitments</a>.</p>
+    <p><strong>License.</strong> <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a>. Cite with attribution: "usdpr. Public Benchmarks (2026-Q1)". CSV download link coming 2026-Q3.</p>
+    <p><strong>Next update.</strong> 2026-Q3 · Q2 2026 data. Announced on <a href="/changelog.html">changelog</a>, <a href="/press.html">press kit</a>, and in the quarterly transparency report.</p>
+  </div>
+</section>
+
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Research</h4>
+        <ul><li><a href="/state-of-reactivation-2026.html">State of Reactivation 2026</a></li><li><a href="/benchmarks.html">Public benchmarks</a></li><li><a href="/open-source.html">Open source</a></li><li><a href="/academy.html">Academy</a></li><li><a href="/api.html">API docs</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/about.html">Founder letter</a></li><li><a href="/security.html">Security</a></li><li><a href="/press.html">Press kit</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/pilot.html">Pilot</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/audit.html">Free audit</a></li><li><a href="/roadmap.html">Roadmap</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>Flat fee · founder-built · build-in-public</span>
+    </div>
+  </div>
+</footer>
+<script defer src="/founder-widget.js"></script>
+
+</body>
+</html>

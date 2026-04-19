@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="How to pull your overdue patient list out of Dentrix, Eaglesoft, Open Dental, or Curve Dental in under five minutes. Free guide.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>PMS export guide · usdpr.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f4ef;--bg-card:#ffffff;--bg-soft:#efece4;
+    --ink:#0b0e0f;--ink-2:#3a3d3f;--ink-3:#6b6e70;
+    --accent:#f97316;--accent-soft:#fff3e7;--accent-100:#ffe0c2;--accent-hover:#ea580c;
+    --border:#e3ddd1;--border-2:#d1c9b8;--border-soft:#eae4d6;
+    --ok:#15803d;--ok-soft:#ecfdf3;
+    --ease:cubic-bezier(.22,.8,.2,1);
+    --container:960px;--gutter:clamp(20px,4vw,48px);
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Bricolage Grotesque','-apple-system',BlinkMacSystemFont,sans-serif;
+    font-size:16px;line-height:1.6;color:var(--ink-2);background:var(--bg);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 400;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent);color:#fff}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(246,244,239,.82);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--border)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 var(--gutter);max-width:var(--container);margin:0 auto}
+  .wordmark{display:inline-flex;align-items:baseline;text-decoration:none;color:var(--ink);font-size:22px;font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;letter-spacing:-.05em;line-height:1}
+  .wordmark-dot{color:var(--accent);margin-left:-.02em}
+  .nav-cta{font-size:14px;color:var(--ink);text-decoration:none;padding:9px 18px;border-radius:100px;border:1.5px solid var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 600;transition:all .18s var(--ease)}
+  .nav-cta:hover{background:var(--ink);color:var(--bg)}
+
+  .mx{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+
+  .head{padding:clamp(40px,6vw,80px) 0 clamp(24px,3vw,32px);text-align:center;border-bottom:1px solid var(--border)}
+  .eye{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--accent);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 600;margin-bottom:16px}
+  .eye::before{content:'';width:22px;height:1px;background:var(--accent)}
+  h1{font-size:clamp(38px,5.5vw,64px);line-height:1;color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 100,'wght' 800;letter-spacing:-.04em;margin-bottom:14px;max-width:18ch;margin-left:auto;margin-right:auto}
+  h1 .accent{color:var(--accent)}
+  .lede{font-size:17px;line-height:1.55;color:var(--ink-2);max-width:52ch;margin:0 auto 20px}
+  .lede strong{color:var(--ink);font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700}
+
+  /* Tabs */
+  .tabs-wrap{padding:clamp(24px,3vw,36px) 0}
+  .tabs{
+    display:flex;gap:8px;padding:6px;
+    background:var(--bg-card);border:1px solid var(--border);border-radius:100px;
+    margin:0 auto clamp(24px,3vw,36px);max-width:620px;
+    overflow-x:auto;scrollbar-width:none;
+  }
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{
+    flex:1;padding:10px 16px;border-radius:100px;
+    background:transparent;border:0;
+    font-family:inherit;font-size:14px;
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 600;
+    color:var(--ink-2);cursor:pointer;
+    transition:background .18s var(--ease),color .18s var(--ease);
+    white-space:nowrap;
+  }
+  .tab:hover{color:var(--ink)}
+  .tab.active{background:var(--ink);color:var(--bg)}
+
+  .panel{display:none}
+  .panel.active{display:block}
+
+  /* Steps */
+  .step-list{padding:clamp(8px,1vw,16px) 0}
+  .step{
+    display:grid;grid-template-columns:56px 1fr;gap:24px;
+    padding:clamp(24px,3vw,36px) 0;
+    border-top:1px solid var(--border);
+  }
+  .step:first-child{border-top:0}
+  @media(max-width:640px){.step{grid-template-columns:1fr;gap:12px}}
+
+  .step-num{
+    font-size:44px;line-height:1;color:var(--ink);
+    font-variation-settings:'opsz' 72,'wdth' 100,'wght' 800;
+    letter-spacing:-.04em;
+  }
+  .step-t{
+    font-size:clamp(18px,2vw,22px);color:var(--ink);
+    font-variation-settings:'opsz' 24,'wdth' 100,'wght' 700;
+    letter-spacing:-.018em;margin-bottom:10px;line-height:1.25;
+  }
+  .step-b{font-size:15px;line-height:1.65;color:var(--ink-2);margin-bottom:10px}
+  .step-b strong{color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+
+  .menu-path{
+    display:inline-flex;flex-wrap:wrap;gap:4px;align-items:center;
+    padding:6px 10px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;
+    font-family:inherit;font-size:13px;
+    color:var(--ink);margin:6px 0;
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 600;
+  }
+  .menu-path span{color:var(--accent)}
+
+  .note{
+    margin-top:12px;padding:12px 16px;
+    background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:6px;
+    font-size:13.5px;line-height:1.55;color:var(--ink-2);
+  }
+  .note strong{color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+
+  .fields{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;
+    margin:12px 0;
+  }
+  .field{
+    padding:10px 14px;background:var(--bg-card);border:1px solid var(--border);
+    border-radius:8px;font-size:13px;color:var(--ink);
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 600;
+  }
+  .field-req{
+    font-size:10.5px;padding:2px 7px;border-radius:100px;
+    background:var(--accent-soft);color:var(--accent);
+    font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700;letter-spacing:.04em;
+  }
+
+  /* CTA */
+  .cta-block{
+    margin-top:clamp(40px,5vw,72px);padding:clamp(32px,4vw,48px);
+    background:var(--ink);color:var(--bg);border-radius:18px;text-align:center;
+  }
+  .cta-block h2{
+    font-size:clamp(26px,3vw,38px);color:var(--bg);
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 800;
+    letter-spacing:-.028em;line-height:1.1;margin-bottom:12px;
+  }
+  .cta-block h2 .accent{color:var(--accent)}
+  .cta-block p{font-size:16px;color:rgba(246,244,239,.7);margin-bottom:24px;max-width:44ch;margin-left:auto;margin-right:auto}
+  .cta-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 24px;border-radius:100px;
+    background:var(--accent);color:var(--ink);text-decoration:none;
+    font-size:15px;font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700;
+    transition:transform .2s var(--ease);
+  }
+  .cta-btn:hover{transform:translateY(-2px)}
+  .cta-btn svg{width:14px;height:14px}
+
+  .foot{padding:32px 0;border-top:1px solid var(--border);font-size:13px;color:var(--ink-3);text-align:center;margin-top:32px}
+  .foot a{color:var(--ink-2);text-decoration:none}
+  .foot a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark">usdpr<span class="wordmark-dot">.</span></a>
+    <a href="/#schedule" class="nav-cta">Book a call</a>
+  </div>
+</header>
+
+<main>
+  <section class="head">
+    <div class="mx">
+      <div class="eye">Free · 5-minute extract</div>
+      <h1>Pull your overdue list <span class="accent">in 5 minutes</span>.</h1>
+      <p class="lede">Step-by-step for the four most common PMS systems. <strong>No SQL, no support tickets.</strong> Click your software below.</p>
+    </div>
+  </section>
+
+  <section class="tabs-wrap">
+    <div class="mx">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="dentrix" role="tab" aria-selected="true">Dentrix</button>
+        <button class="tab" data-tab="eaglesoft" role="tab">Eaglesoft</button>
+        <button class="tab" data-tab="opendental" role="tab">Open Dental</button>
+        <button class="tab" data-tab="curve" role="tab">Curve Dental</button>
+      </div>
+
+      <!-- DENTRIX -->
+      <div class="panel active" data-panel="dentrix">
+        <div class="step-list">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <h3 class="step-t">Open the Letter Merge</h3>
+              <p class="step-b">In Dentrix, the overdue-patient extract lives under the Letter Merge tool — don't look in Reports.</p>
+              <div class="menu-path">Office Manager <span>›</span> Letters &amp; Custom Lists <span>›</span> Inactive Patient</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <h3 class="step-t">Set the date filter</h3>
+              <p class="step-b">Set "Last Visit" range: <strong>6 to 24 months ago</strong>. This captures the sweet spot — patients who've drifted but aren't totally gone.</p>
+              <div class="note"><strong>Optional:</strong> add a second filter for "Missed Appointments &gt; 0" to catch broken-appointment patients on the same pull.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <h3 class="step-t">Pick the merge fields</h3>
+              <p class="step-b">These are the fields you want in your CSV export:</p>
+              <div class="fields">
+                <div class="field">First Name<span class="field-req">Required</span></div>
+                <div class="field">Last Name<span class="field-req">Required</span></div>
+                <div class="field">Mobile Phone<span class="field-req">Required</span></div>
+                <div class="field">Email<span class="field-req">Required</span></div>
+                <div class="field">Last Visit<span class="field-req">Required</span></div>
+                <div class="field">Preferred Contact</div>
+                <div class="field">Insurance Plan</div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div>
+              <h3 class="step-t">Export to CSV</h3>
+              <p class="step-b">Click <strong>Export to File</strong> → choose CSV. Dentrix saves to <code style="background:var(--bg-card);padding:2px 6px;border:1px solid var(--border);border-radius:4px;font-family:inherit">C:\DENTRIX\DOC\</code> by default.</p>
+              <div class="note"><strong>That's it.</strong> One CSV. Nothing else needed on your side.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EAGLESOFT -->
+      <div class="panel" data-panel="eaglesoft">
+        <div class="step-list">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <h3 class="step-t">Open Query Generator</h3>
+              <p class="step-b">In Eaglesoft, the overdue-patient pull lives in the Query tool — not in Reports.</p>
+              <div class="menu-path">Eaglesoft <span>›</span> Lists &amp; Queries <span>›</span> Patient Query</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <h3 class="step-t">Build the filter</h3>
+              <p class="step-b">Add two conditions:</p>
+              <div class="fields">
+                <div class="field">Last Visit Date<span class="field-req">6–24 mo</span></div>
+                <div class="field">Status<span class="field-req">Active</span></div>
+              </div>
+              <div class="note"><strong>Pro tip:</strong> exclude "Do Not Contact" status patients at the query level — cleaner list, no manual scrub.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <h3 class="step-t">Select output fields</h3>
+              <p class="step-b">Right-panel checkboxes. Pick the same fields Dentrix needs:</p>
+              <div class="fields">
+                <div class="field">First Name<span class="field-req">Required</span></div>
+                <div class="field">Last Name<span class="field-req">Required</span></div>
+                <div class="field">Mobile<span class="field-req">Required</span></div>
+                <div class="field">Email<span class="field-req">Required</span></div>
+                <div class="field">Last Appt Date<span class="field-req">Required</span></div>
+                <div class="field">SMS Consent</div>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div>
+              <h3 class="step-t">Run → Export</h3>
+              <p class="step-b">Click <strong>Run Query</strong> → <strong>Export</strong> → choose CSV. Saves to Eaglesoft's Output folder.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPEN DENTAL -->
+      <div class="panel" data-panel="opendental">
+        <div class="step-list">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <h3 class="step-t">Open User Query</h3>
+              <p class="step-b">Open Dental's SQL-free report builder handles this cleanly.</p>
+              <div class="menu-path">Reports <span>›</span> Standard <span>›</span> User Query</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <h3 class="step-t">Use the preset</h3>
+              <p class="step-b">Click <strong>Load Favorites</strong> → find <em>"Patients Not Seen 6 Months"</em>. Clone it. Edit date range to your window.</p>
+              <div class="note"><strong>If you're comfortable with SQL:</strong> a custom query works faster — filter on <code style="background:var(--bg-card);padding:2px 6px;border:1px solid var(--border);border-radius:4px;font-family:inherit">patient.DateLastVisit</code> between your dates, joined on <code style="background:var(--bg-card);padding:2px 6px;border:1px solid var(--border);border-radius:4px;font-family:inherit">patient.PatStatus = 0</code>.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <h3 class="step-t">Export</h3>
+              <p class="step-b"><strong>Right-click</strong> on the result grid → <strong>Export</strong> → choose CSV. That's it.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div>
+              <h3 class="step-t">Optional: also pull broken appointments</h3>
+              <p class="step-b">Second query: filter <code style="background:var(--bg-card);padding:2px 6px;border:1px solid var(--border);border-radius:4px;font-family:inherit">appointment.AptStatus = 5</code> (Broken) within last 90 days. Merge the two CSVs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CURVE DENTAL -->
+      <div class="panel" data-panel="curve">
+        <div class="step-list">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <h3 class="step-t">Open the Dashboard</h3>
+              <p class="step-b">Curve is cloud-first and the overdue list is a built-in dashboard widget.</p>
+              <div class="menu-path">Hygiene <span>›</span> Recall Management <span>›</span> Due / Past Due</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <h3 class="step-t">Filter by "Overdue"</h3>
+              <p class="step-b">Top-right filter pill: click <strong>Overdue</strong>. Set your range (6–24 months). Curve auto-updates the list.</p>
+              <div class="note"><strong>Important:</strong> toggle <strong>"Include Inactive"</strong> off unless you specifically want dormant patients too — the default is active-only.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <h3 class="step-t">Export CSV</h3>
+              <p class="step-b">Three-dot menu (top right) → <strong>Export CSV</strong>. Curve emails the file to the logged-in user's email within ~2 minutes.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div>
+              <h3 class="step-t">Heads up</h3>
+              <p class="step-b">Curve exports don't include SMS consent status by default. Either pull that from the patient profile view separately, or just assume not-consented and filter during outreach.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-block">
+        <h2>Want me to <span class="accent">do the pull</span> with you?</h2>
+        <p>30-minute screen-share, one time. I walk your team through the export and never touch your PMS again.</p>
+        <a href="/#schedule" class="cta-btn">
+          Book a 15-min call
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="mx">
+      © 2026 usdpr. · <a href="/">Back to homepage</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
+    </div>
+  </footer>
+</main>
+
+<script>
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      document.querySelector(`[data-panel="${tab.dataset.tab}"]`).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

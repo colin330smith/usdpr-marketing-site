@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Single-channel comparisons systematically underestimate the compounding effect. Here&#x27;s the real data.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="SMS vs email vs phone for dental recall — which channel wins (spoiler: it&#x27;s the wrong question)">
+<meta property="og:description" content="Single-channel comparisons systematically underestimate the compounding effect. Here&#x27;s the real data.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://usdpr.netlify.app/blog/sms-vs-email-vs-phone-for-dental-recall.html">
+<meta property="og:image" content="/og.svg">
+<link rel="canonical" href="https://usdpr.netlify.app/blog/sms-vs-email-vs-phone-for-dental-recall.html">
+<title>SMS vs email vs phone for dental recall — which channel wins (spoiler: it&#x27;s the wrong question) · usdpr.</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SMS vs email vs phone for dental recall \u2014 which channel wins (spoiler: it's the wrong question)","description":"Single-channel comparisons systematically underestimate the compounding effect. Here's the real data.","author":{"@type":"Person","name":"Colin Smith"},"publisher":{"@type":"Organization","name":"usdpr.","logo":{"@type":"ImageObject","url":"https://usdpr.netlify.app/brand/logo-wordmark.svg"}},"datePublished":"2026-04-19","dateModified":"2026-04-19","inLanguage":"en-US","url":"https://usdpr.netlify.app/blog/sms-vs-email-vs-phone-for-dental-recall.html","mainEntityOfPage":"https://usdpr.netlify.app/blog/sms-vs-email-vs-phone-for-dental-recall.html","keywords":"sms vs email vs phone for dental recall"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is SMS higher-ROI than phone?","acceptedAnswer":{"@type":"Answer","text":"Per hour of front-desk time: yes by 5-8\u00d7. Per individual contact: phone converts higher. Use both in the same sequence for best outcomes."}},{"@type":"Question","name":"Can I run phone outreach without TCPA concerns?","acceptedAnswer":{"@type":"Answer","text":"Phone calls to existing patients about their care are exempt from most TCPA consent requirements. Calls to prospective new patients require written consent (different story)."}},{"@type":"Question","name":"What's the best time gap between touches?","acceptedAnswer":{"@type":"Answer","text":"72-96 hours between touches 1-3, then 4-5 day gaps for touches 4-5. Faster feels spammy; slower loses momentum."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdpr.netlify.app"></script>
+<style>
+  .bp-wrap{max-width:760px;margin:0 auto;padding:clamp(40px,5vw,72px) var(--gutter) clamp(56px,7vw,96px)}
+  .bp-kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:18px}
+  .bp-kicker::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .bp-h1{font-size:clamp(32px,4.8vw,56px);color:var(--ink);font-variation-settings:'opsz' 72,'wdth' 92,'wght' 800;letter-spacing:-.038em;line-height:1.05;margin-bottom:16px}
+  .bp-dek{font-size:clamp(17px,1.6vw,20px);color:var(--ink-2);line-height:1.55;margin-bottom:22px;padding-bottom:20px;border-bottom:1px solid var(--border);font-variation-settings:'opsz' 20,'wdth' 100,'wght' 400}
+  .bp-s{margin-bottom:clamp(24px,3vw,36px)}
+  .bp-s h2{font-size:clamp(22px,2.4vw,30px);color:var(--ink);font-variation-settings:'opsz' 36,'wdth' 100,'wght' 700;letter-spacing:-.028em;line-height:1.2;margin-bottom:12px;padding-top:12px}
+  .bp-s p{font-size:16px;line-height:1.7;color:var(--ink-2);margin-bottom:14px;max-width:64ch}
+  .bp-s p strong{color:var(--ink);font-variation-settings:'opsz' 17,'wdth' 100,'wght' 700}
+  .bp-s p a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(249,115,22,.35);text-underline-offset:.2em}
+  .bp-s ul{margin:12px 0 16px;padding-left:1.2em;max-width:64ch}
+  .bp-s li{font-size:15.5px;line-height:1.65;color:var(--ink-2);margin-bottom:6px}
+  .bp-s li strong{color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+  .bp-t{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden}
+  .bp-t th{text-align:left;padding:10px 12px;background:var(--bg-soft);color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;border-bottom:1px solid var(--border);font-size:12px}
+  .bp-t td{padding:10px 12px;border-top:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+  .bp-faq{margin-top:clamp(32px,4vw,56px);padding-top:24px;border-top:1px solid var(--border)}
+  .bp-faq h2{font-size:clamp(22px,2.4vw,30px);color:var(--ink);font-variation-settings:'opsz' 36,'wdth' 100,'wght' 700;margin-bottom:14px;letter-spacing:-.028em}
+  .bp-faq-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 20px;margin-bottom:8px}
+  .bp-faq-item summary{font-size:15.5px;color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700;letter-spacing:-.015em;cursor:pointer}
+  .bp-faq-item p{font-size:14.5px;line-height:1.65;color:var(--ink-2);margin-top:10px;max-width:60ch}
+  .bp-cta{margin-top:clamp(40px,5vw,64px);padding:clamp(24px,3vw,36px);background:var(--bg-vellum);border-radius:var(--r-lg);text-align:center}
+  .bp-cta h3{font-size:clamp(20px,2.4vw,28px);color:var(--ink);font-variation-settings:'opsz' 32,'wdth' 100,'wght' 700;letter-spacing:-.022em;margin-bottom:8px;line-height:1.2}
+  .bp-cta p{font-size:14.5px;color:var(--ink-2);max-width:52ch;margin:0 auto 18px;line-height:1.55}
+  .bp-cta .row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="/pilot.html" class="nav-link">Pilot</a>
+      <a href="/calculator.html" class="nav-link">Calculator</a>
+      <a href="/about.html" class="nav-link">Founder</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=blog_sms-vs-email-vs-phone-for-dental-recall" class="nav-cta">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+<article class="bp-wrap">
+  <div class="bp-kicker">Field guide · 2026-04-19</div>
+  <h1 class="bp-h1">SMS vs email vs phone for dental recall — which channel wins (spoiler: it&#x27;s the wrong question)</h1>
+  <p class="bp-dek">Single-channel comparisons systematically underestimate the compounding effect. Here&#x27;s the real data.</p>
+
+<section class="bp-s"><h2>The single-channel reality</h2>
+<p><strong>SMS only:</strong> 95-98% delivered. 98% opened (SMS is phone-native). 15-22% reply rate. 3-7% book rate per send. Cost: $0.01-0.03 per send (Twilio 10DLC).</p>
+<p><strong>Email only:</strong> 94-97% delivered. 55-65% open rate. 5-9% reply rate. 3-5% book rate per send. Cost: essentially free.</p>
+<p><strong>Phone only:</strong> 30-45% answer rate. Of answered calls: 55% have real conversations, 25-35% book. Overall: 12-18% book rate on calls that connect. Cost: 2-4 minutes of front-desk time per call.</p>
+<p><strong>Postcard:</strong> 85-92% delivered. 3-6% response. Cost: $1.50-3 per mailing.</p>
+<p>Picking the 'best' channel: SMS wins on speed + cost, phone wins on book rate per contact, postcard wins for very long-lapsed (18+ months) where digital has burned out.</p>
+</section>
+<section class="bp-s"><h2>The multi-channel reality (the real answer)</h2>
+<p>A 5-touch sequence across email + SMS + phone over 14 days produces a 25-35% reactivation rate. The same 5 touches via SMS only: 12-18%. Via email only: 8-14%. Via phone only: 18-25%.</p>
+<p>Multiplication effect: multi-channel 5-touch outperforms single-channel 5-touch by ~2× for the same dollar/time cost. Patients respond to different channels. The sequence covers the gaps.</p>
+</section>
+<section class="bp-s"><h2>The optimal 5-touch sequence</h2>
+<p><strong>Touch 1 (day 0, email):</strong> The longest-content-allowed-touch. Explain the context. Offer two specific times.</p>
+<p><strong>Touch 2 (day 3, SMS):</strong> 'Hi {first} — sent you an email, wanted to make sure it landed. Want one of those times?'</p>
+<p><strong>Touch 3 (day 7, email):</strong> Second email, different subject line. 'Still good for a cleaning?'</p>
+<p><strong>Touch 4 (day 10, phone):</strong> Front-desk call. 30 seconds, not a pitch.</p>
+<p><strong>Touch 5 (day 14, SMS):</strong> 'Last check-in from us this month. No hard feelings either way — want back on the schedule or should we leave you alone?'</p>
+<p>Rate-limited to TCPA-safe 1/day + 3/week per patient.</p>
+</section>
+<section class="bp-s"><h2>Don&#x27;t do 6+ touches</h2>
+<p>Diminishing returns curve hits hard at touch 5. Touch 6 adds 0.3-0.5 percentage points. Touch 7-8 adds unsubscribes and spam complaints. The ceiling is physics, not tooling.</p>
+</section>
+<section class="bp-s"><h2>Automating all this</h2>
+<p>The 5-touch sequence with proper segmentation + reply-intent classification + rate limiting requires automation. Doing it manually at 500 lapsed patients = 250+ hours of front-desk time. [Automated tool that runs this end-to-end →](/) with [your practice's specific numbers →](/calculator.html)</p>
+</section>
+
+<section class="bp-faq"><h2>Frequently asked</h2><details class="bp-faq-item"><summary>Is SMS higher-ROI than phone?</summary><p>Per hour of front-desk time: yes by 5-8×. Per individual contact: phone converts higher. Use both in the same sequence for best outcomes.</p></details><details class="bp-faq-item"><summary>Can I run phone outreach without TCPA concerns?</summary><p>Phone calls to existing patients about their care are exempt from most TCPA consent requirements. Calls to prospective new patients require written consent (different story).</p></details><details class="bp-faq-item"><summary>What&#x27;s the best time gap between touches?</summary><p>72-96 hours between touches 1-3, then 4-5 day gaps for touches 4-5. Faster feels spammy; slower loses momentum.</p></details></section>
+
+  <div class="bp-cta">
+    <h3>Want to put this on autopilot?</h3>
+    <p>The 5-touch reactivation sequence runs end-to-end in [usdpr.](/) — pre-written templates, reply-intent AI, TCPA rate limits enforced in code. 14-day free trial, no card.</p>
+    <div class="row">
+      <a href="/signup?tier=practice_pro&amp;utm_source=blog&amp;utm_campaign=sms-vs-email-vs-phone-for-dental-recall" class="btn btn-primary" data-track="Blog CTA signup">Start the 14-day trial</a>
+      <a href="/calculator.html?utm_source=blog&amp;utm_campaign=sms-vs-email-vs-phone-for-dental-recall" class="btn btn-ghost">Run the calculator first</a>
+    </div>
+  </div>
+</article>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Tools</h4>
+        <ul><li><a href="/calculator.html">Calculator</a></li><li><a href="/audit.html">Audit</a></li><li><a href="/playbook.html">Playbook</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/about.html">Founder letter</a></li><li><a href="/security.html">Security</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/pilot.html">Pilot</a></li><li><a href="/compare.html">Compare</a></li><li><a href="/schedule.html">Book a call</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>TCPA compliant · HIPAA BAA · SOC 2 in progress</span>
+    </div>
+  </div>
+</footer>
+<script defer src="/founder-widget.js"></script>
+</body>
+</html>

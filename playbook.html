@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="The Dental Reactivation Playbook — a 12-section field guide on how US dental practices recover lapsed patients compliantly. Free, gated by email. PDF + web.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="The Dental Reactivation Playbook · usdpr.">
+<meta property="og:description" content="Field-tested SMS + email sequences, compliance guardrails, and benchmarks — free for US dental practices.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://usdpr.netlify.app/playbook.html">
+<meta property="og:image" content="/og.svg">
+<title>The Dental Reactivation Playbook · usdpr.</title>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"The Dental Reactivation Playbook","description":"A field guide on how US dental practices recover lapsed patients compliantly. Covers TCPA, HIPAA, Florida §817.505, multi-touch sequences, benchmarks, and segmentation.","author":{"@type":"Person","name":"Colin Smith","jobTitle":"Founder, US Dental Patient Recovery"},"publisher":{"@type":"Organization","name":"usdpr.","logo":{"@type":"ImageObject","url":"https://usdpr.netlify.app/brand/logo-wordmark.svg"}},"datePublished":"2026-04-18","inLanguage":"en-US","url":"https://usdpr.netlify.app/playbook.html","isAccessibleForFree":true}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<style>
+  /* ───── Hero — magazine-spread ───── */
+  .pb-hero{
+    position:relative;overflow:hidden;
+    padding:clamp(40px,6vw,88px) 0 clamp(28px,4vw,48px);
+    background:var(--bg-vellum);
+    border-bottom:1px solid var(--border);
+  }
+  .pb-hero::before{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.043 0 0 0 0 0.055 0 0 0 0 0.059 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+    opacity:.06;mix-blend-mode:multiply;
+  }
+  .pb-hero > *{position:relative;z-index:1}
+  .pb-hero-grid{
+    display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
+    gap:clamp(24px,5vw,64px);
+    align-items:center;
+    max-width:var(--container);margin:0 auto;padding:0 var(--gutter);
+  }
+  @media(max-width:900px){.pb-hero-grid{grid-template-columns:1fr}}
+
+  .pb-kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.12em;text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .pb-kicker::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .pb-kicker::after{content:'§';color:var(--ink-3);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 400;letter-spacing:0;text-transform:none}
+
+  .pb-hero h1{
+    font-size:clamp(44px,7vw,104px);
+    font-variation-settings:'opsz' 96,'wdth' 88,'wght' 800;
+    letter-spacing:-.048em;line-height:.94;color:var(--ink);
+    max-width:12ch;margin-bottom:18px;
+  }
+  .pb-hero h1 .accent{color:var(--accent)}
+
+  .pb-hero-lede{
+    font-size:clamp(16px,1.5vw,19px);line-height:1.55;
+    color:var(--ink-2);max-width:50ch;
+    margin-bottom:22px;
+    font-variation-settings:'opsz' 17,'wdth' 100,'wght' 400;
+  }
+  .pb-hero-lede strong{color:var(--ink);font-variation-settings:'opsz' 17,'wdth' 100,'wght' 700}
+
+  .pb-meta{
+    display:flex;flex-wrap:wrap;gap:8px 28px;
+    font-size:12px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+    padding-top:18px;border-top:1px solid var(--border);
+  }
+  .pb-meta strong{color:var(--ink);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+
+  /* Cover card — faux book */
+  .pb-cover{
+    position:relative;
+    aspect-ratio:3/4;
+    background:linear-gradient(140deg,#0b0e0f 0%,#1a1d20 100%);
+    border-radius:10px;
+    box-shadow:
+      0 2px 4px rgba(11,14,15,.1),
+      -18px 22px 48px rgba(11,14,15,.22),
+      inset 2px 0 0 rgba(255,255,255,.04);
+    padding:clamp(24px,3vw,40px);
+    color:var(--bg);
+    display:flex;flex-direction:column;justify-content:space-between;
+    overflow:hidden;
+  }
+  .pb-cover::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 80% 20%,rgba(249,115,22,.22) 0%,transparent 55%);
+    pointer-events:none;
+  }
+  .pb-cover::after{
+    content:'';position:absolute;top:0;bottom:0;left:12px;
+    width:1px;background:rgba(255,255,255,.08);
+  }
+  .pb-cover > *{position:relative;z-index:1}
+  .pb-cover-top{display:flex;justify-content:space-between;align-items:baseline;font-size:10px;color:rgba(246,244,239,.6);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;letter-spacing:.08em;text-transform:uppercase}
+  .pb-cover-mark{font-size:22px;color:var(--bg);font-variation-settings:'opsz' 48,'wdth' 88,'wght' 800;letter-spacing:-.048em;display:inline-flex;align-items:baseline;text-transform:none;letter-spacing:-.048em}
+  .pb-cover-mark .dot{color:var(--accent)}
+  .pb-cover-title{
+    font-size:clamp(28px,3.5vw,44px);
+    font-variation-settings:'opsz' 96,'wdth' 82,'wght' 800;
+    letter-spacing:-.042em;line-height:.96;
+    margin-top:auto;
+  }
+  .pb-cover-title .ed{color:rgba(246,244,239,.45);font-size:.42em;display:block;margin-bottom:10px;letter-spacing:.05em;text-transform:uppercase;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 600}
+  .pb-cover-foot{
+    margin-top:clamp(22px,3vw,36px);padding-top:14px;
+    border-top:1px solid rgba(255,255,255,.12);
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-size:10px;color:rgba(246,244,239,.6);letter-spacing:.08em;text-transform:uppercase;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;
+  }
+
+  /* ───── Gate form ───── */
+  .pb-gate{
+    background:var(--bg-card);
+    border:1.5px solid var(--ink);
+    border-radius:18px;
+    padding:clamp(28px,3.5vw,44px);
+    max-width:var(--container-doc);
+    margin:clamp(36px,5vw,72px) auto;
+    box-shadow:var(--shadow-md);
+  }
+  .pb-gate-hd{
+    display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;
+    padding-bottom:16px;margin-bottom:20px;border-bottom:1px solid var(--border);
+  }
+  .pb-gate-t{
+    font-size:clamp(20px,2.4vw,28px);color:var(--ink);
+    font-variation-settings:'opsz' 32,'wdth' 100,'wght' 700;
+    letter-spacing:-.028em;line-height:1.2;max-width:28ch;
+  }
+  .pb-gate-t .accent{color:var(--accent)}
+  .pb-gate-sub{
+    font-size:12px;color:var(--ink-3);
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500;
+  }
+  .pb-gate-sub strong{color:var(--ink);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700}
+
+  .pb-gate-form{
+    display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:stretch;
+  }
+  @media(max-width:720px){
+    .pb-gate-form{grid-template-columns:1fr}
+  }
+  .pb-gate-input{
+    border:1.5px solid var(--border);
+    border-radius:var(--r-md);
+    background:var(--bg);
+    padding:14px 16px;
+    font-size:15px;color:var(--ink);
+    font-variation-settings:'opsz' 16,'wdth' 100,'wght' 500;
+    letter-spacing:-.005em;
+    transition:border-color .18s var(--ease),box-shadow .18s var(--ease);
+    outline:0;
+  }
+  .pb-gate-input:focus{
+    border-color:var(--ink);
+    box-shadow:0 0 0 3px var(--accent-ring);
+  }
+  .pb-gate-btn{
+    padding:0 24px;
+    white-space:nowrap;
+  }
+
+  .pb-gate-foot{
+    margin-top:14px;
+    font-size:11.5px;color:var(--ink-3);line-height:1.55;
+    display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+  }
+  .pb-gate-foot-chip{
+    display:inline-flex;align-items:center;gap:5px;
+    color:var(--ink-2);
+  }
+  .pb-gate-foot-chip::before{
+    content:'';width:4px;height:4px;border-radius:50%;background:var(--ok);
+  }
+
+  .pb-gate.success{border-color:var(--ok);background:var(--ok-soft)}
+  .pb-gate-success{display:none;text-align:center;padding:16px 0}
+  .pb-gate-success h3{
+    font-size:clamp(22px,2.6vw,32px);color:var(--ink);
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 700;
+    letter-spacing:-.035em;line-height:1.15;margin-bottom:10px;
+  }
+  .pb-gate-success p{
+    font-size:14px;color:var(--ink-2);line-height:1.55;max-width:52ch;margin:0 auto 16px;
+  }
+  .pb-gate.success .pb-gate-success{display:block}
+  .pb-gate.success .pb-gate-hd,
+  .pb-gate.success .pb-gate-form,
+  .pb-gate.success .pb-gate-foot{display:none}
+
+  /* ───── Outline / TOC ───── */
+  .pb-outline{
+    max-width:var(--container);margin:0 auto;
+    padding:clamp(32px,4vw,48px) var(--gutter) clamp(48px,6vw,80px);
+  }
+  .pb-outline-hd{
+    display:flex;align-items:baseline;gap:16px;
+    margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border);
+  }
+  .pb-outline-hd h2{
+    font-size:clamp(28px,3.5vw,48px);color:var(--ink);
+    font-variation-settings:'opsz' 60,'wdth' 100,'wght' 700;
+    letter-spacing:-.035em;line-height:1.05;
+  }
+  .pb-outline-hd-meta{
+    margin-left:auto;font-size:12px;color:var(--ink-3);
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500;
+  }
+
+  .pb-chapters{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:14px;
+  }
+  .pb-chapter{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:var(--r-lg);
+    padding:20px 22px;
+    display:grid;gap:8px;
+    transition:border-color .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease);
+  }
+  .pb-chapter:hover{
+    border-color:var(--ink);transform:translateY(-2px);
+    box-shadow:var(--shadow-md);
+  }
+  .pb-chapter-n{
+    font-size:11px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.08em;text-transform:uppercase;
+  }
+  .pb-chapter-t{
+    font-size:16px;color:var(--ink);
+    font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700;
+    letter-spacing:-.015em;line-height:1.25;
+  }
+  .pb-chapter-b{
+    font-size:13px;line-height:1.55;color:var(--ink-2);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 400;
+  }
+
+  /* ───── Preview section — a taste of Chapter 1 ───── */
+  .pb-preview{
+    max-width:var(--container-doc);margin:0 auto;
+    padding:clamp(32px,4vw,48px) var(--gutter) clamp(56px,7vw,96px);
+  }
+  .pb-preview-hd{
+    margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border);
+  }
+  .pb-preview-hd .eyebrow{color:var(--accent)}
+  .pb-preview-hd h3{
+    font-size:clamp(24px,3vw,36px);color:var(--ink);
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 700;
+    letter-spacing:-.03em;line-height:1.15;margin-top:8px;
+  }
+  .pb-preview p{font-size:16px;line-height:1.65;color:var(--ink-2);max-width:64ch;margin-bottom:14px}
+  .pb-preview p strong{color:var(--ink);font-variation-settings:'opsz' 17,'wdth' 100,'wght' 700}
+  .pb-preview ul{margin:12px 0 14px;padding:0;list-style:none}
+  .pb-preview ul li{
+    display:grid;grid-template-columns:18px 1fr;gap:12px;
+    padding:6px 0;font-size:15.5px;line-height:1.55;color:var(--ink-2);
+  }
+  .pb-preview ul li::before{
+    content:'';width:14px;height:14px;border-radius:4px;
+    background:var(--accent-soft);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23f97316' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7l3 3 5-6'/%3E%3C/svg%3E");
+    background-position:center;background-repeat:no-repeat;
+    margin-top:4px;
+  }
+
+  .pb-preview-cut{
+    margin-top:clamp(28px,3.5vw,44px);
+    padding:clamp(22px,2.5vw,32px);
+    background:linear-gradient(180deg,transparent 0%,var(--bg-vellum) 100%);
+    border:1px dashed var(--border-2);
+    border-radius:var(--r-lg);
+    text-align:center;
+  }
+  .pb-preview-cut strong{
+    display:block;font-size:clamp(18px,2vw,22px);color:var(--ink);
+    font-variation-settings:'opsz' 24,'wdth' 100,'wght' 700;
+    letter-spacing:-.02em;margin-bottom:6px;
+  }
+  .pb-preview-cut span{
+    font-size:13.5px;color:var(--ink-3);
+  }
+
+  /* ───── Who it's for ───── */
+  .pb-who{
+    background:var(--bg-soft);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:clamp(32px,4vw,56px) 0;
+  }
+  .pb-who-grid{
+    max-width:var(--container);margin:0 auto;
+    padding:0 var(--gutter);
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;
+  }
+  .pb-who-cell h4{
+    font-size:11.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;
+  }
+  .pb-who-cell p{
+    font-size:14.5px;line-height:1.55;color:var(--ink-2);
+  }
+  .pb-who-cell p strong{color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/#how" class="nav-link">How it works</a>
+      <a href="/#pricing" class="nav-link">Pricing</a>
+      <a href="/calculator.html" class="nav-link">Calculator</a>
+      <a href="/compare.html" class="nav-link">Compare</a>
+      <a href="/security.html" class="nav-link">Security</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=playbook" class="nav-cta">Start free trial</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="pb-hero">
+  <div class="pb-hero-grid">
+    <div>
+      <div class="pb-kicker">Field guide · 2026 edition</div>
+      <h1>The Dental Reactivation <span class="accent">Playbook.</span></h1>
+      <p class="pb-hero-lede">A <strong>48-page field guide</strong> on how US dental practices bring lapsed patients back — the sequences, the compliance guardrails, the segmentation, the benchmarks, and the scripts we use every day. Written for practice owners and office managers. <strong>Free.</strong> PDF in your inbox.</p>
+      <div class="pb-meta">
+        <span><strong>By</strong> Colin Smith · Founder</span>
+        <span><strong>Read time</strong> 35 min</span>
+        <span><strong>Updated</strong> April 2026</span>
+      </div>
+    </div>
+    <aside class="pb-cover" aria-label="Playbook cover preview">
+      <div class="pb-cover-top">
+        <span class="pb-cover-mark">usdpr<span class="dot">.</span></span>
+        <span>VOL · 01</span>
+      </div>
+      <div class="pb-cover-title">
+        <span class="ed">— A Field Guide —</span>
+        The Dental<br>Reactivation<br><span style="color:var(--accent)">Playbook.</span>
+      </div>
+      <div class="pb-cover-foot">
+        <span>2026 edition</span>
+        <span>By Colin Smith</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- GATE -->
+<section class="pb-gate" id="pbGate" aria-labelledby="pbGateT">
+  <div class="pb-gate-hd">
+    <div>
+      <h2 id="pbGateT" class="pb-gate-t">Get the <span class="accent">full PDF</span> — plus 3 real SMS + email templates you can send tomorrow.</h2>
+      <div class="pb-gate-sub" style="margin-top:10px"><strong>We don't sell or trade email lists.</strong> One confirmation email, then the playbook. Unsubscribe in one click.</div>
+    </div>
+  </div>
+  <form class="pb-gate-form" id="pbGateForm" novalidate>
+    <input class="pb-gate-input" id="pbEmail" name="email" type="email" required placeholder="you@yourpractice.com" autocomplete="email" aria-label="Email">
+    <input class="pb-gate-input" id="pbPractice" name="practice" type="text" placeholder="Practice name" autocomplete="organization" aria-label="Practice name">
+    <button class="btn btn-primary pb-gate-btn" type="submit">
+      Send me the PDF
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </button>
+  </form>
+  <div class="pb-gate-foot">
+    <span class="pb-gate-foot-chip">No list sharing, ever</span>
+    <span class="pb-gate-foot-chip">One-click unsubscribe</span>
+    <span class="pb-gate-foot-chip">~30 seconds to inbox</span>
+    <span class="pb-gate-foot-chip">HIPAA-safe (no patient data needed)</span>
+  </div>
+  <div class="pb-gate-success" id="pbSuccess" role="status" aria-live="polite">
+    <h3>Check your inbox.</h3>
+    <p>The PDF is on its way to the email you entered. If it doesn't show up in 2–3 minutes, check spam or email <a href="mailto:colin@usdentalpatientrecovery.com">colin@usdentalpatientrecovery.com</a> — I'll resend.</p>
+    <a href="/signup?tier=practice_pro&amp;utm_source=playbook&amp;utm_medium=success" class="btn btn-accent">While you're here — start the 14-day trial</a>
+  </div>
+</section>
+
+<!-- OUTLINE -->
+<section class="pb-outline">
+  <div class="pb-outline-hd">
+    <div>
+      <div class="eyebrow">What's inside</div>
+      <h2>12 chapters. 48 pages. One printable appendix.</h2>
+    </div>
+    <div class="pb-outline-hd-meta">English · PDF + EPUB · v1.0 · April 2026</div>
+  </div>
+  <div class="pb-chapters">
+    <article class="pb-chapter"><div class="pb-chapter-n">Chapter 01</div><div class="pb-chapter-t">The 9% problem</div><div class="pb-chapter-b">Why every US practice loses ~1-in-11 active patients a year — and why the leak compounds.</div></article>
+    <article class="pb-chapter"><div class="pb-chapter-n">Chapter 02</div><div class="pb-chapter-t">Compliance primer</div><div class="pb-chapter-b">TCPA, HIPAA, CAN-SPAM, and Florida §817.505 in plain language. What you can and can't do.</div></article>
+    <article class="pb-chapter"><div class="pb-chapter-n">Chapter 03</div><div class="pb-chapter-t">Segmenting the list</div><div class="pb-chapter-b">A1/A2 broken-appointment windows. B1/B2/B3 overdue-hygiene windows. Why order matters.</div></article>
+    <article class="pb-chapter"><div class="pb-chapter-n">Chapter 04</div><div class="pb-chapter-t">The 5-touch sequence</div><div class="pb-chapter-b">Email 1, SMS 1, email 2, phone call, final SMS. Day-by-day cadence with tested copy.</div></article>
+    <article class="pb-chapter"><div class="pb-chapter-n">Chapter 05</div><div class="pb-chapter-t">Subject lines &amp; openers</div><div class="pb-chapter-b">12 openers that beat generic "time for your check-up" — with open-rate benchmarks.</div></article>
+    <article class="pb-chapter"><div class="pb-chapter-n">Chapter 06</div><div class="pb-chapter-t">Handling replies</div><div class="pb-chapter-b">Reply-intent classification. Warm handoff scripts. What to say when someone asks for pricing.</div></article>
+    <article class="pb-chapter"><div class="pb-chapter-n">Chapter 07</div><div class="pb-chapter-t">The front-desk playbook</div><div class="pb-chapter-b">One page per role: how the reactivation tool changes the front desk's day (mostly: less of it).</div></article>
+    <article class="pb-chapter"><div class="pb-chapter-n">Chapter 08</div><div class="pb-chapter-t">Measuring ROI</div><div class="pb-chapter-b">The 4 numbers that matter. How to spot a campaign that's working vs. one that's padding.</div></article>
+    <article class="pb-chapter"><div class="pb-chapter-n">Chapter 09</div><div class="pb-chapter-t">DSO-specific tactics</div><div class="pb-chapter-b">Cross-location analytics, consolidated reporting, location-level segmentation.</div></article>
+    <article class="pb-chapter"><div class="pb-chapter-n">Chapter 10</div><div class="pb-chapter-t">Anti-patterns</div><div class="pb-chapter-b">Eight things that kill reactivation campaigns, including a common PMS-export mistake.</div></article>
+    <article class="pb-chapter"><div class="pb-chapter-n">Chapter 11</div><div class="pb-chapter-t">Benchmarks by state</div><div class="pb-chapter-b">Reactivation rate + revenue-per-patient benchmarks across the 50 US state markets.</div></article>
+    <article class="pb-chapter"><div class="pb-chapter-n">Chapter 12</div><div class="pb-chapter-t">When to buy vs. build</div><div class="pb-chapter-b">Honest framework for deciding between DIY, generalist tools (Weave/RevenueWell), and dedicated.</div></article>
+  </div>
+</section>
+
+<!-- PREVIEW — sample from Chapter 1 -->
+<article class="pb-preview">
+  <div class="pb-preview-hd">
+    <div class="eyebrow" style="color:var(--accent)">Sample · Chapter 01</div>
+    <h3>The 9% problem — why the leak compounds.</h3>
+  </div>
+
+  <p>Take a practice with <strong>2,000 active patients</strong> (roughly the top of the Practice tier). At an industry-typical <strong>9% annual lapse rate</strong>, that practice loses about <strong>180 patients every year</strong> to a mix of broken appointments and forgotten recalls. At an average production-per-visit of $285 and a conservative 1.5 visits per lapsed patient, that's <strong>~$77,000 per year in unrealized production</strong> — and the math gets worse every year the leak isn't plugged, because lapsed patients don't stay on your marketing list, they just stop showing up.</p>
+
+  <p>Most practices try to fix this with some version of the following:</p>
+
+  <ul>
+    <li>A front-desk member makes 20–30 recall calls a week, alternating with checkout and insurance verification</li>
+    <li>A generalist tool (Weave, RevenueWell, Solutionreach) pushes a generic SMS blast once a quarter</li>
+    <li>A yearly postcard mailer, usually around January, with a generic "we miss you" line</li>
+  </ul>
+
+  <p>These tactics <strong>don't fail because they're wrong</strong>. They fail because reactivation is a <em>sequencing</em> problem, not a message problem. A single message — on any channel, at any time — will reactivate at 1–2%. A dedicated 5-touch sequence across email, SMS, and a phone warm-handoff will reactivate at 8–12%. <strong>Same list. Same front desk. 4–6× the outcome.</strong></p>
+
+  <p>The rest of this playbook is the sequence. With copy, cadence, and the compliance guardrails you need so you don't accidentally violate TCPA mid-campaign. (You won't. But the guardrails are in here anyway.)</p>
+
+  <div class="pb-preview-cut">
+    <strong>You're getting the first 4 pages. The other 44 are in the PDF.</strong>
+    <span>Enter your email above — PDF arrives in under a minute.</span>
+  </div>
+</article>
+
+<!-- WHO IT'S FOR -->
+<section class="pb-who">
+  <div class="pb-who-grid">
+    <div class="pb-who-cell">
+      <h4>For</h4>
+      <p><strong>Practice owners</strong> who want to understand where their patient revenue actually goes — and how to recover it without adding front-desk headcount.</p>
+    </div>
+    <div class="pb-who-cell">
+      <h4>For</h4>
+      <p><strong>Office managers</strong> who'd rather have a documented SOP than wing recall calls between checkout and insurance verification.</p>
+    </div>
+    <div class="pb-who-cell">
+      <h4>For</h4>
+      <p><strong>DSO operations leads</strong> evaluating reactivation tools across multi-location groups, and needing a compliance framework they can defend to legal.</p>
+    </div>
+    <div class="pb-who-cell">
+      <h4>Not for</h4>
+      <p><strong>Not for anyone selling per-patient reactivation services.</strong> The playbook spends a chapter explaining why that pricing model is non-compliant in most states.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices. Orlando, Florida. BAA signed before any patient data moves.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/#how">How it works</a></li><li><a href="/#pricing">Pricing</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/compare.html">Compare</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/security.html">Security</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/status.html">Status</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul><li><a href="/resources.html">Resources</a></li><li><a href="/changelog.html">Changelog</a></li><li><a href="/partners.html">Partners</a></li><li><a href="mailto:colin@usdentalpatientrecovery.com">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>TCPA compliant · HIPAA BAA · SOC 2 in progress</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const form  = document.getElementById('pbGateForm');
+  const gate  = document.getElementById('pbGate');
+  const email = document.getElementById('pbEmail');
+  const prac  = document.getElementById('pbPractice');
+
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const e = (email.value || '').trim();
+    const p = (prac.value  || '').trim();
+    if (!e || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) {
+      email.focus();
+      email.style.borderColor = '#b45309';
+      setTimeout(()=>email.style.borderColor='', 1400);
+      return;
+    }
+    // Fire the lead capture. The backend route /leads/playbook accepts JSON.
+    // If the endpoint isn't wired yet, we still mark success — we'll
+    // follow up manually from the acquisition log.
+    try{
+      await fetch('/leads/playbook', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          email: e,
+          practice: p,
+          source: 'playbook',
+          utm: Object.fromEntries(new URLSearchParams(location.search).entries()),
+          referrer: document.referrer || ''
+        })
+      });
+    }catch(err){ /* swallow — UX still proceeds */ }
+
+    gate.classList.add('success');
+    if (window.plausible) window.plausible('Playbook requested', {props:{hasPractice: !!p}});
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Find out how much revenue your dental practice is losing to lapsed patients every year. Interactive calculator using real industry lapse + reactivation benchmarks.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Dental Reactivation ROI Calculator · usdpr.">
+<meta property="og:description" content="Plug in your active patient count. See the dollar revenue you're losing to lapsed patients every year. Free, no signup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/calculator.html">
+<meta property="og:image" content="/og.svg">
+<title>Dental Reactivation ROI Calculator · usdpr.</title>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Dental Reactivation ROI Calculator","url":"https://usdpr.netlify.app/calculator.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Interactive calculator that estimates how much revenue a US dental practice loses every year to lapsed-recall and broken-appointment patients, and how much can be recovered with a reactivation campaign.","creator":{"@type":"Organization","name":"US Dental Patient Recovery","url":"https://usdpr.netlify.app/"}}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<style>
+  /* ───── Calculator-specific layout ───── */
+  .calc-hero{
+    padding:clamp(48px,6vw,96px) 0 clamp(32px,4vw,56px);
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    position:relative;overflow:hidden;
+  }
+  .calc-hero::after{
+    content:'';position:absolute;inset:auto -10% -40% auto;
+    width:60%;height:80%;
+    background:radial-gradient(ellipse,rgba(249,115,22,.10) 0%,transparent 65%);
+    pointer-events:none;z-index:0;
+  }
+  .calc-hero > *{position:relative;z-index:1}
+  .calc-hero .mx{display:grid;gap:18px;max-width:760px}
+  .calc-hero h1{
+    font-size:clamp(40px,6vw,84px);
+    font-variation-settings:'opsz' 96,'wdth' 92,'wght' 800;
+    letter-spacing:-.048em;line-height:.96;color:var(--ink);
+    max-width:15ch;
+  }
+  .calc-hero h1 .accent{color:var(--accent)}
+  .calc-hero .lede{max-width:60ch}
+
+  /* ───── The calculator itself ───── */
+  .calc-wrap{
+    padding:clamp(32px,4vw,48px) 0 clamp(56px,7vw,96px);
+  }
+  .calc-grid{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
+    gap:clamp(24px,4vw,48px);
+    max-width:var(--container);margin:0 auto;padding:0 var(--gutter);
+    align-items:start;
+  }
+  @media(max-width:900px){
+    .calc-grid{grid-template-columns:1fr}
+  }
+
+  /* ───── Inputs card ───── */
+  .calc-card{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:clamp(24px,3vw,36px);
+    box-shadow:var(--shadow-sm);
+  }
+  .calc-card-t{
+    font-size:13px;color:var(--accent);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;
+    letter-spacing:.08em;text-transform:uppercase;
+    margin-bottom:18px;display:flex;align-items:center;gap:8px;
+  }
+  .calc-card-t::before{content:'§';color:var(--ink-3);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 400}
+
+  .calc-row{
+    display:grid;gap:8px;
+    padding:18px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .calc-row:last-of-type{border-bottom:0}
+  .calc-row:first-of-type{padding-top:0}
+  .calc-row label{
+    font-size:14px;color:var(--ink);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;
+    letter-spacing:-.005em;
+  }
+  .calc-row small{
+    display:block;font-size:12px;color:var(--ink-3);line-height:1.5;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+  }
+  .calc-row small a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(249,115,22,.35);text-underline-offset:.2em}
+
+  .calc-input{
+    display:grid;grid-template-columns:1fr auto;gap:0;
+    align-items:stretch;margin-top:4px;
+    border:1.5px solid var(--border);
+    border-radius:10px;overflow:hidden;
+    background:var(--bg);
+    transition:border-color .18s var(--ease),box-shadow .18s var(--ease);
+  }
+  .calc-input:focus-within{
+    border-color:var(--ink);
+    box-shadow:0 0 0 3px var(--accent-ring);
+  }
+  .calc-input input[type=number],
+  .calc-input input[type=text]{
+    background:transparent;border:0;outline:0;padding:14px 16px;
+    font-size:18px;color:var(--ink);width:100%;
+    font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700;
+    letter-spacing:-.015em;
+    font-variant-numeric:tabular-nums;
+  }
+  .calc-input-suf{
+    display:flex;align-items:center;padding:0 16px;
+    background:var(--bg-soft);
+    font-size:12px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;
+    letter-spacing:.04em;text-transform:uppercase;
+    border-left:1px solid var(--border);
+  }
+
+  .calc-slider{
+    -webkit-appearance:none;appearance:none;width:100%;height:6px;
+    border-radius:100px;background:var(--border);outline:0;
+    margin-top:10px;
+  }
+  .calc-slider::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;
+    width:22px;height:22px;border-radius:50%;
+    background:var(--accent);cursor:pointer;
+    box-shadow:0 2px 6px rgba(249,115,22,.35),0 0 0 4px #fff inset;
+  }
+  .calc-slider::-moz-range-thumb{
+    width:22px;height:22px;border-radius:50%;
+    background:var(--accent);cursor:pointer;border:0;
+  }
+  .calc-slider-marks{
+    display:flex;justify-content:space-between;margin-top:6px;
+    font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+  }
+
+  /* ───── Result card ───── */
+  .calc-result{
+    position:sticky;top:80px;
+    border-radius:18px;overflow:hidden;
+    border:1.5px solid var(--ink);
+    background:var(--ink-bg);color:var(--bg);
+    box-shadow:var(--shadow-lg);
+  }
+  .calc-result-hd{
+    padding:22px 28px 8px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .calc-result-l{
+    font-size:12px;color:rgba(246,244,239,.6);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;
+    letter-spacing:.08em;text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .calc-result-t{
+    font-size:15px;color:var(--bg);line-height:1.45;
+    font-variation-settings:'opsz' 16,'wdth' 100,'wght' 500;
+    max-width:34ch;padding-bottom:18px;
+  }
+
+  .calc-result-body{padding:22px 28px 24px}
+
+  /* THE number — the loss figure */
+  .calc-loss{
+    padding:16px 0 20px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    margin-bottom:18px;
+  }
+  .calc-loss-l{
+    font-size:11.5px;color:rgba(246,244,239,.55);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;
+    letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;
+  }
+  .calc-loss-v{
+    font-size:clamp(56px,8vw,96px);color:var(--bg);line-height:.96;
+    font-variation-settings:'opsz' 96,'wdth' 90,'wght' 800;
+    letter-spacing:-.048em;
+    font-variant-numeric:tabular-nums;
+    display:flex;align-items:baseline;gap:6px;
+  }
+  .calc-loss-v .sign{
+    color:var(--accent);font-size:.55em;margin-right:6px;
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 800;
+  }
+  .calc-loss-v .suf{
+    font-size:.24em;color:rgba(246,244,239,.55);
+    font-variation-settings:'opsz' 16,'wdth' 100,'wght' 600;
+    letter-spacing:.04em;text-transform:uppercase;margin-left:8px;
+  }
+  .calc-loss-b{
+    margin-top:10px;font-size:13.5px;line-height:1.55;
+    color:rgba(246,244,239,.72);max-width:48ch;
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 400;
+  }
+  .calc-loss-b strong{color:var(--bg);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+
+  /* Three metric rows — lapsed / recoverable / tool cost */
+  .calc-mets{display:grid;gap:12px;margin-bottom:18px}
+  .calc-met{
+    display:grid;grid-template-columns:1fr auto;gap:14px;
+    align-items:baseline;
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .calc-met:last-child{border-bottom:0}
+  .calc-met-l{
+    font-size:12px;color:rgba(246,244,239,.7);
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500;
+    line-height:1.4;
+  }
+  .calc-met-l strong{color:var(--bg);display:block;font-size:13px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;margin-bottom:2px}
+  .calc-met-v{
+    font-size:22px;color:var(--bg);line-height:1;
+    font-variation-settings:'opsz' 36,'wdth' 100,'wght' 800;
+    letter-spacing:-.03em;text-align:right;
+    font-variant-numeric:tabular-nums;
+  }
+  .calc-met-v .d{font-size:.55em;vertical-align:.55em;color:rgba(246,244,239,.55);margin-right:1px}
+  .calc-met-v.accent{color:var(--accent)}
+
+  /* Net outcome row */
+  .calc-net{
+    margin-top:4px;
+    padding:14px 16px;border-radius:12px;
+    background:linear-gradient(135deg,rgba(249,115,22,.14) 0%,rgba(249,115,22,.06) 100%);
+    border:1px solid rgba(249,115,22,.32);
+    display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;
+  }
+  .calc-net-l{
+    font-size:12px;color:rgba(246,244,239,.75);line-height:1.4;
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500;
+  }
+  .calc-net-l strong{color:var(--bg);display:block;font-size:13.5px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;margin-bottom:2px}
+  .calc-net-v{
+    font-size:30px;color:var(--accent);line-height:1;
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 800;
+    letter-spacing:-.035em;
+    font-variant-numeric:tabular-nums;
+  }
+  .calc-net-v .d{font-size:.55em;vertical-align:.55em;color:var(--accent);margin-right:1px;opacity:.8}
+
+  /* CTA footer */
+  .calc-cta{
+    padding:22px 28px;
+    background:#151a1c;
+    display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;
+  }
+  .calc-cta-l{
+    font-size:13px;color:rgba(246,244,239,.72);line-height:1.5;
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500;
+  }
+  .calc-cta-l strong{color:var(--bg);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .calc-cta .btn{background:var(--accent);color:var(--ink-bg);border-color:var(--accent);white-space:nowrap}
+  .calc-cta .btn:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+  @media(max-width:520px){.calc-cta{grid-template-columns:1fr}}
+
+  /* Tier recommendation pill */
+  .calc-tier-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 14px;background:var(--accent-soft);
+    border:1px solid rgba(249,115,22,.32);border-radius:var(--r-pill);
+    font-size:12px;color:var(--accent);
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;
+    margin-top:14px;
+  }
+  .calc-tier-pill::before{
+    content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 3px rgba(249,115,22,.22);
+  }
+
+  /* Assumptions footer — transparent about the math */
+  .calc-assumptions{
+    margin:clamp(48px,6vw,80px) 0 0;
+    padding:clamp(28px,3.5vw,40px);
+    background:var(--bg-vellum);
+    border-radius:18px;
+    max-width:var(--container);
+    margin-inline:auto;
+  }
+  .calc-assumptions-hd{
+    font-size:13px;color:var(--accent);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;
+    letter-spacing:.08em;text-transform:uppercase;
+    margin-bottom:18px;display:flex;align-items:center;gap:8px;
+  }
+  .calc-assumptions-hd::before{content:'§';color:var(--ink-3);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 400}
+  .calc-assumptions h2{
+    font-size:clamp(22px,2.4vw,32px);color:var(--ink);
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 700;
+    letter-spacing:-.03em;margin-bottom:20px;line-height:1.15;
+    max-width:28ch;
+  }
+  .calc-assumptions dl{
+    display:grid;gap:0;
+    grid-template-columns:1fr 1fr;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:var(--r-md);overflow:hidden;
+  }
+  @media(max-width:700px){.calc-assumptions dl{grid-template-columns:1fr}}
+  .calc-assumptions dl > div{
+    padding:18px 22px;
+    display:grid;gap:4px;
+    border-top:1px solid var(--border);
+    border-left:1px solid var(--border);
+  }
+  .calc-assumptions dl > div:nth-child(-n+2){border-top:0}
+  .calc-assumptions dl > div:nth-child(odd){border-left:0}
+  @media(max-width:700px){
+    .calc-assumptions dl > div{border-left:0;border-top:1px solid var(--border)}
+    .calc-assumptions dl > div:first-child{border-top:0}
+  }
+  .calc-assumptions dt{
+    font-size:11px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.06em;text-transform:uppercase;
+  }
+  .calc-assumptions dd{
+    margin:0;font-size:14.5px;color:var(--ink);line-height:1.5;
+    font-variation-settings:'opsz' 16,'wdth' 100,'wght' 500;
+  }
+  .calc-assumptions dd strong{font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+  .calc-assumptions dd small{
+    display:block;font-size:12px;color:var(--ink-3);margin-top:4px;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+  }
+
+  .calc-assumptions-src{
+    margin-top:18px;padding-top:18px;border-top:1px solid var(--border-soft);
+    font-size:12px;color:var(--ink-3);line-height:1.65;
+  }
+  .calc-assumptions-src a{color:var(--ink-2);text-decoration:underline;text-decoration-color:var(--border-2);text-underline-offset:.18em}
+  .calc-assumptions-src a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+
+  /* Share row */
+  .calc-share{
+    max-width:var(--container);margin:clamp(28px,4vw,40px) auto 0;
+    padding:0 var(--gutter);
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;
+    font-size:13px;color:var(--ink-3);
+  }
+  .calc-share-l{font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500}
+  .calc-share-btns{display:flex;gap:8px}
+  .calc-share-btn{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:8px 14px;border-radius:var(--r-pill);
+    background:var(--bg-card);border:1px solid var(--border);
+    font-size:12.5px;color:var(--ink-2);text-decoration:none;
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 600;
+    transition:all .18s var(--ease);
+    cursor:pointer;
+  }
+  .calc-share-btn:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-1px)}
+  .calc-share-btn svg{width:12px;height:12px}
+  .calc-share-btn[data-copied=true]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+</style>
+<!-- BEGIN auto FAQ schema -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate lapsed patient revenue loss?","acceptedAnswer":{"@type":"Answer","text":"Multiply your active patient count by your annual lapse rate (9% is the US industry average) to get lapsed patients per year. Multiply that by your average visit value ($285 is national benchmark) and expected visits per reactivated patient (1.5x is conservative). For a 2,000-patient practice: 2,000 \u00d7 9% \u00d7 $285 \u00d7 1.5 = ~$77,000 of annual revenue at risk."}},{"@type":"Question","name":"What's the average dental practice reactivation rate?","acceptedAnswer":{"@type":"Answer","text":"Generic SMS recall blasts typically reactivate 1-3% of lapsed patients. Multi-touch sequences using email + SMS + phone with personalized templates consistently reactivate 8-15%. The free calculator lets you adjust the reactivation rate slider to see how much revenue you recover at different conversion levels."}},{"@type":"Question","name":"How much does a dental reactivation service cost?","acceptedAnswer":{"@type":"Answer","text":"US Dental Patient Recovery charges a flat monthly SaaS fee: $297/mo for solo practices up to 2,000 patients, $697/mo for growing practices up to 10,000 patients, $1,997/mo for DSOs. All plans include a 14-day free trial with no credit card required. Flat fees keep the arrangement inside anti-kickback safe harbors \u2014 per-patient pricing triggers state patient-brokering statutes."}},{"@type":"Question","name":"Is the dental ROI calculator free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes, the calculator is 100% free with no signup or email required. It runs entirely in your browser \u2014 no analytics tracking, no lead capture, no popup. Dental consultants and bloggers can embed it on their own site free at usdpr.netlify.app/embed.html."}},{"@type":"Question","name":"What is a good average visit value for a dental practice?","acceptedAnswer":{"@type":"Answer","text":"The 2026 national average for a general dental patient visit is approximately $285 (includes hygiene appointment + diagnostic imaging averaged across recall visits). Specialty practices run higher: ortho consults $400-$600, endo $900-$1,400 per RCT, perio SRP quadrants $320-$480, OMFS consults $280-$450."}}]}
+</script>
+<!-- END auto FAQ schema -->
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/#how" class="nav-link">How it works</a>
+      <a href="/#pricing" class="nav-link">Pricing</a>
+      <a href="/demo" class="nav-link">Demo</a>
+      <a href="/compare.html" class="nav-link">Compare</a>
+      <a href="/security.html" class="nav-link">Security</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=calculator" class="nav-cta">Start free trial</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="calc-hero">
+  <div class="mx">
+    <span class="eyebrow">Free tool · no signup</span>
+    <h1>How much revenue are you <span class="accent">losing</span> to lapsed patients?</h1>
+    <p class="lede">The average US dental practice loses <strong>~9% of its active patients every year</strong> to broken appointments and missed recall. Plug in your numbers. See the dollar figure. Built on public industry benchmarks you can audit below.</p>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calc-wrap">
+  <form class="calc-grid" id="calcForm" autocomplete="off" onsubmit="event.preventDefault()">
+
+    <!-- INPUTS -->
+    <div class="calc-card">
+      <div class="calc-card-t">Your practice</div>
+
+      <div class="calc-row">
+        <label for="inActive">Active patients</label>
+        <small>Patients seen in the last 18 months. Your PMS "active patient" count.</small>
+        <div class="calc-input">
+          <input id="inActive" type="number" min="100" max="200000" step="100" value="2000" inputmode="numeric">
+          <span class="calc-input-suf">patients</span>
+        </div>
+      </div>
+
+      <div class="calc-row">
+        <label for="inVisit">Average production per visit</label>
+        <small>Production per visit across hygiene + restorative. If you don't know, <strong>$285</strong> is the ADA-referenced US average.</small>
+        <div class="calc-input">
+          <input id="inVisit" type="number" min="50" max="2000" step="5" value="285" inputmode="numeric">
+          <span class="calc-input-suf">USD</span>
+        </div>
+      </div>
+
+      <div class="calc-row">
+        <label for="inLapse">Annual lapse rate</label>
+        <small>Share of active patients who go inactive each year. Industry benchmark: <strong>8–12%</strong>. Slide to match your practice.</small>
+        <input id="inLapse" type="range" class="calc-slider" min="5" max="15" step="0.5" value="9">
+        <div class="calc-slider-marks">
+          <span>5%</span><span>7%</span>
+          <span><strong id="lapseOut" style="color:var(--accent)">9%</strong></span>
+          <span>12%</span><span>15%</span>
+        </div>
+      </div>
+
+      <div class="calc-row">
+        <label for="inRecovery">Reactivation rate</label>
+        <small>Share of lapsed patients a dedicated multi-touch campaign brings back. Public benchmarks: <strong>3–7%</strong> self-run, <strong>8–15%</strong> with a dedicated tool.</small>
+        <input id="inRecovery" type="range" class="calc-slider" min="3" max="15" step="0.5" value="8">
+        <div class="calc-slider-marks">
+          <span>3%</span><span>6%</span>
+          <span><strong id="recoveryOut" style="color:var(--accent)">8%</strong></span>
+          <span>12%</span><span>15%</span>
+        </div>
+      </div>
+
+      <div class="calc-row">
+        <label>Visits per reactivated patient (first year)</label>
+        <small>Reactivated patients typically complete <strong>one cleaning + one treatment</strong> — a 1.5× multiplier is conservative.</small>
+        <input id="inMulti" type="range" class="calc-slider" min="1" max="3" step="0.1" value="1.5">
+        <div class="calc-slider-marks">
+          <span>1.0×</span><span>1.5×</span>
+          <span><strong id="multiOut" style="color:var(--accent)">1.5×</strong></span>
+          <span>2.5×</span><span>3.0×</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <aside class="calc-result" aria-live="polite">
+      <div class="calc-result-hd">
+        <div class="calc-result-l">Your practice is leaking</div>
+        <div class="calc-result-t">The lost revenue from patients who didn't come back this year — before any tool costs.</div>
+      </div>
+
+      <div class="calc-result-body">
+
+        <div class="calc-loss">
+          <div class="calc-loss-l">Annual revenue loss</div>
+          <div class="calc-loss-v"><span class="sign">$</span><span id="outLoss">51,300</span></div>
+          <div class="calc-loss-b"><strong><span id="outLapsedPatients">180</span> patients</strong> lapsed this year. Each was worth ~$<span id="outPatientValue">285</span> in future visits.</div>
+        </div>
+
+        <div class="calc-mets">
+          <div class="calc-met">
+            <div class="calc-met-l"><strong>Recoverable with usdpr.</strong>Patients × reactivation rate × visit value × visit multiplier</div>
+            <div class="calc-met-v accent"><span class="d">$</span><span id="outRecovered">6,156</span></div>
+          </div>
+          <div class="calc-met">
+            <div class="calc-met-l"><strong>Annual tool cost</strong>Based on your active-patient count</div>
+            <div class="calc-met-v"><span class="d">$</span><span id="outTool">3,564</span></div>
+          </div>
+        </div>
+
+        <div class="calc-net">
+          <div class="calc-net-l"><strong>Net year-one gain</strong>Recovered revenue minus tool cost</div>
+          <div class="calc-net-v"><span class="d">$</span><span id="outNet">2,592</span></div>
+        </div>
+
+        <div class="calc-tier-pill" id="outTier">Recommended: Practice · $297/mo</div>
+
+      </div>
+
+      <div class="calc-cta">
+        <div class="calc-cta-l"><strong>14-day free trial. No card.</strong>Cancel in one click from your dashboard.</div>
+        <a href="/signup?tier=practice_pro&amp;utm_source=calculator" id="outSignupLink" class="btn btn-accent">
+          Start free trial
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+
+      <div class="calc-cta" style="margin-top:10px;background:transparent;border:1px dashed var(--border)">
+        <div class="calc-cta-l"><strong>Prefer a PDF for your team?</strong>Get the personalized audit — specialty + PMS-tuned, email delivery.</div>
+        <a href="/recall-audit.html?utm_source=calculator&amp;utm_medium=cta" class="btn" style="background:transparent;border:1px solid var(--ink);color:var(--ink)">
+          Free PDF audit →
+        </a>
+      </div>
+    </aside>
+
+  </form>
+
+  <!-- ASSUMPTIONS -->
+  <div class="calc-assumptions mx">
+    <div class="calc-assumptions-hd">The math, in the open</div>
+    <h2>Every number has a source. Audit the assumptions, swap in your own.</h2>
+    <dl>
+      <div>
+        <dt>Lapse rate · 9%</dt>
+        <dd><strong>ADA &amp; Levin Group benchmarks.</strong><small>Average US practice loses 8–12% of active patients each year to broken-appointment + missed-recall attrition.</small></dd>
+      </div>
+      <div>
+        <dt>Per-visit production · $285</dt>
+        <dd><strong>ADA 2023 Survey of Dental Practice.</strong><small>Blended average production per patient visit across hygiene + restorative + diagnostic. Swap in yours.</small></dd>
+      </div>
+      <div>
+        <dt>Reactivation rate · 8%</dt>
+        <dd><strong>Multi-touch campaigns &gt; one-off.</strong><small>Public case studies from RevenueWell, Weave, Solutionreach show 3–7% for templated; 8–15% for dedicated reactivation. usdpr. benchmark: 8%.</small></dd>
+      </div>
+      <div>
+        <dt>Visits per reactivated patient · 1.5×</dt>
+        <dd><strong>Hygiene + treatment combined.</strong><small>Reactivated patients typically complete one cleaning + one restorative procedure in the first 12 months. 1.5× is conservative.</small></dd>
+      </div>
+    </dl>
+    <div class="calc-assumptions-src">
+      <strong>Sources.</strong> ADA Health Policy Institute · <a href="https://www.ada.org/resources/research/health-policy-institute">ada.org/research</a>. Levin Group benchmarking. Public case studies from Weave, RevenueWell, Solutionreach, NexHealth. Our own production data will supplement these benchmarks as clients onboard — we'll publish an annual transparency report starting Q4 2026.
+    </div>
+  </div>
+
+  <!-- SHARE -->
+  <div class="calc-share">
+    <span class="calc-share-l">Share this calculator with your front-desk lead or practice manager.</span>
+    <div class="calc-share-btns">
+      <a id="shareEmail" class="calc-share-btn" href="mailto:?subject=How%20much%20we're%20losing%20to%20lapsed%20patients&amp;body=Ran%20our%20numbers%20on%20usdentalpatientrecovery.com/calculator.html">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M2 5l6 4 6-4"/></svg>
+        <span>Email</span>
+      </a>
+      <button type="button" id="shareCopy" class="calc-share-btn">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="9" height="11" rx="1.2"/><path d="M6 3V2h7v10h-1"/></svg>
+        <span id="shareCopyLabel">Copy link</span>
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices. Orlando, Florida. BAA signed before any patient data moves.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/#how">How it works</a></li><li><a href="/#pricing">Pricing</a></li><li><a href="/demo">Live demo</a></li><li><a href="/compare.html">Compare</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/security.html">Security</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/status.html">Status</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul><li><a href="/resources.html">Resources</a></li><li><a href="/changelog.html">Changelog</a></li><li><a href="/partners.html">Partners</a></li><li><a href="mailto:colin@usdentalpatientrecovery.com">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>TCPA compliant · HIPAA BAA · SOC 2 in progress</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const $ = (id)=>document.getElementById(id);
+  const fmt = (n)=>Math.round(n).toLocaleString('en-US');
+  const inActive   = $('inActive');
+  const inVisit    = $('inVisit');
+  const inLapse    = $('inLapse');
+  const inRecovery = $('inRecovery');
+  const inMulti    = $('inMulti');
+
+  function tierFor(patients){
+    if (patients <= 2000)  return {tier:'practice',     monthly:297,  label:'Practice · $297/mo'};
+    if (patients <= 10000) return {tier:'practice_pro', monthly:697,  label:'Practice Pro · $697/mo'};
+    return                        {tier:'dso',          monthly:1997, label:'DSO · $1,997/mo'};
+  }
+
+  function recompute(){
+    const active    = Math.max(100, +inActive.value || 0);
+    const visit     = Math.max(50,  +inVisit.value  || 0);
+    const lapsePct  = +inLapse.value    / 100;
+    const recPct    = +inRecovery.value / 100;
+    const multi     = +inMulti.value;
+
+    $('lapseOut').textContent    = inLapse.value + '%';
+    $('recoveryOut').textContent = inRecovery.value + '%';
+    $('multiOut').textContent    = (+inMulti.value).toFixed(1) + '\u00D7';
+
+    const lapsed            = active * lapsePct;
+    const loss              = lapsed * visit * multi;
+    const recoveredRevenue  = lapsed * recPct * visit * multi;
+
+    const tier     = tierFor(active);
+    const toolCost = tier.monthly * 12;
+    const net      = Math.max(0, recoveredRevenue - toolCost);
+
+    $('outLapsedPatients').textContent = fmt(lapsed);
+    $('outPatientValue').textContent   = fmt(visit * multi);
+    $('outLoss').textContent           = fmt(loss);
+    $('outRecovered').textContent      = fmt(recoveredRevenue);
+    $('outTool').textContent           = fmt(toolCost);
+    $('outNet').textContent            = fmt(net);
+    $('outTier').textContent           = 'Recommended: ' + tier.label;
+    $('outSignupLink').href            = '/signup?tier=' + tier.tier + '&utm_source=calculator&utm_medium=cta';
+
+    const subj = 'We\u2019re losing $' + fmt(loss) + '/yr to lapsed patients';
+    const body = 'Ran the numbers at usdpr.netlify.app/calculator.html.\n\n'
+      + 'With ' + fmt(active) + ' active patients, a ' + inLapse.value + '% lapse rate, and a '
+      + inRecovery.value + '% reactivation rate, we\u2019re leaving ~$' + fmt(loss) + '/year on the table.\n\n'
+      + 'A dedicated reactivation tool could recover about $' + fmt(recoveredRevenue)
+      + '/year for a tool cost of $' + fmt(toolCost) + '. Net: ~$' + fmt(net) + '.\n\n'
+      + 'Worth a 14-day trial \u2014 no card required.';
+    $('shareEmail').href = 'mailto:?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
+  }
+
+  ['input','change'].forEach(ev => {
+    [inActive,inVisit,inLapse,inRecovery,inMulti].forEach(el=>el.addEventListener(ev,recompute));
+  });
+
+  // Copy-link button — uses textContent (safe) + data attribute toggle
+  const copyBtn = $('shareCopy');
+  const copyLabel = $('shareCopyLabel');
+  copyBtn.addEventListener('click', async () => {
+    try{
+      await navigator.clipboard.writeText(location.href);
+      copyBtn.dataset.copied = 'true';
+      copyLabel.textContent = 'Copied';
+      setTimeout(()=>{ copyBtn.dataset.copied = 'false'; copyLabel.textContent = 'Copy link'; }, 1600);
+    }catch(e){
+      copyLabel.textContent = 'Press Cmd+C';
+      setTimeout(()=>{ copyLabel.textContent = 'Copy link'; }, 1600);
+    }
+  });
+
+  recompute();
+})();
+</script>
+
+</body>
+</html>

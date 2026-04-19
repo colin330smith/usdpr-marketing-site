@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>usdpr. · Pitch deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+  /* 15-slide keyboard-navigable deck. Arrow keys / space / click to advance.
+     Sized 16:9 (1280×720 base) — scales to fullscreen. */
+  :root{
+    --bg:#f6f4ef; --bg-card:#ffffff; --bg-soft:#efece4;
+    --ink:#0b0e0f; --ink-2:#3a3d3f; --ink-3:#6b6e70;
+    --accent:#f97316; --accent-soft:#fff3e7; --accent-100:#ffe0c2;
+    --border:#e3ddd1; --border-2:#d1c9b8; --border-soft:#eae4d6;
+    --ok:#15803d; --ok-soft:#ecfdf3;
+    --ff:'Bricolage Grotesque','-apple-system',BlinkMacSystemFont,sans-serif;
+    --ease:cubic-bezier(.22,.8,.2,1);
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden}
+  body{
+    background:var(--bg);color:var(--ink-2);font-family:var(--ff);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 400;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .deck{
+    position:relative;
+    width:100vw;height:100vh;
+    overflow:hidden;
+  }
+
+  .slide{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;
+    padding:clamp(32px,5vw,72px) clamp(40px,6vw,96px);
+    opacity:0;pointer-events:none;
+    transition:opacity .45s var(--ease);
+    overflow:hidden;
+  }
+  .slide.active{opacity:1;pointer-events:auto}
+
+  /* Top bar */
+  .top{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:13px;color:var(--ink-3);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500;
+  }
+  .top-mark{
+    font-size:22px;color:var(--ink);
+    font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;
+    letter-spacing:-.05em;line-height:1;
+    display:inline-flex;align-items:baseline;
+  }
+  .top-mark-dot{color:var(--accent);margin-left:-.02em}
+  .top-meta{display:flex;gap:18px;align-items:center}
+  .top-num{font-variant-numeric:tabular-nums}
+
+  /* Body */
+  .body{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,3vw,40px);padding:clamp(32px,5vw,72px) 0}
+
+  .eye{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:14px;color:var(--accent);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 600;
+    letter-spacing:.01em;
+  }
+  .eye::before{content:'';width:22px;height:1px;background:var(--accent)}
+
+  h1{
+    font-size:clamp(56px,9vw,132px);line-height:.96;color:var(--ink);
+    font-variation-settings:'opsz' 144,'wdth' 100,'wght' 800;
+    letter-spacing:-.045em;max-width:22ch;
+  }
+  h1 .accent{color:var(--accent)}
+  h1 .underline{position:relative;display:inline-block;padding-bottom:.02em}
+  h1 .underline::after{
+    content:'';position:absolute;left:0;right:0;bottom:.04em;
+    height:.09em;background:var(--accent);border-radius:.05em;
+  }
+  h2{
+    font-size:clamp(40px,6vw,80px);line-height:1;color:var(--ink);
+    font-variation-settings:'opsz' 96,'wdth' 100,'wght' 800;
+    letter-spacing:-.04em;max-width:22ch;
+  }
+  h2 .accent{color:var(--accent)}
+  h3{
+    font-size:clamp(22px,2.5vw,32px);line-height:1.15;color:var(--ink);
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 700;
+    letter-spacing:-.025em;
+  }
+  .lede{
+    font-size:clamp(18px,1.8vw,24px);line-height:1.5;color:var(--ink-2);
+    max-width:58ch;
+    font-variation-settings:'opsz' 18,'wdth' 100,'wght' 400;
+  }
+  .lede strong{color:var(--ink);font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700}
+
+  /* Bottom bar */
+  .bot{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:12px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+  }
+
+  /* ── slide-specific helpers ── */
+
+  /* Cover */
+  .slide-cover h1{font-size:clamp(72px,11vw,176px);letter-spacing:-.05em}
+  .slide-cover .sub{
+    font-size:clamp(20px,2vw,26px);color:var(--ink-2);max-width:50ch;margin-top:16px;
+    font-variation-settings:'opsz' 24,'wdth' 100,'wght' 400;
+  }
+  .slide-cover .sub strong{color:var(--ink);font-variation-settings:'opsz' 24,'wdth' 100,'wght' 700}
+
+  /* Big number */
+  .big-num{
+    display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+    gap:clamp(32px,4vw,64px);align-items:center;
+  }
+  .big-num-val{
+    font-size:clamp(128px,18vw,300px);line-height:.85;color:var(--ink);
+    font-variation-settings:'opsz' 144,'wdth' 100,'wght' 800;
+    letter-spacing:-.055em;
+  }
+  .big-num-val .sup{font-size:.4em;vertical-align:.55em;color:var(--ink-3);font-variation-settings:'opsz' 72,'wdth' 100,'wght' 800;margin-right:4px}
+  .big-num-val .accent{color:var(--accent)}
+  .big-num-v2{font-size:clamp(40px,5vw,64px);color:var(--ink-3);font-variation-settings:'opsz' 60,'wdth' 100,'wght' 600;letter-spacing:-.02em;margin-top:8px}
+
+  /* 3-column */
+  .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.5vw,32px)}
+  .col{
+    background:var(--bg-card);border:1px solid var(--border);
+    border-radius:14px;padding:clamp(24px,3vw,36px);
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .col-n{
+    font-size:clamp(48px,5.5vw,72px);line-height:1;color:var(--ink);
+    font-variation-settings:'opsz' 96,'wdth' 100,'wght' 800;
+    letter-spacing:-.04em;
+  }
+  .col-t{
+    font-size:clamp(18px,2vw,24px);color:var(--ink);
+    font-variation-settings:'opsz' 24,'wdth' 100,'wght' 700;
+    letter-spacing:-.018em;line-height:1.15;
+  }
+  .col-b{
+    font-size:clamp(13px,1vw,16px);line-height:1.55;color:var(--ink-2);
+  }
+  .col-b strong{color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+
+  /* Product screenshot mocks */
+  .product-wrap{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
+    gap:clamp(32px,4vw,64px);align-items:center;
+  }
+  .product-copy h3{margin-bottom:16px}
+  .product-copy p{font-size:clamp(15px,1.3vw,18px);line-height:1.55;color:var(--ink-2);margin-bottom:14px;max-width:48ch}
+  .product-copy p strong{color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+  .product-list{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:10px}
+  .product-list li{display:grid;grid-template-columns:18px 1fr;gap:12px;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
+  .product-list li::before{content:'';width:14px;height:14px;border-radius:4px;background:var(--accent-soft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23f97316' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7l3 3 5-6'/%3E%3C/svg%3E");background-position:center;background-repeat:no-repeat;margin-top:2px}
+  .product-list strong{color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+
+  /* Inline report card mock */
+  .rep-mock{
+    background:var(--bg-card);border:1px solid var(--border);border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 2px 4px rgba(11,14,15,.04),0 24px 48px rgba(11,14,15,.08);
+  }
+  .rep-mock-top{display:flex;align-items:center;gap:5px;padding:10px 14px;background:var(--bg-soft);border-bottom:1px solid var(--border)}
+  .rep-mock-dot{width:8px;height:8px;border-radius:50%;background:var(--border-2)}
+  .rep-mock-url{margin-left:10px;font-size:11px;color:var(--ink-3)}
+  .rep-mock-url strong{color:var(--ink-2);font-weight:600}
+  .rep-mock-head{padding:18px 20px 14px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr auto;gap:14px;align-items:start}
+  .rep-mock-t{font-size:18px;color:var(--ink);font-variation-settings:'opsz' 24,'wdth' 100,'wght' 800;letter-spacing:-.022em}
+  .rep-mock-s{font-size:11.5px;color:var(--ink-3);margin-top:3px}
+  .rep-mock-meta{text-align:right;font-size:10.5px;color:var(--ink-3)}
+  .rep-mock-meta strong{color:var(--ink);display:block;font-size:13px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .rep-mock-kpis{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border)}
+  .rep-mock-kpi{padding:14px 14px;border-right:1px solid var(--border)}
+  .rep-mock-kpi:last-child{border-right:0;background:var(--accent-soft)}
+  .rep-mock-kpi:last-child .rep-mock-kpi-v{color:var(--accent)}
+  .rep-mock-kpi-l{font-size:9.5px;color:var(--ink-3);font-variation-settings:'opsz' 10,'wdth' 100,'wght' 700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px}
+  .rep-mock-kpi-v{font-size:24px;color:var(--ink);font-variation-settings:'opsz' 48,'wdth' 100,'wght' 800;letter-spacing:-.028em;line-height:1}
+  .rep-mock-kpi-v .sup{font-size:.5em;vertical-align:.55em;color:var(--ink-3);font-variation-settings:'opsz' 28,'wdth' 100,'wght' 800;margin-right:1px}
+  .rep-mock-rows{padding:8px 20px 16px}
+  .rep-mock-row{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-soft);font-size:12.5px}
+  .rep-mock-row:last-child{border-bottom:0}
+  .rep-mock-row-n{color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .rep-mock-tok{padding:2px 7px;border-radius:100px;font-size:10px;font-variation-settings:'opsz' 10,'wdth' 100,'wght' 700;letter-spacing:.02em;background:var(--ok-soft);color:var(--ok)}
+  .rep-mock-v{color:var(--ink);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;font-variant-numeric:tabular-nums;min-width:40px;text-align:right}
+
+  /* Pricing callout */
+  .price-block{
+    display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+    gap:clamp(32px,4vw,64px);align-items:center;
+  }
+  .price-val{
+    font-size:clamp(160px,22vw,340px);line-height:.85;color:var(--ink);
+    font-variation-settings:'opsz' 144,'wdth' 100,'wght' 800;
+    letter-spacing:-.06em;
+  }
+  .price-val .dollar{font-size:.35em;vertical-align:.55em;color:var(--ink-3);font-variation-settings:'opsz' 96,'wdth' 100,'wght' 800;margin-right:4px}
+  .price-details{display:flex;flex-direction:column;gap:14px;font-size:clamp(16px,1.4vw,19px);color:var(--ink-2);line-height:1.5}
+  .price-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
+  .price-row .k{color:var(--ink-2)}
+  .price-row .v{color:var(--ink);font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700;font-variant-numeric:tabular-nums}
+  .price-row:last-child{border-bottom:0}
+
+  /* Operator bio slide */
+  .bio-grid{display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr);gap:clamp(32px,4vw,56px);align-items:center}
+  .bio-avatar{
+    width:clamp(200px,22vw,300px);height:clamp(200px,22vw,300px);border-radius:50%;
+    background:var(--ink);color:var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    font-size:clamp(72px,8vw,120px);
+    font-variation-settings:'opsz' 144,'wdth' 100,'wght' 800;
+    letter-spacing:-.05em;
+  }
+  .bio-name h2{font-size:clamp(48px,6vw,80px);margin-bottom:8px}
+  .bio-role{
+    font-size:clamp(16px,1.3vw,20px);color:var(--accent);
+    font-variation-settings:'opsz' 18,'wdth' 100,'wght' 600;
+    letter-spacing:.02em;text-transform:uppercase;margin-bottom:24px;
+  }
+  .bio-list{list-style:none;display:flex;flex-direction:column;gap:12px;font-size:clamp(15px,1.2vw,18px);color:var(--ink-2)}
+  .bio-list li{display:grid;grid-template-columns:12ch 1fr;gap:20px;padding:10px 0;border-bottom:1px solid var(--border)}
+  .bio-list li strong{color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+
+  /* Final CTA slide */
+  .cta-slide{justify-content:center;align-items:center;text-align:center}
+  .cta-slide h1{max-width:18ch;margin:0 auto}
+  .cta-slide .lede{margin:clamp(24px,3vw,40px) auto 0;max-width:40ch}
+  .cta-url{
+    margin-top:clamp(40px,5vw,72px);
+    font-size:clamp(20px,2vw,28px);color:var(--ink);
+    font-variation-settings:'opsz' 24,'wdth' 100,'wght' 700;
+    letter-spacing:-.02em;
+    padding:18px 28px;background:var(--bg-card);border:1.5px solid var(--ink);border-radius:100px;
+    display:inline-block;
+  }
+  .cta-url .accent{color:var(--accent)}
+
+  /* Navigation */
+  .nav-hint{
+    position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+    display:flex;gap:12px;align-items:center;
+    font-size:11px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+    letter-spacing:.04em;
+    padding:10px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:100px;
+    z-index:10;
+    opacity:.6;transition:opacity .2s var(--ease);
+  }
+  .nav-hint:hover{opacity:1}
+  .nav-hint kbd{display:inline-block;padding:2px 6px;background:var(--bg);border:1px solid var(--border-2);border-radius:4px;font-size:10.5px;font-family:inherit;color:var(--ink)}
+
+  .progress{
+    position:fixed;top:0;left:0;right:0;height:3px;background:var(--border);z-index:11;
+  }
+  .progress-fill{
+    height:100%;background:var(--accent);
+    transition:width .35s var(--ease);
+  }
+
+  @media (max-width:768px){
+    .big-num,.product-wrap,.price-block,.bio-grid{grid-template-columns:1fr;gap:24px}
+    .three-col{grid-template-columns:1fr;gap:14px}
+    .bio-avatar{width:150px;height:150px}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress-fill" id="progress" style="width:6.67%"></div></div>
+
+<div class="deck" id="deck">
+
+  <!-- 01 Cover -->
+  <section class="slide slide-cover active" data-title="Cover">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <div class="top-meta"><span>US Dental Patient Recovery</span></div>
+    </div>
+    <div class="body">
+      <div class="eye">A reactivation service for private dental practices</div>
+      <h1>Bring back the patients you <span class="underline">already have</span>.</h1>
+      <p class="sub">A 15-minute conversation with <strong>Colin Smith</strong> · founder, usdpr. · Orlando, FL</p>
+    </div>
+    <div class="bot"><span>Spring 2026 · 2 pilot spots open</span><span class="top-num">01 / 15</span></div>
+  </section>
+
+  <!-- 02 The problem -->
+  <section class="slide" data-title="Problem">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>The problem</span>
+    </div>
+    <div class="body">
+      <div class="eye">Where the revenue went</div>
+      <h2>Your patients didn't leave. They just <span class="accent">stopped showing up</span>.</h2>
+      <p class="lede">Not because your team is bad at follow-up. Because <strong>following up with hundreds of lapsed patients is a full-time job</strong> nobody was hired for. The revenue is there. It's just sitting in your PMS.</p>
+    </div>
+    <div class="bot"><span>The problem</span><span class="top-num">02 / 15</span></div>
+  </section>
+
+  <!-- 03 The number -->
+  <section class="slide" data-title="The cost">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>What attrition costs</span>
+    </div>
+    <div class="body">
+      <div class="big-num">
+        <div>
+          <div class="eye">Typical annual loss</div>
+          <div class="big-num-val" style="margin-top:16px"><span class="sup">$</span>150<span class="accent">k</span></div>
+          <div class="big-num-v2">per private practice, per year</div>
+        </div>
+        <div>
+          <p class="lede">Unrecovered hygiene recalls. Broken appointments that never got rebooked. Patients who "meant to call" and didn't. Every month it compounds.</p>
+        </div>
+      </div>
+    </div>
+    <div class="bot"><span>Source: 2025 industry benchmarks</span><span class="top-num">03 / 15</span></div>
+  </section>
+
+  <!-- 04 The solution -->
+  <section class="slide" data-title="Solution">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>What we do</span>
+    </div>
+    <div class="body">
+      <div class="eye">The whole pitch in one line</div>
+      <h1>We take follow-up <span class="accent">off your desk</span>.</h1>
+      <p class="lede">You send us your overdue patient list. We contact every one — text, email, phone — in your voice, on your behalf. When they're ready to book, we warm-transfer them to your front desk.</p>
+    </div>
+    <div class="bot"><span>The solution</span><span class="top-num">04 / 15</span></div>
+  </section>
+
+  <!-- 05 Three steps -->
+  <section class="slide" data-title="How it works">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>How it works</span>
+    </div>
+    <div class="body">
+      <div class="eye">Three steps, one setup call, zero ongoing work for your team</div>
+      <div class="three-col">
+        <div class="col">
+          <div class="col-n">01</div>
+          <div class="col-t">You send us the list</div>
+          <div class="col-b">Export your overdue patients from <strong>Dentrix</strong>, <strong>Eaglesoft</strong>, or <strong>Open Dental</strong>. 30 minutes, once. Then we never touch your PMS again.</div>
+        </div>
+        <div class="col">
+          <div class="col-n">02</div>
+          <div class="col-t">We contact every patient</div>
+          <div class="col-b">Personal text, email, and phone on your behalf. <strong>Not robo-blasts.</strong> A multi-touch sequence scripted in your voice, approved by you.</div>
+        </div>
+        <div class="col">
+          <div class="col-n">03</div>
+          <div class="col-t">Patients walk back in</div>
+          <div class="col-b">Warm-transferred to your front desk with name and context. Every Friday: a written report on contacted, booked, shown, recovered.</div>
+        </div>
+      </div>
+    </div>
+    <div class="bot"><span>How it works</span><span class="top-num">05 / 15</span></div>
+  </section>
+
+  <!-- 06 The Friday report -->
+  <section class="slide" data-title="The report">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>The deliverable</span>
+    </div>
+    <div class="body">
+      <div class="product-wrap">
+        <div class="product-copy">
+          <div class="eye">The report is the product</div>
+          <h3>Every Friday at 4 PM you get a written PDF.</h3>
+          <p><strong>Patient names.</strong> Not aggregates. Not dashboards. Real people from your list.</p>
+          <ul class="product-list">
+            <li><strong>Outreach history</strong> — every text, email, call logged</li>
+            <li><strong>Outcome</strong> — shown, booked, no response, opted out</li>
+            <li><strong>Production</strong> — dollars recovered, tallied weekly</li>
+            <li><strong>Operator note</strong> — what I'm seeing, what's next</li>
+          </ul>
+        </div>
+        <div class="rep-mock">
+          <div class="rep-mock-top"><span class="rep-mock-dot"></span><span class="rep-mock-dot"></span><span class="rep-mock-dot"></span><span class="rep-mock-url"><strong>usdpr.</strong>/reports/friday/week-03</span></div>
+          <div class="rep-mock-head">
+            <div>
+              <div class="rep-mock-t">Friday Report · Week 3</div>
+              <div class="rep-mock-s">Mosaic Dental Center</div>
+            </div>
+            <div class="rep-mock-meta">Folio<strong>#003</strong></div>
+          </div>
+          <div class="rep-mock-kpis">
+            <div class="rep-mock-kpi"><div class="rep-mock-kpi-l">Contacted</div><div class="rep-mock-kpi-v">142</div></div>
+            <div class="rep-mock-kpi"><div class="rep-mock-kpi-l">Booked</div><div class="rep-mock-kpi-v">12</div></div>
+            <div class="rep-mock-kpi"><div class="rep-mock-kpi-l">Recovered</div><div class="rep-mock-kpi-v"><span class="sup">$</span>3,480</div></div>
+          </div>
+          <div class="rep-mock-rows">
+            <div class="rep-mock-row"><span class="rep-mock-row-n">Margaret W.</span><span class="rep-mock-tok">Shown</span><span class="rep-mock-v">$298</span></div>
+            <div class="rep-mock-row"><span class="rep-mock-row-n">Dennis K.</span><span class="rep-mock-tok">Shown</span><span class="rep-mock-v">$316</span></div>
+            <div class="rep-mock-row"><span class="rep-mock-row-n">Priya S.</span><span class="rep-mock-tok">Shown</span><span class="rep-mock-v">$412</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bot"><span>The report is the product</span><span class="top-num">06 / 15</span></div>
+  </section>
+
+  <!-- 07 Compliance -->
+  <section class="slide" data-title="Compliance">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>Compliance</span>
+    </div>
+    <div class="body">
+      <div class="eye">Built for healthcare from day one</div>
+      <h2>Legally defensible. <span class="accent">BAA-first.</span></h2>
+      <div class="three-col" style="margin-top:24px">
+        <div class="col">
+          <div class="col-n" style="font-size:48px">HIPAA</div>
+          <div class="col-t">BAA signed first</div>
+          <div class="col-b">Business Associate Agreement executed before any patient data changes hands. PHI scrubber on every outbound message. Audit log on every send.</div>
+        </div>
+        <div class="col">
+          <div class="col-n" style="font-size:48px">TCPA</div>
+          <div class="col-t">STOP honored instantly</div>
+          <div class="col-b">A2P 10DLC registered. Rate-limited in code: 1 text/day, 3/week max per patient. STOP replies go to DNC in under 200ms — permanent.</div>
+        </div>
+        <div class="col">
+          <div class="col-n" style="font-size:48px">FL</div>
+          <div class="col-t">64B5-4.002 exempt</div>
+          <div class="col-b">Florida Rule <strong>64B5-4.002</strong> explicitly exempts an agent contacting existing or former patients about follow-up care. Flat fee stays inside the Patient Brokering Act safe harbor.</div>
+        </div>
+      </div>
+    </div>
+    <div class="bot"><span>Compliance</span><span class="top-num">07 / 15</span></div>
+  </section>
+
+  <!-- 08 Pricing headline -->
+  <section class="slide" data-title="Pricing">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>Pricing</span>
+    </div>
+    <div class="body">
+      <div class="price-block">
+        <div>
+          <div class="eye">Flat SaaS pricing — no surprises</div>
+          <div class="price-val"><span class="dollar">$</span>697<span style="font-size:28px;vertical-align:top;margin-left:4px;color:#6b6e70">/mo</span></div>
+        </div>
+        <div class="price-details">
+          <div class="price-row"><span class="k">Practice</span><span class="v">$297/mo · 2,000 patients</span></div>
+          <div class="price-row"><span class="k">Practice Pro</span><span class="v">$697/mo · 10,000 patients</span></div>
+          <div class="price-row"><span class="k">DSO</span><span class="v">$1,997/mo + $297/location</span></div>
+          <div class="price-row"><span class="k">Free trial</span><span class="v">14 days, no card</span></div>
+          <div class="price-row"><span class="k">Per-patient fees</span><span class="v">$0</span></div>
+          <div class="price-row"><span class="k">Cancel</span><span class="v">1 click, anytime</span></div>
+          <div class="price-row"><span class="k">Annual discount</span><span class="v">17% off after 90 days</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="bot"><span>Flat. Simple. No surprises.</span><span class="top-num">08 / 15</span></div>
+  </section>
+
+  <!-- 09 Break-even math -->
+  <section class="slide" data-title="Break-even">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>The math</span>
+    </div>
+    <div class="body">
+      <div class="big-num">
+        <div>
+          <div class="eye">Patients rebooked to break even</div>
+          <div class="big-num-val" style="margin-top:16px"><span class="accent">3</span></div>
+          <div class="big-num-v2">of your existing patients.</div>
+        </div>
+        <div>
+          <p class="lede">At an industry-benchmark <strong>$300 per hygiene visit with exam</strong>, three patients back in the chair covers the pilot. Everything after that is pure recovered revenue — <strong>yours</strong>.</p>
+          <p class="lede" style="margin-top:16px;font-size:17px">At 10 rebooks you're at <strong>3×</strong>. At 20 you're at <strong>6×</strong>. At 50 (unusual but possible on a big list) you're at <strong>15×</strong>.</p>
+        </div>
+      </div>
+    </div>
+    <div class="bot"><span>Benchmark math, not a promise</span><span class="top-num">09 / 15</span></div>
+  </section>
+
+  <!-- 10 What you have to do -->
+  <section class="slide" data-title="Your team's lift">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>What your team does</span>
+    </div>
+    <div class="body">
+      <div class="eye">Four things. That's the whole lift.</div>
+      <h2>Your front desk's workload: <span class="accent">minimal, not zero</span>.</h2>
+      <div class="three-col" style="grid-template-columns:repeat(4,1fr);margin-top:32px">
+        <div class="col"><div class="col-n">01</div><div class="col-t">Export the list</div><div class="col-b">30 minutes, once. We screen-share.</div></div>
+        <div class="col"><div class="col-n">02</div><div class="col-t">Approve templates</div><div class="col-b">Sign off on scripts before campaigns launch.</div></div>
+        <div class="col"><div class="col-n">03</div><div class="col-t">Take the handoffs</div><div class="col-b">When we call with a ready-to-book patient.</div></div>
+        <div class="col"><div class="col-n">04</div><div class="col-t">Share show data</div><div class="col-b">Tell us who came and who didn't for the report.</div></div>
+      </div>
+    </div>
+    <div class="bot"><span>What your team does</span><span class="top-num">10 / 15</span></div>
+  </section>
+
+  <!-- 11 Who runs this -->
+  <section class="slide" data-title="Operator">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>Who runs this</span>
+    </div>
+    <div class="body">
+      <div class="bio-grid">
+        <div class="bio-avatar">CS</div>
+        <div class="bio-name">
+          <div class="eye">Operator</div>
+          <h2>Colin Smith</h2>
+          <div class="bio-role">Founder · Sole operator · Orlando, FL</div>
+          <ul class="bio-list">
+            <li><span>Based</span><strong>Orlando, Florida</strong></li>
+            <li><span>Caseload cap</span><strong>6 practices — by design</strong></li>
+            <li><span>What I do</span><strong>Personally read every reply &amp; write every Friday report</strong></li>
+            <li><span>Stack</span><strong>usdpr. console · Twilio · encrypted infra</strong></li>
+            <li><span>Signed</span><strong>BAA per practice, before PHI</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="bot"><span>A single operator — on purpose</span><span class="top-num">11 / 15</span></div>
+  </section>
+
+  <!-- 12 Why only 6 -->
+  <section class="slide" data-title="Why capped">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>Why 6 practices max</span>
+    </div>
+    <div class="body">
+      <div class="eye">A real constraint, not a marketing flourish</div>
+      <h2>This isn't agency work. <span class="accent">By design.</span></h2>
+      <p class="lede">At six active practices, I can still personally read every patient reply, write every Friday report, and know every quirk of every dentist's list. Past that number, the work degrades into "agency work" — account managers, pooled writers, lost context.</p>
+      <p class="lede" style="margin-top:20px"><strong>If we fill up, there's a waitlist.</strong> I'd rather be out of capacity than compromise the product.</p>
+    </div>
+    <div class="bot"><span>Why only 6</span><span class="top-num">12 / 15</span></div>
+  </section>
+
+  <!-- 13 The promise vs guarantee -->
+  <section class="slide" data-title="What I promise">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>Honest terms</span>
+    </div>
+    <div class="body">
+      <div class="eye">What's on paper</div>
+      <h2>I don't guarantee results. <span class="accent">I guarantee the work.</span></h2>
+      <div class="three-col" style="margin-top:28px">
+        <div class="col">
+          <div class="col-t">What I guarantee</div>
+          <div class="col-b">The outreach happens. The report ships Friday. The BAA is in place before any patient data moves. Cancellation is clean, 7 days.</div>
+        </div>
+        <div class="col">
+          <div class="col-t">What I don't</div>
+          <div class="col-b">I can't guarantee X patients rebooked or $Y recovered. Reactivation is probabilistic — depends on list quality, consent, seasonality, your front-desk follow-up.</div>
+        </div>
+        <div class="col">
+          <div class="col-t">What happens if it flops</div>
+          <div class="col-b">By week 3 of the pilot, if the report isn't showing movement, <strong>I tell you to cancel before you ask</strong>. I'd rather lose a pilot than earn a bad reputation.</div>
+        </div>
+      </div>
+    </div>
+    <div class="bot"><span>Honest terms</span><span class="top-num">13 / 15</span></div>
+  </section>
+
+  <!-- 14 Next step -->
+  <section class="slide" data-title="Next step">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>Next step</span>
+    </div>
+    <div class="body">
+      <div class="eye">If you want to try it</div>
+      <h2>This week: a <span class="accent">45-minute</span> setup call.</h2>
+      <div class="three-col" style="margin-top:24px">
+        <div class="col">
+          <div class="col-n">01</div>
+          <div class="col-t">Sign the BAA</div>
+          <div class="col-b">Emailed after this call. DocuSign. Takes 2 minutes. No patient data moves until this is executed.</div>
+        </div>
+        <div class="col">
+          <div class="col-n">02</div>
+          <div class="col-t">Export your list</div>
+          <div class="col-b">30-minute screen-share with your front desk or PMS admin. One CSV. Done.</div>
+        </div>
+        <div class="col">
+          <div class="col-n">03</div>
+          <div class="col-t">Approve templates</div>
+          <div class="col-b">I send you the message sequence for your sign-off. Then campaigns launch. First Friday report lands 7 days later.</div>
+        </div>
+      </div>
+    </div>
+    <div class="bot"><span>Launch takes ~3 business days</span><span class="top-num">14 / 15</span></div>
+  </section>
+
+  <!-- 15 Final CTA -->
+  <section class="slide cta-slide" data-title="Let's go">
+    <div class="top">
+      <a class="top-mark">usdpr<span class="top-mark-dot">.</span></a>
+      <span>Let's go</span>
+    </div>
+    <div class="body">
+      <div class="eye">Decision time</div>
+      <h1>Bring your <span class="accent">patients</span> back.</h1>
+      <p class="lede">Two pilot spots open this month. I only take practices I can personally serve — if the Friday report doesn't justify continuing, you cancel in 7 days.</p>
+      <div class="cta-url">usdentalpatientrecovery.com<span class="accent">/signup</span></div>
+    </div>
+    <div class="bot"><span>colin@usdentalpatientrecovery.com · usdentalpatientrecovery.com</span><span class="top-num">15 / 15</span></div>
+  </section>
+
+</div>
+
+<div class="nav-hint">
+  <kbd>←</kbd><kbd>→</kbd> navigate · <kbd>F</kbd> fullscreen · <kbd>Esc</kbd> exit
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const progress = document.getElementById('progress');
+  let i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+    progress.style.width = ((i + 1) / slides.length * 100) + '%';
+  }
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); show(i + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(i - 1); }
+    if (e.key === 'Home') { e.preventDefault(); show(0); }
+    if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+    if (e.key.toLowerCase() === 'f') { document.documentElement.requestFullscreen?.(); }
+  });
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.nav-hint')) return;
+    const mid = window.innerWidth / 2;
+    show(e.clientX < mid ? i - 1 : i + 1);
+  });
+</script>
+</body>
+</html>

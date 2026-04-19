@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Case Study · [Practice Name] · usdpr.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+  /* Letter-size, print-ready case study template. Fill in the [BRACKETED]
+     placeholders after pilot wraps; the numbers are dummy-real but should
+     match the practice's actual Friday report totals. */
+  @page{size:letter;margin:0}
+
+  :root{
+    --bg:#f6f4ef; --bg-card:#ffffff; --bg-soft:#efece4;
+    --ink:#0b0e0f; --ink-2:#3a3d3f; --ink-3:#6b6e70;
+    --accent:#f97316; --accent-soft:#fff3e7; --accent-100:#ffe0c2;
+    --border:#e3ddd1; --border-2:#d1c9b8; --border-soft:#eae4d6;
+    --ok:#15803d; --ok-soft:#ecfdf3;
+    --ff:'Bricolage Grotesque','-apple-system',sans-serif;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html,body{
+    width:8.5in;margin:0 auto;background:var(--bg);
+    font-family:var(--ff);color:var(--ink-2);
+    font-size:11px;line-height:1.55;
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 400;
+    -webkit-font-smoothing:antialiased;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+
+  .page{
+    position:relative;width:8.5in;min-height:11in;margin:0 auto;
+    padding:.48in .58in;
+    display:flex;flex-direction:column;
+    page-break-after:always;
+  }
+  .page:last-child{page-break-after:auto}
+
+  /* Folio */
+  .folio{
+    display:grid;grid-template-columns:auto 1fr auto;
+    gap:18px;align-items:center;
+    padding-bottom:12px;margin-bottom:20px;
+    border-bottom:1px solid var(--ink);
+  }
+  .folio-mark{
+    font-size:26px;line-height:1;color:var(--ink);
+    font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;
+    letter-spacing:-.045em;display:inline-flex;align-items:baseline;
+  }
+  .folio-mark-dot{color:var(--accent);margin-left:-.03em}
+  .folio-doc{
+    font-size:10.5px;color:var(--ink-3);line-height:1.4;
+    padding-left:14px;border-left:1px solid var(--border-2);
+  }
+  .folio-doc strong{color:var(--ink);display:block;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;font-size:12px}
+  .folio-meta{
+    text-align:right;font-size:9.5px;color:var(--ink-3);line-height:1.5;
+    letter-spacing:.04em;text-transform:uppercase;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+  }
+  .folio-meta strong{color:var(--ink);display:block;font-size:11px;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:0;text-transform:none}
+
+  /* Hero */
+  .hero{
+    display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+    gap:28px;align-items:end;
+    padding-bottom:18px;margin-bottom:20px;
+    border-bottom:1px solid var(--border);
+  }
+  .eye{
+    display:flex;align-items:center;gap:8px;
+    font-size:9.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;
+    letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;
+  }
+  .eye::before{content:'';width:18px;height:1px;background:var(--accent)}
+  .hero h1{
+    font-size:34px;line-height:1;color:var(--ink);
+    font-variation-settings:'opsz' 72,'wdth' 100,'wght' 800;letter-spacing:-.04em;
+  }
+  .hero h1 .accent{color:var(--accent)}
+  .hero-sub{
+    font-size:11px;line-height:1.55;color:var(--ink-2);
+  }
+  .hero-sub strong{color:var(--ink);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+
+  /* Hero stats band */
+  .hero-stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    margin-bottom:20px;
+    border:1px solid var(--ink);border-radius:10px;
+    overflow:hidden;background:var(--bg-card);
+  }
+  .hs{padding:14px 16px;border-right:1px solid var(--border)}
+  .hs:last-child{border-right:0;background:var(--ink);color:var(--bg)}
+  .hs:last-child .hs-v{color:var(--bg)}
+  .hs:last-child .hs-l{color:rgba(246,244,239,.7)}
+  .hs-l{
+    font-size:8.5px;color:var(--ink-3);
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 700;
+    letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;
+  }
+  .hs-v{
+    font-size:28px;color:var(--ink);line-height:1;
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 800;
+    letter-spacing:-.035em;
+  }
+  .hs-v .sup{font-size:.5em;vertical-align:.55em;color:var(--ink-3);font-variation-settings:'opsz' 28,'wdth' 100,'wght' 800;margin-right:1px}
+  .hs:last-child .hs-v .sup{color:rgba(246,244,239,.6)}
+
+  /* Two-col body */
+  .body{
+    display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
+    gap:24px;flex:1;
+  }
+
+  .s-t{
+    font-size:12px;color:var(--ink);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;
+    letter-spacing:-.012em;margin-bottom:10px;
+    padding-bottom:6px;border-bottom:1px solid var(--border);
+  }
+
+  .section-p{
+    font-size:10.5px;line-height:1.65;color:var(--ink-2);margin-bottom:10px;
+  }
+  .section-p strong{color:var(--ink);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+
+  /* Pull quote */
+  .pull{
+    margin:14px 0;padding:14px 18px;
+    background:var(--bg-card);border:1px solid var(--border);
+    border-left:3px solid var(--accent);border-radius:8px;
+  }
+  .pull-q{
+    font-size:13px;line-height:1.4;color:var(--ink);
+    font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700;
+    letter-spacing:-.018em;margin-bottom:8px;
+  }
+  .pull-q .accent{color:var(--accent)}
+  .pull-a{
+    font-size:9.5px;color:var(--ink-3);
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 500;
+  }
+  .pull-a strong{color:var(--ink);font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700}
+
+  /* Timeline */
+  .timeline{
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .tl-row{
+    display:grid;grid-template-columns:60px 1fr auto;
+    gap:12px;align-items:start;
+    padding:8px 0;border-bottom:1px solid var(--border-soft);
+  }
+  .tl-row:last-child{border-bottom:0}
+  .tl-wk{
+    font-size:10px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.04em;text-transform:uppercase;
+  }
+  .tl-event{
+    font-size:10.5px;line-height:1.55;color:var(--ink-2);
+  }
+  .tl-event strong{color:var(--ink);font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700}
+  .tl-n{
+    font-size:12px;color:var(--ink);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 800;
+    letter-spacing:-.015em;
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* Operations panel */
+  .panel{
+    background:var(--bg-card);border:1px solid var(--border);
+    border-radius:10px;padding:14px 16px;
+  }
+  .panel-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:6px 0;font-size:10px;
+    border-bottom:1px dotted var(--border);
+  }
+  .panel-row:last-child{border-bottom:0}
+  .panel-row .k{color:var(--ink-2)}
+  .panel-row .v{color:var(--ink);font-variant-numeric:tabular-nums;font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700}
+
+  /* ROI visualization */
+  .roi-card{
+    margin-top:14px;
+    background:var(--ink);color:var(--bg);
+    border-radius:10px;padding:18px 20px;
+  }
+  .roi-label{
+    font-size:9px;color:rgba(246,244,239,.7);
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 600;
+    letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;
+  }
+  .roi-v{
+    font-size:44px;color:var(--accent);line-height:1;
+    font-variation-settings:'opsz' 72,'wdth' 100,'wght' 800;
+    letter-spacing:-.035em;
+  }
+  .roi-sub{
+    font-size:10.5px;color:rgba(246,244,239,.7);margin-top:8px;line-height:1.55;
+  }
+  .roi-sub strong{color:var(--bg);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+
+  /* Page 2 table */
+  .detail-tbl{width:100%;border-collapse:collapse;margin-top:8px}
+  .detail-tbl th,.detail-tbl td{
+    padding:8px 10px;text-align:left;font-size:10px;
+    border-bottom:1px solid var(--border-soft);
+    font-variant-numeric:tabular-nums;
+  }
+  .detail-tbl th{
+    background:var(--bg-soft);
+    font-size:9px;color:var(--ink-3);
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 700;
+    letter-spacing:.06em;text-transform:uppercase;
+    padding:10px;border-bottom:1px solid var(--border);
+  }
+  .detail-tbl td:last-child,.detail-tbl th:last-child{text-align:right}
+  .detail-tbl td.name{color:var(--ink);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600}
+  .detail-tbl td.val{color:var(--ink);font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700}
+
+  /* Footer */
+  .sig{
+    margin-top:auto;padding-top:14px;
+    border-top:1px solid var(--ink);
+    display:grid;grid-template-columns:auto 1fr auto;
+    gap:20px;align-items:center;
+  }
+  .sig-avatar{
+    width:40px;height:40px;border-radius:50%;
+    background:var(--ink);color:var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;
+    font-variation-settings:'opsz' 18,'wdth' 100,'wght' 800;letter-spacing:-.02em;
+  }
+  .sig-body{font-size:9.5px;color:var(--ink-2);line-height:1.45}
+  .sig-body strong{color:var(--ink);display:block;font-size:11px;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+  .sig-legal{
+    text-align:right;font-size:8px;color:var(--ink-3);
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 500;
+    letter-spacing:.04em;text-transform:uppercase;line-height:1.5;
+  }
+
+  /* Placeholder highlight — remove before sharing */
+  .ph{background:#fff3e7;padding:0 4px;border-radius:3px;color:#ea580c;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+</style>
+</head>
+<body>
+
+<!-- ═══ PAGE 1: HERO + NARRATIVE + KEY RESULTS ═══ -->
+<div class="page">
+  <header class="folio">
+    <div class="folio-mark">usdpr<span class="folio-mark-dot">.</span></div>
+    <div class="folio-doc">
+      <strong>Case Study</strong>
+      Pilot engagement · <span class="ph">[MONTH YYYY]</span> · 30-day cohort
+    </div>
+    <div class="folio-meta">
+      <strong><span class="ph">[PRACTICE NAME]</span></strong>
+      <span class="ph">[ORLANDO, FL]</span>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div>
+      <div class="eye">Case study · <span class="ph">[PRACTICE NAME]</span></div>
+      <h1>Recovered <span class="accent">$<span class="ph">[TOTAL_$]</span></span> in <span class="ph">30</span> days.</h1>
+    </div>
+    <div class="hero-sub">
+      <span class="ph">[PRACTICE NAME]</span> is a <span class="ph">[solo / two-doc]</span> owner-led practice in <span class="ph">[NEIGHBORHOOD]</span>. At the start of the pilot, their inactive-patient list carried <span class="ph">[N_LAPSED]</span> overdue hygiene recalls, some going back <span class="ph">[N_MONTHS]</span> months. Below: what happened across the 30-day window.
+    </div>
+  </div>
+
+  <!-- Top stats band -->
+  <div class="hero-stats">
+    <div class="hs">
+      <div class="hs-l">Patients contacted</div>
+      <div class="hs-v"><span class="ph">142</span></div>
+    </div>
+    <div class="hs">
+      <div class="hs-l">Booked</div>
+      <div class="hs-v"><span class="ph">23</span></div>
+    </div>
+    <div class="hs">
+      <div class="hs-l">Shown up</div>
+      <div class="hs-v"><span class="ph">19</span></div>
+    </div>
+    <div class="hs">
+      <div class="hs-l">Recovered</div>
+      <div class="hs-v"><span class="sup">$</span><span class="ph">6,412</span></div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="body">
+
+    <div>
+      <div class="s-t">The setup</div>
+      <p class="section-p">Dr. <span class="ph">[LAST_NAME]</span> had been tracking the attrition informally for <span class="ph">[N]</span> years — patients who'd fallen off the recall cadence, broken appointments nobody had time to chase, some long-time regulars who'd just stopped answering the reminder texts from the front desk. The hygiene calendar was running at <span class="ph">[%]</span>% capacity; the list of unworked names had grown to around <span class="ph">[N_LAPSED]</span>.</p>
+      <p class="section-p">Rather than hire a part-time recall coordinator, <span class="ph">[PRACTICE NAME]</span> signed a BAA with <strong>usdpr.</strong> on <span class="ph">[DATE]</span>, exported a CSV of their overdue patients, and handed the list over. The pilot launched <span class="ph">[N]</span> business days later.</p>
+
+      <div class="pull">
+        <div class="pull-q">"By the end of week three the report was showing us <span class="accent">patients we'd written off two years ago</span> booking hygiene visits."</div>
+        <div class="pull-a">— <strong><span class="ph">Dr. [NAME]</span></strong>, Owner · <span class="ph">[PRACTICE NAME]</span></div>
+      </div>
+
+      <div class="s-t" style="margin-top:14px">What happened</div>
+      <p class="section-p"><strong>Week 1:</strong> First outreach wave to <span class="ph">[N]</span> patients. Response rate came in at <span class="ph">[%]</span>% — noticeably higher than benchmark. A handful booked inside 48 hours.</p>
+      <p class="section-p"><strong>Week 2:</strong> Second touches to non-responders. A mid-cohort phone sequence surfaced <span class="ph">[N]</span> patients who'd moved and needed a "we tried, wishing you well" send-off — not every recovery is a win, but a clean DNC update kept the list honest.</p>
+      <p class="section-p"><strong>Week 3:</strong> The compounding week. <span class="ph">[N]</span> patients showed up for scheduled appointments; one (Sandhu) converted to downstream restorative worth <span class="ph">$[N]</span> not counted in the weekly totals.</p>
+      <p class="section-p"><strong>Week 4:</strong> Close-out week. Pipeline into next month: <span class="ph">[N]</span> additional patients booked for <span class="ph">[MONTH]</span>, which roll into month 2 ongoing.</p>
+
+      <div class="s-t" style="margin-top:14px">The verdict</div>
+      <p class="section-p"><span class="ph">[PRACTICE NAME]</span> continued on the month-to-month at <strong>$1,500 / month</strong> starting <span class="ph">[DATE]</span>. Dr. <span class="ph">[LAST_NAME]</span>'s team didn't need to hire a recall coordinator. The Friday report is delivered to the practice email every week at 4 PM.</p>
+    </div>
+
+    <div>
+      <div class="s-t">Timeline</div>
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-wk">Week 0</div>
+          <div class="tl-event"><strong>BAA signed</strong> · Export walkthrough · First campaign approved</div>
+          <div class="tl-n">—</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-wk">Week 1</div>
+          <div class="tl-event">First outreach wave · <span class="ph">[N]</span> touches · <strong><span class="ph">[N]</span> booked</strong></div>
+          <div class="tl-n">$<span class="ph">[$$$]</span></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-wk">Week 2</div>
+          <div class="tl-event">Second-touch sequence · DNC cleanup · <strong><span class="ph">[N]</span> shown</strong></div>
+          <div class="tl-n">$<span class="ph">[$$$]</span></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-wk">Week 3</div>
+          <div class="tl-event">Compounding week · <strong><span class="ph">[N]</span> shown</strong> · restorative follow-on</div>
+          <div class="tl-n">$<span class="ph">[$$$]</span></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-wk">Week 4</div>
+          <div class="tl-event">Close-out · Month 2 pipeline built · Renewal signed</div>
+          <div class="tl-n">$<span class="ph">[$$$]</span></div>
+        </div>
+      </div>
+
+      <div class="roi-card">
+        <div class="roi-label">Return on subscription</div>
+        <div class="roi-v"><span class="ph">[N.N]</span>×</div>
+        <div class="roi-sub"><strong>$<span class="ph">[TOTAL_$]</span> recovered</strong> against <strong>$<span class="ph">[PLAN_FEE]</span>/mo</strong> (<span class="ph">[TIER]</span> tier). Downstream restorative not counted above.</div>
+      </div>
+
+      <div class="s-t" style="margin-top:14px">Ops &amp; compliance</div>
+      <div class="panel">
+        <div class="panel-row"><span class="k">Total sends</span><span class="v"><span class="ph">284</span></span></div>
+        <div class="panel-row"><span class="k">STOP replies honored</span><span class="v"><span class="ph">2</span></span></div>
+        <div class="panel-row"><span class="k">Avg touches / booking</span><span class="v"><span class="ph">2.8</span></span></div>
+        <div class="panel-row"><span class="k">Warm handoffs</span><span class="v"><span class="ph">23</span></span></div>
+        <div class="panel-row"><span class="k">No-shows</span><span class="v"><span class="ph">4</span></span></div>
+        <div class="panel-row"><span class="k">BAA audit entries</span><span class="v"><span class="ph">284</span></span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="sig">
+    <div class="sig-avatar">CS</div>
+    <div class="sig-body">
+      <strong>Colin Smith · Founder, usdpr.</strong>
+      Pilot wrap · <span class="ph">[DATE]</span> · Questions at colin@usdentalpatientrecovery.com
+    </div>
+    <div class="sig-legal">
+      Confidential · Under signed BAA<br>
+      usdpr. · Orlando, FL · Page 1 / 2
+    </div>
+  </footer>
+</div>
+
+<!-- ═══ PAGE 2: PATIENT-LEVEL DETAIL + METHODOLOGY ═══ -->
+<div class="page">
+  <header class="folio">
+    <div class="folio-mark">usdpr<span class="folio-mark-dot">.</span></div>
+    <div class="folio-doc">
+      <strong>Case Study</strong> · continued
+      <span class="ph">[PRACTICE NAME]</span> · <span class="ph">[TIER]</span> tier
+    </div>
+    <div class="folio-meta">
+      <strong>Page 2 / 2</strong>
+      Patient detail
+    </div>
+  </header>
+
+  <div class="s-t">Patient-level detail · Week 4 close-out</div>
+  <p class="section-p">Names anonymized to initials. Under the signed BAA, full patient detail is available to the practice only.</p>
+  <table class="detail-tbl">
+    <thead>
+      <tr>
+        <th>Patient</th>
+        <th>Last visit</th>
+        <th>Touches</th>
+        <th>Channel won</th>
+        <th>Outcome</th>
+        <th>Production</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">M.W.</td><td><span class="ph">09/14/2025</span></td><td><span class="ph">3</span></td><td>SMS</td><td>Shown</td><td class="val">$<span class="ph">298</span></td></tr>
+      <tr><td class="name">D.K.</td><td><span class="ph">08/22/2025</span></td><td><span class="ph">2</span></td><td>Email</td><td>Shown</td><td class="val">$<span class="ph">316</span></td></tr>
+      <tr><td class="name">P.S.</td><td><span class="ph">07/09/2025</span></td><td><span class="ph">4</span></td><td>Phone</td><td>Shown + restorative</td><td class="val">$<span class="ph">412</span></td></tr>
+      <tr><td class="name">T.G.</td><td><span class="ph">09/30/2025</span></td><td><span class="ph">3</span></td><td>SMS</td><td>Shown</td><td class="val">$<span class="ph">275</span></td></tr>
+      <tr><td class="name">L.M.</td><td><span class="ph">08/03/2025</span></td><td><span class="ph">2</span></td><td>Email</td><td>Shown</td><td class="val">$<span class="ph">304</span></td></tr>
+      <tr><td class="name">C.B.</td><td><span class="ph">10/11/2025</span></td><td><span class="ph">3</span></td><td>Phone</td><td>Shown</td><td class="val">$<span class="ph">322</span></td></tr>
+      <tr><td class="name">R.O.</td><td><span class="ph">07/25/2025</span></td><td><span class="ph">2</span></td><td>SMS</td><td>Shown</td><td class="val">$<span class="ph">298</span></td></tr>
+      <tr><td class="name">J.F.</td><td><span class="ph">08/18/2025</span></td><td><span class="ph">2</span></td><td>Phone</td><td>Shown</td><td class="val">$<span class="ph">355</span></td></tr>
+      <tr><td class="name">S.M.</td><td><span class="ph">09/05/2025</span></td><td><span class="ph">2</span></td><td>SMS</td><td>Shown + restorative</td><td class="val">$<span class="ph">900</span></td></tr>
+      <tr><td class="name">R.J.</td><td><span class="ph">10/02/2025</span></td><td><span class="ph">2</span></td><td>Email</td><td>Shown</td><td class="val">$<span class="ph">412</span></td></tr>
+      <tr><td class="name">A.P.</td><td><span class="ph">06/28/2025</span></td><td><span class="ph">3</span></td><td>SMS</td><td>Shown</td><td class="val">$<span class="ph">304</span></td></tr>
+      <tr><td class="name">D.C.</td><td><span class="ph">11/12/2025</span></td><td><span class="ph">2</span></td><td>Phone</td><td>Shown</td><td class="val">$<span class="ph">316</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="s-t" style="margin-top:18px">Methodology</div>
+  <p class="section-p">All outreach ran on behalf of <span class="ph">[PRACTICE NAME]</span>, under the practice's name and phone number. <strong>usdpr.</strong> operates as a HIPAA Business Associate under signed BAA; every send, reply, and booking was logged with patient ID, campaign ID, and timestamp in an encrypted audit trail. SMS rate-limited to 1 per day, 3 per week per patient, per TCPA best practice. STOP replies honored instantly via DNC list.</p>
+  <p class="section-p">Per-visit production figures sourced from the practice's own ledger, post-appointment. "Shown + restorative" entries indicate patients whose hygiene visit surfaced additional treatment accepted during or within 14 days of the appointment — this downstream production is real but excluded from the pilot ROI calculation to keep the numbers conservative.</p>
+
+  <div class="pull" style="margin-top:14px">
+    <div class="pull-q">"The flat fee was actually the thing that sold me — I'd looked at pay-per-rebook services and they always felt like <span class="accent">my front desk was being gamed</span>."</div>
+    <div class="pull-a">— <strong><span class="ph">Dr. [NAME]</span></strong>, Owner</div>
+  </div>
+
+  <div class="s-t" style="margin-top:14px">What's next</div>
+  <p class="section-p"><span class="ph">[PRACTICE NAME]</span> continues on the month-to-month at $1,500/month. Next <span class="ph">[30-day / 60-day]</span> focus: the <span class="ph">[N]</span> patients still in "contacted, no response" cohort plus the <span class="ph">[N]</span> new lapsed patients the PMS flagged since the pilot start. Monthly reports continue every Friday at 4 PM.</p>
+  <p class="section-p"><strong>For practices considering a pilot:</strong> we typically see similar engagement curves in the first 30 days — response heavy in weeks 1–2, bookings concentrated in weeks 2–3, show-ups in weeks 3–4. Your mileage will vary with list age, consent density, and how fast your front desk can absorb the warm handoffs.</p>
+
+  <footer class="sig">
+    <div class="sig-avatar">CS</div>
+    <div class="sig-body">
+      <strong>Colin Smith · Founder, usdpr.</strong>
+      Case study approved for distribution by <span class="ph">[PRACTICE NAME]</span> on <span class="ph">[DATE]</span>. Contact for reference conversations welcomed.
+    </div>
+    <div class="sig-legal">
+      Confidential · Under signed BAA<br>
+      usdpr. · Orlando, FL · Page 2 / 2
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Local Netlify folder (keep functions-src since we want it in the repo)
+.netlify/state.json
+.netlify/blobs-serve/
+.netlify/.netlify
+node_modules/
+*.log
+.DS_Store
+.vercel/
+/_ops/out/

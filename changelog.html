@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What we shipped · usdpr.</title>
+<meta name="description" content="Every change, every week. usdpr. ships in public.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f6f4ef;--bg-card:#ffffff;--ink:#0b0e0f;--ink-2:#3a3d3f;--ink-3:#6b6e70;--accent:#f97316;--border:#e3ddd1;--border-soft:#eae4d6}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Bricolage Grotesque',sans-serif;background:var(--bg);color:var(--ink-2);font-size:16px;line-height:1.65;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 400}
+  .container{max-width:760px;margin:0 auto;padding:48px 24px 96px}
+  h1{font-size:clamp(36px,5vw,52px);color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 100,'wght' 800;letter-spacing:-.04em;margin-bottom:12px}
+  h2{font-size:22px;color:var(--ink);font-variation-settings:'opsz' 32,'wdth' 100,'wght' 700;letter-spacing:-.02em;margin-bottom:8px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.04em;color:var(--accent);font-size:12px;font-weight:700}
+  .nav{padding:20px 24px;border-bottom:1px solid var(--border)}
+  .nav-in{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:baseline}
+  .wm{font-size:22px;font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;color:var(--ink);letter-spacing:-.05em;text-decoration:none}
+  .wm-dot{color:var(--accent)}
+  .nav-back{font-size:13px;color:var(--ink-2);text-decoration:none}
+  .entry{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin:16px 0}
+  .entry-date{font-size:12px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+  .entry ul{margin:8px 0 0 20px}
+  .entry li{margin-bottom:4px;font-size:15px}
+  .entry strong{color:var(--ink);font-weight:700}
+  .tag{display:inline-block;padding:2px 9px;border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-right:6px}
+  .tag-new{background:#ecfdf3;color:#15803d}
+  .tag-fix{background:#fff3e7;color:#ea580c}
+  .tag-security{background:#eff6ff;color:#2563eb}
+  .tag-ops{background:rgba(11,14,15,.06);color:var(--ink)}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="/" class="wm">usdpr<span class="wm-dot">.</span></a>
+    <a href="/" class="nav-back">← Back</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="eyebrow">Changelog</div>
+  <h1>What we shipped.</h1>
+  <p>Written the day we ship it. No marketing, no hedging. If we fix a bug, we tell you.</p>
+
+  <div class="entry">
+    <div class="entry-date">2026-04-19</div>
+    <h2><span class="tag tag-new">New</span>Lifecycle email engine + churn monitor</h2>
+    <ul>
+      <li><strong>Lifecycle emails</strong> — welcome, stall nudge, reply celebration, booking celebration, weekly recap, SMS unlock, 4-month impact, 60-day renewal.</li>
+      <li><strong>Churn monitor</strong> — nightly 0-10 score per tenant. Auto-alert at score ≥ 5.</li>
+      <li><strong>Referrals</strong> — one code per practice, $100 credit per successful referral.</li>
+      <li><strong>Exit survey + win-back</strong> — every cancellation learns something.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-date">2026-04-18</div>
+    <h2><span class="tag tag-new">New</span>PMS integrations + enterprise surface</h2>
+    <ul>
+      <li><strong>Open Dental</strong> — direct REST API integration. Live in 10 minutes.</li>
+      <li><strong>Dentrix / Eaglesoft / Curve / Dentrix Ascend</strong> — scaffolded; partner program pending.</li>
+      <li><strong>REST API + webhooks</strong> — every tier gets API access. No enterprise gate.</li>
+      <li><strong>SAML 2.0 SSO</strong> — DSO tier. Okta/Azure AD/Google Workspace.</li>
+      <li><strong>White-label</strong> — custom accent color + logo per Practice Pro tenant.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-date">2026-04-17</div>
+    <h2><span class="tag tag-new">New</span>Three-tier pricing</h2>
+    <ul>
+      <li><strong>Practice $297/mo</strong> — 1–3 chairs, 2k patients.</li>
+      <li><strong>Practice Pro $697/mo</strong> — 3–8 chairs, 10k patients. Flagship.</li>
+      <li><strong>DSO $1,997/mo + $297/location</strong> — multi-site groups.</li>
+      <li><strong>14-day free trial</strong> on every self-serve tier. No credit card required.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-date">2026-04-16</div>
+    <h2><span class="tag tag-new">New</span>Self-serve onboarding</h2>
+    <ul>
+      <li><strong>Stripe → cookie → dashboard</strong> in one click, no sales call.</li>
+      <li>BAA e-sign via HelloSign.</li>
+      <li>CSV upload with auto-column-detect (CamelCase + snake_case + common PMS header shapes).</li>
+      <li>Starter voice profile auto-generated from your practice name.</li>
+      <li>Email-first launch — campaigns start the same day; SMS layers in when carrier approves.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-date">2026-04-15</div>
+    <h2><span class="tag tag-security">Security</span>Compliance in code</h2>
+    <ul>
+      <li>PHI scrubber on every outbound message.</li>
+      <li>TCPA rate limits enforced at the database query layer.</li>
+      <li>Every send/reply/booking in an append-only audit log.</li>
+      <li>SOC 2 Type I evidence captured. Type II audit kicking off Q2 2026.</li>
+    </ul>
+  </div>
+
+  <p style="margin-top:48px;color:var(--ink-3);font-size:13px">
+    Subscribe to the weekly digest — mail <a href="mailto:colin@usdentalpatientrecovery.com">colin@usdentalpatientrecovery.com</a> with "changelog" in the subject.
+  </p>
+</div>
+</body>
+</html>

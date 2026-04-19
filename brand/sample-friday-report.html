@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Sample Friday Report · usdpr.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+  /* Letter-size, print-ready Friday Report — the proof artifact a prospect
+     gets emailed before a discovery call. This is what every Friday's
+     real deliverable looks like, once we have real clients. */
+  @page{size:letter;margin:0}
+
+  :root{
+    --bg:#f6f4ef; --bg-card:#ffffff; --bg-soft:#efece4;
+    --ink:#0b0e0f; --ink-2:#3a3d3f; --ink-3:#6b6e70;
+    --accent:#f97316; --accent-soft:#fff3e7;
+    --border:#e3ddd1; --border-2:#d1c9b8; --border-soft:#eae4d6;
+    --ok:#15803d; --ok-soft:#ecfdf3;
+    --warn:#ea580c; --warn-soft:#ffedd5;
+    --ff:'Bricolage Grotesque','-apple-system',sans-serif;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html,body{
+    width:8.5in;min-height:11in;margin:0 auto;background:var(--bg);
+    font-family:var(--ff);color:var(--ink-2);
+    font-size:11px;line-height:1.55;
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 400;
+    -webkit-font-smoothing:antialiased;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  .page{
+    position:relative;width:8.5in;min-height:11in;margin:0 auto;
+    padding:.46in .54in;
+    display:flex;flex-direction:column;
+  }
+
+  /* Folio (top) */
+  .folio{
+    display:grid;grid-template-columns:auto 1fr auto;
+    gap:18px;align-items:center;
+    padding-bottom:12px;margin-bottom:20px;
+    border-bottom:1px solid var(--ink);
+  }
+  .folio-mark{
+    font-size:26px;line-height:1;color:var(--ink);
+    font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;
+    letter-spacing:-.045em;
+    display:inline-flex;align-items:baseline;
+  }
+  .folio-mark-dot{color:var(--accent);margin-left:-.03em}
+  .folio-doc{
+    font-size:10.5px;color:var(--ink-3);line-height:1.4;
+    padding-left:14px;border-left:1px solid var(--border-2);
+  }
+  .folio-doc strong{color:var(--ink);display:block;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;font-size:12px}
+  .folio-meta{
+    text-align:right;font-size:9.5px;color:var(--ink-3);line-height:1.5;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+    letter-spacing:.04em;text-transform:uppercase;
+  }
+  .folio-meta strong{color:var(--ink);display:block;font-size:11px;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:0;text-transform:none}
+
+  /* Eyebrow + title row */
+  .title-row{
+    display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+    gap:28px;align-items:end;
+    margin-bottom:18px;
+  }
+  .eye{
+    display:flex;align-items:center;gap:8px;
+    font-size:9.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;
+    letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;
+  }
+  .eye::before{content:'';width:18px;height:1px;background:var(--accent)}
+  .title-h{
+    font-size:32px;line-height:1;color:var(--ink);
+    font-variation-settings:'opsz' 60,'wdth' 100,'wght' 800;
+    letter-spacing:-.035em;
+  }
+  .title-sub{
+    font-size:10.5px;color:var(--ink-3);margin-top:6px;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+  }
+  .title-folio-num{
+    text-align:right;
+    font-size:10.5px;color:var(--ink-3);line-height:1.4;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+    letter-spacing:.04em;text-transform:uppercase;
+  }
+  .title-folio-num strong{
+    color:var(--ink);display:block;font-size:36px;letter-spacing:-.035em;line-height:1;
+    font-variation-settings:'opsz' 60,'wdth' 100,'wght' 800;
+    text-transform:none;margin-bottom:2px;
+  }
+
+  /* KPI row */
+  .kpis{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    margin-bottom:18px;
+    border:1px solid var(--border);border-radius:10px;
+    overflow:hidden;background:var(--bg-card);
+  }
+  .kpi{padding:14px 16px;border-right:1px solid var(--border)}
+  .kpi:last-child{border-right:0;background:var(--accent-soft)}
+  .kpi:last-child .kpi-v{color:var(--accent)}
+  .kpi:last-child .kpi-l{color:var(--accent)}
+  .kpi-l{
+    font-size:8.5px;color:var(--ink-3);
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 600;
+    letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;
+  }
+  .kpi-v{
+    font-size:24px;color:var(--ink);line-height:1;
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 800;
+    letter-spacing:-.032em;
+  }
+  .kpi-v .sup{
+    font-size:.48em;vertical-align:.55em;color:var(--ink-3);
+    font-variation-settings:'opsz' 28,'wdth' 100,'wght' 800;margin-right:1px;
+  }
+  .kpi-delta{
+    font-size:9px;color:var(--ok);margin-top:4px;
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 600;
+    display:inline-flex;align-items:center;gap:3px;
+  }
+  .kpi-delta svg{width:9px;height:9px}
+
+  /* Operator note (hand-written feel via styling) */
+  .note{
+    padding:14px 16px;margin-bottom:18px;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-left:3px solid var(--accent);
+    border-radius:6px;
+  }
+  .note-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    margin-bottom:6px;
+  }
+  .note-h{
+    font-size:10px;color:var(--accent);
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 700;
+    letter-spacing:.08em;text-transform:uppercase;
+  }
+  .note-meta{
+    font-size:9px;color:var(--ink-3);
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 500;
+  }
+  .note-body{
+    font-size:10.5px;line-height:1.55;color:var(--ink-2);
+  }
+  .note-body strong{color:var(--ink);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+
+  /* Section title */
+  .s-t{
+    font-size:12px;color:var(--ink);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;
+    letter-spacing:-.012em;margin-bottom:8px;
+    padding-bottom:5px;border-bottom:1px solid var(--border);
+    display:flex;justify-content:space-between;align-items:baseline;
+  }
+  .s-t span{
+    font-size:9.5px;color:var(--ink-3);
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 500;
+    letter-spacing:.04em;text-transform:uppercase;
+  }
+
+  /* Main patient table */
+  .patient-tbl{width:100%;border-collapse:collapse;margin-bottom:16px}
+  .patient-tbl th,.patient-tbl td{
+    padding:7px 8px;text-align:left;font-size:9.5px;
+    border-bottom:1px solid var(--border-soft);
+    vertical-align:middle;
+    font-variant-numeric:tabular-nums;
+  }
+  .patient-tbl th{
+    background:var(--bg-soft);
+    font-size:8.5px;color:var(--ink-3);
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 700;
+    letter-spacing:.06em;text-transform:uppercase;
+    padding:9px 8px;border-bottom:1px solid var(--border);
+  }
+  .patient-tbl td:last-child,.patient-tbl th:last-child{text-align:right}
+  .patient-tbl tr:hover{background:var(--bg-soft)}
+  .patient-tbl td.name{color:var(--ink);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600}
+  .patient-tbl td.val{color:var(--ink);font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700}
+
+  /* Status tokens */
+  .tok{
+    display:inline-block;padding:2px 7px;border-radius:100px;
+    font-size:8.5px;
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 700;
+    letter-spacing:.04em;
+  }
+  .tok-ok{background:var(--ok-soft);color:var(--ok)}
+  .tok-pending{background:var(--bg-soft);color:var(--ink-3)}
+  .tok-warn{background:var(--warn-soft);color:var(--warn)}
+
+  /* Touch sequence pips */
+  .touches{display:inline-flex;gap:2px;align-items:center}
+  .touch{
+    width:14px;height:14px;border-radius:3px;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-size:7px;color:#fff;
+    font-variation-settings:'opsz' 9,'wdth' 100,'wght' 700;
+  }
+  .touch.sms{background:#0b0e0f}
+  .touch.email{background:#6b6e70}
+  .touch.call{background:#f97316}
+  .touch.empty{background:var(--bg-soft);color:var(--ink-3);border:1px solid var(--border)}
+
+  /* Totals row */
+  .totals{
+    background:var(--bg-card);
+    border:1px solid var(--ink);border-radius:10px;
+    padding:14px 18px;margin-top:4px;
+    display:grid;grid-template-columns:1fr auto auto;
+    gap:20px;align-items:center;
+  }
+  .totals-l{
+    font-size:10px;color:var(--ink-2);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;
+    letter-spacing:.05em;text-transform:uppercase;
+  }
+  .totals-roi{
+    font-size:11px;color:var(--ok);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    padding:3px 10px;background:var(--ok-soft);border-radius:100px;
+  }
+  .totals-v{
+    font-size:24px;color:var(--ink);
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 800;
+    letter-spacing:-.03em;line-height:1;
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* Two-col bottom */
+  .bot{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:20px;margin-top:16px;
+  }
+
+  /* Opt-outs panel */
+  .panel{
+    background:var(--bg-card);
+    border:1px solid var(--border);border-radius:10px;
+    padding:14px 16px;
+  }
+  .panel-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:5px 0;font-size:9.5px;
+    border-bottom:1px dotted var(--border);
+  }
+  .panel-row:last-child{border-bottom:0}
+  .panel-row .k{color:var(--ink-2)}
+  .panel-row .v{
+    color:var(--ink);font-variant-numeric:tabular-nums;
+    font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700;
+  }
+
+  /* Sparkline weekly trend */
+  .trend-card{
+    background:var(--bg-card);
+    border:1px solid var(--border);border-radius:10px;
+    padding:14px 16px;
+  }
+  .trend-head{
+    display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;
+  }
+  .trend-h{
+    font-size:10px;color:var(--ink-2);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;
+    letter-spacing:.04em;text-transform:uppercase;
+  }
+  .trend-v{
+    font-size:18px;color:var(--ink);
+    font-variation-settings:'opsz' 36,'wdth' 100,'wght' 800;
+    letter-spacing:-.025em;
+  }
+  .trend-v .sup{font-size:.55em;vertical-align:.55em;color:var(--ink-3);font-variation-settings:'opsz' 24,'wdth' 100,'wght' 800;margin-right:1px}
+  .trend-svg{display:block;width:100%;height:44px}
+  .trend-week-labels{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    margin-top:6px;font-size:8px;color:var(--ink-3);
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 500;
+  }
+  .trend-week-labels span{text-align:center}
+
+  /* Signature block footer */
+  .sig{
+    margin-top:auto;padding-top:14px;
+    border-top:1px solid var(--ink);
+    display:grid;grid-template-columns:auto 1fr auto;
+    gap:20px;align-items:center;
+  }
+  .sig-avatar{
+    width:40px;height:40px;border-radius:50%;
+    background:var(--ink);color:var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;
+    font-variation-settings:'opsz' 18,'wdth' 100,'wght' 800;letter-spacing:-.02em;
+  }
+  .sig-body{
+    font-size:9.5px;color:var(--ink-2);line-height:1.45;
+  }
+  .sig-body strong{color:var(--ink);display:block;font-size:11px;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+  .sig-legal{
+    text-align:right;font-size:8px;color:var(--ink-3);
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 500;
+    letter-spacing:.04em;text-transform:uppercase;line-height:1.5;
+  }
+
+  @media print{body{margin:0}.page{padding:.4in .5in}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="folio">
+    <div class="folio-mark">usdpr<span class="folio-mark-dot">.</span></div>
+    <div class="folio-doc">
+      <strong>Weekly Friday Report</strong>
+      US Dental Patient Recovery · Business Associate under signed BAA
+    </div>
+    <div class="folio-meta">
+      <strong>May 08 · 2026</strong>
+      Week 3 · Spring cohort
+    </div>
+  </header>
+
+  <div class="title-row">
+    <div>
+      <div class="eye">Friday Report · Week 3 of 4</div>
+      <h1 class="title-h">Mosaic Dental Center</h1>
+      <div class="title-sub">Prepared by Colin Smith, founder · Outreach window 05/02–05/08/2026</div>
+    </div>
+    <div class="title-folio-num">
+      Folio
+      <strong>#003</strong>
+      PILOT-0012
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <section class="kpis">
+    <div class="kpi">
+      <div class="kpi-l">Contacted</div>
+      <div class="kpi-v">142</div>
+      <div class="kpi-delta" style="color:var(--ok)"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7l3-3 3 3"/></svg>+28 this week</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-l">Responded</div>
+      <div class="kpi-v">38</div>
+      <div class="kpi-delta" style="color:var(--ok)"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7l3-3 3 3"/></svg>26.7% rate</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-l">Booked</div>
+      <div class="kpi-v">12</div>
+      <div class="kpi-delta" style="color:var(--ok)"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7l3-3 3 3"/></svg>+4 this week</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-l">Recovered</div>
+      <div class="kpi-v"><span class="sup">$</span>3,480</div>
+      <div class="kpi-delta" style="color:var(--accent)"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7l3-3 3 3"/></svg>3.5× pilot fee</div>
+    </div>
+  </section>
+
+  <!-- Operator note -->
+  <aside class="note">
+    <div class="note-head">
+      <div class="note-h">Operator note</div>
+      <div class="note-meta">Colin Smith · 05/08/2026 · 3:47 PM</div>
+    </div>
+    <div class="note-body">
+      Strong week. The <strong>Tuesday-morning text cadence</strong> is pulling significantly higher response rates than the Thursday-evening batch did in week 1 — we moved all outreach to Tues/Wed AM going forward. Two patients (Whitfield, Sandhu) flagged for <strong>restorative follow-on</strong> during their hygiene visits, adding $712 in downstream production not counted above. <strong>Next week's focus:</strong> the 47 patients in "Contacted but no response" cohort get a second-touch call sequence; expect that to move the Responded column another 8–12.
+    </div>
+  </aside>
+
+  <!-- Patient-level table -->
+  <div class="s-t">Patient-level detail <span>Week 3 cohort · 12 booked</span></div>
+  <table class="patient-tbl">
+    <thead>
+      <tr>
+        <th>Patient</th>
+        <th>Last visit</th>
+        <th>Touches</th>
+        <th>Outcome</th>
+        <th>Production</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="name">Margaret Whitfield</td>
+        <td>09/14/2025</td>
+        <td><span class="touches"><span class="touch sms">T</span><span class="touch email">E</span><span class="touch call">C</span></span></td>
+        <td><span class="tok tok-ok">Shown · 05/06</span></td>
+        <td class="val">$298</td>
+      </tr>
+      <tr>
+        <td class="name">Dennis Kuroda</td>
+        <td>08/22/2025</td>
+        <td><span class="touches"><span class="touch sms">T</span><span class="touch email">E</span></span></td>
+        <td><span class="tok tok-ok">Shown · 05/07</span></td>
+        <td class="val">$316</td>
+      </tr>
+      <tr>
+        <td class="name">Priya Sandhu</td>
+        <td>07/09/2025</td>
+        <td><span class="touches"><span class="touch sms">T</span><span class="touch email">E</span><span class="touch sms">T</span><span class="touch call">C</span></span></td>
+        <td><span class="tok tok-ok">Shown · 05/05</span></td>
+        <td class="val">$412</td>
+      </tr>
+      <tr>
+        <td class="name">Thomas Grady</td>
+        <td>09/30/2025</td>
+        <td><span class="touches"><span class="touch sms">T</span><span class="touch email">E</span><span class="touch call">C</span></span></td>
+        <td><span class="tok tok-ok">Shown · 05/07</span></td>
+        <td class="val">$275</td>
+      </tr>
+      <tr>
+        <td class="name">Linda McKnight</td>
+        <td>08/03/2025</td>
+        <td><span class="touches"><span class="touch sms">T</span><span class="touch email">E</span></span></td>
+        <td><span class="tok tok-ok">Shown · 05/06</span></td>
+        <td class="val">$304</td>
+      </tr>
+      <tr>
+        <td class="name">Carl Bridges</td>
+        <td>10/11/2025</td>
+        <td><span class="touches"><span class="touch sms">T</span><span class="touch email">E</span><span class="touch call">C</span></span></td>
+        <td><span class="tok tok-ok">Shown · 05/08</span></td>
+        <td class="val">$322</td>
+      </tr>
+      <tr>
+        <td class="name">Rachel Okafor</td>
+        <td>07/25/2025</td>
+        <td><span class="touches"><span class="touch sms">T</span><span class="touch email">E</span></span></td>
+        <td><span class="tok tok-ok">Shown · 05/07</span></td>
+        <td class="val">$298</td>
+      </tr>
+      <tr>
+        <td class="name">James Fitzgerald</td>
+        <td>08/18/2025</td>
+        <td><span class="touches"><span class="touch sms">T</span><span class="touch call">C</span></span></td>
+        <td><span class="tok tok-ok">Shown · 05/08</span></td>
+        <td class="val">$355</td>
+      </tr>
+      <tr>
+        <td class="name">Sofia Marquez</td>
+        <td>09/05/2025</td>
+        <td><span class="touches"><span class="touch sms">T</span><span class="touch email">E</span></span></td>
+        <td><span class="tok tok-ok">Shown · 05/05</span></td>
+        <td class="val">$900</td>
+      </tr>
+      <tr>
+        <td class="name">Robert Jenkins</td>
+        <td>10/02/2025</td>
+        <td><span class="touches"><span class="touch sms">T</span><span class="touch email">E</span></span></td>
+        <td><span class="tok tok-pending">Booked · 05/14</span></td>
+        <td class="val">—</td>
+      </tr>
+      <tr>
+        <td class="name">Angela Prescott</td>
+        <td>06/28/2025</td>
+        <td><span class="touches"><span class="touch sms">T</span><span class="touch email">E</span><span class="touch sms">T</span></span></td>
+        <td><span class="tok tok-pending">Booked · 05/15</span></td>
+        <td class="val">—</td>
+      </tr>
+      <tr>
+        <td class="name">Daniel Chen</td>
+        <td>11/12/2025</td>
+        <td><span class="touches"><span class="touch sms">T</span><span class="touch call">C</span></span></td>
+        <td><span class="tok tok-pending">Booked · 05/16</span></td>
+        <td class="val">—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Totals -->
+  <div class="totals">
+    <div>
+      <div class="totals-l">Week 3 recovered production</div>
+      <div style="font-size:9px;color:var(--ink-3);margin-top:3px">9 shown · 3 booked for next week · 0 no-shows</div>
+    </div>
+    <div class="totals-roi">3.5× pilot fee ROI</div>
+    <div class="totals-v">$3,480</div>
+  </div>
+
+  <!-- Bottom two-col -->
+  <div class="bot">
+    <!-- Trend -->
+    <div class="trend-card">
+      <div class="trend-head">
+        <span class="trend-h">Recovered production · week-over-week</span>
+        <span class="trend-v"><span class="sup">$</span>5,301 <span style="font-size:10px;color:var(--ink-3);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500">total to date</span></span>
+      </div>
+      <svg class="trend-svg" viewBox="0 0 300 44" preserveAspectRatio="none">
+        <!-- Bars for weeks 1-4 -->
+        <rect x="10" y="30" width="56" height="10" fill="#e3ddd1"/>
+        <rect x="82" y="22" width="56" height="18" fill="#e3ddd1"/>
+        <rect x="154" y="4" width="56" height="36" fill="#f97316"/>
+        <rect x="226" y="16" width="56" height="24" fill="#ffe0c2" stroke="#f97316" stroke-dasharray="2 2"/>
+        <!-- Dollar labels -->
+        <text x="38" y="26" text-anchor="middle" font-family="'Bricolage Grotesque'" font-size="8" font-weight="700" fill="#6b6e70">$620</text>
+        <text x="110" y="18" text-anchor="middle" font-family="'Bricolage Grotesque'" font-size="8" font-weight="700" fill="#6b6e70">$1,201</text>
+        <text x="182" y="0" text-anchor="middle" font-family="'Bricolage Grotesque'" font-size="9" font-weight="800" fill="#0b0e0f">$3,480</text>
+        <text x="254" y="12" text-anchor="middle" font-family="'Bricolage Grotesque'" font-size="8" font-weight="600" fill="#f97316">proj.</text>
+      </svg>
+      <div class="trend-week-labels">
+        <span>Week 1</span>
+        <span>Week 2</span>
+        <span>Week 3 ·<strong style="color:var(--accent)"> now</strong></span>
+        <span>Week 4</span>
+      </div>
+    </div>
+
+    <!-- Operations panel -->
+    <div class="panel">
+      <div style="font-size:10px;color:var(--ink-2);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;letter-spacing:.04em;text-transform:uppercase;padding-bottom:8px;margin-bottom:4px;border-bottom:1px solid var(--border)">
+        Operations &amp; compliance
+      </div>
+      <div class="panel-row"><span class="k">Total sends</span><span class="v">284</span></div>
+      <div class="panel-row"><span class="k">STOP replies (honored)</span><span class="v">2</span></div>
+      <div class="panel-row"><span class="k">Avg touches per booking</span><span class="v">2.8</span></div>
+      <div class="panel-row"><span class="k">Warm handoffs to front desk</span><span class="v">12</span></div>
+      <div class="panel-row"><span class="k">No-shows (week)</span><span class="v">0</span></div>
+      <div class="panel-row"><span class="k">DNC list adds (permanent)</span><span class="v">2</span></div>
+      <div class="panel-row"><span class="k">BAA audit log entries</span><span class="v">284</span></div>
+    </div>
+  </div>
+
+  <!-- Signature -->
+  <footer class="sig">
+    <div class="sig-avatar">CS</div>
+    <div class="sig-body">
+      <strong>Colin Smith · Founder, usdpr.</strong>
+      Questions on this report? Reply to the email it came in, or call directly. Next report hits your inbox Friday 05/15 at 4 PM ET.
+    </div>
+    <div class="sig-legal">
+      Confidential · Under signed BAA<br>
+      usdpr. · Orlando, FL
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

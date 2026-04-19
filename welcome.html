@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Welcome to usdpr. \u2014 the exact 4 steps to go from signup to live reactivation campaigns in the next 90 minutes.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Welcome \u00B7 usdpr.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<style>
+  .wl-wrap{
+    max-width:var(--container);margin:0 auto;
+    padding:clamp(28px,4vw,56px) var(--gutter) clamp(56px,7vw,96px);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     HERO — welcome, confirm trial, and trust anchors
+     ═══════════════════════════════════════════════════════════════ */
+  .wl-hero{
+    display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+    gap:clamp(20px,3vw,40px);align-items:start;
+    margin-bottom:clamp(32px,4vw,56px);
+  }
+  @media(max-width:860px){.wl-hero{grid-template-columns:1fr}}
+
+  .wl-hero-kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:6px 14px;
+    background:var(--ok-soft);color:var(--ok);
+    border:1px solid rgba(21,128,61,.22);
+    border-radius:var(--r-pill);
+    font-size:12px;
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;
+    letter-spacing:.04em;
+    margin-bottom:18px;
+  }
+  .wl-hero-kicker::before{
+    content:'';width:6px;height:6px;border-radius:50%;background:var(--ok);
+    box-shadow:0 0 0 3px rgba(21,128,61,.22);
+    animation:wl-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes wl-pulse{
+    0%,100%{box-shadow:0 0 0 3px rgba(21,128,61,.22)}
+    50%{box-shadow:0 0 0 8px rgba(21,128,61,0)}
+  }
+
+  .wl-hero h1{
+    font-size:clamp(36px,5.5vw,74px);color:var(--ink);line-height:.97;
+    font-variation-settings:'opsz' 96,'wdth' 88,'wght' 800;
+    letter-spacing:-.046em;margin-bottom:16px;max-width:18ch;
+  }
+  .wl-hero h1 .accent{color:var(--accent)}
+  .wl-hero h1 .firstName{text-transform:capitalize}
+
+  .wl-hero-lede{
+    font-size:clamp(16px,1.5vw,19px);color:var(--ink-2);line-height:1.55;
+    max-width:58ch;margin-bottom:20px;
+    font-variation-settings:'opsz' 18,'wdth' 100,'wght' 400;
+  }
+  .wl-hero-lede strong{color:var(--ink);font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700}
+
+  .wl-trial-card{
+    padding:18px 20px;
+    background:var(--bg-card);
+    border:1.5px solid var(--border);
+    border-radius:var(--r-lg);
+    display:grid;grid-template-columns:auto 1fr auto;gap:18px;
+    align-items:center;
+  }
+  @media(max-width:560px){.wl-trial-card{grid-template-columns:1fr}}
+  .wl-trial-l{
+    font-size:10.5px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px;
+  }
+  .wl-trial-v{
+    font-size:16px;color:var(--ink);line-height:1.3;
+    font-variation-settings:'opsz' 17,'wdth' 100,'wght' 700;
+    letter-spacing:-.015em;
+  }
+  .wl-trial-sub{font-size:12.5px;color:var(--ink-3);margin-top:2px}
+  .wl-trial-days{
+    text-align:right;
+    font-size:34px;color:var(--accent);line-height:1;
+    font-variation-settings:'opsz' 60,'wdth' 100,'wght' 800;
+    letter-spacing:-.042em;
+    font-variant-numeric:tabular-nums;
+  }
+  .wl-trial-days small{
+    display:block;font-size:11px;color:var(--ink-3);letter-spacing:.08em;
+    text-transform:uppercase;margin-top:3px;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+  }
+
+  /* Side: founder outreach card */
+  .wl-founder{
+    padding:20px 22px;
+    background:linear-gradient(135deg,var(--ink-bg) 0%,#151a1c 100%);
+    color:var(--bg);border-radius:var(--r-lg);
+    position:relative;overflow:hidden;
+  }
+  .wl-founder::after{
+    content:'';position:absolute;inset:auto -10% -40% auto;
+    width:60%;height:80%;
+    background:radial-gradient(ellipse,rgba(249,115,22,.2) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .wl-founder > *{position:relative;z-index:1}
+  .wl-founder-hd{
+    display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:12px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .wl-founder-av{
+    width:44px;height:44px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-hover) 100%);
+    color:var(--ink-bg);
+    display:flex;align-items:center;justify-content:center;
+    font-size:17px;
+    font-variation-settings:'opsz' 20,'wdth' 90,'wght' 800;
+    letter-spacing:-.02em;
+    flex:none;
+  }
+  .wl-founder-t{font-size:13.5px;color:var(--bg);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;letter-spacing:-.005em}
+  .wl-founder-r{font-size:11px;color:rgba(246,244,239,.55);margin-top:2px;letter-spacing:.04em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600}
+  .wl-founder p{font-size:13px;color:rgba(246,244,239,.78);line-height:1.6;margin-bottom:14px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 400}
+  .wl-founder p strong{color:var(--bg)}
+  .wl-founder a.btn{background:var(--accent);color:var(--ink-bg);border-color:var(--accent);padding:10px 18px;font-size:13.5px}
+  .wl-founder a.btn:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+  .wl-founder-tel{display:block;margin-top:12px;font-size:11.5px;color:rgba(246,244,239,.55);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500}
+  .wl-founder-tel a{color:var(--bg);text-decoration:underline;text-decoration-color:rgba(246,244,239,.3);text-underline-offset:.18em}
+
+  /* ═══════════════════════════════════════════════════════════════
+     CHECKLIST — the 4 steps with live progress
+     ═══════════════════════════════════════════════════════════════ */
+  .wl-check{
+    background:var(--bg-card);border:1px solid var(--border);
+    border-radius:18px;overflow:hidden;
+    box-shadow:var(--shadow-sm);margin-bottom:clamp(32px,4vw,56px);
+  }
+  .wl-check-hd{
+    padding:20px 28px;
+    display:grid;grid-template-columns:1fr auto;gap:14px;align-items:end;
+    border-bottom:1px solid var(--border);
+    background:var(--bg-soft);
+  }
+  .wl-check-eye{
+    font-size:11.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.09em;text-transform:uppercase;margin-bottom:4px;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .wl-check-eye::before{content:'\u00A7';color:var(--ink-3);letter-spacing:0}
+  .wl-check h2{
+    font-size:clamp(22px,2.5vw,28px);color:var(--ink);line-height:1.2;
+    font-variation-settings:'opsz' 36,'wdth' 100,'wght' 700;
+    letter-spacing:-.028em;max-width:24ch;
+  }
+
+  .wl-prog{
+    text-align:right;
+    font-size:10.5px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.08em;text-transform:uppercase;
+  }
+  .wl-prog-bar{
+    width:200px;height:6px;border-radius:100px;
+    background:var(--border);overflow:hidden;
+    margin-top:6px;
+  }
+  .wl-prog-bar-fill{
+    height:100%;border-radius:100px;
+    background:linear-gradient(90deg,var(--accent) 0%,var(--accent-hover) 100%);
+    transition:width .4s var(--ease);
+  }
+  @media(max-width:560px){.wl-prog-bar{width:140px}}
+
+  .wl-step{
+    display:grid;grid-template-columns:auto 1fr auto;gap:20px;
+    padding:22px 28px;border-top:1px solid var(--border);
+    align-items:center;
+  }
+  .wl-step:first-of-type{border-top:0}
+  @media(max-width:700px){
+    .wl-step{grid-template-columns:auto 1fr;gap:14px}
+    .wl-step-cta{grid-column:1 / -1;justify-self:stretch}
+  }
+
+  .wl-step-n{
+    width:40px;height:40px;border-radius:50%;
+    border:1.5px solid var(--border-2);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-3);font-size:15px;
+    font-variation-settings:'opsz' 18,'wdth' 90,'wght' 800;
+    letter-spacing:-.015em;
+    font-variant-numeric:tabular-nums;
+    transition:all .2s var(--ease);
+  }
+
+  .wl-step[data-status=done] .wl-step-n{
+    background:var(--ok);color:#fff;border-color:var(--ok);
+  }
+  .wl-step[data-status=done] .wl-step-n::before{
+    content:'';width:16px;height:16px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8l3 3 7-7'/%3E%3C/svg%3E");
+    background-size:contain;background-repeat:no-repeat;
+  }
+  .wl-step[data-status=done] .wl-step-n-text{display:none}
+
+  .wl-step[data-status=now] .wl-step-n{
+    background:var(--accent);color:var(--ink-bg);border-color:var(--accent);
+    box-shadow:0 0 0 5px var(--accent-ring);
+    animation:wl-step-pulse 2s ease-in-out infinite;
+  }
+  @keyframes wl-step-pulse{
+    0%,100%{box-shadow:0 0 0 5px var(--accent-ring)}
+    50%{box-shadow:0 0 0 10px rgba(249,115,22,0)}
+  }
+
+  .wl-step-t{
+    font-size:16.5px;color:var(--ink);line-height:1.25;
+    font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700;
+    letter-spacing:-.018em;margin-bottom:4px;
+  }
+  .wl-step[data-status=done] .wl-step-t{text-decoration:line-through;text-decoration-color:var(--ink-4);color:var(--ink-3)}
+  .wl-step-b{font-size:13.5px;line-height:1.55;color:var(--ink-2);max-width:54ch}
+  .wl-step-b strong{color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .wl-step-sub{
+    margin-top:8px;display:flex;flex-wrap:wrap;gap:6px 16px;
+    font-size:11.5px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+  }
+  .wl-step-sub span{display:inline-flex;align-items:center;gap:5px}
+  .wl-step-sub span::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--ink-3)}
+
+  .wl-step-cta{
+    white-space:nowrap;
+  }
+  .wl-step[data-status=done] .wl-step-cta{display:none}
+  .wl-step[data-status=locked] .wl-step-cta{opacity:.5;pointer-events:none}
+
+  /* ═══════════════════════════════════════════════════════════════
+     TIMELINE — day-by-day what happens next
+     ═══════════════════════════════════════════════════════════════ */
+  .wl-tl{
+    background:var(--bg-vellum);
+    border-radius:18px;
+    padding:clamp(28px,3.5vw,44px);
+    margin-bottom:clamp(32px,4vw,56px);
+  }
+  .wl-tl-hd{
+    display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;
+    margin-bottom:24px;padding-bottom:14px;border-bottom:1px solid var(--border);
+  }
+  .wl-tl-eye{
+    font-size:11.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;
+  }
+  .wl-tl h2{
+    font-size:clamp(26px,3vw,36px);color:var(--ink);line-height:1.15;
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 700;
+    letter-spacing:-.032em;max-width:28ch;
+  }
+  .wl-tl-meta{
+    font-size:12px;color:var(--ink-3);text-align:right;
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500;
+  }
+
+  .wl-tl-row{
+    display:grid;grid-template-columns:100px 1fr;gap:clamp(16px,3vw,32px);
+    padding:14px 0;
+    border-top:1px dashed var(--border-2);
+  }
+  .wl-tl-row:first-of-type{border-top:0}
+  @media(max-width:600px){.wl-tl-row{grid-template-columns:1fr;gap:4px}}
+  .wl-tl-when{
+    font-size:10.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.08em;text-transform:uppercase;
+    padding-top:3px;line-height:1.4;
+  }
+  .wl-tl-when strong{
+    display:block;color:var(--ink);font-size:14px;
+    letter-spacing:-.015em;text-transform:none;margin-bottom:2px;
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 800;
+  }
+  .wl-tl-what{
+    font-size:14.5px;line-height:1.55;color:var(--ink-2);
+  }
+  .wl-tl-what strong{color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+
+  /* ═══════════════════════════════════════════════════════════════
+     GUARANTEES — why you can't lose
+     ═══════════════════════════════════════════════════════════════ */
+  .wl-guar{
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;margin-bottom:clamp(32px,4vw,56px);
+  }
+  @media(max-width:780px){.wl-guar{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.wl-guar{grid-template-columns:1fr}}
+  .wl-guar-c{
+    background:var(--bg-card);border:1px solid var(--border);
+    border-radius:var(--r-lg);padding:20px 22px;
+    display:grid;gap:6px;
+    transition:border-color .2s var(--ease),transform .2s var(--ease);
+  }
+  .wl-guar-c:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .wl-guar-k{
+    font-size:10.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.09em;text-transform:uppercase;
+  }
+  .wl-guar-t{
+    font-size:15px;color:var(--ink);line-height:1.3;
+    font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700;
+    letter-spacing:-.015em;
+  }
+  .wl-guar-b{font-size:12.5px;color:var(--ink-2);line-height:1.5}
+
+  /* ═══════════════════════════════════════════════════════════════
+     RESOURCES — while you wait
+     ═══════════════════════════════════════════════════════════════ */
+  .wl-res{
+    display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  }
+  @media(max-width:700px){.wl-res{grid-template-columns:1fr}}
+  .wl-res-c{
+    padding:22px 24px;background:var(--bg-card);
+    border:1px solid var(--border);border-radius:var(--r-lg);
+    display:grid;gap:8px;text-decoration:none;color:inherit;
+    transition:border-color .18s,transform .18s,box-shadow .18s;
+  }
+  .wl-res-c:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .wl-res-c .eyebrow{color:var(--accent);margin-bottom:2px}
+  .wl-res-t{
+    font-size:18px;color:var(--ink);line-height:1.2;
+    font-variation-settings:'opsz' 20,'wdth' 100,'wght' 700;
+    letter-spacing:-.02em;
+  }
+  .wl-res-t svg{width:14px;height:14px;margin-left:6px;transition:transform .2s var(--ease);display:inline-block;vertical-align:middle}
+  .wl-res-c:hover .wl-res-t svg{transform:translateX(3px)}
+  .wl-res-b{font-size:13px;color:var(--ink-2);line-height:1.55}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/onboarding" class="nav-link">Dashboard</a>
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="mailto:colin@usdentalpatientrecovery.com" class="nav-cta">Email Colin</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wl-wrap">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="wl-hero">
+
+    <div>
+      <div class="wl-hero-kicker">Trial active \u00B7 no charges yet</div>
+      <h1>You\u2019re in, <span class="firstName accent" id="firstName">doctor</span>. Four steps to first booking.</h1>
+      <p class="wl-hero-lede">Here's exactly what happens now \u2014 the BAA, the PMS connect, the template approval, and the launch. <strong>Total hands-on time: ~90 minutes.</strong> Email campaigns go live the same afternoon. SMS layers in when the carrier clears.</p>
+
+      <div class="wl-trial-card">
+        <div>
+          <div class="wl-trial-l">Your account</div>
+          <div class="wl-trial-v" id="acctName">Your practice</div>
+          <div class="wl-trial-sub" id="acctPlan">Practice Pro \u00B7 $697/mo (billed after trial)</div>
+        </div>
+        <div></div>
+        <div>
+          <div class="wl-trial-days" aria-label="14 days remaining"><span id="daysLeft">14</span><small>days left</small></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Founder side card -->
+    <aside class="wl-founder">
+      <div class="wl-founder-hd">
+        <div class="wl-founder-av" aria-hidden="true">CS</div>
+        <div>
+          <div class="wl-founder-t">Colin Smith</div>
+          <div class="wl-founder-r">Founder \u00B7 replying today</div>
+        </div>
+      </div>
+      <p>I read every signup. If <strong>anything</strong> about the next 90 minutes feels unclear \u2014 BAA, PMS export, template language \u2014 reply to my welcome email or hit the button. I'll be on your screen-share in under 2 hours.</p>
+      <a href="mailto:colin@usdentalpatientrecovery.com?subject=Welcome%20%E2%80%94%20need%20help%20with%20step%201" class="btn">
+        Email Colin
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <span class="wl-founder-tel">or book a 15-min call: <a href="/schedule">schedule.usdpr.com</a></span>
+    </aside>
+
+  </section>
+
+  <!-- ═══ THE 4-STEP CHECKLIST ═══ -->
+  <section class="wl-check" aria-labelledby="wlCheckT">
+    <div class="wl-check-hd">
+      <div>
+        <div class="wl-check-eye">Your launch checklist</div>
+        <h2 id="wlCheckT">~90 minutes. Done in order. Track the progress bar.</h2>
+      </div>
+      <div class="wl-prog" aria-label="Onboarding progress">
+        <div><span id="progLabel">0 of 4 complete</span></div>
+        <div class="wl-prog-bar"><div class="wl-prog-bar-fill" id="progFill" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <div class="wl-step" data-status="now" data-step="baa">
+      <div class="wl-step-n"><span class="wl-step-n-text">01</span></div>
+      <div>
+        <div class="wl-step-t">Sign the BAA \u2014 90 seconds</div>
+        <div class="wl-step-b">Your Business Associate Agreement is already queued in HelloSign. <strong>No patient data moves until it's signed</strong> \u2014 and we don't want it to. Signed docs land in your email + stay in your dashboard forever.</div>
+        <div class="wl-step-sub">
+          <span>E-signed via HelloSign</span>
+          <span>Covers PHI, subprocessors, breach SLA</span>
+          <span>Counsel-reviewed</span>
+        </div>
+      </div>
+      <a href="#" class="btn btn-primary wl-step-cta" data-complete="baa">
+        Sign the BAA
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+
+    <div class="wl-step" data-status="locked" data-step="pms">
+      <div class="wl-step-n"><span class="wl-step-n-text">02</span></div>
+      <div>
+        <div class="wl-step-t">Connect your PMS \u2014 or drop in a CSV</div>
+        <div class="wl-step-b">Direct REST sync for <strong>Open Dental</strong>. Scaffolded for Dentrix, Eaglesoft, Curve (partner-activated in 1\u20134 weeks). Any other PMS: export a CSV \u2014 auto-column detection handles the rest. <strong>PHI scrubber runs pre-import</strong>; no treatment names or diagnoses ever hit a message body.</div>
+        <div class="wl-step-sub">
+          <span>Open Dental direct \u00B7 live</span>
+          <span>CSV import \u00B7 any PMS</span>
+          <span>Auto-column detect</span>
+        </div>
+      </div>
+      <a href="#" class="btn btn-primary wl-step-cta" data-complete="pms">
+        Connect PMS / upload CSV
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+
+    <div class="wl-step" data-status="locked" data-step="templates">
+      <div class="wl-step-n"><span class="wl-step-n-text">03</span></div>
+      <div>
+        <div class="wl-step-t">Approve your outreach templates</div>
+        <div class="wl-step-b">Pre-written email + SMS + phone scripts appear in your template library \u2014 <strong>reactivation-specific, not the generic "time for your check-up" SMS</strong>. Edit any word. Sign off with a click. Nothing sends until you approve.</div>
+        <div class="wl-step-sub">
+          <span>12 pre-written templates</span>
+          <span>Edit any word</span>
+          <span>Practice name + sender auto-filled</span>
+        </div>
+      </div>
+      <a href="#" class="btn btn-primary wl-step-cta" data-complete="templates">
+        Review templates
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+
+    <div class="wl-step" data-status="locked" data-step="launch">
+      <div class="wl-step-n"><span class="wl-step-n-text">04</span></div>
+      <div>
+        <div class="wl-step-t">Launch your first campaign</div>
+        <div class="wl-step-b"><strong>Email goes live the same afternoon.</strong> SMS layers in once Twilio\u2019s 10DLC carrier approves your brand (typically 14\u201321 days \u2014 we handle the filing). You'll see first replies on the dashboard within 2\u20134 hours.</div>
+        <div class="wl-step-sub">
+          <span>Email \u00B7 same-day live</span>
+          <span>SMS \u00B7 carrier-queued</span>
+          <span>First replies within hours</span>
+        </div>
+      </div>
+      <a href="#" class="btn btn-primary wl-step-cta" data-complete="launch">
+        Launch campaign
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ TIMELINE ═══ -->
+  <section class="wl-tl">
+    <div class="wl-tl-hd">
+      <div>
+        <div class="wl-tl-eye">The next 30 days</div>
+        <h2>What happens on each day \u2014 so nothing surprises you.</h2>
+      </div>
+      <div class="wl-tl-meta">Trial ends <span id="trialEnd">\u2014</span></div>
+    </div>
+
+    <div class="wl-tl-row"><div class="wl-tl-when"><strong>Today</strong>Day 0</div><div class="wl-tl-what"><strong>Checklist complete</strong> \u2014 BAA signed, list loaded, templates approved, email campaign live. First replies start arriving within hours. I personally watch the first 50 sends.</div></div>
+    <div class="wl-tl-row"><div class="wl-tl-when"><strong>Day 1</strong>Tomorrow</div><div class="wl-tl-what">Personal email from me with <strong>your first-day numbers</strong>: sends, opens, replies, first bookings. I'll flag anything that looks off \u2014 deliverability, list quality, template tone.</div></div>
+    <div class="wl-tl-row"><div class="wl-tl-when"><strong>Day 3</strong>Wednesday-ish</div><div class="wl-tl-what">A quick 15-min check-in call \u2014 optional but encouraged. First reactivated patients are in the schedule by now. We tune messaging on the fly.</div></div>
+    <div class="wl-tl-row"><div class="wl-tl-when"><strong>Day 7</strong>Week 1 report</div><div class="wl-tl-what">First <strong>Friday Report</strong> \u2014 contacted, replied, booked, shown, dollar production. On the dashboard and in your inbox.</div></div>
+    <div class="wl-tl-row"><div class="wl-tl-when"><strong>Day 14</strong>Trial ends</div><div class="wl-tl-what">Trial converts to paid (<span id="tierName">Practice Pro</span>) unless you cancel. <strong>One-click cancel from the dashboard</strong> \u2014 data export under 1 hour, no fees. By this point you\u2019ll have concrete numbers to make the call.</div></div>
+    <div class="wl-tl-row"><div class="wl-tl-when"><strong>Day 14\u201321</strong>SMS clears</div><div class="wl-tl-what">Twilio 10DLC carrier approval typically lands. SMS sends layer in automatically \u2014 no work required from you. Reactivation rate usually jumps 2\u20134\u00D7.</div></div>
+    <div class="wl-tl-row"><div class="wl-tl-when"><strong>Day 30</strong>ROI check</div><div class="wl-tl-what"><strong>Pilot-program guarantee:</strong> if you haven't rebooked at least 10 patients in your first paid month, the month is refunded in full. No retention call. One click.</div></div>
+  </section>
+
+  <!-- ═══ GUARANTEES ═══ -->
+  <section class="wl-guar">
+    <div class="wl-guar-c">
+      <div class="wl-guar-k">01 \u00B7 Cancel</div>
+      <div class="wl-guar-t">One-click, any time</div>
+      <div class="wl-guar-b">From the dashboard. No retention team call, no exit fees, no seven-day notice.</div>
+    </div>
+    <div class="wl-guar-c">
+      <div class="wl-guar-k">02 \u00B7 Refund</div>
+      <div class="wl-guar-t">30-day money-back pilot</div>
+      <div class="wl-guar-b">Fewer than 10 rebookings in paid month 1? Full refund, paid in 7 days.</div>
+    </div>
+    <div class="wl-guar-c">
+      <div class="wl-guar-k">03 \u00B7 Data</div>
+      <div class="wl-guar-t">Export in under 1 hour</div>
+      <div class="wl-guar-b">Everything as CSV + JSON \u2014 patients, campaigns, replies, bookings \u2014 emailed direct.</div>
+    </div>
+    <div class="wl-guar-c">
+      <div class="wl-guar-k">04 \u00B7 Founder</div>
+      <div class="wl-guar-t">2-hour email SLA</div>
+      <div class="wl-guar-b">Business hours: reply in 2h or that day's fee comes off your next invoice.</div>
+    </div>
+  </section>
+
+  <!-- ═══ WHILE-YOU-WAIT RESOURCES ═══ -->
+  <section>
+    <div style="margin-bottom:18px">
+      <span class="eyebrow">While we're setting up</span>
+      <h2 class="display" style="font-size:clamp(26px,3vw,36px);margin-top:8px">Three short reads that answer the top onboarding questions.</h2>
+    </div>
+
+    <div class="wl-res">
+      <a href="/playbook.html" class="wl-res-c">
+        <span class="eyebrow">Field guide \u00B7 35 min</span>
+        <div class="wl-res-t">The Dental Reactivation Playbook <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+        <div class="wl-res-b">48-page field guide on sequences, segmentation, and compliance. What your office manager should read this week.</div>
+      </a>
+      <a href="/calculator.html" class="wl-res-c">
+        <span class="eyebrow">Tool \u00B7 5 min</span>
+        <div class="wl-res-t">Run the ROI calculator <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+        <div class="wl-res-b">Plug in your active patient count and visit value; share the result with your front desk so they see what's at stake.</div>
+      </a>
+      <a href="/trust.html" class="wl-res-c">
+        <span class="eyebrow">Reference \u00B7 8 min</span>
+        <div class="wl-res-t">Trust &amp; compliance hub <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+        <div class="wl-res-b">HIPAA posture, counsel review, five written guarantees, subprocessor list. Forward to your compliance lead.</div>
+      </a>
+      <a href="/about.html" class="wl-res-c">
+        <span class="eyebrow">Founder letter \u00B7 10 min</span>
+        <div class="wl-res-t">Why I'm the one signing this <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+        <div class="wl-res-b">A long, honest letter about what I'll build, what I'll refuse to build, and what I'll refund against.</div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices. Orlando, Florida. BAA signed before any patient data moves.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/onboarding">Dashboard</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/playbook.html">Playbook</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/about.html">Founder letter</a></li><li><a href="/security.html">Security</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Need help?</h4>
+        <ul><li><a href="mailto:colin@usdentalpatientrecovery.com">Email Colin</a></li><li><a href="/status.html">Status</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>One-click cancel · Data export &lt; 1h · No exit fees</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  // ───── Pre-fill identity from query params (?name, ?practice, ?plan, ?tier, ?days) ─────
+  const q = new URLSearchParams(location.search);
+  const setText = (id, val) => { const el = document.getElementById(id); if (el && val) el.textContent = val; };
+
+  const first = (q.get('name') || '').split(/\s+/)[0];
+  if (first) setText('firstName', first);
+  setText('acctName',  q.get('practice'));
+  setText('acctPlan',  q.get('plan'));
+
+  const days = parseInt(q.get('days') || '14', 10);
+  if (!isNaN(days)) setText('daysLeft', String(Math.max(0, days)));
+
+  const tierLabel = q.get('tier_label') || 'Practice Pro';
+  setText('tierName', tierLabel);
+
+  // Trial-end date = today + days
+  const end = new Date();
+  end.setDate(end.getDate() + (isNaN(days) ? 14 : days));
+  const fmt = new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric'});
+  setText('trialEnd', fmt.format(end));
+
+  // ───── Checklist progress (persist to localStorage so reloads survive) ─────
+  const STORAGE = 'usdpr_onboard_v1';
+  let done = {};
+  try { done = JSON.parse(localStorage.getItem(STORAGE) || '{}'); } catch(e){ done = {}; }
+
+  const steps = Array.from(document.querySelectorAll('.wl-step'));
+  const total = steps.length;
+
+  function render(){
+    let completed = 0;
+    let unlockedNext = false;
+
+    steps.forEach((s) => {
+      const key = s.dataset.step;
+      if (done[key]) {
+        s.dataset.status = 'done';
+        completed++;
+      } else if (!unlockedNext) {
+        s.dataset.status = 'now';
+        unlockedNext = true;
+      } else {
+        s.dataset.status = 'locked';
+      }
+    });
+
+    const pct = Math.round((completed / total) * 100);
+    document.getElementById('progFill').style.width = pct + '%';
+    document.getElementById('progLabel').textContent = completed + ' of ' + total + ' complete';
+  }
+
+  // Wire action buttons — clicking fires backend, marks done, fires plausible
+  document.addEventListener('click', async (ev) => {
+    const btn = ev.target.closest('[data-complete]');
+    if (!btn) return;
+    ev.preventDefault();
+    const key = btn.dataset.complete;
+
+    try{
+      await fetch('/onboarding/step', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({step:key, ts:new Date().toISOString(), account:q.get('account') || ''}),
+      });
+    }catch(e){}
+
+    try { if (window.plausible) window.plausible('Onboarding step done', {props:{step:key}}); } catch(e){}
+
+    done[key] = Date.now();
+    try { localStorage.setItem(STORAGE, JSON.stringify(done)); } catch(e){}
+    render();
+
+    // If all done, fire celebration event
+    if (Object.keys(done).length === total) {
+      try { if (window.plausible) window.plausible('Onboarding complete'); } catch(e){}
+    }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="How US Dental Patient Recovery earns the trust of dental practices \u2014 HIPAA, TCPA, Florida \u00A7817.505 compliance, data portability, founder accountability, and pilot program guarantees. All in one place.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Trust \u00B7 usdpr.">
+<meta property="og:description" content="HIPAA BAA. SOC 2 in progress. FL \u00A7817.505 flat-fee compliant. One-click cancel with hourly data export. Everything we stand behind \u2014 in one place.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/trust.html">
+<meta property="og:image" content="/og.svg">
+<title>Trust \u00B7 usdpr.</title>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AboutPage","name":"Trust \u00B7 usdpr.","url":"https://usdpr.netlify.app/trust.html","description":"Compliance, security, data handling, governance, and the founder-level commitments behind US Dental Patient Recovery.","publisher":{"@type":"Organization","name":"US Dental Patient Recovery","url":"https://usdpr.netlify.app/","logo":"https://usdpr.netlify.app/brand/logo-wordmark.svg","address":{"@type":"PostalAddress","addressLocality":"Orlando","addressRegion":"FL","addressCountry":"US"},"founder":{"@type":"Person","name":"Colin Smith","jobTitle":"Founder"}}}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<style>
+  /* ───── Hero — editorial frontispiece ───── */
+  .tr-hero{
+    position:relative;
+    padding:clamp(48px,7vw,112px) 0 clamp(36px,5vw,72px);
+    background:var(--bg-vellum);
+    border-bottom:1px solid var(--border);
+    overflow:hidden;
+  }
+  .tr-hero::before{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.043 0 0 0 0 0.055 0 0 0 0 0.059 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    opacity:.055;mix-blend-mode:multiply;
+  }
+  .tr-hero > *{position:relative;z-index:1}
+  .tr-hero-grid{
+    max-width:var(--container);margin:0 auto;padding:0 var(--gutter);
+    display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
+    gap:clamp(24px,5vw,72px);align-items:end;
+  }
+  @media(max-width:900px){.tr-hero-grid{grid-template-columns:1fr}}
+  .tr-kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;
+  }
+  .tr-kicker::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .tr-hero h1{
+    font-size:clamp(44px,7vw,118px);color:var(--ink);
+    font-variation-settings:'opsz' 96,'wdth' 85,'wght' 800;
+    letter-spacing:-.05em;line-height:.92;
+    max-width:12ch;margin-bottom:22px;
+  }
+  .tr-hero h1 .accent{color:var(--accent)}
+  .tr-hero .lede{
+    font-size:clamp(16px,1.5vw,19px);color:var(--ink-2);
+    max-width:52ch;line-height:1.55;
+    font-variation-settings:'opsz' 18,'wdth' 100,'wght' 400;
+  }
+  .tr-hero .lede strong{color:var(--ink);font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700}
+
+  /* Hero right — the audit board */
+  .tr-audit{
+    background:var(--ink-bg);color:var(--bg);
+    border-radius:18px;overflow:hidden;
+    box-shadow:var(--shadow-lg);
+  }
+  .tr-audit-hd{
+    padding:14px 18px;background:#151a1c;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+  }
+  .tr-audit-t{
+    font-size:11px;color:rgba(246,244,239,.55);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.1em;text-transform:uppercase;
+  }
+  .tr-audit-dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(21,128,61,.24)}
+  .tr-audit-rows{display:grid}
+  .tr-audit-row{
+    display:grid;grid-template-columns:1fr auto;
+    padding:12px 18px;gap:10px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    font-size:13px;color:rgba(246,244,239,.78);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500;
+  }
+  .tr-audit-row:last-child{border-bottom:0}
+  .tr-audit-row strong{color:var(--bg);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .tr-audit-st{
+    font-size:11px;letter-spacing:.04em;text-transform:uppercase;
+    padding:3px 8px;border-radius:var(--r-pill);
+    background:rgba(21,128,61,.15);color:#4ade80;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+  }
+  .tr-audit-st.wip{background:rgba(249,115,22,.16);color:var(--accent)}
+
+  /* ───── Commit band — 4 headline guarantees ───── */
+  .tr-band{
+    max-width:var(--container);margin:0 auto;
+    padding:clamp(36px,5vw,72px) var(--gutter);
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:clamp(14px,2vw,24px);
+    border-bottom:1px solid var(--border);
+  }
+  @media(max-width:860px){.tr-band{grid-template-columns:1fr 1fr}}
+  @media(max-width:500px){.tr-band{grid-template-columns:1fr}}
+  .tr-band-cell{
+    padding:22px 0;
+  }
+  .tr-band-n{
+    font-size:clamp(32px,4vw,56px);color:var(--accent);line-height:.95;
+    font-variation-settings:'opsz' 72,'wdth' 92,'wght' 800;
+    letter-spacing:-.04em;margin-bottom:10px;
+    font-variant-numeric:tabular-nums;
+  }
+  .tr-band-t{
+    font-size:14px;color:var(--ink);
+    font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700;
+    letter-spacing:-.015em;margin-bottom:6px;
+  }
+  .tr-band-b{font-size:13px;line-height:1.55;color:var(--ink-2);max-width:36ch}
+
+  /* ───── Numbered section rail ───── */
+  .tr-sec{
+    max-width:var(--container);margin:0 auto;padding:0 var(--gutter);
+    display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);
+    gap:clamp(20px,4vw,56px);
+    padding-top:clamp(48px,6vw,88px);padding-bottom:clamp(32px,4vw,56px);
+    border-bottom:1px solid var(--border);
+    align-items:start;
+  }
+  @media(max-width:860px){.tr-sec{grid-template-columns:1fr;gap:18px}}
+  .tr-sec-hd{position:sticky;top:80px}
+  @media(max-width:860px){.tr-sec-hd{position:static}}
+  .tr-sec-n{
+    font-size:clamp(48px,6vw,84px);color:var(--ink);line-height:1;
+    font-variation-settings:'opsz' 96,'wdth' 88,'wght' 800;
+    letter-spacing:-.045em;font-variant-numeric:tabular-nums;
+  }
+  .tr-sec-eye{
+    margin-top:8px;font-size:12px;color:var(--accent);
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;
+    letter-spacing:.1em;text-transform:uppercase;
+  }
+  .tr-sec h2{
+    font-size:clamp(28px,3.5vw,44px);color:var(--ink);
+    font-variation-settings:'opsz' 60,'wdth' 100,'wght' 700;
+    letter-spacing:-.034em;line-height:1.08;margin-bottom:18px;
+    max-width:26ch;
+  }
+  .tr-sec p{
+    font-size:15.5px;line-height:1.65;color:var(--ink-2);margin-bottom:14px;max-width:62ch;
+  }
+  .tr-sec p strong{color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+  .tr-sec a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(249,115,22,.35);text-underline-offset:.2em}
+  .tr-sec a:hover{text-decoration-color:var(--accent)}
+
+  /* Founder card */
+  .tr-founder{
+    display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,28px);
+    align-items:center;padding:clamp(22px,3vw,32px);
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:var(--r-lg);
+    margin-top:20px;
+  }
+  @media(max-width:600px){.tr-founder{grid-template-columns:1fr;text-align:left}}
+  .tr-founder-av{
+    width:92px;height:92px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent-soft) 0%,var(--bg-vellum) 100%);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--accent);font-size:36px;
+    font-variation-settings:'opsz' 48,'wdth' 90,'wght' 800;
+    letter-spacing:-.04em;
+    border:1.5px solid var(--border);
+    flex:none;
+  }
+  .tr-founder-t{font-size:16px;color:var(--ink);font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700;letter-spacing:-.018em;line-height:1.25}
+  .tr-founder-r{font-size:12px;color:var(--ink-3);margin-top:2px;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;letter-spacing:.04em;text-transform:uppercase}
+  .tr-founder-b{font-size:13.5px;color:var(--ink-2);line-height:1.6;margin-top:8px;max-width:52ch}
+  .tr-founder-b a{color:var(--accent)}
+  .tr-founder-sig{
+    margin-top:12px;
+    font-size:16px;color:var(--accent);
+    font-variation-settings:'opsz' 48,'wdth' 80,'wght' 500;
+    font-style:italic;letter-spacing:-.01em;
+  }
+
+  /* Stack-of-facts card — compliance pane */
+  .tr-stack{
+    margin-top:16px;
+    background:var(--bg-card);
+    border:1px solid var(--border);border-radius:var(--r-lg);
+    overflow:hidden;
+  }
+  .tr-stack-row{
+    display:grid;grid-template-columns:140px 1fr auto;
+    gap:16px;padding:16px 22px;
+    border-top:1px solid var(--border);
+    align-items:baseline;
+  }
+  .tr-stack-row:first-child{border-top:0}
+  @media(max-width:600px){
+    .tr-stack-row{grid-template-columns:1fr;gap:4px}
+  }
+  .tr-stack-k{
+    font-size:11px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.08em;text-transform:uppercase;
+  }
+  .tr-stack-v{font-size:14.5px;color:var(--ink);line-height:1.5;font-variation-settings:'opsz' 15,'wdth' 100,'wght' 500}
+  .tr-stack-v strong{font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+  .tr-stack-b{font-size:12px;color:var(--ink-3);max-width:18ch;text-align:right}
+  @media(max-width:600px){.tr-stack-b{text-align:left}}
+
+  /* Guarantee callout */
+  .tr-guar{
+    margin-top:18px;
+    padding:24px 28px;
+    background:linear-gradient(135deg,var(--ink-bg) 0%,#151a1c 100%);
+    color:var(--bg);border-radius:var(--r-lg);
+    position:relative;overflow:hidden;
+  }
+  .tr-guar::before{
+    content:'';position:absolute;inset:auto -10% -30% auto;
+    width:70%;height:90%;
+    background:radial-gradient(ellipse,rgba(249,115,22,.22) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .tr-guar > *{position:relative;z-index:1}
+  .tr-guar-t{
+    font-size:clamp(22px,2.6vw,32px);color:var(--bg);line-height:1.1;
+    font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;
+    letter-spacing:-.032em;margin-bottom:10px;max-width:24ch;
+  }
+  .tr-guar-t .accent{color:var(--accent)}
+  .tr-guar-b{font-size:14px;line-height:1.55;color:rgba(246,244,239,.75);max-width:56ch;font-variation-settings:'opsz' 15,'wdth' 100,'wght' 400}
+  .tr-guar-b strong{color:var(--bg);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+  .tr-guar-row{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:12.5px;color:rgba(246,244,239,.62)}
+  .tr-guar-row span{display:inline-flex;align-items:center;gap:6px}
+  .tr-guar-row span::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+  /* Transparency callout */
+  .tr-pull{
+    margin:clamp(22px,3vw,32px) 0;
+    padding:clamp(22px,2.6vw,32px);
+    background:var(--bg-vellum);
+    border-left:3px solid var(--accent);
+    border-radius:0 var(--r-md) var(--r-md) 0;
+  }
+  .tr-pull p{
+    font-size:clamp(17px,1.5vw,21px);line-height:1.4;color:var(--ink);
+    font-variation-settings:'opsz' 22,'wdth' 100,'wght' 500;
+    letter-spacing:-.015em;margin:0;
+  }
+  .tr-pull-c{
+    display:block;margin-top:10px;
+    font-size:12px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.05em;text-transform:uppercase;
+  }
+
+  /* Pilot program */
+  .tr-pilot{
+    background:var(--bg-card);border:1.5px solid var(--ink);
+    border-radius:18px;padding:clamp(24px,3vw,36px);margin-top:18px;
+  }
+  .tr-pilot-t{
+    font-size:clamp(22px,2.5vw,30px);color:var(--ink);line-height:1.15;
+    font-variation-settings:'opsz' 36,'wdth' 100,'wght' 700;
+    letter-spacing:-.028em;margin-bottom:10px;max-width:28ch;
+  }
+  .tr-pilot-t .accent{color:var(--accent)}
+  .tr-pilot-b{font-size:14.5px;line-height:1.6;color:var(--ink-2);max-width:64ch;margin-bottom:18px}
+  .tr-pilot-b strong{color:var(--ink)}
+  .tr-pilot-list{display:grid;gap:6px;margin-bottom:22px}
+  .tr-pilot-list li{
+    display:grid;grid-template-columns:16px 1fr;gap:10px;list-style:none;
+    font-size:14px;line-height:1.55;color:var(--ink-2);
+  }
+  .tr-pilot-list li strong{color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+  .tr-pilot-list li::before{
+    content:'';width:14px;height:14px;border-radius:4px;
+    background:var(--accent-soft);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23f97316' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7l3 3 5-6'/%3E%3C/svg%3E");
+    background-position:center;background-repeat:no-repeat;margin-top:3px;
+  }
+
+  /* Advisors grid */
+  .tr-adv{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:12px;margin-top:16px;
+  }
+  .tr-adv-c{
+    background:var(--bg-card);border:1px solid var(--border);
+    border-radius:var(--r-md);padding:16px 18px;
+  }
+  .tr-adv-r{
+    font-size:10.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.09em;text-transform:uppercase;margin-bottom:8px;
+  }
+  .tr-adv-n{font-size:14.5px;color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700;letter-spacing:-.01em}
+  .tr-adv-t{font-size:12.5px;color:var(--ink-3);margin-top:2px}
+
+  /* Closing CTA */
+  .tr-close{
+    background:var(--bg-vellum);
+    border-top:1px solid var(--border);
+    padding:clamp(48px,6vw,96px) 0;
+    margin-top:clamp(48px,6vw,88px);
+    text-align:center;
+  }
+  .tr-close h2{
+    font-size:clamp(32px,5vw,68px);color:var(--ink);
+    font-variation-settings:'opsz' 96,'wdth' 90,'wght' 800;
+    letter-spacing:-.042em;line-height:.98;
+    max-width:20ch;margin:0 auto 18px;
+  }
+  .tr-close h2 .accent{color:var(--accent)}
+  .tr-close p{
+    font-size:16px;color:var(--ink-2);max-width:52ch;
+    margin:0 auto clamp(22px,3vw,32px);line-height:1.55;
+  }
+  .tr-close .tr-close-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/#how" class="nav-link">How it works</a>
+      <a href="/#pricing" class="nav-link">Pricing</a>
+      <a href="/calculator.html" class="nav-link">Calculator</a>
+      <a href="/compare.html" class="nav-link">Compare</a>
+      <a href="/security.html" class="nav-link">Security</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=trust" class="nav-cta">Start free trial</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="tr-hero">
+  <div class="tr-hero-grid">
+    <div>
+      <div class="tr-kicker">Trust \u00B7 2026</div>
+      <h1>Trust, <span class="accent">audited</span> \u2014 not assumed.</h1>
+      <p class="lede">
+        Patient data is the most sensitive thing your practice owns. Here's every mechanism that protects it \u2014 <strong>compliance frameworks, legal counsel, data boundaries, guarantees, founder accountability</strong> \u2014 and the commitments we've put in writing.
+      </p>
+    </div>
+
+    <aside class="tr-audit" aria-label="Live compliance + trust audit">
+      <div class="tr-audit-hd">
+        <span class="tr-audit-t">Compliance audit \u00B7 live</span>
+        <span class="tr-audit-dot" aria-hidden="true"></span>
+      </div>
+      <div class="tr-audit-rows">
+        <div class="tr-audit-row"><span><strong>HIPAA BAA</strong> \u00B7 HelloSign e-sign</span><span class="tr-audit-st">Ready</span></div>
+        <div class="tr-audit-row"><span><strong>TCPA / A2P 10DLC</strong> \u00B7 carrier registered</span><span class="tr-audit-st">Ready</span></div>
+        <div class="tr-audit-row"><span><strong>CAN-SPAM</strong> \u00B7 physical address + STOP</span><span class="tr-audit-st">Ready</span></div>
+        <div class="tr-audit-row"><span><strong>FL \u00A7817.505</strong> \u00B7 flat SaaS fee only</span><span class="tr-audit-st">Ready</span></div>
+        <div class="tr-audit-row"><span><strong>PHI scrubber</strong> \u00B7 enforced at DB layer</span><span class="tr-audit-st">Ready</span></div>
+        <div class="tr-audit-row"><span><strong>SOC 2 Type I</strong> \u00B7 Q1 2026 complete</span><span class="tr-audit-st">Ready</span></div>
+        <div class="tr-audit-row"><span><strong>SOC 2 Type II</strong> \u00B7 audit period started</span><span class="tr-audit-st wip">In progress</span></div>
+        <div class="tr-audit-row"><span><strong>Data export SLA</strong> \u00B7 under 1 hour, self-serve</span><span class="tr-audit-st">Ready</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ═══ HEADLINE COMMITMENTS ═══ -->
+<section class="tr-band">
+  <div class="tr-band-cell">
+    <div class="tr-band-n">0<span style="font-size:.45em;color:var(--ink-3)">%</span></div>
+    <div class="tr-band-t">per-patient fees</div>
+    <div class="tr-band-b">Flat SaaS fee only. Per-rebook pricing violates state anti-kickback statutes.</div>
+  </div>
+  <div class="tr-band-cell">
+    <div class="tr-band-n">1<span style="font-size:.45em;color:var(--ink-3)">-click</span></div>
+    <div class="tr-band-t">cancel anytime</div>
+    <div class="tr-band-b">Self-serve cancel from the dashboard. Data export in under an hour. No retention team call.</div>
+  </div>
+  <div class="tr-band-cell">
+    <div class="tr-band-n">&lt;1<span style="font-size:.45em;color:var(--ink-3)">hr</span></div>
+    <div class="tr-band-t">data export SLA</div>
+    <div class="tr-band-b">Patients, campaigns, replies, bookings \u2014 CSV + JSON, emailed directly to you.</div>
+  </div>
+  <div class="tr-band-cell">
+    <div class="tr-band-n">100<span style="font-size:.45em;color:var(--ink-3)">%</span></div>
+    <div class="tr-band-t">money-back pilot</div>
+    <div class="tr-band-b">First 10 pilots: if we don\u2019t rebook 10 patients in the first 30 days, we refund the trial extension \u2014 in full.</div>
+  </div>
+</section>
+
+<!-- ═══ 01 FOUNDER ═══ -->
+<section class="tr-sec">
+  <header class="tr-sec-hd">
+    <div class="tr-sec-n">01</div>
+    <div class="tr-sec-eye">Founder</div>
+  </header>
+  <div>
+    <h2>One person is accountable. On the line.</h2>
+    <p>Most dental SaaS is bought from a sales rep who won\u2019t remember your name in 90 days. usdpr. is <strong>founder-built</strong>, founder-supported, and founder-accountable. If something breaks, my phone rings. If the product needs fixing, I\u2019m the one fixing it that afternoon \u2014 not a three-week support-ticket queue.</p>
+
+    <div class="tr-founder">
+      <div class="tr-founder-av" aria-hidden="true">CS</div>
+      <div>
+        <div class="tr-founder-t">Colin Smith \u2014 Founder &amp; sole operator</div>
+        <div class="tr-founder-r">Orlando, Florida \u00B7 2026</div>
+        <p class="tr-founder-b">I built usdpr. because the existing tools bundle reactivation with 20 other features and the depth isn\u2019t there where it counts. I talk to every new practice personally during onboarding. My email is <a href="mailto:colin@usdentalpatientrecovery.com">colin@usdentalpatientrecovery.com</a>. My phone is the one on your invoice. I read every reply. <a href="/about.html">Read the full founder letter \u2192</a></p>
+        <div class="tr-founder-sig">\u2014 Colin</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 02 LEGAL ═══ -->
+<section class="tr-sec">
+  <header class="tr-sec-hd">
+    <div class="tr-sec-n">02</div>
+    <div class="tr-sec-eye">Legal &amp; counsel</div>
+  </header>
+  <div>
+    <h2>Reviewed by Florida healthcare counsel. Before we ever touch patient data.</h2>
+    <p>Dental reactivation sits at the intersection of <strong>HIPAA</strong>, <strong>TCPA</strong>, <strong>CAN-SPAM</strong>, <strong>state anti-kickback statutes</strong>, and <strong>state dental-board rules</strong>. Getting any one wrong is a felony or a license issue. So the entire product \u2014 terms, BAA template, pricing model, message templates \u2014 is reviewed by a Florida healthcare attorney before it touches a practice\u2019s data.</p>
+
+    <div class="tr-stack">
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">HIPAA BAA</span>
+        <span class="tr-stack-v"><strong>HelloSign e-signed</strong> before any PHI moves. Covers workforce, subprocessors, breach notification, and return/destroy on termination.</span>
+        <span class="tr-stack-b">Counsel-reviewed 2026-Q1</span>
+      </div>
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">TCPA A2P 10DLC</span>
+        <span class="tr-stack-v">Carrier-registered campaigns with enforced rate limits (<strong>1/day, 3/week</strong> per patient). STOP honored immediately and permanently.</span>
+        <span class="tr-stack-b">Twilio brand verified</span>
+      </div>
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">CAN-SPAM</span>
+        <span class="tr-stack-v">Physical-address footer, functional unsubscribe, honest subject lines, 10-business-day removal SLA \u2014 codified in the send pipeline.</span>
+        <span class="tr-stack-b">Enforced pre-send</span>
+      </div>
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">FL \u00A7817.505</span>
+        <span class="tr-stack-v">Flat SaaS fee <strong>only</strong>. Florida \u00A7817.505 (Patient Brokering Act) makes per-patient referral fees a felony. Our pricing is designed to sit cleanly inside the referral-services safe harbor.</span>
+        <span class="tr-stack-b">Never per-rebook</span>
+      </div>
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">State dental boards</span>
+        <span class="tr-stack-v">FL Rule <strong>64B5-4.002</strong> exempts a dentist\u2019s agent from solicitation rules when contacting existing or former patients. We only contact your patients, under your practice name.</span>
+        <span class="tr-stack-b">Existing-patient only</span>
+      </div>
+    </div>
+
+    <div class="tr-pull">
+      <p>Per-patient reactivation fees are a felony in Florida under \u00A7817.505. The flat-fee model isn\u2019t a marketing choice \u2014 it\u2019s the <em>only</em> compliant structure.</p>
+      <span class="tr-pull-c">The pricing argument, in one sentence</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 03 SECURITY ═══ -->
+<section class="tr-sec">
+  <header class="tr-sec-hd">
+    <div class="tr-sec-n">03</div>
+    <div class="tr-sec-eye">Security posture</div>
+  </header>
+  <div>
+    <h2>Engineered to the HIPAA Security Rule, then independently audited.</h2>
+    <p>Every send, reply, and booking is logged with an immutable audit trail. Data at rest on encrypted volumes (AES-256). Data in transit is TLS 1.2+. Role-based access with least-privilege defaults. No shared credentials, no PHI in logs, no PHI in error traces. The full posture lives at <a href="/security.html">/security</a>; the highlights sit below.</p>
+
+    <div class="tr-stack">
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">Encryption</span>
+        <span class="tr-stack-v"><strong>AES-256 at rest.</strong> TLS 1.2+ in transit. HSTS, CSP, SRI on every outbound request.</span>
+        <span class="tr-stack-b">All US regions</span>
+      </div>
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">Audit logging</span>
+        <span class="tr-stack-v">Every send, reply, booking, export, role change, and auth event is logged with an append-only writer. <strong>Logs retained 7 years.</strong></span>
+        <span class="tr-stack-b">Exportable any time</span>
+      </div>
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">Access control</span>
+        <span class="tr-stack-v">Role-based with least-privilege defaults. SAML 2.0 SSO (Okta, Azure AD, Google Workspace) on every tier. No shared logins.</span>
+        <span class="tr-stack-b">SSO included, not add-on</span>
+      </div>
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">Incident response</span>
+        <span class="tr-stack-v"><strong>Written IR plan, quarterly-tested.</strong> Customer notified within 24 hours of any incident affecting their data.</span>
+        <span class="tr-stack-b">24h breach SLA</span>
+      </div>
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">PHI handling</span>
+        <span class="tr-stack-v">PHI scrubber enforced at the database query layer \u2014 no treatment details, procedure names, or diagnoses ever reach an outbound message body.</span>
+        <span class="tr-stack-b">Enforced in code</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 04 DATA COMMITMENTS ═══ -->
+<section class="tr-sec">
+  <header class="tr-sec-hd">
+    <div class="tr-sec-n">04</div>
+    <div class="tr-sec-eye">Data commitments</div>
+  </header>
+  <div>
+    <h2>Your data. Your export. Any time. No retention games.</h2>
+    <p>If you leave \u2014 even on the last day of a free trial \u2014 you take <strong>everything</strong> with you. Patients, messages, replies, bookings, reports, logs. CSV + JSON. Emailed to you in under an hour, or the trial extension is free. We're not in the business of holding customer data hostage.</p>
+
+    <div class="tr-stack">
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">No resale</span>
+        <span class="tr-stack-v"><strong>We never sell, rent, or license customer data.</strong> Not to insurers, not to marketing platforms, not to benchmarking services.</span>
+        <span class="tr-stack-b">Contractually forbidden</span>
+      </div>
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">No cross-tenant signals</span>
+        <span class="tr-stack-v">No aggregated benchmarking, no "practices like yours" features, no model training on your data. Every tenant\u2019s data is walled off.</span>
+        <span class="tr-stack-b">No exceptions</span>
+      </div>
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">Zero-retention AI</span>
+        <span class="tr-stack-v">Reply-intent classification uses Anthropic\u2019s <strong>zero-data-retention tier</strong>. Your message data is never stored by the model provider, never used for training.</span>
+        <span class="tr-stack-b">DPA in place</span>
+      </div>
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">Portable export</span>
+        <span class="tr-stack-v">Self-serve "Download everything" from the dashboard. CSV + JSON. Under 1 hour. Active clients can request unlimited exports.</span>
+        <span class="tr-stack-b">Free, any time</span>
+      </div>
+      <div class="tr-stack-row">
+        <span class="tr-stack-k">Deletion SLA</span>
+        <span class="tr-stack-v">On termination: <strong>return-or-destroy within 14 days</strong> per BAA. Written attestation on request.</span>
+        <span class="tr-stack-b">BAA \u00A7 3.b</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05 GUARANTEES ═══ -->
+<section class="tr-sec">
+  <header class="tr-sec-hd">
+    <div class="tr-sec-n">05</div>
+    <div class="tr-sec-eye">Guarantees</div>
+  </header>
+  <div>
+    <h2>Four commitments in writing. No small print.</h2>
+    <p>Trust is earned by what you\u2019ll do when things go sideways. These are the commitments we'll refund against \u2014 signed into the Service Agreement.</p>
+
+    <div class="tr-guar">
+      <div class="tr-guar-t">If the first 30 days don\u2019t recover <span class="accent">at least $X</span>, the month\u2019s fee is refunded \u2014 no call.</div>
+      <div class="tr-guar-b"><strong>Pilot-program practices:</strong> if usdpr. doesn\u2019t deliver at least 10 rebooked, shown-up patients in the first 30 days of your paid month, we refund that month in full. No retention call. No gotcha. One-time refund per practice.</div>
+      <div class="tr-guar-row">
+        <span>Applies once per practice</span>
+        <span>First 10 pilots only</span>
+        <span>Paid out in 7 days</span>
+      </div>
+    </div>
+
+    <ul class="tr-pilot-list" style="margin-top:20px">
+      <li><strong>Uptime SLA.</strong> 99.9% rolling 90-day on the send + dashboard API. Any paid month below that gets a pro-rata credit, applied automatically.</li>
+      <li><strong>No-escalation SLA.</strong> Email Colin during US business hours \u2014 reply in under 2 hours, or the day\u2019s fee comes off your invoice.</li>
+      <li><strong>Data-export SLA.</strong> Full export in under 1 hour. Miss it and we credit a full month.</li>
+      <li><strong>Price-lock guarantee.</strong> Your rate is grandfathered for at least one renewal cycle on any price change. 60-day written notice before any adjustment.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ 06 PILOT ═══ -->
+<section class="tr-sec">
+  <header class="tr-sec-hd">
+    <div class="tr-sec-n">06</div>
+    <div class="tr-sec-eye">Pilot program</div>
+  </header>
+  <div>
+    <h2>Only 10 pilot practices. Founder-level access for life.</h2>
+
+    <div class="tr-pilot">
+      <div class="tr-pilot-t">Join the first 10 \u2014 <span class="accent">lifetime Practice Pro rate</span> locked in.</div>
+      <p class="tr-pilot-b">Practices who sign up before we close pilot-10 get the Practice Pro tier ($697/mo) <strong>permanently locked</strong>, regardless of future pricing. They also get personal onboarding with the founder, monthly roadmap calls, and the 30-day money-back guarantee above. In return: one honest written review on G2 or Capterra at day 60.</p>
+      <ul class="tr-pilot-list">
+        <li><strong>Lifetime rate lock.</strong> $697/mo now, forever, even as list price climbs.</li>
+        <li><strong>Founder onboarding.</strong> 90-minute live session \u2014 templates, segmentation, launch plan \u2014 not a generic Loom.</li>
+        <li><strong>Monthly roadmap call.</strong> First 6 months: direct influence on what we build next.</li>
+        <li><strong>Money-back guarantee.</strong> 10 rebookings in 30 days or that month is refunded.</li>
+        <li><strong>Priority feature access.</strong> Dentrix, Eaglesoft, Curve integrations: your practice is first in line.</li>
+      </ul>
+      <a href="/signup?tier=practice_pro&amp;utm_source=trust&amp;utm_campaign=pilot_10" class="btn btn-primary">
+        Claim a pilot slot
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 07 ADVISORS ═══ -->
+<section class="tr-sec">
+  <header class="tr-sec-hd">
+    <div class="tr-sec-n">07</div>
+    <div class="tr-sec-eye">Counsel, partners</div>
+  </header>
+  <div>
+    <h2>We don\u2019t do this alone.</h2>
+    <p>Solo-founded doesn't mean unaccompanied. Here's the network of specialists who review, host, or underwrite pieces of what we do.</p>
+
+    <div class="tr-adv">
+      <div class="tr-adv-c">
+        <div class="tr-adv-r">Legal \u00B7 healthcare</div>
+        <div class="tr-adv-n">Florida healthcare counsel</div>
+        <div class="tr-adv-t">Reviews BAA, Terms, Privacy, pricing structure, and all state-compliance claims.</div>
+      </div>
+      <div class="tr-adv-c">
+        <div class="tr-adv-r">Infrastructure</div>
+        <div class="tr-adv-n">Fly.io \u00B7 US regions</div>
+        <div class="tr-adv-t">HIPAA-eligible compute with DPA. Encrypted volumes, least-privilege IAM.</div>
+      </div>
+      <div class="tr-adv-c">
+        <div class="tr-adv-r">SMS delivery</div>
+        <div class="tr-adv-n">Twilio \u00B7 10DLC registered</div>
+        <div class="tr-adv-t">Carrier-brand registered; BAA in place; rate-limited at application layer.</div>
+      </div>
+      <div class="tr-adv-c">
+        <div class="tr-adv-r">Email delivery</div>
+        <div class="tr-adv-n">Resend \u00B7 authenticated</div>
+        <div class="tr-adv-t">DKIM + SPF + DMARC on every send. DPA signed. No patient clinical details in body.</div>
+      </div>
+      <div class="tr-adv-c">
+        <div class="tr-adv-r">Payments</div>
+        <div class="tr-adv-n">Stripe \u00B7 PCI-DSS Level 1</div>
+        <div class="tr-adv-t">We never see card numbers. Subscription billing + invoice receipts through Stripe Checkout.</div>
+      </div>
+      <div class="tr-adv-c">
+        <div class="tr-adv-r">E-signing</div>
+        <div class="tr-adv-n">HelloSign (Dropbox Sign)</div>
+        <div class="tr-adv-t">Legally binding e-signature audit trail. Used for BAA, Service Agreement, Payment Authorization.</div>
+      </div>
+      <div class="tr-adv-c">
+        <div class="tr-adv-r">AI reply triage</div>
+        <div class="tr-adv-n">Anthropic \u00B7 zero-retention</div>
+        <div class="tr-adv-t">Zero-data-retention tier. Message contents not stored, not used for training.</div>
+      </div>
+      <div class="tr-adv-c">
+        <div class="tr-adv-r">Analytics</div>
+        <div class="tr-adv-n">Plausible \u00B7 cookieless</div>
+        <div class="tr-adv-t">No cookies, no PII, no cross-site tracking. GDPR + CCPA friendly by default.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 08 TRANSPARENCY ═══ -->
+<section class="tr-sec">
+  <header class="tr-sec-hd">
+    <div class="tr-sec-n">08</div>
+    <div class="tr-sec-eye">Transparency</div>
+  </header>
+  <div>
+    <h2>Quarterly public report. Numbers we publish, whether they flatter us or not.</h2>
+    <p>Starting <strong>Q4 2026</strong>, we'll publish a quarterly transparency report covering: active practices, patients under care, uptime, send volume, reply rate, reactivation rate, refund rate, incident count, and the security + compliance changes we shipped that quarter. Good numbers or bad \u2014 same page, same frequency.</p>
+
+    <div class="tr-pull">
+      <p>The only companies that refuse to publish numbers are the ones whose numbers don't support the pitch. We'd rather you see both sides than market against a selection bias.</p>
+      <span class="tr-pull-c">Why we publish a quarterly report</span>
+    </div>
+
+    <p style="margin-top:16px">Until Q4, the active benchmarks live on the <a href="/calculator.html">calculator</a> (with sources), in the <a href="/playbook.html">Reactivation Playbook</a>, and in the <a href="/changelog.html">changelog</a>. A public status page is already live at <a href="/status.html">/status</a>.</p>
+  </div>
+</section>
+
+<!-- ═══ CLOSING CTA ═══ -->
+<section class="tr-close">
+  <h2>Start the trial. Cancel in <span class="accent">one click</span> if we don\u2019t earn the month.</h2>
+  <p>14 days free, no credit card. BAA e-signs in 90 seconds. Email campaigns live the same afternoon. Data exports in under an hour, any time. Every commitment on this page is contractually backed.</p>
+  <div class="tr-close-row">
+    <a href="/signup?tier=practice_pro&amp;utm_source=trust&amp;utm_campaign=closer" class="btn btn-primary">
+      Start free trial
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+    <a href="/about.html" class="btn btn-ghost">Read the founder letter</a>
+    <a href="mailto:colin@usdentalpatientrecovery.com?subject=Trust%20question" class="btn btn-ghost">Ask Colin directly</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices. Orlando, Florida. BAA signed before any patient data moves.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/#how">How it works</a></li><li><a href="/#pricing">Pricing</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/compare.html">Compare</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/security.html">Security</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul><li><a href="/about.html">About</a></li><li><a href="/resources.html">Resources</a></li><li><a href="/changelog.html">Changelog</a></li><li><a href="mailto:colin@usdentalpatientrecovery.com">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>TCPA compliant · HIPAA BAA · SOC 2 in progress</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

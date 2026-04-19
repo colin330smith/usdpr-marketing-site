@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 180" width="280" height="180">
+  <title>usdpr. — stacked lockup with full name</title>
+
+  <!-- Wordmark row -->
+  <text x="0" y="72"
+        font-family="'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif"
+        font-size="82" font-weight="800" fill="#0b0e0f"
+        letter-spacing="-3.6" font-stretch="92%">usdpr</text>
+  <circle cx="222" cy="68" r="10" fill="#f97316"/>
+
+  <!-- Rule separator -->
+  <line x1="0" y1="110" x2="240" y2="110" stroke="#d1c9b8" stroke-width="1"/>
+
+  <!-- Full name below -->
+  <text x="0" y="136"
+        font-family="'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif"
+        font-size="12" font-weight="600" fill="#3a3d3f"
+        letter-spacing="2.4" font-stretch="100%">US DENTAL</text>
+  <text x="0" y="154"
+        font-family="'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif"
+        font-size="12" font-weight="600" fill="#3a3d3f"
+        letter-spacing="2.4" font-stretch="100%">PATIENT RECOVERY</text>
+</svg>

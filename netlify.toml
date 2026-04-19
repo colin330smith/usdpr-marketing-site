@@ -1,0 +1,152 @@
+# Netlify configuration for usdpr. marketing site
+# Hosts the static HTML and a single capture Function for the lead-capture forms.
+
+[build]
+  publish = "."
+  functions = ".netlify/functions-src"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# ─── Routing ───────────────────────────────────────────────────────────────
+# Forms POST to these paths — redirect them all to the capture function.
+# status = 200 keeps the original path in the browser + returns function output.
+# Covers: /leads/audit, /leads/analytics, /leads/share, /leads/playbook, etc.
+[[redirects]]
+  from = "/leads/*"
+  to   = "/.netlify/functions/capture"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/cancel/action"
+  to   = "/.netlify/functions/capture"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/schedule/book"
+  to   = "/.netlify/functions/capture"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/referrals/submit"
+  to   = "/.netlify/functions/capture"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from = "/onboarding/step"
+  to   = "/.netlify/functions/capture"
+  status = 200
+  force  = true
+
+# ─── Stripe Payment Links — live ───────────────────────────────────────────
+# Generated 2026-04-19 via Stripe MCP. Three subscription products, each with
+# a 14-day free trial and post-checkout redirect to /welcome.html.
+# To rotate / regenerate: re-run ACTIVATE_REVENUE.sh.
+# NOTE: the current URLs are sandbox test-mode (/test_... prefix). Swap to
+# live-mode links once the Stripe live account clears KYC — same structure.
+
+[[redirects]]
+  from = "/signup"
+  to   = "https://buy.stripe.com/test_dRm00k1h48UQfZR0mD4ZG00"
+  status = 302
+  force  = true
+  query  = {tier = "practice"}
+
+[[redirects]]
+  from = "/signup"
+  to   = "https://buy.stripe.com/test_fZu6oI0d03Aw2912uL4ZG01"
+  status = 302
+  force  = true
+  query  = {tier = "practice_pro"}
+
+[[redirects]]
+  from = "/signup"
+  to   = "https://buy.stripe.com/test_7sY5kEbVI7QM14Xd9p4ZG02"
+  status = 302
+  force  = true
+  query  = {tier = "dso"}
+
+# Default: Practice Pro (the flagship tier)
+[[redirects]]
+  from = "/signup"
+  to   = "https://buy.stripe.com/test_fZu6oI0d03Aw2912uL4ZG01"
+  status = 302
+  force  = true
+
+# Demo + dashboard placeholders until FastAPI backend is wired.
+[[redirects]]
+  from = "/demo"
+  to   = "/compare.html"
+  status = 302
+
+[[redirects]]
+  from = "/onboarding"
+  to   = "/welcome.html"
+  status = 302
+
+[[redirects]]
+  from = "/app/dashboard"
+  to   = "/welcome.html"
+  status = 302
+
+# Make /states/ and /cities/ work with or without trailing slash
+[[redirects]]
+  from = "/states"
+  to   = "/states/index.html"
+  status = 301
+
+[[redirects]]
+  from = "/cities"
+  to   = "/cities/index.html"
+  status = 301
+
+# ─── Headers ───────────────────────────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options          = "DENY"
+    X-Content-Type-Options   = "nosniff"
+    Referrer-Policy          = "strict-origin-when-cross-origin"
+    Permissions-Policy       = "geolocation=(), microphone=(), camera=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type  = "application/xml; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type  = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/feed.xml"
+  [headers.values]
+    Content-Type  = "application/rss+xml; charset=utf-8"
+
+[[headers]]
+  for = "/atom.xml"
+  [headers.values]
+    Content-Type  = "application/atom+xml; charset=utf-8"

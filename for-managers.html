@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Built for dental office managers. Get your Tuesdays back from the recall-call pile. Pre-drafted replies, auto-segmented outreach, warm front-desk handoffs. Nothing new for you to learn.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="For office managers \u00B7 usdpr.">
+<meta property="og:description" content="Your recall-call pile, on autopilot. Pre-drafted replies. Warm handoffs. No new dashboard to learn.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/for-managers.html">
+<meta property="og:image" content="/og.svg">
+<title>For office managers \u00B7 usdpr.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdentalpatientrecovery.com"></script>
+<style>
+  .mg-hero{position:relative;overflow:hidden;padding:clamp(40px,6vw,96px) 0 clamp(28px,4vw,56px);background:var(--bg-vellum);border-bottom:1px solid var(--border)}
+  .mg-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.043 0 0 0 0 0.055 0 0 0 0 0.059 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");opacity:.05;mix-blend-mode:multiply}
+  .mg-hero > *{position:relative;z-index:1}
+  .mg-hero-wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,56px);align-items:center}
+  @media(max-width:900px){.mg-hero-wrap{grid-template-columns:1fr}}
+  .mg-kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;color:var(--accent);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+  .mg-kicker::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .mg-hero h1{font-size:clamp(42px,6.5vw,104px);color:var(--ink);line-height:.94;font-variation-settings:'opsz' 96,'wdth' 85,'wght' 800;letter-spacing:-.048em;max-width:15ch;margin-bottom:20px}
+  .mg-hero h1 .accent{color:var(--accent)}
+  .mg-hero-lede{font-size:clamp(16px,1.5vw,20px);color:var(--ink-2);max-width:52ch;line-height:1.55;margin-bottom:24px;font-variation-settings:'opsz' 19,'wdth' 100,'wght' 400}
+  .mg-hero-lede strong{color:var(--ink);font-variation-settings:'opsz' 19,'wdth' 100,'wght' 700}
+  .mg-hero-cta{display:flex;flex-wrap:wrap;gap:10px}
+
+  /* Time-saved card */
+  .mg-time{background:var(--bg-card);border:1.5px solid var(--ink);border-radius:18px;padding:clamp(22px,3vw,32px);box-shadow:var(--shadow-md)}
+  .mg-time-k{font-size:11px;color:var(--ink-3);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+  .mg-time-v{font-size:clamp(54px,7vw,92px);color:var(--ink);line-height:.94;font-variation-settings:'opsz' 96,'wdth' 88,'wght' 800;letter-spacing:-.046em;font-variant-numeric:tabular-nums;display:flex;align-items:baseline}
+  .mg-time-v .suf{font-size:.28em;color:var(--ink-3);margin-left:10px;letter-spacing:.04em;text-transform:uppercase;font-variation-settings:'opsz' 16,'wdth' 100,'wght' 600}
+  .mg-time-v .accent{color:var(--accent)}
+  .mg-time-b{margin-top:14px;font-size:14px;color:var(--ink-2);line-height:1.6;max-width:42ch}
+  .mg-time-b strong{color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .mg-time-rows{margin-top:18px;padding-top:14px;border-top:1px solid var(--border);display:grid;gap:10px}
+  .mg-time-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline}
+  .mg-time-row-k{font-size:13px;color:var(--ink-2);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500}
+  .mg-time-row-v{font-size:14px;color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700;font-variant-numeric:tabular-nums}
+  .mg-time-row-v.win{color:var(--accent)}
+
+  /* Role transformation */
+  .mg-role{max-width:var(--container);margin:0 auto;padding:clamp(48px,6vw,80px) var(--gutter)}
+  .mg-role-hd{display:flex;justify-content:space-between;align-items:end;gap:20px;padding-bottom:14px;margin-bottom:clamp(20px,3vw,32px);border-bottom:1px solid var(--border)}
+  .mg-role-hd h2{font-size:clamp(28px,3.8vw,56px);color:var(--ink);font-variation-settings:'opsz' 72,'wdth' 100,'wght' 700;letter-spacing:-.034em;line-height:1.04;max-width:22ch;margin-top:8px}
+  .mg-role-hd h2 .accent{color:var(--accent)}
+  .mg-role-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.mg-role-grid{grid-template-columns:1fr}}
+  .mg-role-c{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(22px,3vw,32px)}
+  .mg-role-c.win{border:1.5px solid var(--accent);background:linear-gradient(180deg,var(--accent-soft) 0%,var(--bg-card) 40%)}
+  .mg-role-k{font-size:11px;color:var(--ink-3);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+  .mg-role-c.win .mg-role-k{color:var(--accent)}
+  .mg-role-c h3{font-size:21px;color:var(--ink);font-variation-settings:'opsz' 24,'wdth' 100,'wght' 700;letter-spacing:-.022em;margin-bottom:14px;line-height:1.2}
+  .mg-role-c ul{list-style:none;display:grid;gap:9px}
+  .mg-role-c li{display:grid;grid-template-columns:18px 1fr;gap:12px;font-size:14px;line-height:1.55;color:var(--ink-2)}
+  .mg-role-c li::before{content:'';width:14px;height:14px;border-radius:4px;margin-top:3px}
+  .mg-role-c.now li::before{background:var(--bg-soft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%236b6e70' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M4 4l6 6M10 4l-6 6'/%3E%3C/svg%3E");background-position:center;background-repeat:no-repeat}
+  .mg-role-c.win li::before{background:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23f97316' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7l3 3 5-6'/%3E%3C/svg%3E");background-position:center;background-repeat:no-repeat}
+  .mg-role-c li strong{color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+
+  /* Sample reply queue */
+  .mg-queue{background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:clamp(48px,6vw,80px) 0}
+  .mg-queue-wrap{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+  .mg-queue-hd{margin-bottom:clamp(20px,2.5vw,28px)}
+  .mg-queue-hd h2{font-size:clamp(26px,3.5vw,40px);color:var(--ink);font-variation-settings:'opsz' 60,'wdth' 100,'wght' 700;letter-spacing:-.03em;line-height:1.1;max-width:26ch;margin-top:8px}
+  .mg-queue-hd h2 .accent{color:var(--accent)}
+  .mg-queue-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm)}
+  .mg-queue-tab{display:flex;align-items:center;gap:10px;padding:12px 18px;background:var(--bg-soft);border-bottom:1px solid var(--border);font-size:12px;color:var(--ink-3);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 600;letter-spacing:.06em;text-transform:uppercase}
+  .mg-queue-tab span.dot{width:9px;height:9px;border-radius:50%;background:var(--accent)}
+  .mg-queue-row{display:grid;grid-template-columns:auto 1fr auto;gap:16px;padding:16px 20px;border-bottom:1px solid var(--border);align-items:start}
+  .mg-queue-row:last-child{border-bottom:0}
+  .mg-queue-pat{font-size:13px;color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;letter-spacing:-.005em;min-width:140px}
+  .mg-queue-pat small{display:block;color:var(--ink-3);font-size:11px;margin-top:2px;letter-spacing:.04em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600}
+  .mg-queue-msg{font-size:13.5px;color:var(--ink-2);line-height:1.55;max-width:60ch}
+  .mg-queue-msg-in{background:var(--bg-soft);padding:10px 14px;border-radius:10px 10px 10px 2px;margin-bottom:6px;border-left:2px solid var(--border-2)}
+  .mg-queue-msg-ai{background:var(--accent-soft);padding:10px 14px;border-radius:10px 10px 2px 10px;border-left:2px solid var(--accent);font-size:13.5px;color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500}
+  .mg-queue-msg-ai strong{color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .mg-queue-msg-ai-k{display:inline-block;font-size:9.5px;color:var(--accent);padding:2px 7px;background:#fff;border-radius:var(--r-pill);border:1px solid rgba(249,115,22,.3);font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+  .mg-queue-actions{display:flex;flex-direction:column;gap:6px;align-items:stretch;min-width:130px}
+  .mg-queue-btn{padding:8px 12px;border-radius:8px;font-size:12px;border:1.5px solid var(--border);background:var(--bg);color:var(--ink);cursor:pointer;text-align:center;font-family:inherit;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 600;transition:all .16s var(--ease)}
+  .mg-queue-btn.approve{background:var(--accent);color:var(--ink-bg);border-color:var(--accent)}
+  .mg-queue-btn.edit{background:transparent}
+  .mg-queue-btn:hover{transform:translateY(-1px)}
+  .mg-queue-foot{padding:14px 20px;background:var(--bg-soft);display:flex;justify-content:space-between;align-items:baseline;font-size:12px;color:var(--ink-3);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500}
+  .mg-queue-foot strong{color:var(--ink)}
+
+  /* Closer */
+  .mg-close{max-width:var(--container-narrow);margin:0 auto;padding:clamp(48px,6vw,80px) var(--gutter);text-align:center}
+  .mg-close h2{font-size:clamp(32px,5vw,72px);color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 88,'wght' 800;letter-spacing:-.046em;line-height:.98;max-width:18ch;margin:0 auto 18px}
+  .mg-close h2 .accent{color:var(--accent)}
+  .mg-close p{font-size:16px;color:var(--ink-2);max-width:56ch;margin:0 auto clamp(22px,3vw,32px);line-height:1.55}
+  .mg-close p strong{color:var(--ink)}
+  .mg-close .row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+</style>
+<!-- BEGIN auto FAQ schema -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many hours per week do dental recall calls take?","acceptedAnswer":{"@type":"Answer","text":"Industry benchmarks: an office manager at a 2,000-patient practice spends 4-8 hours/week on recall calls, depending on automation already in place. USDPR removes recall calls entirely \u2014 the front desk reviews pre-drafted replies to inbound responses instead of cold-calling lapsed patients. Typical savings: 6 hours/week returned to the OM."}},{"@type":"Question","name":"Can dental office managers automate overdue patient recall?","acceptedAnswer":{"@type":"Answer","text":"Yes. USDPR runs the full 5-touch reactivation sequence (email + SMS + phone) automatically. The office manager reviews and one-click-approves AI-classified replies (interested / question / objection / unsubscribe). No list-dialing, no script-reading, no manual follow-up cadence to track. The OM becomes a traffic controller, not a cold-caller."}},{"@type":"Question","name":"What dental reactivation software is easiest for office managers?","acceptedAnswer":{"@type":"Answer","text":"USDPR is designed for office managers specifically: a single reactivation dashboard showing this week's reactivated-patient revenue, a unified inbox for all inbound replies across email + SMS, and AI-drafted responses that the OM only has to review and send. No system to configure, no cadence to design, no scripts to write \u2014 the playbook ships pre-built."}},{"@type":"Question","name":"How much time does USDPR save the front desk weekly?","acceptedAnswer":{"@type":"Answer","text":"Case-study benchmarks: front-desk time on reactivation drops from 4-8 hours/week to under 30 minutes/week (review + approve pre-drafted replies). The 3-8 hour reclaim typically gets redirected to insurance verification, new-patient intake, or post-op follow-ups \u2014 higher-value front-desk work."}}]}
+</script>
+<!-- END auto FAQ schema -->
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="/pilot.html" class="nav-link">Pilot</a>
+      <a href="/calculator.html" class="nav-link">Calculator</a>
+      <a href="/about.html" class="nav-link">Founder</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=for_managers" class="nav-cta">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+<section class="mg-hero">
+  <div class="mg-hero-wrap">
+    <div>
+      <div class="mg-kicker">For office managers \u00B7 built for your day</div>
+      <h1>Get your <span class="accent">Tuesdays back</span> from the recall-call pile.</h1>
+      <p class="mg-hero-lede">You already do checkout, insurance verification, scheduling, front-desk training, and the <strong>180 recall calls a year nobody else wants to make</strong>. usdpr. runs the reactivation outreach on autopilot and routes booked patients to your inbox with pre-drafted replies. <strong>Nothing new for you to learn.</strong></p>
+      <div class="mg-hero-cta">
+        <a href="/signup?tier=practice_pro&amp;utm_source=for_managers&amp;utm_campaign=hero" class="btn btn-primary" data-track="Managers hero CTA">
+          Show this to the owner
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="/calculator.html?utm_source=for_managers" class="btn btn-ghost">Run the ROI for them</a>
+      </div>
+    </div>
+
+    <aside class="mg-time">
+      <div class="mg-time-k">Your time back, per week</div>
+      <div class="mg-time-v">~<span class="accent">6</span><span class="suf">hours</span></div>
+      <p class="mg-time-b">The average office manager spends <strong>4\u20136 hours/week on manual recall calls</strong> and broken-appointment follow-ups \u2014 on top of your real job. This puts all of that on autopilot.</p>
+      <div class="mg-time-rows">
+        <div class="mg-time-row"><div class="mg-time-row-k">Manual recall calls</div><div class="mg-time-row-v" style="text-decoration:line-through;color:var(--ink-4)">3 hr/wk</div></div>
+        <div class="mg-time-row"><div class="mg-time-row-k">Broken-appt follow-ups</div><div class="mg-time-row-v" style="text-decoration:line-through;color:var(--ink-4)">2 hr/wk</div></div>
+        <div class="mg-time-row"><div class="mg-time-row-k">"Did that text send?" audits</div><div class="mg-time-row-v" style="text-decoration:line-through;color:var(--ink-4)">1 hr/wk</div></div>
+        <div class="mg-time-row" style="padding-top:8px;border-top:1px dashed var(--border-2)"><div class="mg-time-row-k"><strong>Your new workload</strong></div><div class="mg-time-row-v win">Review &amp; approve</div></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="mg-role">
+  <div class="mg-role-hd">
+    <div>
+      <span class="eyebrow">Your day, redrawn</span>
+      <h2>The recall-call hours you\u2019ll <span class="accent">never get back</span> \u2014 versus the ones we hand you.</h2>
+    </div>
+  </div>
+  <div class="mg-role-grid">
+    <article class="mg-role-c now">
+      <div class="mg-role-k">Your current Tuesday</div>
+      <h3>Wedged between checkout and insurance verification.</h3>
+      <ul>
+        <li>9am: pull the broken-appointment list from Dentrix for the third time.</li>
+        <li>10am: dial through 20 patients \u2014 leave 16 voicemails, speak to 3, reach 1 who's "not ready."</li>
+        <li>11am: somebody asks you to re-run eligibility for a new patient; recall calls stop.</li>
+        <li>2pm: back to the list. Answer two front-desk questions. Lose the list. Re-sort it.</li>
+        <li>4pm: tell the dentist <em>"I'll make more calls tomorrow."</em> You won't. You'll do checkout and close.</li>
+        <li>Friday: the dentist sees an empty hygiene column for the next week. <strong>Sighs.</strong></li>
+      </ul>
+    </article>
+    <article class="mg-role-c win">
+      <div class="mg-role-k">With usdpr.</div>
+      <h3>Autopilot outreach, queued approvals, warm handoffs.</h3>
+      <ul>
+        <li>Sunday night: the tool auto-segments the list and queues Monday's sends.</li>
+        <li>Monday AM: 180 patients get the first touch. <strong>You did nothing.</strong></li>
+        <li>Tuesday AM: 12 replies land in your inbox, each with a <strong>pre-drafted response</strong>. You read, tweak, approve.</li>
+        <li>Tuesday PM: 3 patients want a time. Two pick slots directly from the message; one calls you. <strong>No list to re-sort.</strong></li>
+        <li>Friday: dentist opens the Friday Report. Hygiene schedule is 78% booked for next week. <strong>Thank-you.</strong></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- SAMPLE REPLY QUEUE -->
+<section class="mg-queue">
+  <div class="mg-queue-wrap">
+    <div class="mg-queue-hd">
+      <span class="eyebrow">What you\u2019ll actually do each morning</span>
+      <h2>Review <span class="accent">AI-drafted replies</span>, approve in one click.</h2>
+    </div>
+
+    <div class="mg-queue-card">
+      <div class="mg-queue-tab">
+        <span class="dot"></span>
+        Reply queue \u00B7 Tuesday 9:04am \u00B7 12 pending
+      </div>
+      <div class="mg-queue-row">
+        <div class="mg-queue-pat">Margaret W.<small>Lapsed 11 mo</small></div>
+        <div class="mg-queue-msg">
+          <div class="mg-queue-msg-in">"Yes, I'd love to come back in. What's open next week?"</div>
+          <div class="mg-queue-msg-ai">
+            <span class="mg-queue-msg-ai-k">Draft \u00B7 edit or approve</span>
+            Hi Margaret \u2014 great to hear from you! We have <strong>Tuesday at 10am or Wednesday at 2pm</strong> open for a cleaning with Dr. Patel. Which works? \u2014 Rachel, front desk
+          </div>
+        </div>
+        <div class="mg-queue-actions">
+          <button class="mg-queue-btn approve" type="button">Approve &amp; send</button>
+          <button class="mg-queue-btn edit" type="button">Edit first</button>
+        </div>
+      </div>
+      <div class="mg-queue-row">
+        <div class="mg-queue-pat">Dennis K.<small>Broken appt 4 mo</small></div>
+        <div class="mg-queue-msg">
+          <div class="mg-queue-msg-in">"I switched insurance. Do you still take BlueCross?"</div>
+          <div class="mg-queue-msg-ai">
+            <span class="mg-queue-msg-ai-k">Draft \u00B7 edit or approve</span>
+            Hi Dennis \u2014 yes we\u2019re still in-network with <strong>BlueCross PPO</strong>. We can re-verify your coverage before your visit; takes 5 minutes. Want me to check a time this week? \u2014 Rachel
+          </div>
+        </div>
+        <div class="mg-queue-actions">
+          <button class="mg-queue-btn approve" type="button">Approve &amp; send</button>
+          <button class="mg-queue-btn edit" type="button">Edit first</button>
+        </div>
+      </div>
+      <div class="mg-queue-row">
+        <div class="mg-queue-pat">Priya S.<small>Lapsed 13 mo</small></div>
+        <div class="mg-queue-msg">
+          <div class="mg-queue-msg-in">"STOP"</div>
+          <div class="mg-queue-msg-ai" style="background:#fff7ed;border-left-color:#b45309">
+            <span class="mg-queue-msg-ai-k" style="color:#b45309;border-color:rgba(180,83,9,.3)">Auto-handled \u00B7 no action needed</span>
+            Unsubscribed immediately and permanently. Added to DNC. <strong>No reply needed from you.</strong> Log entry written.
+          </div>
+        </div>
+        <div class="mg-queue-actions">
+          <button class="mg-queue-btn" type="button" disabled style="opacity:.4">Already handled</button>
+        </div>
+      </div>
+      <div class="mg-queue-foot">
+        <span>Average review time per reply: <strong>11 seconds</strong></span>
+        <span>9 more queued \u2014 typically 3\u20135 minutes to clear the day\u2019s inbox</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="mg-close">
+  <span class="eyebrow">Send this to the decision-maker</span>
+  <h2 style="margin-top:10px">You don\u2019t need to be the one who <span class="accent">pays for it</span>. Just the one who suggests it.</h2>
+  <p>If you're the office manager reading this, you're probably <strong>not the one with the credit card</strong>. Forward the <a href="/calculator.html">calculator</a> to the practice owner. Forward <a href="/about.html">the founder letter</a> if they ask "who built this." Forward <a href="/pilot.html">the pilot page</a> if they want a money-back guarantee. <strong>Your job is to make the suggestion.</strong> Ours is to make it defensible.</p>
+  <div class="row">
+    <a href="mailto:?subject=Saw%20this%20\u2014%20might%20be%20worth%2015%20min&amp;body=Found%20a%20tool%20built%20specifically%20for%20our%20reactivation%20problem.%20Want%20to%20take%2015%20min%20to%20look%3F%0A%0Ahttps%3A//usdpr.netlify.app/for-owners.html" class="btn btn-primary" data-track="Managers forward CTA">
+      Forward to the owner
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+    <a href="/calculator.html?utm_source=for_managers&amp;utm_campaign=closer" class="btn btn-ghost">Run ROI first</a>
+    <a href="/schedule.html?utm_source=for_managers" class="btn btn-ghost">Book 15 min with the founder</a>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices.</div>
+      </div>
+      <div class="foot-col">
+        <h4>For you</h4>
+        <ul><li><a href="/for-managers.html">Office managers</a></li><li><a href="/for-owners.html">Practice owners</a></li><li><a href="/for-dsos.html">DSOs</a></li><li><a href="/for-specialists.html">Specialists</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/pilot.html">Pilot</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/compare.html">Compare</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/about.html">Founder letter</a></li><li><a href="/security.html">Security</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>Built for the person actually running the schedule</span>
+    </div>
+  </div>
+</footer>
+<script defer src="/founder-widget.js"></script>
+</body>
+</html>

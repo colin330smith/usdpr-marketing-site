@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>usdpr. — Dental reactivation field notes</title>
+  <link href="https://usdpr.netlify.app/atom.xml" rel="self"/>
+  <link href="https://usdpr.netlify.app/blog/"/>
+  <id>https://usdpr.netlify.app/blog/</id>
+  <updated>2026-04-19T20:10:42Z</updated>
+  <entry>
+    <title>The 5 segments of lapsed dental patients — usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/5-lapsed-patient-segments.html"/>
+    <id>https://usdpr.netlify.app/blog/5-lapsed-patient-segments.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>A1, A2, B1, B2, B3. Five patient cohorts with wildly different reply rates. Write one generic message and you leave 40–60% on the table.</summary>
+  </entry>
+  <entry>
+    <title>Broken appointment follow-up — the field guide for US dental practices</title>
+    <link href="https://usdpr.netlify.app/blog/broken-appointment-follow-up-guide.html"/>
+    <id>https://usdpr.netlify.app/blog/broken-appointment-follow-up-guide.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>The practical playbook for recovering the patients who didn&amp;#x27;t show. 0–60 day, 60–180 day, and 180+ day windows, with the copy, the cadence, and the front-desk S</summary>
+  </entry>
+  <entry>
+    <title>Dental hygiene recall statistics — 2026 benchmarks by practice size and specialty · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/dental-hygiene-recall-statistics-2026.html"/>
+    <id>https://usdpr.netlify.app/blog/dental-hygiene-recall-statistics-2026.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Hygiene recall effectiveness varies 5× between the top and bottom decile of US practices. The 2026 benchmarks across 9 dimensions.</summary>
+  </entry>
+  <entry>
+    <title>Dental practice patient attrition formula — the 3 versions and which to use · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/dental-practice-patient-attrition-formula.html"/>
+    <id>https://usdpr.netlify.app/blog/dental-practice-patient-attrition-formula.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Three common formulas — &amp;#x27;lost patients,&amp;#x27; &amp;#x27;lapsed,&amp;#x27; and &amp;#x27;dormant&amp;#x27; — each compute a different number. Pick wrong and your dashboard lies to you.</summary>
+  </entry>
+  <entry>
+    <title>Dental practice transition — how to retain patients through ownership, location, or staff change · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/dental-practice-transition-patient-retention.html"/>
+    <id>https://usdpr.netlify.app/blog/dental-practice-transition-patient-retention.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>20-35% of patients leave during a practice transition by default. With the playbook below, that number drops to 5-10%.</summary>
+  </entry>
+  <entry>
+    <title>Dental reactivation ROI methodology — how we calculate your $77k loss number</title>
+    <link href="https://usdpr.netlify.app/blog/dental-reactivation-roi-methodology.html"/>
+    <id>https://usdpr.netlify.app/blog/dental-reactivation-roi-methodology.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Every number in our &amp;lt;a href=&amp;#x27;/calculator.html&amp;#x27;&amp;gt;ROI calculator&amp;lt;/a&amp;gt;, sourced and defended. If you&amp;#x27;re going to show your spouse or your CPA, use this.</summary>
+  </entry>
+  <entry>
+    <title>Dental reactivation vs. new-patient acquisition — the ROI comparison every practice owner should see · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/dental-reactivation-vs-new-patient-acquisition.html"/>
+    <id>https://usdpr.netlify.app/blog/dental-reactivation-vs-new-patient-acquisition.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Reactivating a lapsed patient costs 8-12× less than acquiring a new one. Data across 200+ practices showing why reactivation should be 80% of your marketing spe</summary>
+  </entry>
+  <entry>
+    <title>Dental recall automation software — 2026 review of the 8 tools dentists actually use · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/dental-recall-automation-software-review.html"/>
+    <id>https://usdpr.netlify.app/blog/dental-recall-automation-software-review.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Honest review of Weave, Solutionreach, RevenueWell, NexHealth, Dental Intel, Modento, Lighthouse 360, and usdpr. Bias disclosed upfront.</summary>
+  </entry>
+  <entry>
+    <title>Dental recall call script — 4 that actually book patients on the first call · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/dental-recall-call-script.html"/>
+    <id>https://usdpr.netlify.app/blog/dental-recall-call-script.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Phone scripts for recall calls that end with a confirmed appointment, not a voicemail. Each with the compliance guardrails office managers miss.</summary>
+  </entry>
+  <entry>
+    <title>Dental recall text message examples — 7 that actually book patients</title>
+    <link href="https://usdpr.netlify.app/blog/dental-recall-text-message-examples.html"/>
+    <id>https://usdpr.netlify.app/blog/dental-recall-text-message-examples.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Copy-paste SMS templates for overdue hygiene, broken appointments, and long-lapsed patients. Every one TCPA-compliant, HIPAA-safe, and written by a real reactiv</summary>
+  </entry>
+  <entry>
+    <title>Dentist patient retention playbook — 11 proven moves, ranked by impact · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/dentist-patient-retention-playbook.html"/>
+    <id>https://usdpr.netlify.app/blog/dentist-patient-retention-playbook.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Retention moves ranked by statistical impact on year-over-year retention. The top 3 alone move retention +8-15 percentage points.</summary>
+  </entry>
+  <entry>
+    <title>Dentrix broken appointment report — how to pull it, filter it, and actually use it · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/dentrix-broken-appointment-report.html"/>
+    <id>https://usdpr.netlify.app/blog/dentrix-broken-appointment-report.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Step-by-step guide to extracting the list that actually matters. Most Dentrix users pull the wrong report.</summary>
+  </entry>
+  <entry>
+    <title>Flat-fee vs. per-patient pricing for dental reactivation — usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/flat-fee-vs-per-patient.html"/>
+    <id>https://usdpr.netlify.app/blog/flat-fee-vs-per-patient.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Why pay-per-rebook pricing is illegal in Florida and risky in most states. The anti-kickback statutes every dental buyer should know.</summary>
+  </entry>
+  <entry>
+    <title>HIPAA compliance for patient reactivation — usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/hipaa-reactivation-campaigns.html"/>
+    <id>https://usdpr.netlify.app/blog/hipaa-reactivation-campaigns.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>The checklist your attorney will ask about: BAA provisions, PHI-in-body rules, audit logs, consent tracking, breach-notification clocks. Pasteable.</summary>
+  </entry>
+  <entry>
+    <title>HIPAA SMS rules for dental practices — what you can and can&amp;#x27;t text patients</title>
+    <link href="https://usdpr.netlify.app/blog/hipaa-sms-dental-practice-rules.html"/>
+    <id>https://usdpr.netlify.app/blog/hipaa-sms-dental-practice-rules.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Exactly what HIPAA lets you include in a patient SMS (and what it doesn&amp;#x27;t). Also covers the TCPA 10DLC overlay, the STOP requirement, and where dental practices</summary>
+  </entry>
+  <entry>
+    <title>How to reactivate lapsed dental patients — the 5-touch method that actually works</title>
+    <link href="https://usdpr.netlify.app/blog/how-to-reactivate-lapsed-dental-patients.html"/>
+    <id>https://usdpr.netlify.app/blog/how-to-reactivate-lapsed-dental-patients.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>The field-tested sequence that takes your 1–3% single-send reactivation rate up to 8–15%. Written by the operator of a dental reactivation SaaS — no fluff, no f</summary>
+  </entry>
+  <entry>
+    <title>Hygiene recall email wording — 9 openers that outperform &amp;#x27;time for your cleaning&amp;#x27; · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/hygiene-recall-email-wording.html"/>
+    <id>https://usdpr.netlify.app/blog/hygiene-recall-email-wording.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Subject lines + opening paragraphs that beat the default hygiene recall template. Data from 200+ dental practices&amp;#x27; email sends.</summary>
+  </entry>
+  <entry>
+    <title>Insurance-change dental patient retention — the 4-step re-engagement for ghosted patients · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/insurance-change-dental-patient-retention.html"/>
+    <id>https://usdpr.netlify.app/blog/insurance-change-dental-patient-retention.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>The #1 silent cause of dental patient churn: insurance change. Most practices lose these patients because they never knew the insurance was the issue.</summary>
+  </entry>
+  <entry>
+    <title>No-show appointment fee policies that actually reduce no-shows (without angering patients) · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/no-show-appointment-fee-policy.html"/>
+    <id>https://usdpr.netlify.app/blog/no-show-appointment-fee-policy.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>A $50 no-show fee posted on a sign doesn&amp;#x27;t reduce no-shows — it reduces patients. The 4 policies below reduce no-shows 40-60% AND improve retention.</summary>
+  </entry>
+  <entry>
+    <title>Open Dental CSV export for reactivation campaigns — field map + gotchas · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/open-dental-csv-export-for-reactivation.html"/>
+    <id>https://usdpr.netlify.app/blog/open-dental-csv-export-for-reactivation.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Open Dental has the cleanest patient-data export of any major PMS. Here&amp;#x27;s exactly which fields you need, which to skip, and the 3 gotchas that break reactivatio</summary>
+  </entry>
+  <entry>
+    <title>Overdue dental patient letter templates — 5 mailers that beat the generic postcard · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/overdue-dental-patient-letter-template.html"/>
+    <id>https://usdpr.netlify.app/blog/overdue-dental-patient-letter-template.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>The &amp;#x27;we miss you&amp;#x27; postcard converts at 0.5-1%. These 5 letter templates convert at 6-12% because they acknowledge a specific reason the patient didn&amp;#x27;t come back</summary>
+  </entry>
+  <entry>
+    <title>How a 5,000-patient practice recovers $50k in 90 days — usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/recover-50k-90-days.html"/>
+    <id>https://usdpr.netlify.app/blog/recover-50k-90-days.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>The math behind dental patient reactivation: lapsed ratios, reply rates, book rates, and attach-rate upside. Real numbers, no hype.</summary>
+  </entry>
+  <entry>
+    <title>Dental practice marketing budget — the 2026 allocation that actually produces ROI · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/smart-dental-practice-marketing-budget-2026.html"/>
+    <id>https://usdpr.netlify.app/blog/smart-dental-practice-marketing-budget-2026.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Most practices allocate 60-70% of marketing spend to new-patient channels. The data says 30-40% is optimal. Here&amp;#x27;s the breakdown.</summary>
+  </entry>
+  <entry>
+    <title>SMS vs email vs phone for dental recall — which channel wins (spoiler: it&amp;#x27;s the wrong question) · usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/sms-vs-email-vs-phone-for-dental-recall.html"/>
+    <id>https://usdpr.netlify.app/blog/sms-vs-email-vs-phone-for-dental-recall.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Single-channel comparisons systematically underestimate the compounding effect. Here&amp;#x27;s the real data.</summary>
+  </entry>
+  <entry>
+    <title>Weave vs. NexHealth vs. RevenueWell vs. Solutionreach — honest 2026 comparison — usdpr.</title>
+    <link href="https://usdpr.netlify.app/blog/weave-nexhealth-reactivation.html"/>
+    <id>https://usdpr.netlify.app/blog/weave-nexhealth-reactivation.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Four dental-SaaS incumbents. Where each wins for reactivation. Where each loses. The honest buyer</summary>
+  </entry>
+  <entry>
+    <title>Weave vs Solutionreach vs RevenueWell — 2026 dental reactivation comparison</title>
+    <link href="https://usdpr.netlify.app/blog/weave-solutionreach-revenuewell-comparison.html"/>
+    <id>https://usdpr.netlify.app/blog/weave-solutionreach-revenuewell-comparison.html</id>
+    <updated>2026-04-19T20:10:42Z</updated>
+    <summary>Honest head-to-head comparison of the three big dental-comms suites on the one feature that drives the most revenue — patient reactivation. Plus where a dedicat</summary>
+  </entry>
+</feed>

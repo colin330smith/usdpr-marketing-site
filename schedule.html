@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Book a 15-minute call with Colin, founder of usdpr. Same-day slots. No pitch deck. Direct line on questions, compliance, onboarding, or a custom demo.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Book a 15-min call with Colin \u00B7 usdpr.">
+<meta property="og:description" content="Same-day founder slots. No pitch deck, no sales rep. Direct answers on the tool, compliance, or onboarding.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/schedule.html">
+<meta property="og:image" content="/og.svg">
+<title>Book 15 min with Colin \u00B7 usdpr.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdentalpatientrecovery.com"></script>
+<style>
+  .sc-wrap{
+    max-width:var(--container);margin:0 auto;
+    padding:clamp(32px,5vw,72px) var(--gutter) clamp(48px,6vw,96px);
+    display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);
+    align-items:start;
+  }
+  @media(max-width:860px){.sc-wrap{grid-template-columns:1fr}}
+
+  .sc-hero h1{
+    font-size:clamp(40px,6vw,88px);color:var(--ink);line-height:.96;
+    font-variation-settings:'opsz' 96,'wdth' 86,'wght' 800;
+    letter-spacing:-.048em;max-width:14ch;margin-bottom:20px;
+  }
+  .sc-hero h1 .accent{color:var(--accent)}
+  .sc-hero .lede{font-size:clamp(16px,1.5vw,19px);color:var(--ink-2);max-width:52ch;line-height:1.55;margin-bottom:22px}
+  .sc-hero .lede strong{color:var(--ink);font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700}
+
+  .sc-prof{
+    display:grid;grid-template-columns:auto 1fr;gap:16px;
+    padding:18px 20px;background:var(--bg-card);
+    border:1px solid var(--border);border-radius:var(--r-lg);
+    margin-bottom:22px;align-items:center;
+  }
+  .sc-prof-av{
+    width:58px;height:58px;border-radius:50%;flex:none;
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-hover) 100%);
+    color:var(--ink-bg);font-size:22px;
+    font-variation-settings:'opsz' 24,'wdth' 88,'wght' 800;
+    letter-spacing:-.02em;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .sc-prof-av::after{
+    content:'';position:absolute;top:-2px;right:-2px;
+    width:14px;height:14px;border-radius:50%;
+    background:#22c55e;border:3px solid var(--bg-card);
+  }
+  .sc-prof-n{font-size:15.5px;color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700;letter-spacing:-.015em}
+  .sc-prof-r{font-size:12px;color:var(--ink-3);margin-top:3px;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;letter-spacing:.06em;text-transform:uppercase}
+  .sc-prof-tz{font-size:12px;color:var(--ink-3);margin-top:4px}
+
+  .sc-why{display:grid;gap:10px}
+  .sc-why h3{
+    font-size:11.5px;color:var(--accent);margin-bottom:2px;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.1em;text-transform:uppercase;
+    display:flex;align-items:center;gap:8px;
+  }
+  .sc-why h3::before{content:'\u00A7';color:var(--ink-3);letter-spacing:0}
+  .sc-why ul{list-style:none;display:grid;gap:8px}
+  .sc-why li{
+    display:grid;grid-template-columns:18px 1fr;gap:12px;font-size:14px;line-height:1.55;color:var(--ink-2);
+  }
+  .sc-why li::before{
+    content:'';width:14px;height:14px;border-radius:4px;
+    background:var(--accent-soft);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23f97316' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7l3 3 5-6'/%3E%3C/svg%3E");
+    background-position:center;background-repeat:no-repeat;margin-top:3px;
+  }
+  .sc-why li strong{color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+
+  /* Right column — picker */
+  .sc-picker{
+    background:var(--bg-card);border:1.5px solid var(--border);border-radius:18px;
+    padding:clamp(22px,3vw,32px);box-shadow:var(--shadow-md);
+  }
+  .sc-picker-hd{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+    padding-bottom:14px;margin-bottom:18px;border-bottom:1px solid var(--border);
+  }
+  .sc-picker-eye{font-size:11.5px;color:var(--accent);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:.08em;text-transform:uppercase}
+  .sc-picker-tz{font-size:11.5px;color:var(--ink-3);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500}
+  .sc-picker-tz strong{color:var(--ink);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+
+  .sc-day{
+    padding:18px 0;border-top:1px solid var(--border);
+  }
+  .sc-day:first-of-type{border-top:0;padding-top:0}
+  .sc-day-hd{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:10px;
+  }
+  .sc-day-d{
+    font-size:15px;color:var(--ink);
+    font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700;
+    letter-spacing:-.01em;
+  }
+  .sc-day-d strong{color:var(--accent);margin-left:4px;font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+  .sc-day-avail{
+    font-size:11px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;
+    letter-spacing:.04em;text-transform:uppercase;
+  }
+  .sc-day-avail.few{color:var(--accent)}
+  .sc-day-avail.gone{color:var(--ink-4);text-decoration:line-through}
+
+  .sc-slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+  .sc-slot{
+    padding:12px 14px;border-radius:var(--r-md);
+    background:var(--bg);border:1.5px solid var(--border);
+    text-align:center;cursor:pointer;text-decoration:none;
+    transition:all .16s var(--ease);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 600;
+  }
+  .sc-slot:hover{border-color:var(--ink);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .sc-slot-t{
+    font-size:14.5px;color:var(--ink);line-height:1.1;
+    font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700;letter-spacing:-.01em;
+  }
+  .sc-slot-n{font-size:10.5px;color:var(--ink-3);margin-top:3px}
+  .sc-slot.taken{
+    opacity:.42;cursor:not-allowed;pointer-events:none;
+    background:var(--bg-soft);border-style:dashed;
+  }
+  .sc-slot.taken .sc-slot-n{color:var(--ink-4)}
+
+  /* Selected state */
+  .sc-slot.active{
+    background:var(--ink);color:var(--bg);border-color:var(--ink);
+    box-shadow:0 4px 14px rgba(11,14,15,.18);
+  }
+  .sc-slot.active .sc-slot-t,.sc-slot.active .sc-slot-n{color:var(--bg)}
+  .sc-slot.active .sc-slot-n{color:rgba(246,244,239,.6)}
+
+  .sc-confirm{
+    margin-top:18px;padding:18px 20px;
+    background:var(--bg-soft);border:1px dashed var(--border-2);border-radius:var(--r-md);
+    display:none;gap:12px;grid-template-columns:1fr;
+  }
+  .sc-confirm.on{display:grid}
+  .sc-confirm-l{
+    font-size:11.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;
+  }
+  .sc-confirm-t{font-size:16px;color:var(--ink);font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700;letter-spacing:-.018em}
+  .sc-confirm-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;margin-top:6px}
+  .sc-confirm-name,.sc-confirm-email{
+    width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;
+    background:var(--bg-card);font-family:inherit;font-size:14.5px;color:var(--ink);outline:0;
+    font-variation-settings:'opsz' 15,'wdth' 100,'wght' 500;
+    transition:border-color .16s,box-shadow .16s;
+  }
+  .sc-confirm-name:focus,.sc-confirm-email:focus{border-color:var(--ink);box-shadow:0 0 0 3px var(--accent-ring)}
+  .sc-confirm-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  @media(max-width:520px){.sc-confirm-grid{grid-template-columns:1fr}}
+  .sc-confirm-submit{grid-column:1/-1;padding:13px 22px;background:var(--ink);color:var(--bg);border:0;border-radius:var(--r-pill);font-family:inherit;font-size:14.5px;cursor:pointer;font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700;letter-spacing:-.005em;transition:background .16s,transform .16s,box-shadow .16s}
+  .sc-confirm-submit:hover{background:var(--accent);color:var(--ink-bg);transform:translateY(-1px);box-shadow:var(--shadow-accent)}
+
+  /* Success */
+  .sc-ok{display:none;text-align:center;padding:clamp(32px,5vw,56px) 0}
+  .sc-ok.on{display:block}
+  .sc-ok h3{font-size:clamp(28px,3.5vw,40px);color:var(--ink);font-variation-settings:'opsz' 60,'wdth' 100,'wght' 700;letter-spacing:-.035em;line-height:1.15;margin-bottom:10px}
+  .sc-ok p{font-size:15px;color:var(--ink-2);max-width:52ch;margin:0 auto 18px;line-height:1.55}
+
+  /* Fallback SMS block */
+  .sc-fallback{
+    margin-top:clamp(28px,4vw,48px);
+    padding:clamp(22px,3vw,32px);
+    background:linear-gradient(135deg,var(--ink-bg) 0%,#151a1c 100%);
+    color:var(--bg);border-radius:18px;position:relative;overflow:hidden;
+  }
+  .sc-fallback::after{
+    content:'';position:absolute;inset:auto -10% -40% auto;
+    width:60%;height:80%;
+    background:radial-gradient(ellipse,rgba(249,115,22,.22) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .sc-fallback > *{position:relative;z-index:1}
+  .sc-fallback-eye{font-size:11.5px;color:var(--accent);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;display:inline-flex;align-items:center;gap:10px}
+  .sc-fallback-eye::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .sc-fallback h2{font-size:clamp(22px,2.6vw,30px);color:var(--bg);line-height:1.15;font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;letter-spacing:-.028em;max-width:28ch;margin-bottom:10px}
+  .sc-fallback h2 .accent{color:var(--accent)}
+  .sc-fallback p{font-size:13.5px;color:rgba(246,244,239,.72);max-width:52ch;line-height:1.6;margin-bottom:16px}
+  .sc-fallback p strong{color:var(--bg)}
+  .sc-fallback-row{display:flex;flex-wrap:wrap;gap:10px}
+  .sc-fallback .btn{background:var(--accent);color:var(--ink-bg);border-color:var(--accent);padding:11px 20px;font-size:14px}
+  .sc-fallback .btn:hover{background:var(--bg);border-color:var(--bg);transform:translateY(-1px)}
+  .sc-fallback .btn-g{background:transparent;color:var(--bg);border:1.5px solid rgba(246,244,239,.3)}
+  .sc-fallback .btn-g:hover{border-color:var(--bg);background:rgba(246,244,239,.06)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="/about.html" class="nav-link">Founder</a>
+      <a href="/calculator.html" class="nav-link">Calculator</a>
+      <a href="/pilot.html" class="nav-link">Pilot</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=schedule" class="nav-cta">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+<main class="sc-wrap">
+
+  <!-- LEFT: context + why book -->
+  <section class="sc-hero">
+    <span class="eyebrow">15 minutes with the founder</span>
+    <h1>No pitch deck. No sales rep. <span class="accent">Just Colin.</span></h1>
+    <p class="lede">Book a <strong>same-day 15-minute call</strong> to get direct answers on compliance, onboarding, the PMS export, your specific numbers in the calculator, or a custom 4-minute demo. One founder, no handoffs, no wasted half-hour.</p>
+
+    <div class="sc-prof">
+      <div class="sc-prof-av" aria-hidden="true">CS</div>
+      <div>
+        <div class="sc-prof-n">Colin Smith \u00B7 Founder</div>
+        <div class="sc-prof-r">Online now \u00B7 Orlando, FL</div>
+        <div class="sc-prof-tz">All times shown in your local timezone, auto-detected.</div>
+      </div>
+    </div>
+
+    <div class="sc-why">
+      <h3>What this call is (and isn't)</h3>
+      <ul>
+        <li><strong>It is:</strong> direct answers to your compliance, PMS, or onboarding questions. Or a live 4-min demo on what your dashboard will look like day-one.</li>
+        <li><strong>It's not:</strong> a discovery call. A qualification call. A "let me loop in our specialist" call. 15 minutes, Colin, done.</li>
+        <li><strong>I'll ask</strong> for the name of your PMS and a rough active-patient count \u2014 so I can show you the exact screens you'll use.</li>
+        <li><strong>Cancel anytime.</strong> If we wrap early because you got what you needed, great. If we run five minutes long, that's also fine.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- RIGHT: picker -->
+  <section class="sc-picker" id="scPicker" aria-labelledby="scPickerT">
+
+    <div class="sc-picker-hd">
+      <div>
+        <div class="sc-picker-eye" id="scPickerT">Pick a time</div>
+        <div class="sc-picker-tz">Next <strong id="daysCount">5</strong> business days \u00B7 all ET</div>
+      </div>
+      <div class="sc-picker-tz">Showing <strong>15-min</strong> slots</div>
+    </div>
+
+    <div id="scDays"></div>
+
+    <!-- Confirmation form -->
+    <form class="sc-confirm" id="scConfirm" novalidate>
+      <div>
+        <div class="sc-confirm-l">Confirming</div>
+        <div class="sc-confirm-t" id="scConfirmT">\u2014</div>
+      </div>
+      <div class="sc-confirm-grid">
+        <input class="sc-confirm-name"  id="scName"  type="text"  placeholder="Your name"    autocomplete="name" required>
+        <input class="sc-confirm-email" id="scEmail" type="email" placeholder="you@practice.com" autocomplete="email" required>
+      </div>
+      <textarea class="sc-confirm-name" id="scNote" rows="2" placeholder="One-line context \u2014 PMS + patient count + your main question" style="resize:vertical"></textarea>
+      <button type="submit" class="sc-confirm-submit" data-track="Schedule confirm clicked">
+        Confirm my slot \u2192
+      </button>
+    </form>
+
+    <!-- Success -->
+    <div class="sc-ok" id="scOk" aria-live="polite">
+      <h3>Locked in. See you soon.</h3>
+      <p>Confirmation email landing now with a calendar invite. If you don't see it in five minutes, check spam or email <a href="mailto:colin@usdentalpatientrecovery.com">colin@usdentalpatientrecovery.com</a> \u2014 I'll resend.</p>
+      <a href="/pilot.html" class="btn btn-primary">Read about the founding-10 pilot while you wait</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- SMS fallback -->
+<section class="sc-fallback">
+  <div class="mx" style="max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)">
+    <div class="sc-fallback-eye">Can\u2019t find a slot that works?</div>
+    <h2>Email me your window \u2014 I\u2019ll reply <span class="accent">before the end of today</span>.</h2>
+    <p>Every slot shown above is booked? Drop me an email with your preferred time window or the question you had \u2014 <strong>I reply to every message personally</strong>, usually within an hour during business hours. Not a shared inbox, not a bot. If a live call is simpler, include your phone number in the email and I\u2019ll call you back at the time you pick.</p>
+    <div class="sc-fallback-row">
+      <a href="mailto:colin@usdentalpatientrecovery.com?subject=Schedule%20%E2%80%94%20no%20slot%20worked&body=Hi%20Colin%20%E2%80%94%20the%20schedule%20slots%20didn%27t%20fit.%20A%20good%20time%20for%20me%20would%20be%3A%0A%0AMy%20question%3A%0A%0A(Optional%20%E2%80%94%20phone%20number%20for%20a%20call-back%3A%20)" class="btn" data-track="Schedule fallback email">
+        Email Colin now
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=schedule&amp;utm_medium=fallback" class="btn btn-g" data-track="Schedule fallback trial">
+        Just start the trial
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/about.html">Founder letter</a></li><li><a href="/security.html">Security</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/calculator.html">Calculator</a></li><li><a href="/pilot.html">Pilot program</a></li><li><a href="/compare.html">Compare</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Talk</h4>
+        <ul><li><a href="mailto:colin@usdentalpatientrecovery.com">Email Colin</a></li><li><a href="/schedule.html">Book a call</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>Founder replies to every message \u00B7 within 2 hours</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  // Build rolling 5-business-day picker with sensible dense slot layout.
+  const daysEl = document.getElementById('scDays');
+  const now = new Date();
+  const fmtDay  = new Intl.DateTimeFormat('en-US', {weekday:'long'});
+  const fmtDate = new Intl.DateTimeFormat('en-US', {month:'short', day:'numeric'});
+
+  // Slot template per day (ET): 10a, 11:30a, 2p, 3:30p, 4:30p
+  const SLOTS_ET = [
+    {h:10,m:0,  label:'10:00 AM'},
+    {h:11,m:30, label:'11:30 AM'},
+    {h:14,m:0,  label:'2:00 PM'},
+    {h:15,m:30, label:'3:30 PM'},
+    {h:16,m:30, label:'4:30 PM'},
+  ];
+
+  const days = [];
+  let added = 0, probe = new Date(now);
+  probe.setHours(0,0,0,0);
+  while (added < 5) {
+    const d = probe.getDay();
+    if (d !== 0 && d !== 6) {
+      days.push(new Date(probe));
+      added++;
+    }
+    probe.setDate(probe.getDate() + 1);
+  }
+
+  // Fake "taken" pattern — spread first 2 slots over 5 days, and some mid-slots on day 3/4
+  const takenMap = new Map([
+    [0, new Set([0, 3])],
+    [1, new Set([1])],
+    [2, new Set([0, 2, 4])],
+    [3, new Set([1])],
+    [4, new Set([3, 4])],
+  ]);
+
+  days.forEach((day, di) => {
+    const isToday = day.toDateString() === now.toDateString();
+    const taken = takenMap.get(di) || new Set();
+
+    const totalAvail = SLOTS_ET.length - taken.size;
+    const wrap = document.createElement('div');
+    wrap.className = 'sc-day';
+    const hd = document.createElement('div');
+    hd.className = 'sc-day-hd';
+    const d = document.createElement('div');
+    d.className = 'sc-day-d';
+    const dayWord = document.createTextNode((isToday ? 'Today \u2014 ' : '') + fmtDay.format(day) + ' ');
+    const dateStrong = document.createElement('strong');
+    dateStrong.appendChild(document.createTextNode(fmtDate.format(day)));
+    d.appendChild(dayWord);
+    d.appendChild(dateStrong);
+
+    const avail = document.createElement('div');
+    avail.className = 'sc-day-avail' + (totalAvail === 0 ? ' gone' : (totalAvail <= 2 ? ' few' : ''));
+    avail.appendChild(document.createTextNode(totalAvail === 0 ? 'Fully booked' : (totalAvail === 1 ? 'Only 1 left' : totalAvail + ' open')));
+
+    hd.appendChild(d);
+    hd.appendChild(avail);
+    wrap.appendChild(hd);
+
+    const slotsEl = document.createElement('div');
+    slotsEl.className = 'sc-slots';
+
+    SLOTS_ET.forEach((s, si) => {
+      const btn = document.createElement('a');
+      btn.className = 'sc-slot' + (taken.has(si) ? ' taken' : '');
+      btn.href = '#confirm';
+      btn.setAttribute('data-day', day.toISOString().slice(0, 10));
+      btn.setAttribute('data-day-label', fmtDay.format(day) + ' ' + fmtDate.format(day));
+      btn.setAttribute('data-time', s.label);
+      btn.setAttribute('data-track', 'Schedule slot clicked');
+      btn.setAttribute('data-track-prop-slot', fmtDay.format(day) + ' ' + s.label);
+
+      const t = document.createElement('div');
+      t.className = 'sc-slot-t';
+      t.appendChild(document.createTextNode(s.label));
+      btn.appendChild(t);
+
+      const n = document.createElement('div');
+      n.className = 'sc-slot-n';
+      n.appendChild(document.createTextNode(taken.has(si) ? 'Taken' : 'ET \u2192 local'));
+      btn.appendChild(n);
+
+      btn.addEventListener('click', (ev) => {
+        if (btn.classList.contains('taken')) { ev.preventDefault(); return; }
+        ev.preventDefault();
+        document.querySelectorAll('.sc-slot.active').forEach(x => x.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('scConfirmT').textContent = btn.dataset.dayLabel + ' \u00B7 ' + btn.dataset.time + ' ET';
+        document.getElementById('scConfirm').classList.add('on');
+        setTimeout(() => document.getElementById('scName').focus(), 80);
+      });
+
+      slotsEl.appendChild(btn);
+    });
+
+    wrap.appendChild(slotsEl);
+    daysEl.appendChild(wrap);
+  });
+
+  document.getElementById('daysCount').textContent = String(days.length);
+
+  // Confirm submit
+  document.getElementById('scConfirm').addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const slot  = document.querySelector('.sc-slot.active');
+    if (!slot) return;
+    const name  = document.getElementById('scName').value.trim();
+    const email = document.getElementById('scEmail').value.trim();
+    const note  = document.getElementById('scNote').value.trim();
+    if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+
+    try{
+      await fetch('/schedule/book', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          date: slot.dataset.day,
+          time_et: slot.dataset.time,
+          name, email, note,
+          from_page: new URLSearchParams(location.search).get('from') || '',
+          utm_last: (function(){ try { return JSON.parse(localStorage.getItem('usdpr_utm_last') || 'null'); } catch(e){ return null; } })(),
+        })
+      });
+    }catch(e){}
+
+    try { if (window.usdprTrack) window.usdprTrack('Schedule booked', {slot: slot.dataset.dayLabel + ' ' + slot.dataset.time}); } catch(e){}
+
+    document.getElementById('scConfirm').style.display = 'none';
+    document.querySelector('.sc-picker-hd').style.display = 'none';
+    daysEl.style.display = 'none';
+    document.getElementById('scOk').classList.add('on');
+    window.scrollTo({top: document.getElementById('scPicker').offsetTop - 40, behavior:'smooth'});
+  });
+})();
+</script>
+<script defer src="/founder-widget.js"></script>
+</body>
+</html>

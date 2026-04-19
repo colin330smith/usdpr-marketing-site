@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <title>usdpr. — US Dental Patient Recovery</title>
+  <text x="0" y="45"
+        font-family="'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif"
+        font-size="52" font-weight="800" fill="#0b0e0f"
+        letter-spacing="-2.3" font-stretch="92%">usdpr</text>
+  <circle cx="196" cy="42" r="7" fill="#f97316"/>
+</svg>

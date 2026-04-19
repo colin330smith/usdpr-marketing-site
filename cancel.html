@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Cancellation flow for usdpr. customers \u2014 pause, downgrade, or cancel with a one-click option for each.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Cancel · usdpr.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<style>
+  .cx-hero{
+    padding:clamp(32px,5vw,72px) 0 clamp(18px,2.5vw,32px);
+    max-width:var(--container-narrow);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter);
+  }
+  .cx-eye{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;
+  }
+  .cx-eye::before{content:'';width:18px;height:1px;background:var(--ink-3)}
+  .cx-hero h1{
+    font-size:clamp(36px,5.5vw,68px);color:var(--ink);
+    font-variation-settings:'opsz' 96,'wdth' 92,'wght' 800;
+    letter-spacing:-.042em;line-height:.98;
+    max-width:18ch;margin-bottom:14px;
+  }
+  .cx-hero h1 .accent{color:var(--accent)}
+  .cx-hero .lede{
+    font-size:clamp(16px,1.4vw,18px);max-width:56ch;
+    color:var(--ink-2);line-height:1.55;
+  }
+  .cx-hero .lede strong{color:var(--ink);font-variation-settings:'opsz' 17,'wdth' 100,'wght' 700}
+
+  /* ───── Current-account strip ───── */
+  .cx-acct{
+    max-width:var(--container-narrow);margin:0 auto 14px;
+    padding:14px 22px;
+    background:var(--bg-card);border:1px solid var(--border);
+    border-left:3px solid var(--accent);
+    border-radius:var(--r-md);
+    display:flex;flex-wrap:wrap;gap:8px 28px;align-items:baseline;
+    font-size:13px;color:var(--ink-2);
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500;
+  }
+  .cx-acct .cx-acct-key{color:var(--ink-3);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-right:6px}
+  .cx-acct .cx-acct-val{color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+
+  /* ───── Options grid ───── */
+  .cx-options{
+    max-width:var(--container-narrow);margin:0 auto;
+    padding:clamp(16px,2.5vw,24px) var(--gutter) clamp(56px,7vw,96px);
+    display:grid;gap:14px;
+  }
+  .cx-opt{
+    background:var(--bg-card);
+    border:1.5px solid var(--border);
+    border-radius:18px;
+    padding:clamp(22px,2.6vw,32px);
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,auto);
+    gap:clamp(18px,3vw,32px);align-items:center;
+    transition:border-color .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease);
+  }
+  .cx-opt:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  @media(max-width:600px){.cx-opt{grid-template-columns:1fr}}
+
+  .cx-opt-hd{
+    display:flex;align-items:center;gap:10px;margin-bottom:10px;
+    font-size:11.5px;
+    letter-spacing:.09em;text-transform:uppercase;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+  }
+  .cx-opt-badge{
+    padding:3px 10px;border-radius:var(--r-pill);
+    background:var(--accent-soft);color:var(--accent);
+    border:1px solid rgba(249,115,22,.24);
+    font-size:10.5px;
+  }
+
+  .cx-opt h2{
+    font-size:clamp(22px,2.5vw,30px);color:var(--ink);
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 700;
+    letter-spacing:-.028em;line-height:1.15;margin-bottom:8px;
+  }
+  .cx-opt p{
+    font-size:14px;line-height:1.55;color:var(--ink-2);max-width:56ch;
+  }
+  .cx-opt p strong{color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+  .cx-opt .accent{color:var(--accent)}
+
+  .cx-opt-sub{
+    margin-top:14px;
+    font-size:12.5px;color:var(--ink-3);
+    display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;
+  }
+  .cx-opt-sub-chip{display:inline-flex;align-items:center;gap:5px}
+  .cx-opt-sub-chip::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--ok)}
+
+  .cx-opt-actions{
+    display:grid;gap:8px;justify-items:stretch;align-content:center;
+    min-width:220px;
+  }
+  .cx-opt-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 20px;border-radius:var(--r-pill);border:1.5px solid transparent;
+    text-decoration:none;font-size:14.5px;cursor:pointer;
+    font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700;
+    letter-spacing:-.005em;
+    transition:all .2s var(--ease);font-family:inherit;
+  }
+  .cx-opt-btn.p{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .cx-opt-btn.p:hover{background:var(--accent);border-color:var(--accent);color:var(--ink-bg);transform:translateY(-1px);box-shadow:var(--shadow-accent)}
+  .cx-opt-btn.g{background:transparent;color:var(--ink);border-color:var(--border-2)}
+  .cx-opt-btn.g:hover{border-color:var(--ink);background:var(--bg-card)}
+  .cx-opt-btn.a{background:var(--accent);color:var(--ink-bg);border-color:var(--accent)}
+  .cx-opt-btn.a:hover{background:var(--accent-hover);border-color:var(--accent-hover);transform:translateY(-1px);box-shadow:var(--shadow-accent)}
+  .cx-opt-btn-sub{
+    display:block;margin-top:2px;font-size:11px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;letter-spacing:0;
+    text-align:center;
+  }
+
+  .cx-opt-picker{
+    display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;
+  }
+  .cx-opt-picker-btn{
+    padding:10px 14px;border-radius:var(--r-pill);
+    background:var(--bg);border:1.5px solid var(--border);
+    font-size:13px;color:var(--ink-2);cursor:pointer;
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 600;
+    font-family:inherit;transition:all .18s var(--ease);
+  }
+  .cx-opt-picker-btn:hover{border-color:var(--ink);color:var(--ink)}
+  .cx-opt-picker-btn.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+  /* ───── Save banner (on top — the big offer) ───── */
+  .cx-save{
+    max-width:var(--container-narrow);margin:0 auto clamp(20px,3vw,32px);
+    background:linear-gradient(135deg,var(--ink-bg) 0%,#151a1c 100%);
+    color:var(--bg);border-radius:18px;
+    padding:clamp(24px,3.5vw,40px);
+    position:relative;overflow:hidden;
+    box-shadow:var(--shadow-md);
+  }
+  .cx-save::after{
+    content:'';position:absolute;inset:auto -10% -40% auto;
+    width:70%;height:90%;
+    background:radial-gradient(ellipse,rgba(249,115,22,.22) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .cx-save > *{position:relative;z-index:1}
+  .cx-save-eye{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11.5px;color:var(--accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px;
+  }
+  .cx-save-eye::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .cx-save h2{
+    font-size:clamp(28px,3.8vw,46px);color:var(--bg);line-height:1.05;
+    font-variation-settings:'opsz' 72,'wdth' 92,'wght' 800;
+    letter-spacing:-.035em;max-width:20ch;margin-bottom:14px;
+  }
+  .cx-save h2 .accent{color:var(--accent)}
+  .cx-save p{
+    font-size:15px;line-height:1.55;color:rgba(246,244,239,.75);
+    max-width:52ch;margin-bottom:22px;
+    font-variation-settings:'opsz' 16,'wdth' 100,'wght' 400;
+  }
+  .cx-save p strong{color:var(--bg);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+  .cx-save-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+  /* ───── Feedback form modal (for the confirm-cancel path) ───── */
+  .cx-feedback{
+    margin-top:16px;
+    padding:22px 26px;
+    background:var(--bg-vellum);
+    border:1px solid var(--border);
+    border-radius:var(--r-md);
+    display:none;
+  }
+  .cx-feedback.on{display:block}
+  .cx-feedback h4{
+    font-size:14px;color:var(--ink);
+    font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700;
+    letter-spacing:-.005em;margin-bottom:4px;
+  }
+  .cx-feedback p{font-size:13px;color:var(--ink-3);margin-bottom:14px;line-height:1.55}
+  .cx-feedback-radios{display:grid;gap:6px;margin-bottom:14px}
+  .cx-feedback-radios label{
+    display:flex;align-items:center;gap:10px;
+    padding:10px 14px;background:var(--bg-card);
+    border:1px solid var(--border);border-radius:var(--r-md);
+    font-size:14px;color:var(--ink-2);cursor:pointer;
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500;
+    transition:all .18s var(--ease);
+  }
+  .cx-feedback-radios label:hover{border-color:var(--ink);background:var(--bg)}
+  .cx-feedback-radios input{accent-color:var(--accent);width:16px;height:16px}
+  .cx-feedback-radios input:checked + span{color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .cx-feedback textarea{
+    width:100%;border:1.5px solid var(--border);border-radius:var(--r-md);
+    padding:12px 14px;font-size:14px;color:var(--ink);
+    background:var(--bg-card);font-family:inherit;line-height:1.5;min-height:80px;
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500;
+    outline:0;resize:vertical;
+  }
+  .cx-feedback textarea:focus{border-color:var(--ink);box-shadow:0 0 0 3px var(--accent-ring)}
+  .cx-feedback-actions{
+    margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  }
+  .cx-feedback-final{
+    padding:12px 20px;border-radius:var(--r-pill);
+    background:#b45309;color:#fff;border:1.5px solid #b45309;
+    font-family:inherit;font-size:14px;
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;
+    letter-spacing:-.005em;cursor:pointer;
+    transition:background .18s;
+  }
+  .cx-feedback-final:hover{background:#92400e}
+  .cx-feedback-back{
+    padding:12px 20px;border-radius:var(--r-pill);
+    background:transparent;color:var(--ink);border:1.5px solid var(--border-2);
+    font-family:inherit;font-size:14px;cursor:pointer;
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 600;
+    transition:all .18s;
+  }
+  .cx-feedback-back:hover{border-color:var(--ink);background:var(--bg-card)}
+
+  /* Micro confirmation */
+  .cx-confirmed{
+    display:none;
+    max-width:var(--container-narrow);margin:0 auto;
+    padding:clamp(40px,6vw,72px) var(--gutter);
+    text-align:center;
+  }
+  .cx-confirmed.on{display:block}
+  .cx-confirmed h2{
+    font-size:clamp(30px,4vw,52px);color:var(--ink);
+    font-variation-settings:'opsz' 72,'wdth' 100,'wght' 700;
+    letter-spacing:-.032em;margin-bottom:12px;line-height:1.1;
+  }
+  .cx-confirmed p{font-size:15px;color:var(--ink-2);max-width:56ch;margin:0 auto 18px;line-height:1.55}
+  .cx-confirmed p strong{color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/onboarding" class="nav-link">Dashboard</a>
+      <a href="mailto:colin@usdentalpatientrecovery.com" class="nav-link">Email Colin</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ PRIMARY VIEW ═══ -->
+<main id="cxMain">
+
+  <div class="cx-hero">
+    <div class="cx-eye">Before you go</div>
+    <h1>Is there <span class="accent">a better option</span> than canceling outright?</h1>
+    <p class="lede">We'd rather keep you — but only if we're earning it. <strong>Pick any of the four below.</strong> Full cancel is one click from the last card. No pressure, no retention team call.</p>
+  </div>
+
+  <div class="cx-acct">
+    <span><span class="cx-acct-key">Account</span><span class="cx-acct-val" id="acctName">Your practice</span></span>
+    <span><span class="cx-acct-key">Plan</span><span class="cx-acct-val" id="acctPlan">Practice Pro \u00B7 $697/mo</span></span>
+    <span><span class="cx-acct-key">Since</span><span class="cx-acct-val" id="acctSince">\u2014</span></span>
+  </div>
+
+  <!-- THE SAVE OFFER — top, no A/B variant, single clear ask -->
+  <section class="cx-save">
+    <div class="cx-save-eye">The offer</div>
+    <h2><span class="accent">30% off</span> the next 3 months. One click. Locks tonight.</h2>
+    <p><strong>You keep everything you have now.</strong> Same tier. Same seats. Same campaigns. Next three invoices are 30% off. If you cancel after 90 days anyway, we refund the last month in full \u2014 no questions. One-time offer, one click.</p>
+    <div class="cx-save-row">
+      <button class="cx-opt-btn a" data-action="discount">
+        Take 30% off for 3 months
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+      <span style="font-size:12px;color:rgba(246,244,239,.55)">Applied instantly \u00B7 still cancellable anytime</span>
+    </div>
+  </section>
+
+  <!-- THE FOUR OPTIONS -->
+  <section class="cx-options">
+
+    <!-- Option 1: Pause -->
+    <article class="cx-opt" data-option="pause">
+      <div>
+        <div class="cx-opt-hd">
+          <span class="cx-opt-badge">Option 01</span>
+          <span style="color:var(--ink-3)">Pause billing</span>
+        </div>
+        <h2>Pause your account \u2014 no charges, no data loss.</h2>
+        <p>Freeze billing for <strong>30, 60, or 90 days</strong>. Your patient list, templates, campaigns, and reports stay exactly where you left them. When you resume, it's one click. We'll send a reminder before the pause ends.</p>
+        <div class="cx-opt-picker" role="radiogroup" aria-label="Pause duration">
+          <button class="cx-opt-picker-btn on" data-pause="30" type="button">30 days</button>
+          <button class="cx-opt-picker-btn"    data-pause="60" type="button">60 days</button>
+          <button class="cx-opt-picker-btn"    data-pause="90" type="button">90 days</button>
+        </div>
+        <div class="cx-opt-sub">
+          <span class="cx-opt-sub-chip">No data deleted</span>
+          <span class="cx-opt-sub-chip">Resume in one click</span>
+          <span class="cx-opt-sub-chip">Auto-reminder before end</span>
+        </div>
+      </div>
+      <div class="cx-opt-actions">
+        <button class="cx-opt-btn p" data-action="pause" type="button">
+          Pause for <span id="pauseLabel">30</span> days
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+        <small class="cx-opt-btn-sub">Most common pick</small>
+      </div>
+    </article>
+
+    <!-- Option 2: Downgrade -->
+    <article class="cx-opt" data-option="downgrade">
+      <div>
+        <div class="cx-opt-hd">
+          <span class="cx-opt-badge">Option 02</span>
+          <span style="color:var(--ink-3)">Move to a smaller plan</span>
+        </div>
+        <h2>Drop to Practice \u2014 <span class="accent">$297/mo</span>. Keep running.</h2>
+        <p>If Practice Pro is more than you need right now, downgrade to the Practice tier and keep the reactivation engine running on your first <strong>2,000 active patients</strong>. Takes effect on your next billing date. No data loss.</p>
+        <div class="cx-opt-sub">
+          <span class="cx-opt-sub-chip">Saves $4,800/year</span>
+          <span class="cx-opt-sub-chip">Next billing date</span>
+          <span class="cx-opt-sub-chip">Re-upgrade any time</span>
+        </div>
+      </div>
+      <div class="cx-opt-actions">
+        <button class="cx-opt-btn g" data-action="downgrade" type="button">
+          Downgrade to Practice
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
+        <small class="cx-opt-btn-sub">Keeps the engine on</small>
+      </div>
+    </article>
+
+    <!-- Option 3: Founder call -->
+    <article class="cx-opt" data-option="founder">
+      <div>
+        <div class="cx-opt-hd">
+          <span class="cx-opt-badge">Option 03</span>
+          <span style="color:var(--ink-3)">Talk to the founder</span>
+        </div>
+        <h2>15 minutes with Colin. No script, no save-attempt.</h2>
+        <p>If something's not working \u2014 stale templates, low reply rate, bad segmentation, reports confusing the front desk \u2014 I want to hear it. <strong>I'll either fix it this week or help you export your data cleanly.</strong> Whichever is right for you.</p>
+        <div class="cx-opt-sub">
+          <span class="cx-opt-sub-chip">15 min, founder direct</span>
+          <span class="cx-opt-sub-chip">No sales rep</span>
+          <span class="cx-opt-sub-chip">Cancel still one-click after</span>
+        </div>
+      </div>
+      <div class="cx-opt-actions">
+        <a class="cx-opt-btn g" href="mailto:colin@usdentalpatientrecovery.com?subject=15-min%20before%20I%20cancel&body=Hi%20Colin%20%E2%80%94%20before%20I%20cancel%2C%20I%27d%20like%2015%20minutes.%20What%27s%20not%20working%3A%0A%0A">
+          Email Colin now
+        </a>
+        <small class="cx-opt-btn-sub">Usually replies within 2h</small>
+      </div>
+    </article>
+
+    <!-- Option 4: Confirm cancel (last resort) -->
+    <article class="cx-opt" data-option="cancel" id="cancelCard">
+      <div>
+        <div class="cx-opt-hd">
+          <span class="cx-opt-badge" style="background:#fff0e5;color:#b45309;border-color:rgba(180,83,9,.3)">Option 04</span>
+          <span style="color:var(--ink-3)">End the subscription</span>
+        </div>
+        <h2>Cancel outright \u2014 we\u2019ll make it clean.</h2>
+        <p>Cancel effective at the end of this billing cycle. <strong>Your data export is emailed within the hour</strong> (patients, campaigns, replies, bookings \u2014 CSV + JSON). No reactivation data hostage, no exit fees, no cancellation team call.</p>
+        <div class="cx-opt-sub">
+          <span class="cx-opt-sub-chip">Data export within 1h</span>
+          <span class="cx-opt-sub-chip">Access through end of period</span>
+          <span class="cx-opt-sub-chip">30-day re-open window</span>
+        </div>
+
+        <div class="cx-feedback" id="cxFeedback" aria-live="polite">
+          <h4>Quick: what's the main reason?</h4>
+          <p>Optional \u2014 but it directly shapes the roadmap. Two sentences is plenty.</p>
+          <div class="cx-feedback-radios">
+            <label><input type="radio" name="cxReason" value="too_expensive"><span>Too expensive for the ROI we're seeing</span></label>
+            <label><input type="radio" name="cxReason" value="didnt_work"><span>Didn't reactivate enough patients</span></label>
+            <label><input type="radio" name="cxReason" value="moved_tool"><span>Switched to another tool (which?)</span></label>
+            <label><input type="radio" name="cxReason" value="practice_change"><span>Practice closed / sold / merged</span></label>
+            <label><input type="radio" name="cxReason" value="too_complex"><span>Too hard to use, onboarding didn't stick</span></label>
+            <label><input type="radio" name="cxReason" value="missing_feature"><span>Missing a feature we needed</span></label>
+            <label><input type="radio" name="cxReason" value="other"><span>Something else</span></label>
+          </div>
+          <textarea id="cxNotes" placeholder="Two sentences max. What would have kept you?"></textarea>
+          <div class="cx-feedback-actions">
+            <button type="button" class="cx-feedback-back" id="cxFeedbackBack">Back to options</button>
+            <button type="button" class="cx-feedback-final" id="cxFeedbackFinal">Confirm cancellation</button>
+          </div>
+        </div>
+      </div>
+      <div class="cx-opt-actions" id="cxCancelActions">
+        <button class="cx-opt-btn g" data-action="open_feedback" type="button" style="border-color:#b45309;color:#b45309">
+          Continue to cancel
+        </button>
+        <small class="cx-opt-btn-sub">One more step, then done</small>
+      </div>
+    </article>
+
+  </section>
+</main>
+
+<!-- ═══ CONFIRMATION VIEWS ═══ -->
+<section class="cx-confirmed" id="cxOk" role="status" aria-live="polite">
+  <div class="cx-eye" style="justify-content:center">All set</div>
+  <h2 id="cxOkTitle">We\u2019ve got it.</h2>
+  <p id="cxOkBody">\u2014</p>
+  <a href="/onboarding" class="btn btn-primary">Back to dashboard</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices. Orlando, Florida.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Support</h4>
+        <ul><li><a href="mailto:colin@usdentalpatientrecovery.com">Email Colin</a></li><li><a href="/onboarding">Dashboard</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/security.html">Security</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/status.html">Status</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul><li><a href="/resources.html">Resources</a></li><li><a href="/changelog.html">Changelog</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>One-click cancel · Data export &lt; 1h · No exit fees</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  // ───── Pre-fill account strip from query (?account, ?plan, ?since) ─────
+  const q = new URLSearchParams(location.search);
+  const setText = (id, val) => { const el = document.getElementById(id); if (el && val) el.textContent = val; };
+  setText('acctName',  q.get('account'));
+  setText('acctPlan',  q.get('plan'));
+  setText('acctSince', q.get('since'));
+
+  // ───── Pause duration picker ─────
+  const pauseBtns = document.querySelectorAll('.cx-opt-picker-btn[data-pause]');
+  const pauseLabel = document.getElementById('pauseLabel');
+  let pauseDays = 30;
+  pauseBtns.forEach(b => b.addEventListener('click', () => {
+    pauseBtns.forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    pauseDays = parseInt(b.dataset.pause, 10);
+    pauseLabel.textContent = pauseDays;
+  }));
+
+  // ───── Action dispatcher ─────
+  const main = document.getElementById('cxMain');
+  const okView = document.getElementById('cxOk');
+  const okTitle = document.getElementById('cxOkTitle');
+  const okBody = document.getElementById('cxOkBody');
+
+  async function fireAction(action, extra){
+    const payload = Object.assign({
+      action, page: location.pathname, ts: new Date().toISOString(),
+      customer: q.get('c') || '',
+    }, extra || {});
+    try{
+      await fetch('/cancel/action', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload),
+      });
+    }catch(e){ /* swallow; we still show UX */ }
+    try { if (window.plausible) window.plausible('Cancel action', {props:{action}}); } catch(e){}
+  }
+
+  function showOk(title, body){
+    main.style.display = 'none';
+    okView.classList.add('on');
+    okTitle.textContent = title;
+    okBody.textContent  = body;
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  document.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('[data-action]');
+    if (!btn) return;
+    const action = btn.dataset.action;
+
+    if (action === 'discount') {
+      fireAction('accept_discount', {off_pct:30, months:3});
+      showOk('Discount applied.', 'Your next 3 invoices will be 30% off. You\u2019ll see it on the upcoming invoice. Nothing else changes \u2014 same tier, same seats, same campaigns.');
+    } else if (action === 'pause') {
+      fireAction('pause', {days: pauseDays});
+      showOk('Account paused for ' + pauseDays + ' days.', 'No charges until the pause ends. Your data stays exactly where you left it. We\u2019ll email you a resume link three days before the pause lifts.');
+    } else if (action === 'downgrade') {
+      fireAction('downgrade', {from:'practice_pro', to:'practice'});
+      showOk('Downgrade scheduled.', 'You\u2019ll move to the Practice tier ($297/mo) on your next billing date. Everything keeps running until then. Re-upgrade from the dashboard any time.');
+    } else if (action === 'open_feedback') {
+      document.getElementById('cxFeedback').classList.add('on');
+      document.getElementById('cxCancelActions').style.display = 'none';
+      document.getElementById('cancelCard').scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  });
+
+  // Feedback form buttons
+  document.getElementById('cxFeedbackBack').addEventListener('click', () => {
+    document.getElementById('cxFeedback').classList.remove('on');
+    document.getElementById('cxCancelActions').style.display = '';
+  });
+  document.getElementById('cxFeedbackFinal').addEventListener('click', async () => {
+    const reasonInput = document.querySelector('input[name="cxReason"]:checked');
+    const reason = reasonInput ? reasonInput.value : '';
+    const notes  = (document.getElementById('cxNotes').value || '').trim();
+    await fireAction('cancel_confirmed', {reason, notes});
+    showOk('Cancellation processed.', 'Your access runs through the end of the current billing period. A full data export (patients, campaigns, replies, bookings as CSV + JSON) is already queued \u2014 check your inbox in under an hour. If you change your mind in the next 30 days, email colin@usdentalpatientrecovery.com \u2014 we\u2019ll re-open your account exactly as it was.');
+  });
+})();
+</script>
+</body>
+</html>

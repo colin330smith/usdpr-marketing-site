@@ -1,0 +1,40 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/signup", "destination": "https://buy.stripe.com/test_fZu6oI0d03Aw2912uL4ZG01", "permanent": false, "missing": [{"type":"query","key":"tier"}] },
+    { "source": "/signup", "destination": "https://buy.stripe.com/test_dRm00k1h48UQfZR0mD4ZG00", "permanent": false, "has": [{"type":"query","key":"tier","value":"practice"}] },
+    { "source": "/signup", "destination": "https://buy.stripe.com/test_fZu6oI0d03Aw2912uL4ZG01", "permanent": false, "has": [{"type":"query","key":"tier","value":"practice_pro"}] },
+    { "source": "/signup", "destination": "https://buy.stripe.com/test_7sY5kEbVI7QM14Xd9p4ZG02", "permanent": false, "has": [{"type":"query","key":"tier","value":"dso"}] },
+    { "source": "/demo", "destination": "/compare.html", "permanent": false },
+    { "source": "/onboarding", "destination": "/welcome.html", "permanent": false },
+    { "source": "/app/dashboard", "destination": "/welcome.html", "permanent": false },
+    { "source": "/states", "destination": "/states/index.html", "permanent": true },
+    { "source": "/cities", "destination": "/cities/index.html", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/leads/:path*", "destination": "/api/capture" },
+    { "source": "/cancel/action", "destination": "/api/capture" },
+    { "source": "/schedule/book", "destination": "/api/capture" },
+    { "source": "/referrals/submit", "destination": "/api/capture" },
+    { "source": "/onboarding/step", "destination": "/api/capture" },
+    { "source": "/.netlify/functions/nurture", "destination": "/api/nurture" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains" }
+      ]
+    },
+    { "source": "/(.*)\\.css", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/(.*)\\.js",  "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/(.*)\\.svg", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/sitemap\\.xml", "headers": [{ "key": "Content-Type", "value": "application/xml; charset=utf-8" }, { "key": "Cache-Control", "value": "public, max-age=3600" }] }
+  ]
+}

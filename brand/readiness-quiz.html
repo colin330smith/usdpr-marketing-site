@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Five-question readiness check for dental practices considering a reactivation service. Instant tailored response.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>5-question readiness check · usdpr.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f4ef;--bg-card:#ffffff;--bg-soft:#efece4;
+    --ink:#0b0e0f;--ink-2:#3a3d3f;--ink-3:#6b6e70;
+    --accent:#f97316;--accent-soft:#fff3e7;--accent-100:#ffe0c2;--accent-hover:#ea580c;
+    --border:#e3ddd1;--border-2:#d1c9b8;--border-soft:#eae4d6;
+    --ok:#15803d;--ok-soft:#ecfdf3;
+    --warn:#ea580c;--warn-soft:#ffedd5;
+    --ease:cubic-bezier(.22,.8,.2,1);
+    --container:760px;--gutter:clamp(20px,4vw,48px);
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Bricolage Grotesque','-apple-system',BlinkMacSystemFont,sans-serif;
+    font-size:16px;line-height:1.6;color:var(--ink-2);background:var(--bg);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 400;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent);color:#fff}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(246,244,239,.82);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--border)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 var(--gutter);max-width:var(--container);margin:0 auto}
+  .wordmark{display:inline-flex;align-items:baseline;text-decoration:none;color:var(--ink);font-size:22px;font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;letter-spacing:-.05em;line-height:1}
+  .wordmark-dot{color:var(--accent);margin-left:-.02em}
+  .nav-cta{font-size:14px;color:var(--ink);text-decoration:none;padding:9px 18px;border-radius:100px;border:1.5px solid var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 600;transition:all .18s var(--ease)}
+  .nav-cta:hover{background:var(--ink);color:var(--bg)}
+
+  .mx{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+
+  .head{padding:clamp(40px,6vw,72px) 0 clamp(24px,3vw,32px);text-align:center}
+  .eye{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--accent);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 600;margin-bottom:16px}
+  .eye::before{content:'';width:22px;height:1px;background:var(--accent)}
+  h1{font-size:clamp(34px,5vw,56px);line-height:1.02;color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 100,'wght' 800;letter-spacing:-.035em;margin-bottom:14px;max-width:18ch;margin-left:auto;margin-right:auto}
+  h1 .accent{color:var(--accent)}
+  .lede{font-size:16px;line-height:1.55;color:var(--ink-2);max-width:48ch;margin:0 auto}
+
+  .progress{max-width:520px;margin:0 auto clamp(28px,3vw,40px);height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+  .progress-fill{height:100%;background:var(--accent);transition:width .4s var(--ease);width:0%}
+  .progress-meta{text-align:center;font-size:12.5px;color:var(--ink-3);margin-top:10px;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500}
+
+  .quiz{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:clamp(28px,3.5vw,44px);margin:0 auto clamp(32px,4vw,48px);min-height:320px}
+
+  .question{display:none}
+  .question.active{display:block}
+  .q-num{font-size:12px;color:var(--accent);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px}
+  .q-text{font-size:clamp(20px,2.4vw,28px);color:var(--ink);line-height:1.25;font-variation-settings:'opsz' 36,'wdth' 100,'wght' 700;letter-spacing:-.022em;margin-bottom:24px}
+  .q-sub{font-size:14px;color:var(--ink-3);margin-bottom:20px;line-height:1.55}
+
+  .answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:520px){.answers{grid-template-columns:1fr}}
+
+  .answer{padding:20px 22px;border-radius:12px;border:1.5px solid var(--border);background:var(--bg);cursor:pointer;text-align:left;font-family:inherit;color:var(--ink);font-size:15.5px;line-height:1.4;font-variation-settings:'opsz' 16,'wdth' 100,'wght' 600;letter-spacing:-.005em;transition:all .18s var(--ease);display:flex;align-items:center;gap:12px}
+  .answer:hover{border-color:var(--ink);background:var(--bg-card);transform:translateY(-1px)}
+  .answer-key{font-size:11px;color:var(--ink-3);padding:2px 7px;border-radius:4px;background:var(--bg-card);border:1px solid var(--border);font-variation-settings:'opsz' 11,'wdth' 100,'wght' 700}
+
+  .result{display:none;text-align:center}
+  .result.active{display:block}
+
+  .result-badge{display:inline-block;padding:6px 14px;border-radius:100px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;margin-bottom:16px}
+  .result-badge.ok{background:var(--ok-soft);color:var(--ok)}
+  .result-badge.warn{background:var(--warn-soft);color:var(--warn)}
+  .result-badge.neutral{background:var(--bg-soft);color:var(--ink-2)}
+
+  .result-score{font-size:clamp(52px,7vw,88px);color:var(--ink);line-height:1;font-variation-settings:'opsz' 96,'wdth' 100,'wght' 800;letter-spacing:-.045em;margin-bottom:8px}
+  .result-score .accent{color:var(--accent)}
+  .result-label{font-size:clamp(22px,2.5vw,30px);color:var(--ink);margin-bottom:16px;font-variation-settings:'opsz' 36,'wdth' 100,'wght' 700;letter-spacing:-.025em}
+  .result-body{font-size:16px;line-height:1.6;color:var(--ink-2);max-width:44ch;margin:0 auto 24px}
+  .result-body strong{color:var(--ink);font-variation-settings:'opsz' 17,'wdth' 100,'wght' 700}
+
+  .result-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:100px;text-decoration:none;font-size:14px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;transition:all .2s var(--ease);cursor:pointer;border:1.5px solid transparent;font-family:inherit}
+  .btn-primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .btn-primary:hover{background:var(--accent);border-color:var(--accent);color:var(--ink);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--border-2)}
+  .btn-ghost:hover{border-color:var(--ink);background:var(--bg-card)}
+  .btn svg{width:14px;height:14px}
+
+  .restart{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-3);background:transparent;border:0;cursor:pointer;font-family:inherit;margin-top:20px;padding:8px;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500}
+  .restart:hover{color:var(--ink)}
+
+  .back-btn{margin-top:24px;display:inline-flex;align-items:center;gap:6px;background:transparent;border:0;cursor:pointer;font-family:inherit;font-size:13px;color:var(--ink-3);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500;padding:6px 0}
+  .back-btn:hover{color:var(--ink)}
+  .back-btn svg{width:12px;height:12px}
+  .back-btn:disabled{opacity:.3;cursor:not-allowed}
+
+  .foot{padding:32px 0;border-top:1px solid var(--border);font-size:13px;color:var(--ink-3);text-align:center}
+  .foot a{color:var(--ink-2);text-decoration:none}
+  .foot a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark">usdpr<span class="wordmark-dot">.</span></a>
+    <a href="/#schedule" class="nav-cta">Book a call</a>
+  </div>
+</header>
+
+<main>
+  <section class="head">
+    <div class="mx">
+      <div class="eye">5 questions · instant answer</div>
+      <h1>Is a pilot <span class="accent">worth your time</span>?</h1>
+      <p class="lede">Five yes/no questions. No email, no form. Instant tailored response based on your answers.</p>
+    </div>
+  </section>
+
+  <div class="mx">
+    <div class="progress" id="progressWrap"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-meta" id="progressMeta">Question 1 of 5</div>
+
+    <div class="quiz">
+      <div class="question active" data-q="1">
+        <div class="q-num">Question 1 · Inactive list</div>
+        <h2 class="q-text">Do you have at least 100 overdue hygiene patients in your PMS?</h2>
+        <p class="q-sub">Patients whose last visit was 6+ months ago and who haven't rebooked.</p>
+        <div class="answers">
+          <button class="answer" data-a="yes" data-score="1"><span class="answer-key">Y</span>Yes</button>
+          <button class="answer" data-a="no" data-score="0"><span class="answer-key">N</span>No / unsure</button>
+        </div>
+      </div>
+
+      <div class="question" data-q="2">
+        <div class="q-num">Question 2 · Front desk capacity</div>
+        <h2 class="q-text">Is your team regularly chasing these patients down?</h2>
+        <p class="q-sub">Honest answer: is anyone's daily job to manually call and re-engage lapsed patients?</p>
+        <div class="answers">
+          <button class="answer" data-a="yes" data-score="0"><span class="answer-key">Y</span>Yes, consistently</button>
+          <button class="answer" data-a="no" data-score="1"><span class="answer-key">N</span>No, not really</button>
+        </div>
+      </div>
+
+      <div class="question" data-q="3">
+        <div class="q-num">Question 3 · Ownership</div>
+        <h2 class="q-text">Are you the owner or authorized to sign a BAA?</h2>
+        <p class="q-sub">We only work directly with practice owners or their attorneys-of-record. No middlemen.</p>
+        <div class="answers">
+          <button class="answer" data-a="yes" data-score="1"><span class="answer-key">Y</span>Yes</button>
+          <button class="answer" data-a="no" data-score="0"><span class="answer-key">N</span>No</button>
+        </div>
+      </div>
+
+      <div class="question" data-q="4">
+        <div class="q-num">Question 4 · Current outreach</div>
+        <h2 class="q-text">Are you happy with your current recall + reactivation results?</h2>
+        <p class="q-sub">If your existing system is working well, this service is redundant. We're honest about that.</p>
+        <div class="answers">
+          <button class="answer" data-a="yes" data-score="0"><span class="answer-key">Y</span>Yes, working well</button>
+          <button class="answer" data-a="no" data-score="1"><span class="answer-key">N</span>Could be better</button>
+        </div>
+      </div>
+
+      <div class="question" data-q="5">
+        <div class="q-num">Question 5 · Timing</div>
+        <h2 class="q-text">Could you launch within the next week?</h2>
+        <p class="q-sub">BAA signing, CSV or PMS connection, template approval — about 30 minutes on the self-serve path, then you're live.</p>
+        <div class="answers">
+          <button class="answer" data-a="yes" data-score="1"><span class="answer-key">Y</span>Yes</button>
+          <button class="answer" data-a="no" data-score="0"><span class="answer-key">N</span>Not yet</button>
+        </div>
+      </div>
+
+      <!-- Result template — populated via safe DOM methods, never innerHTML -->
+      <div class="result" id="result">
+        <span class="result-badge" id="resBadge"></span>
+        <div class="result-score"><span class="accent" id="resScore">0</span>/5</div>
+        <div class="result-label" id="resLabel"></div>
+        <p class="result-body" id="resBody"></p>
+        <div class="result-actions">
+          <a class="btn btn-primary" id="resPrimary">
+            <span id="resPrimaryLabel"></span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a class="btn btn-ghost" id="resSecondary"></a>
+        </div>
+        <button class="restart" id="restartBtn">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7a5 5 0 019-3M12 7a5 5 0 01-9 3"/><path d="M9 2v3h3M5 12V9H2"/></svg>
+          Restart
+        </button>
+      </div>
+
+      <button class="back-btn" id="backBtn" disabled>
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2L4 6l4 4"/></svg>
+        Back
+      </button>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <div class="mx">
+      © 2026 usdpr. · <a href="/">Back to homepage</a> · <a href="/privacy.html">Privacy</a>
+    </div>
+  </footer>
+</main>
+
+<script>
+  const state = { current: 1, answers: {}, total: 5 };
+  const progressFill = document.getElementById('progressFill');
+  const progressMeta = document.getElementById('progressMeta');
+  const result = document.getElementById('result');
+  const backBtn = document.getElementById('backBtn');
+  const resBadge = document.getElementById('resBadge');
+  const resScore = document.getElementById('resScore');
+  const resLabel = document.getElementById('resLabel');
+  const resBody = document.getElementById('resBody');
+  const resPrimary = document.getElementById('resPrimary');
+  const resPrimaryLabel = document.getElementById('resPrimaryLabel');
+  const resSecondary = document.getElementById('resSecondary');
+
+  const RESULTS = {
+    notOwner: { badge: 'Owner decision', badgeCls: 'neutral', label: 'We need to talk to the owner.', bodyHead: 'We only work directly with practice owners for BAA reasons. If you\u2019re not the owner, ', bodyBold: 'send them this link', bodyTail: ' \u2014 or book a call together.', pHref: '/#schedule', pText: 'Book a call with the owner', sHref: '/brand/sample-friday-report.html', sText: 'See a sample report' },
+    strong:   { badge: 'Strong fit', badgeCls: 'ok', label: 'You\u2019re ready for a pilot.', bodyHead: 'You have the list, the authority, and the timing. ', bodyBold: 'The $1,000 pilot is built for exactly your situation.', bodyTail: ' Most practices like yours hit 3\u00D7 break-even by week three.', pHref: '/#schedule', pText: 'Book a 15-min call', sHref: '/brand/sample-friday-report.html', sText: 'See what you\u2019d get weekly' },
+    probable: { badge: 'Probable fit', badgeCls: 'neutral', label: 'Worth a 15-minute conversation.', bodyHead: 'You have the raw material (the list). The question is timing and whether current efforts are working. ', bodyBold: 'A quick call will tell us in 15 minutes', bodyTail: ' \u2014 not a pitch, just a read.', pHref: '/#schedule', pText: 'Book a 15-min call', sHref: '/brand/sms-templates.html', sText: 'Try the templates yourself' },
+    tooSmall: { badge: 'Not yet', badgeCls: 'warn', label: 'Your list may be too small.', bodyHead: 'Under ~100 overdue patients, the pilot math doesn\u2019t work cleanly \u2014 ROI needs volume. ', bodyBold: 'Grow first, reactivate later.', bodyTail: ' Keep us on file for month 6 or 12.', pHref: '/brand/sms-templates.html', pText: 'Grab the templates (free)', sHref: '/', sText: 'Back to homepage' },
+    later:    { badge: 'Maybe later', badgeCls: 'neutral', label: 'Might be worth waiting.', bodyHead: 'You have a list but the timing\u2019s off. ', bodyBold: 'Grab our free tools', bodyTail: ' to see if DIY moves the needle. Circle back when your situation changes.', pHref: '/brand/sms-templates.html', pText: 'Free SMS templates', sHref: '/brand/pms-export-guide.html', sText: 'PMS export guide' }
+  };
+
+  function pickResult(score, answers){
+    const ownerYes = answers[3] === 1;
+    const hasList  = answers[1] === 1;
+    if (!ownerYes) return RESULTS.notOwner;
+    if (score >= 4) return RESULTS.strong;
+    if (score >= 2 && hasList) return RESULTS.probable;
+    if (!hasList) return RESULTS.tooSmall;
+    return RESULTS.later;
+  }
+
+  function renderResult(r, score){
+    resBadge.textContent = r.badge;
+    resBadge.className = 'result-badge ' + r.badgeCls;
+    resScore.textContent = String(score);
+    resLabel.textContent = r.label;
+    // Compose body safely — no innerHTML
+    resBody.textContent = '';
+    resBody.appendChild(document.createTextNode(r.bodyHead));
+    const strong = document.createElement('strong');
+    strong.textContent = r.bodyBold;
+    resBody.appendChild(strong);
+    resBody.appendChild(document.createTextNode(r.bodyTail));
+    resPrimary.setAttribute('href', r.pHref);
+    resPrimaryLabel.textContent = r.pText;
+    resSecondary.setAttribute('href', r.sHref);
+    resSecondary.textContent = r.sText;
+  }
+
+  function show(n){
+    document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+    result.classList.remove('active');
+    if (n > state.total) {
+      const score = Object.values(state.answers).reduce((a,b) => a+b, 0);
+      renderResult(pickResult(score, state.answers), score);
+      progressFill.style.width = '100%';
+      progressMeta.textContent = 'Result · 5 of 5';
+      result.classList.add('active');
+      backBtn.disabled = false;
+      state.current = n;
+      return;
+    }
+    const q = document.querySelector('[data-q="' + n + '"]');
+    if (q) q.classList.add('active');
+    state.current = n;
+    progressFill.style.width = (((n - 1) / state.total) * 100) + '%';
+    progressMeta.textContent = 'Question ' + n + ' of ' + state.total;
+    backBtn.disabled = n <= 1;
+  }
+
+  document.querySelectorAll('.answer').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const q = btn.closest('.question').dataset.q;
+      state.answers[q] = parseInt(btn.dataset.score, 10);
+      show(state.current + 1);
+    });
+  });
+
+  backBtn.addEventListener('click', () => { if (state.current > 1) show(state.current - 1); });
+
+  document.getElementById('restartBtn').addEventListener('click', () => {
+    state.answers = {};
+    state.current = 1;
+    show(1);
+    backBtn.disabled = true;
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const active = document.querySelector('.question.active');
+    if (!active) return;
+    if (e.key === 'y' || e.key === 'Y' || e.key === '1') active.querySelector('[data-a="yes"]').click();
+    if (e.key === 'n' || e.key === 'N' || e.key === '2') active.querySelector('[data-a="no"]').click();
+  });
+</script>
+</body>
+</html>

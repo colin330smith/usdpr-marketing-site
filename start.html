@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="You're in. Here's what happens next — from Stripe checkout to your first Friday report.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>You're in · usdpr.</title>
+
+<!--
+  Bridge to the app. Stripe's Checkout success URL is set to
+  https://usdpr.netlify.app/start.html?session_id={CHECKOUT_SESSION_ID}
+  so the dentist lands on this marketing page first (nice warm confirmation),
+  then the script below hands them off to the real app at
+  https://app.usdpr.netlify.app/start?session_id=... where the
+  FastAPI route validates the session and sets the tenant cookie.
+
+  The redirect is immediate (no user-visible flash) when a session_id is
+  present. If someone bookmarks /start.html directly without a session,
+  the static content below still renders as a read-only explainer.
+-->
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var sid = params.get("session_id");
+    if (!sid) return;
+    // Basic shape check — Stripe session ids start with "cs_" and are
+    // short alphanumerics. Reject anything else so a malicious URL
+    // can't bounce someone elsewhere.
+    if (!/^cs_[A-Za-z0-9_-]{8,}$/.test(sid)) return;
+    var target = "https://app.usdpr.netlify.app/start?session_id="
+      + encodeURIComponent(sid);
+    // Replace so the back button goes to the pricing page, not this
+    // intermediate redirect.
+    window.location.replace(target);
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f4ef;--bg-card:#ffffff;--bg-soft:#efece4;
+    --ink:#0b0e0f;--ink-2:#3a3d3f;--ink-3:#6b6e70;
+    --accent:#f97316;--accent-soft:#fff3e7;--accent-100:#ffe0c2;--accent-hover:#ea580c;
+    --border:#e3ddd1;--border-2:#d1c9b8;--border-soft:#eae4d6;
+    --ok:#15803d;--ok-soft:#ecfdf3;
+    --ease:cubic-bezier(.22,.8,.2,1);
+    --container:920px;--gutter:clamp(20px,4vw,48px);
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Bricolage Grotesque','-apple-system',BlinkMacSystemFont,sans-serif;
+    font-size:16px;line-height:1.6;color:var(--ink-2);background:var(--bg);
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 400;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent);color:#fff}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(246,244,239,.82);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--border)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 var(--gutter);max-width:var(--container);margin:0 auto}
+  .wordmark{display:inline-flex;align-items:baseline;text-decoration:none;color:var(--ink);font-size:22px;font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;letter-spacing:-.05em;line-height:1}
+  .wordmark-dot{color:var(--accent);margin-left:-.02em}
+  .nav-back{font-size:13.5px;color:var(--ink-2);text-decoration:none;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500;display:inline-flex;align-items:center;gap:6px}
+  .nav-back:hover{color:var(--ink)}
+  .nav-back svg{width:12px;height:12px}
+
+  .mx{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+
+  /* Confirmation header */
+  .confirm{padding:clamp(56px,7vw,88px) 0 clamp(32px,4vw,48px);text-align:center;border-bottom:1px solid var(--border)}
+  .confirm-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:8px 18px 8px 14px;border-radius:100px;
+    background:var(--ok-soft);color:var(--ok);
+    font-size:13px;letter-spacing:.02em;
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;
+    margin-bottom:24px;
+  }
+  .confirm-badge svg{width:14px;height:14px}
+  .confirm-badge-pulse{
+    width:8px;height:8px;border-radius:50%;background:var(--ok);
+    animation:pulse-ok 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse-ok{0%,100%{box-shadow:0 0 0 0 rgba(21,128,61,.4)}70%{box-shadow:0 0 0 8px rgba(21,128,61,0)}}
+
+  .confirm h1{
+    font-size:clamp(40px,6vw,72px);line-height:1;color:var(--ink);
+    font-variation-settings:'opsz' 96,'wdth' 100,'wght' 800;
+    letter-spacing:-.04em;margin-bottom:16px;max-width:18ch;margin-left:auto;margin-right:auto;
+  }
+  .confirm h1 .accent{color:var(--accent)}
+  .confirm-lede{font-size:17px;line-height:1.55;color:var(--ink-2);max-width:52ch;margin:0 auto}
+  .confirm-lede strong{color:var(--ink);font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700}
+
+  /* Progress */
+  .progress-wrap{padding:clamp(32px,4vw,48px) 0 clamp(16px,2vw,24px)}
+  .progress-bar{position:relative;height:6px;background:var(--border);border-radius:3px;overflow:hidden;max-width:620px;margin:0 auto 12px}
+  .progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .4s var(--ease);width:20%}
+  .progress-meta{text-align:center;font-size:12.5px;color:var(--ink-3);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500}
+  .progress-meta strong{color:var(--ink);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700}
+
+  /* Steps */
+  .steps{padding:clamp(24px,3vw,40px) 0 clamp(48px,6vw,80px)}
+  .step{
+    display:grid;grid-template-columns:64px 1fr;gap:20px;align-items:flex-start;
+    padding:clamp(28px,3.5vw,44px) 0;
+    border-top:1px solid var(--border);
+  }
+  .step:first-child{border-top:0}
+  @media(max-width:640px){.step{grid-template-columns:1fr;gap:14px}}
+
+  .step-num-wrap{
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    min-height:100%;
+  }
+  .step-num{
+    width:44px;height:44px;border-radius:12px;
+    background:var(--bg-card);border:1.5px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;color:var(--ink);
+    font-variation-settings:'opsz' 24,'wdth' 100,'wght' 800;
+    letter-spacing:-.025em;
+    transition:all .22s var(--ease);
+  }
+  .step.done .step-num{background:var(--ok);color:#fff;border-color:var(--ok)}
+  .step.done .step-num::before{content:'\2713';font-variation-settings:'opsz' 18,'wdth' 100,'wght' 800}
+  .step.done .step-num span{display:none}
+  .step.active .step-num{background:var(--ink);color:var(--accent);border-color:var(--ink);box-shadow:0 0 0 4px rgba(249,115,22,.18)}
+
+  .step-line{flex:1;width:2px;background:var(--border);border-radius:1px;min-height:20px}
+  .step.done ~ .step .step-line{background:var(--border)}
+  .step:last-child .step-line{display:none}
+
+  .step-head{
+    display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;margin-bottom:8px;
+  }
+  .step-t{
+    font-size:clamp(20px,2.4vw,26px);color:var(--ink);
+    font-variation-settings:'opsz' 36,'wdth' 100,'wght' 700;
+    letter-spacing:-.022em;line-height:1.2;
+  }
+  .step-eta{
+    padding:3px 10px;background:var(--bg-soft);border-radius:100px;
+    font-size:11.5px;color:var(--ink-3);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600;
+    letter-spacing:.02em;white-space:nowrap;
+  }
+  .step.active .step-eta{background:var(--accent-soft);color:var(--accent)}
+
+  .step-b{font-size:15px;line-height:1.65;color:var(--ink-2);margin-bottom:14px;max-width:60ch}
+  .step-b strong{color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+
+  .step-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+  .step-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 18px;border-radius:100px;
+    font-family:inherit;font-size:13.5px;
+    font-variation-settings:'opsz' 14,'wdth' 100,'wght' 600;
+    text-decoration:none;cursor:pointer;
+    border:1.5px solid transparent;
+    transition:all .18s var(--ease);
+  }
+  .step-btn-primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .step-btn-primary:hover{background:var(--accent);border-color:var(--accent);color:var(--ink);transform:translateY(-1px)}
+  .step-btn-ghost{background:transparent;color:var(--ink);border-color:var(--border-2)}
+  .step-btn-ghost:hover{border-color:var(--ink);background:var(--bg-card)}
+  .step-btn svg{width:12px;height:12px}
+
+  .step-card{
+    margin-top:14px;padding:16px 20px;
+    background:var(--bg-card);border:1px solid var(--border);border-radius:10px;
+    font-size:14px;line-height:1.55;color:var(--ink-2);
+  }
+  .step-card strong{color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700}
+  .step-card code{
+    padding:1px 6px;background:var(--bg-soft);border:1px solid var(--border);border-radius:4px;
+    font-family:inherit;font-size:13px;
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 600;color:var(--ink);
+  }
+
+  /* Bottom block */
+  .bot-card{
+    margin-top:clamp(32px,4vw,56px);padding:clamp(28px,3.5vw,48px);
+    background:var(--ink);color:var(--bg);border-radius:18px;text-align:center;
+  }
+  .bot-card h2{
+    font-size:clamp(24px,3vw,36px);color:var(--bg);
+    font-variation-settings:'opsz' 48,'wdth' 100,'wght' 800;
+    letter-spacing:-.028em;line-height:1.1;margin-bottom:12px;
+  }
+  .bot-card h2 .accent{color:var(--accent)}
+  .bot-card p{font-size:15.5px;color:rgba(246,244,239,.72);margin-bottom:22px;max-width:46ch;margin-left:auto;margin-right:auto}
+  .bot-contact{display:inline-flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center;font-size:13.5px;color:rgba(246,244,239,.7)}
+  .bot-contact a{color:var(--bg);text-decoration:none;border-bottom:1px solid rgba(246,244,239,.3);padding-bottom:1px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 600}
+  .bot-contact a:hover{border-bottom-color:var(--accent);color:var(--accent)}
+
+  .foot{padding:32px 0;border-top:1px solid var(--border);font-size:12.5px;color:var(--ink-3);text-align:center}
+  .foot a{color:var(--ink-2);text-decoration:none;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500}
+  .foot a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark">usdpr<span class="wordmark-dot">.</span></a>
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2L4 6l4 4"/></svg>
+      Back to homepage
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="confirm">
+    <div class="mx">
+      <div class="confirm-badge">
+        <span class="confirm-badge-pulse"></span>
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-6"/></svg>
+        <span>Payment received · welcome aboard</span>
+      </div>
+      <h1>You're in. <span class="accent">Here's what happens next.</span></h1>
+      <p class="confirm-lede">Five steps. Most take under five minutes each. <strong>Live in 48 hours.</strong> First Friday report in your inbox in under 10 days.</p>
+    </div>
+  </section>
+
+  <div class="mx">
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-meta">Step <strong id="stepCurrent">1</strong> of <strong>5</strong> · est. 15 minutes total</div>
+    </div>
+
+    <div class="steps">
+
+      <!-- Step 1 -->
+      <article class="step active" data-step="1">
+        <div class="step-num-wrap">
+          <div class="step-num"><span>1</span></div>
+          <div class="step-line"></div>
+        </div>
+        <div>
+          <div class="step-head">
+            <h2 class="step-t">Sign the BAA</h2>
+            <span class="step-eta">~2 min</span>
+          </div>
+          <p class="step-b">Check your email for a <strong>DocuSign link</strong> from <code style="padding:1px 6px;background:var(--bg-soft);border:1px solid var(--border);border-radius:4px;font-family:inherit;font-size:13px">legal@usdentalpatientrecovery.com</code>. Sign it on your phone. <strong>No patient data is exchanged until this is signed.</strong></p>
+          <div class="step-card">
+            <strong>What's in it:</strong> the standard HHS model BAA with our PHI-handling clauses. Safeguards, breach notification, subcontractor flow-down, termination. Sec. 3 lists the flat-fee structure that keeps us inside the Florida Patient Brokering Act safe harbor.
+          </div>
+          <div class="step-actions">
+            <a href="/terms.html" class="step-btn step-btn-ghost">Preview the terms</a>
+            <a href="/privacy.html" class="step-btn step-btn-ghost">Preview privacy</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="step" data-step="2">
+        <div class="step-num-wrap">
+          <div class="step-num"><span>2</span></div>
+          <div class="step-line"></div>
+        </div>
+        <div>
+          <div class="step-head">
+            <h2 class="step-t">Upload your patient CSV</h2>
+            <span class="step-eta">~5 min</span>
+          </div>
+          <p class="step-b">Export your overdue patient list from your PMS. Drop it in the secure portal link in your welcome email. <strong>We accept Dentrix, Eaglesoft, Open Dental, Curve Dental, Carestream, and Practice-Web exports</strong> — or any CSV with name, phone, email, and last visit date.</p>
+          <div class="step-card">
+            <strong>Don't know how to export?</strong> Our step-by-step guide walks you through every major PMS in under 5 minutes.
+          </div>
+          <div class="step-actions">
+            <a href="/brand/pms-export-guide.html" class="step-btn step-btn-primary" target="_blank" rel="noopener">
+              Open export guide
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l6-6M4 3h5v5"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 3 -->
+      <article class="step" data-step="3">
+        <div class="step-num-wrap">
+          <div class="step-num"><span>3</span></div>
+          <div class="step-line"></div>
+        </div>
+        <div>
+          <div class="step-head">
+            <h2 class="step-t">Approve your message templates</h2>
+            <span class="step-eta">~3 min</span>
+          </div>
+          <p class="step-b">We draft the outreach in your voice — practice name, tone, signoff — and send it back for your approval. <strong>Nothing goes to a patient without your written sign-off.</strong> Expect 5–7 variants: first-touch SMS, follow-up email, voicemail script, etc.</p>
+          <div class="step-card">
+            <strong>Want to see what the templates look like?</strong> The 5 templates I use are published for free — steal them, or approve ours as-is.
+          </div>
+          <div class="step-actions">
+            <a href="/brand/sms-templates.html" class="step-btn step-btn-ghost" target="_blank" rel="noopener">See the templates</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 4 -->
+      <article class="step" data-step="4">
+        <div class="step-num-wrap">
+          <div class="step-num"><span>4</span></div>
+          <div class="step-line"></div>
+        </div>
+        <div>
+          <div class="step-head">
+            <h2 class="step-t">Campaigns go live</h2>
+            <span class="step-eta">within 48 hr of approval</span>
+          </div>
+          <p class="step-b">First outreach wave hits on the next Tuesday–Thursday morning cycle. <strong>1 SMS/day max, 3/week max per patient</strong> — enforced in code, not a checkbox. STOP replies go to DNC in under 200ms. You can watch it happen live in your dashboard.</p>
+          <div class="step-card">
+            <strong>Your dashboard</strong> shows queued, contacted, booked, and shown patients in a live 4-column pipeline — same one you saw on the homepage demo.
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 5 -->
+      <article class="step" data-step="5">
+        <div class="step-num-wrap">
+          <div class="step-num"><span>5</span></div>
+        </div>
+        <div>
+          <div class="step-head">
+            <h2 class="step-t">First Friday report</h2>
+            <span class="step-eta">Day 10</span>
+          </div>
+          <p class="step-b">Every Friday at 4 PM ET, a written PDF lands in your inbox. Patient names, touches, outcomes, production, plus a short operator note on what's working. <strong>If the report by week 3 isn't showing movement, we'll tell you to cancel before you do.</strong></p>
+          <div class="step-card">
+            <strong>Sample report available now</strong> — this is exactly the format you'll receive, with your practice's actual data by week one.
+          </div>
+          <div class="step-actions">
+            <a href="/brand/sample-friday-report.html" class="step-btn step-btn-ghost" target="_blank" rel="noopener">See a sample Friday report</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="bot-card">
+      <h2>Questions before step 1? <span class="accent">Just reply.</span></h2>
+      <p>Your welcome email comes straight from Colin. Reply to it with anything — technical, legal, PMS-specific, billing. <strong>Reply within business hours, answer in under 2 hours.</strong></p>
+      <div class="bot-contact">
+        <span>
+          <a href="mailto:colin@usdentalpatientrecovery.com">colin@usdentalpatientrecovery.com</a>
+        </span>
+        <span>
+          <a href="/schedule.html?utm_source=start&amp;utm_campaign=support">Book a 15-min founder call</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <div class="mx">
+      © 2026 usdpr. · <a href="/">Homepage</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
+    </div>
+  </footer>
+</main>
+
+<script>
+  // Progress bar reflects which step is "active" — this page is a template.
+  // In production, a real step-tracker backed by the signup route would update these classes.
+  const steps = document.querySelectorAll('.step');
+  const progressFill = document.getElementById('progressFill');
+  const stepCurrent = document.getElementById('stepCurrent');
+
+  function updateProgress(){
+    const active = document.querySelector('.step.active');
+    if (!active) return;
+    const n = parseInt(active.dataset.step, 10);
+    stepCurrent.textContent = String(n);
+    progressFill.style.width = (n / 5 * 100) + '%';
+  }
+  updateProgress();
+</script>
+</body>
+</html>

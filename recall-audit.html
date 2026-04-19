@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Free personalized Recall Revenue Audit for your US dental practice. Identify exactly how much lapsed-patient revenue you can recover — delivered as a branded PDF in 90 seconds.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Free Recall Revenue Audit · usdpr.">
+<meta property="og:description" content="90-second personalized audit with real benchmarks against your specialty + PMS + active patient count. Delivered as a branded PDF.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/recall-audit.html">
+<meta property="og:image" content="/og.svg">
+<title>Free Recall Revenue Audit · usdpr.</title>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"USDPR Recall Revenue Audit","url":"https://usdpr.netlify.app/recall-audit.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free interactive audit for US dental practices. Estimates lapsed-patient revenue loss using specialty-specific benchmarks and produces a downloadable PDF report with a 5-touch recommended sequence.","creator":{"@type":"Organization","name":"US Dental Patient Recovery","url":"https://usdpr.netlify.app/"}}
+</script>
+
+<!-- BEGIN auto FAQ schema -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the Recall Revenue Audit personalized to my practice?","acceptedAnswer":{"@type":"Answer","text":"The audit adjusts every benchmark to your specialty, patient volume, PMS, and current recall tool. Orthodontic practices get a retainer-window audit, endo gets RCT-to-crown conversion benchmarks, perio gets 3-month maintenance adherence, and general practice gets broken-appointment recovery numbers — each with the exact 5-touch sequence tuned to that specialty."}},{"@type":"Question","name":"Is my practice data safe? Do you collect patient information?","acceptedAnswer":{"@type":"Answer","text":"Yes. The audit runs entirely in your browser — we never see your patient list. We only store your contact email and the numeric inputs you enter (active patient count, average visit value). No PHI is collected or transmitted. The email follow-up sequence is HIPAA-safe and CAN-SPAM compliant with one-click unsubscribe."}},{"@type":"Question","name":"How long does the audit take?","acceptedAnswer":{"@type":"Answer","text":"90 seconds. Five fields: practice name, specialty, active patients, average visit value, current recall tool. The browser renders the audit instantly; the PDF report is delivered to your inbox within 2 minutes."}},{"@type":"Question","name":"Do I need to talk to a salesperson to get the audit?","acceptedAnswer":{"@type":"Answer","text":"No. Zero sales calls required. Download the PDF, read it, decide if you want to try the 14-day free trial. If you want a call, there is an optional booking link in the follow-up email."}}]}
+</script>
+<!-- END auto FAQ schema -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdpr.netlify.app"></script>
+<style>
+  .ra-hero{padding:clamp(56px,7vw,112px) 0 clamp(32px,4vw,48px);background:var(--bg);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+  .ra-hero::after{content:'';position:absolute;inset:auto -10% -40% auto;width:60%;height:80%;background:radial-gradient(ellipse,rgba(249,115,22,.12) 0%,transparent 65%);pointer-events:none;z-index:0}
+  .ra-hero > *{position:relative;z-index:1}
+  .ra-hero .mx{max-width:var(--container);margin:0 auto;padding:0 var(--gutter);display:grid;gap:20px}
+  .ra-hero .eyebrow{color:var(--accent);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .ra-hero h1{font-size:clamp(44px,6.4vw,96px);font-variation-settings:'opsz' 96,'wdth' 92,'wght' 800;letter-spacing:-.05em;line-height:.94;color:var(--ink);max-width:18ch}
+  .ra-hero h1 .accent{color:var(--accent)}
+  .ra-hero .lede{max-width:62ch;color:var(--ink-2);font-size:18px;line-height:1.55}
+  .ra-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .ra-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--border);background:var(--bg-card);border-radius:999px;font-size:12px;color:var(--ink-2);font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600}
+  .ra-badge::before{content:'●';color:#16a34a;font-size:8px}
+
+  .ra-wrap{padding:clamp(40px,5vw,72px) 0 clamp(56px,7vw,96px)}
+  .ra-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,48px);max-width:var(--container);margin:0 auto;padding:0 var(--gutter);align-items:start}
+  @media(max-width:960px){.ra-grid{grid-template-columns:1fr}}
+
+  .ra-card{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;padding:clamp(24px,3vw,36px)}
+  .ra-card-t{font-size:13px;color:var(--accent);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .ra-card-t::before{content:'§';color:var(--ink-3)}
+  .ra-card h2{font-size:clamp(22px,3vw,28px);font-variation-settings:'opsz' 32,'wdth' 95,'wght' 800;letter-spacing:-.028em;line-height:1.08;color:var(--ink);margin-bottom:8px}
+  .ra-card .sub{color:var(--ink-2);font-size:14px;margin-bottom:18px}
+
+  .ra-field{margin-bottom:16px}
+  .ra-field label{display:block;font-size:13px;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;color:var(--ink);margin-bottom:6px}
+  .ra-field .ra-hint{display:block;font-size:11px;color:var(--ink-3);margin-top:4px}
+  .ra-field input,.ra-field select{
+    width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:#fff;
+    font:inherit;font-size:14px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500;color:var(--ink);
+    outline:none;transition:border-color .14s,box-shadow .14s;
+  }
+  .ra-field input:focus,.ra-field select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(249,115,22,.12)}
+  .ra-field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:500px){.ra-field-row{grid-template-columns:1fr}}
+
+  .ra-submit{
+    width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 22px;border:none;border-radius:999px;background:var(--accent);color:#fff;
+    font:inherit;font-size:14px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;letter-spacing:.01em;
+    cursor:pointer;transition:transform .12s,background .14s;
+    box-shadow:0 1px 0 rgba(26,22,20,.08),0 10px 24px -8px rgba(249,115,22,.4);
+  }
+  .ra-submit:hover{background:var(--accent-hover,#ea580c);transform:translateY(-1px)}
+  .ra-submit:disabled{opacity:.55;cursor:not-allowed;transform:none}
+  .ra-spinner{display:none;width:16px;height:16px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:ra-spin .8s linear infinite}
+  .ra-submit[data-busy=true] .ra-spinner{display:inline-block}
+  .ra-submit[data-busy=true] .ra-label{opacity:.7}
+  @keyframes ra-spin{to{transform:rotate(360deg)}}
+
+  .ra-priv{margin-top:12px;padding:10px 12px;background:#faf7f2;border:1px solid var(--border);border-radius:10px;font-size:12px;color:var(--ink-2);line-height:1.5}
+  .ra-priv b{color:var(--ink)}
+
+  .ra-preview{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;overflow:hidden}
+  .ra-pv-head{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(180deg,var(--bg-card),#fff)}
+  .ra-pv-head .logo{font-variation-settings:'opsz' 18,'wdth' 92,'wght' 800;font-size:18px;letter-spacing:-.02em;color:var(--ink)}
+  .ra-pv-head .logo b{color:var(--accent)}
+  .ra-pv-head .meta{font-size:11px;color:var(--ink-3);text-align:right;font-variation-settings:'opsz' 11,'wdth' 100,'wght' 500;letter-spacing:.04em;text-transform:uppercase}
+
+  .ra-pv-body{padding:24px;display:grid;gap:20px}
+  .ra-herokpi{padding:20px 22px;background:linear-gradient(160deg,#fef3c7 0%,#fed7aa 100%);border:1px solid #fbbf24;border-radius:14px}
+  .ra-herokpi .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#92400e;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+  .ra-herokpi .v{font-size:clamp(32px,5vw,52px);font-variation-settings:'opsz' 64,'wdth' 92,'wght' 800;letter-spacing:-.028em;line-height:1;margin-top:6px;color:#431407}
+  .ra-herokpi .d{font-size:12px;color:#78350f;margin-top:4px;line-height:1.45}
+
+  .ra-stack{display:grid;gap:0}
+  .ra-row{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px dashed var(--border)}
+  .ra-row:last-child{border-bottom:none}
+  .ra-row .k{font-size:13px;color:var(--ink-2)}
+  .ra-row .v{font-variation-settings:'opsz' 16,'wdth' 95,'wght' 800;color:var(--ink);font-size:16px}
+
+  .ra-seq{margin-top:4px;background:#faf7f2;border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+  .ra-seq h4{font-size:12px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:10px}
+  .ra-seq ol{list-style:none;counter-reset:stp;margin:0;padding:0;display:grid;gap:8px}
+  .ra-seq li{counter-increment:stp;padding-left:28px;position:relative;font-size:13px;color:var(--ink-2);line-height:1.5}
+  .ra-seq li::before{content:counter(stp);position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 800;display:flex;align-items:center;justify-content:center}
+  .ra-seq li b{color:var(--ink);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700}
+
+  .ra-ctablock{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--ink);color:#f6f4ef;border-radius:12px;gap:12px;flex-wrap:wrap}
+  .ra-ctablock .k{font-size:13px;color:#c7c1b5;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 600}
+  .ra-ctablock a{background:var(--accent);color:#fff;padding:9px 16px;border-radius:999px;text-decoration:none;font-size:12px;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;letter-spacing:.02em}
+
+  .ra-pv-foot{padding:14px 22px;background:var(--bg);border-top:1px solid var(--border);font-size:11px;color:var(--ink-3);display:flex;justify-content:space-between;gap:12px}
+
+  .ra-success{display:none;padding:28px 24px;background:linear-gradient(160deg,#ecfdf5,#d1fae5);border:1px solid #6ee7b7;border-radius:14px;margin-bottom:16px}
+  .ra-success[data-visible=true]{display:block}
+  .ra-success h3{font-size:22px;font-variation-settings:'opsz' 24,'wdth' 95,'wght' 800;color:#064e3b;margin-bottom:6px}
+  .ra-success p{font-size:14px;color:#065f46;line-height:1.55}
+  .ra-success .ra-next{margin-top:12px;display:grid;gap:8px}
+  .ra-success .ra-next a{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff;border:1px solid #a7f3d0;border-radius:10px;color:#064e3b;text-decoration:none;font-size:13px;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 600}
+  .ra-success .ra-next a:hover{border-color:#10b981}
+
+  .ra-trust{padding:clamp(32px,4vw,48px) 0;border-top:1px solid var(--border);background:var(--bg)}
+  .ra-trust .mx{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+  .ra-trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .ra-t{display:flex;align-items:flex-start;gap:12px;padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--bg-card)}
+  .ra-t .i{flex:0 0 auto;width:36px;height:36px;border-radius:10px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-variation-settings:'opsz' 18,'wdth' 92,'wght' 800;font-size:16px}
+  .ra-t h4{font-size:14px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;color:var(--ink);margin-bottom:2px}
+  .ra-t p{font-size:12px;color:var(--ink-2);line-height:1.5}
+</style>
+</head>
+<body>
+<header class="site-hdr">
+  <div class="mx hdr-inner">
+    <a class="brand" href="/"><span class="logo">usdpr<span class="logo-dot">.</span></span></a>
+    <nav class="hdr-nav">
+      <a href="/calculator.html">Calculator</a>
+      <a href="/recall-audit.html" aria-current="page">Audit</a>
+      <a href="/pilot.html">Pilot</a>
+      <a href="/for-specialists.html">Specialists</a>
+      <a href="/resources.html">Resources</a>
+      <a class="hdr-cta" href="/signup?tier=practice_pro">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+<section class="ra-hero">
+  <div class="mx">
+    <span class="eyebrow">Free · 90 seconds · no sales call · no credit card</span>
+    <h1>Your practice's <span class="accent">personalized recall revenue audit</span>, in a downloadable PDF.</h1>
+    <p class="lede">Five fields. One PDF. Benchmarked against your specialty, patient volume, and PMS. Same framework our pilot practices use to recover $70k+/year per office.</p>
+    <div class="ra-badges">
+      <span class="ra-badge">Browser-only — no PHI collected</span>
+      <span class="ra-badge">HIPAA + CAN-SPAM safe</span>
+      <span class="ra-badge">Delivered in under 2 minutes</span>
+    </div>
+  </div>
+</section>
+
+<section class="ra-wrap">
+  <div class="ra-grid">
+    <form class="ra-card" id="raForm" novalidate>
+      <div class="ra-card-t">The audit form</div>
+      <h2>Five fields, 90 seconds.</h2>
+      <p class="sub">Everything below gets tuned to your exact specialty and patient count. Enter numbers, not patient data — we never touch PHI.</p>
+
+      <div class="ra-success" id="raSuccess" role="status" aria-live="polite">
+        <h3>Your audit is on its way.</h3>
+        <p>We've emailed your PDF to <b id="raSuccessEmail">your inbox</b>. Arrives within 2 minutes. Meanwhile:</p>
+        <div class="ra-next">
+          <a href="#" id="raDownloadNow"><b>Download the PDF right now</b> — don't wait for email</a>
+          <a href="/pilot.html"><b>Start your 14-day free trial</b> — no credit card</a>
+          <a href="/embed.html"><b>Embed our calculator on your site</b> — free backlink</a>
+        </div>
+      </div>
+
+      <div class="ra-field">
+        <label for="raPractice">Practice name</label>
+        <input id="raPractice" name="practice" type="text" placeholder="Orlando Family Dentistry" autocomplete="organization" required>
+      </div>
+
+      <div class="ra-field-row">
+        <div class="ra-field">
+          <label for="raSpecialty">Specialty</label>
+          <select id="raSpecialty" name="specialty" required>
+            <option value="gp">General practice</option>
+            <option value="ortho">Orthodontics</option>
+            <option value="endo">Endodontics</option>
+            <option value="perio">Periodontics</option>
+            <option value="omfs">Oral & maxillofacial surgery</option>
+            <option value="pedo">Pediatric</option>
+            <option value="pros">Prosthodontics</option>
+            <option value="dso">DSO (multi-location)</option>
+          </select>
+        </div>
+        <div class="ra-field">
+          <label for="raPms">Practice management system</label>
+          <select id="raPms" name="pms" required>
+            <option value="dentrix">Dentrix</option>
+            <option value="open_dental">Open Dental</option>
+            <option value="eaglesoft">Eaglesoft</option>
+            <option value="curve">Curve Dental</option>
+            <option value="carestream">Carestream</option>
+            <option value="denticon">Denticon</option>
+            <option value="other">Other / not sure</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="ra-field-row">
+        <div class="ra-field">
+          <label for="raActive">Active patients</label>
+          <input id="raActive" name="active" type="number" min="100" step="100" value="2000" required>
+          <span class="ra-hint">Seen in last 18 months</span>
+        </div>
+        <div class="ra-field">
+          <label for="raVisit">Avg. visit value ($)</label>
+          <input id="raVisit" name="visit" type="number" min="50" step="5" value="285" required>
+          <span class="ra-hint">Hygiene + diagnostic average</span>
+        </div>
+      </div>
+
+      <div class="ra-field">
+        <label for="raRecall">Current recall tool</label>
+        <select id="raRecall" name="recall">
+          <option value="none">Nothing / manual front desk</option>
+          <option value="weave">Weave</option>
+          <option value="solutionreach">Solutionreach</option>
+          <option value="revenuewell">RevenueWell</option>
+          <option value="lighthouse">Lighthouse 360</option>
+          <option value="dental_intel">Dental Intelligence</option>
+          <option value="nexhealth">NexHealth</option>
+          <option value="pms_builtin">PMS built-in recall</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="ra-field">
+        <label for="raEmail">Where should we send the PDF?</label>
+        <input id="raEmail" name="email" type="email" placeholder="you@yourpractice.com" autocomplete="email" required>
+        <span class="ra-hint">Business email preferred. PDF + 3 short follow-ups over 14 days. One-click unsubscribe.</span>
+      </div>
+
+      <input type="text" name="trap" value="" style="position:absolute;left:-9999px;opacity:0;pointer-events:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <button class="ra-submit" id="raSubmit" type="submit">
+        <span class="ra-spinner" aria-hidden="true"></span>
+        <span class="ra-label">Generate my free audit PDF →</span>
+      </button>
+
+      <div class="ra-priv">
+        <b>What we do with this:</b> Store your email + the numeric inputs above. Send the PDF. Send 3 optional follow-ups over 14 days. Never sell, never share, never spam. <b>What we don't do:</b> collect any patient data, require a card, or book a call unless you ask.
+      </div>
+    </form>
+
+    <div class="ra-preview" id="raPreview">
+      <div class="ra-pv-head">
+        <div>
+          <div class="logo">usdpr<b>.</b></div>
+          <div style="font-size:11px;color:var(--ink-3);margin-top:2px">Recall Revenue Audit</div>
+        </div>
+        <div class="meta">
+          <div>Prepared for</div>
+          <div style="color:var(--ink);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;font-size:13px;margin-top:2px" id="raPvPractice">Orlando Family Dentistry</div>
+          <div style="margin-top:2px" id="raPvDate">—</div>
+        </div>
+      </div>
+      <div class="ra-pv-body" id="raPvBody">
+        <div class="ra-herokpi">
+          <div class="k">Estimated unrealized revenue</div>
+          <div class="v">$<span id="raPvLoss">77,000</span><span style="font-size:.5em;color:#92400e">/yr</span></div>
+          <div class="d">Based on <span id="raPvActive">2,000</span> active patients, a <span id="raPvLapse">9%</span> lapse rate typical for <span id="raPvSpecLabel">general practice</span>, and a $<span id="raPvVisit">285</span> average visit value with a 1.5× visit multiplier.</div>
+        </div>
+        <div class="ra-stack">
+          <div class="ra-row"><span class="k">Patients likely to lapse this year</span><span class="v"><span id="raPvLapsed">180</span></span></div>
+          <div class="ra-row"><span class="k">Recoverable with a dedicated sequence <span style="color:var(--ink-3)">(@ <span id="raPvRecPct">10%</span>)</span></span><span class="v">$<span id="raPvRecovered">7,700</span>/yr</span></div>
+          <div class="ra-row"><span class="k">Recommended plan</span><span class="v" id="raPvTier">Practice · $297/mo</span></div>
+          <div class="ra-row"><span class="k">Net gain after tool cost</span><span class="v" style="color:#0f766e">$<span id="raPvNet">—</span>/yr</span></div>
+        </div>
+        <div class="ra-seq">
+          <h4 id="raPvSeqTitle">Your recommended 5-touch sequence</h4>
+          <ol id="raPvSeq"></ol>
+        </div>
+        <div class="ra-ctablock">
+          <span class="k">Ready to test it on your real patient list?</span>
+          <a href="/signup?tier=practice_pro&utm_source=audit&utm_medium=preview">14-day free trial →</a>
+        </div>
+      </div>
+      <div class="ra-pv-foot">
+        <span>usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+        <span>© 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ra-trust">
+  <div class="mx">
+    <div style="margin-bottom:20px">
+      <span style="color:var(--accent);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700">Why dentists trust this audit</span>
+      <h3 style="font-size:clamp(22px,3vw,32px);font-variation-settings:'opsz' 36,'wdth' 95,'wght' 700;letter-spacing:-.02em;margin-top:6px;max-width:36ch">The benchmarks under the hood.</h3>
+    </div>
+    <div class="ra-trust-grid">
+      <div class="ra-t"><div class="i">§</div><div><h4>Specialty-adjusted math</h4><p>Every lapse rate, reactivation rate, and visit-value multiplier is tuned to your specialty.</p></div></div>
+      <div class="ra-t"><div class="i">§</div><div><h4>PMS-aware recommendations</h4><p>The 5-touch sequence references your actual PMS export format — Dentrix, Open Dental, Eaglesoft, and more.</p></div></div>
+      <div class="ra-t"><div class="i">§</div><div><h4>Compliance-grade</h4><p>HIPAA Business Associate framework, TCPA quiet-hours, CAN-SPAM templates, Florida §817.505 flat-fee structure.</p></div></div>
+      <div class="ra-t"><div class="i">§</div><div><h4>Industry sources</h4><p>Benchmarks draw from ADA Health Policy Institute, AAO data, MGMA production metrics, and our own 2024-2026 pilots.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-ftr">
+  <div class="mx">
+    <div class="foot-grid">
+      <div class="foot-col foot-brand">
+        <span class="logo">usdpr<span class="logo-dot">.</span></span>
+        <p>Patient reactivation, perfected. Orlando, FL.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><ul><li><a href="/">Home</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/recall-audit.html">Recall audit</a></li><li><a href="/pilot.html">Pilot</a></li><li><a href="/embed.html">Embed</a></li></ul></div>
+      <div class="foot-col"><h4>For</h4><ul><li><a href="/for-specialists.html">Specialists</a></li><li><a href="/for-managers.html">Managers</a></li><li><a href="/for-dsos.html">DSOs</a></li></ul></div>
+      <div class="foot-col"><h4>Company</h4><ul><li><a href="/resources.html">Resources</a></li><li><a href="/changelog.html">Changelog</a></li><li><a href="mailto:colin@usdentalpatientrecovery.com">Contact</a></li></ul></div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>TCPA compliant · HIPAA BAA · SOC 2 in progress</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const $ = (id)=>document.getElementById(id);
+  const fmt = (n)=>Math.round(n).toLocaleString('en-US');
+
+  const SPEC = {
+    gp:    [9.0,  10, 1.5, 'general practice',      'Your recommended 5-touch sequence (general practice)'],
+    ortho: [7.5,   8, 1.8, 'orthodontics',          'Your recommended 6-touch retainer-check sequence'],
+    endo:  [12.0, 15, 1.2, 'endodontics',           'Your recommended RCT-to-crown 30/60/90-day sequence'],
+    perio: [11.0, 14, 2.2, 'periodontics',          'Your recommended 3-month maintenance sequence'],
+    omfs:  [10.0, 10, 1.3, 'oral & maxillofacial surgery','Your recommended consult-to-schedule sequence'],
+    pedo:  [8.0,  11, 1.5, 'pediatric dentistry',   'Your recommended 6-month + growth-tracker sequence'],
+    pros:  [10.5, 12, 1.6, 'prosthodontics',        'Your recommended post-delivery follow-up sequence'],
+    dso:   [9.5,  12, 1.6, 'multi-location DSO',    'Your recommended per-location 5-touch sequence'],
+  };
+
+  const SEQ = {
+    gp: [
+      ['Day 0 · Email #1',  'Warm re-intro from the practice — "we noticed it has been a while" with a pre-selected slot offer.'],
+      ['Day 3 · SMS #1',    'Short reminder with one-tap booking link. Quiet-hours enforced.'],
+      ['Day 7 · Phone',     'Office-manager one-tap call from pre-sorted queue (AI-drafted script).'],
+      ['Day 11 · Email #2', 'Educational content: what happens to oral health after 18+ months without a cleaning.'],
+      ['Day 18 · SMS #2',   'Final gentle outreach with a direct schedule link — or one-tap unsubscribe.'],
+    ],
+    ortho: [
+      ['Day 0 · Email #1',  'Retainer-check reminder tuned to their last-visit month (6/12/18).'],
+      ['Day 4 · SMS #1',    'Text asking if they are still wearing their retainer — short-answer triage.'],
+      ['Day 10 · Phone',    'Front-desk call if flagged no-response; paused-treatment script if applicable.'],
+      ['Day 16 · Email #2', 'Cost-of-relapse explainer + referral-window retainer replacement promo.'],
+      ['Day 25 · Email #3', 'Final outreach with retention-month-specific CTA (e.g. 12-mo review).'],
+      ['Day 35 · SMS #2',   'Last-chance text; auto-removes from sequence if silent.'],
+    ],
+    endo: [
+      ['Day 14 · Email #1', 'Post-RCT clinical check-in: how is the tooth feeling?'],
+      ['Day 30 · Email #2', 'Crown reminder with urgency framing + referring GP coordination note.'],
+      ['Day 45 · Email #3', 'Referring GP loop-close: crown prep is pending email to both patient and referring dentist.'],
+      ['Day 60 · SMS',      'Direct schedule link; AI-classified reply routing.'],
+      ['Day 90 · Phone',    'Final outreach: manual call review, clinical risk note if still unfilled.'],
+    ],
+    perio: [
+      ['Day 0 · Email #1',  '3-month maintenance reminder with disease-recurrence education.'],
+      ['Day 3 · SMS #1',    'Quick-book link to 3-month slot with provider of record.'],
+      ['Day 7 · Phone',     'Office-manager outreach for high-risk patients (SRP within 24 months).'],
+      ['Day 14 · Email #2', 'Post-SRP adherence education + referral to hygienist.'],
+      ['Day 21 · Email #3', 'Comorbidity messaging (cardiac, diabetes) from evidence-based library.'],
+    ],
+    omfs: [
+      ['Day 0 · Email',   'Consult-to-schedule conversion for post-consult patients.'],
+      ['Day 4 · SMS',     'One-tap scheduling reminder with insurance pre-auth status.'],
+      ['Day 10 · Phone',  'Pre-surgical consultation call — barrier-removal script (cost, time off).'],
+      ['Day 20 · Email',  'Post-op recovery check-in (48/72/168 hours) for post-surgical patients.'],
+      ['Day 30 · Email',  'Referral loop-close with referring GP (minimum-necessary PHI per §164.506(c)(2)).'],
+    ],
+    pedo: [
+      ['Day 0 · Email',   'Parent-facing reminder with child-specific growth milestone references.'],
+      ['Day 3 · SMS',     'Parent-phone text with Saturday/after-school slot offers.'],
+      ['Day 7 · Phone',   'Office-manager outreach if no response — friendly parent-to-parent script.'],
+      ['Day 14 · Email',  'Dental-home education (AAPD framework) + sibling-bundle incentive.'],
+      ['Day 21 · SMS',    'Last-touch with direct schedule link.'],
+    ],
+    pros: [
+      ['Day 0 · Email',   'Post-delivery follow-up: how is your new prosthesis settling?'],
+      ['Day 14 · SMS',    'Short satisfaction check + book adjustment link.'],
+      ['Day 30 · Email',  '30-day adjustment window reminder with same-day availability.'],
+      ['Day 60 · Phone',  'Clinical satisfaction call + referral request for happy patients.'],
+      ['Day 90 · Email',  'Long-term care plan email with annual-review CTA.'],
+    ],
+    dso: [
+      ['Day 0 · Email',   'Per-location branded outreach (home-office template + local customization).'],
+      ['Day 4 · SMS',     'Regional quiet-hours-compliant SMS with location-specific booking link.'],
+      ['Day 8 · Phone',   'Regional call-center or local-office call, routed by efficiency benchmarks.'],
+      ['Day 15 · Email',  'Corporate wellness education + location-specific incentive.'],
+      ['Day 25 · Email',  'Compliance-logged final outreach with unified audit trail to corporate.'],
+    ],
+  };
+
+  function tierFor(patients, specialty){
+    if (specialty === 'dso')             return {tier:'dso',          monthly:1997, label:'DSO · $1,997/mo'};
+    if (patients <= 2000)                return {tier:'practice',     monthly:297,  label:'Practice · $297/mo'};
+    if (patients <= 10000)               return {tier:'practice_pro', monthly:697,  label:'Practice Pro · $697/mo'};
+    return                                     {tier:'dso',          monthly:1997, label:'DSO · $1,997/mo'};
+  }
+
+  function compute(inputs){
+    const row = SPEC[inputs.specialty] || SPEC.gp;
+    const lapsePct = row[0], recPct = row[1], multi = row[2], specLabel = row[3];
+    const lapsed           = inputs.active * (lapsePct/100);
+    const loss             = lapsed * inputs.visit * multi;
+    const recoveredRevenue = lapsed * (recPct/100) * inputs.visit * multi;
+    const tier             = tierFor(inputs.active, inputs.specialty);
+    const toolCost         = tier.monthly * 12;
+    const net              = Math.max(0, recoveredRevenue - toolCost);
+    return { lapsePct, recPct, multi, specLabel, lapsed, loss, recoveredRevenue, tier, toolCost, net };
+  }
+
+  // Render sequence list via DOM APIs (no innerHTML, avoids any XSS risk)
+  function renderSequenceList(rootOl, items){
+    while (rootOl.firstChild) rootOl.removeChild(rootOl.firstChild);
+    items.forEach(function(entry){
+      const label = entry[0], text = entry[1];
+      const li = document.createElement('li');
+      const b  = document.createElement('b');
+      b.textContent = label + ': ';
+      li.appendChild(b);
+      li.appendChild(document.createTextNode(text));
+      rootOl.appendChild(li);
+    });
+  }
+
+  function renderPreview(){
+    const practice  = $('raPractice').value.trim() || 'Your practice';
+    const specialty = $('raSpecialty').value;
+    const active    = Math.max(100, +$('raActive').value || 0);
+    const visit     = Math.max(50,  +$('raVisit').value  || 0);
+    const r = compute({ active, visit, specialty });
+
+    $('raPvPractice').textContent  = practice;
+    $('raPvDate').textContent      = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    $('raPvLoss').textContent      = fmt(r.loss);
+    $('raPvActive').textContent    = fmt(active);
+    $('raPvLapse').textContent     = r.lapsePct.toFixed(1) + '%';
+    $('raPvSpecLabel').textContent = r.specLabel;
+    $('raPvVisit').textContent     = fmt(visit);
+    $('raPvLapsed').textContent    = fmt(r.lapsed);
+    $('raPvRecPct').textContent    = r.recPct + '%';
+    $('raPvRecovered').textContent = fmt(r.recoveredRevenue);
+    $('raPvTier').textContent      = r.tier.label;
+    $('raPvNet').textContent       = fmt(r.net);
+
+    const seq      = SEQ[specialty] || SEQ.gp;
+    const seqTitle = (SPEC[specialty] || SPEC.gp)[4];
+    $('raPvSeqTitle').textContent = seqTitle;
+    renderSequenceList($('raPvSeq'), seq);
+  }
+
+  ['input','change'].forEach(function(ev){
+    ['raPractice','raSpecialty','raActive','raVisit','raPms','raRecall'].forEach(function(id){
+      $(id).addEventListener(ev, renderPreview);
+    });
+  });
+  renderPreview();
+
+  const form    = $('raForm');
+  const submit  = $('raSubmit');
+  const success = $('raSuccess');
+  const successEmail = $('raSuccessEmail');
+  const downloadNow  = $('raDownloadNow');
+  const preview      = $('raPreview');
+
+  async function postCapture(payload){
+    try {
+      const res = await fetch('/leads/audit', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(payload),
+        keepalive: true,
+      });
+      return res.ok;
+    } catch (e) { return false; }
+  }
+
+  async function generatePDF(){
+    if (!window.html2pdf){
+      await new Promise(function(resolve, reject){
+        const s = document.createElement('script');
+        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+        s.crossOrigin = 'anonymous';
+        s.referrerPolicy = 'no-referrer';
+        s.onload = resolve; s.onerror = reject;
+        document.head.appendChild(s);
+      }).catch(function(){});
+    }
+    if (!window.html2pdf) { alert('PDF generator still loading — check your email for the PDF.'); return; }
+    const practice = $('raPractice').value.trim() || 'practice';
+    const filename = 'usdpr-audit-' + practice.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') + '.pdf';
+    await window.html2pdf().set({
+      margin: [8, 8, 8, 8],
+      filename: filename,
+      image: { type: 'jpeg', quality: 0.96 },
+      html2canvas: { scale: 2, useCORS: true, backgroundColor: '#fffdf8' },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak: { mode: ['avoid-all'] }
+    }).from(preview).save();
+  }
+
+  form.addEventListener('submit', async function(ev){
+    ev.preventDefault();
+    if (submit.dataset.busy === 'true') return;
+    const email = $('raEmail').value.trim();
+    if (!email || email.indexOf('@') === -1){
+      $('raEmail').focus();
+      $('raEmail').setCustomValidity('Please enter a valid email');
+      $('raEmail').reportValidity();
+      return;
+    }
+    $('raEmail').setCustomValidity('');
+    submit.dataset.busy = 'true';
+    submit.disabled = true;
+
+    const payload = {
+      email: email,
+      practice:  $('raPractice').value.trim(),
+      specialty: $('raSpecialty').value,
+      pms:       $('raPms').value,
+      active:    +$('raActive').value,
+      visit:     +$('raVisit').value,
+      recall:    $('raRecall').value,
+      audit_version: 'v1.0',
+      ts: new Date().toISOString(),
+      referrer: document.referrer || null,
+      page: 'recall-audit.html',
+    };
+
+    await postCapture(payload);
+
+    successEmail.textContent = email;
+    success.dataset.visible = 'true';
+    submit.querySelector('.ra-label').textContent = 'Audit sent — check your inbox';
+    submit.dataset.busy = 'false';
+    setTimeout(function(){ success.scrollIntoView({ behavior:'smooth', block:'start' }); }, 50);
+  });
+
+  downloadNow.addEventListener('click', function(ev){ ev.preventDefault(); generatePDF(); });
+})();
+</script>
+</body>
+</html>

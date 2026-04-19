@@ -1,0 +1,250 @@
+<!-- ═══════════════════════════════════════════════════════════════════════════
+  usdpr. trust strip  —  drop-in partial
+  ───────────────────────────────────────────────────────────────────────────
+  A horizontal credibility rail. Paste this block into any page immediately
+  AFTER the hero and BEFORE the next section. No JS. No layout risk. Inherits
+  brand.css tokens; degrades gracefully if brand.css isn't loaded.
+
+  Usage variants (swap the root class):
+    .ts           — default, light vellum background
+    .ts.ts--dark  — inverted on ink backgrounds
+    .ts.ts--tight — narrower vertical padding for in-page rails
+
+  Quickstart:
+    <link rel="stylesheet" href="/brand.css">
+    <!-- paste starting here -->
+    <section class="ts"> ... </section>
+    <!-- paste ending here -->
+
+  Content choices are deliberate: four pillars that answer the four biggest
+  trust anxieties a new dental-practice visitor has (compliance, founder
+  accountability, data exit, refund) — plus a one-line proof ledger below.
+  ═══════════════════════════════════════════════════════════════════════════ -->
+
+<style>
+  /* Self-contained fallback tokens in case brand.css hasn't loaded */
+  .ts{
+    --ts-bg:        var(--bg-vellum,        #f1ede2);
+    --ts-card:      var(--bg-card,          #ffffff);
+    --ts-ink:       var(--ink,              #0b0e0f);
+    --ts-ink-2:     var(--ink-2,            #3a3d3f);
+    --ts-ink-3:     var(--ink-3,            #6b6e70);
+    --ts-accent:    var(--accent,           #f97316);
+    --ts-soft:      var(--accent-soft,      #fff3e7);
+    --ts-border:    var(--border,           #e3ddd1);
+    --ts-ok:        var(--ok,               #15803d);
+
+    position:relative;
+    padding:clamp(28px,4vw,56px) 0;
+    background:var(--ts-bg);
+    border-top:1px solid var(--ts-border);
+    border-bottom:1px solid var(--ts-border);
+    font-family:'Bricolage Grotesque','-apple-system',BlinkMacSystemFont,sans-serif;
+    color:var(--ts-ink-2);
+  }
+  .ts.ts--tight{padding:clamp(20px,2.8vw,36px) 0}
+  .ts.ts--dark{
+    background:#0b0e0f;color:rgba(246,244,239,.7);
+    border-top:1px solid #1a1d20;border-bottom:1px solid #1a1d20;
+  }
+
+  .ts-wrap{
+    max-width:1240px;margin:0 auto;
+    padding:0 clamp(20px,4vw,48px);
+  }
+
+  /* Header row */
+  .ts-hd{
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;
+    gap:14px;padding-bottom:clamp(14px,2vw,22px);
+    border-bottom:1px solid var(--ts-border);
+    margin-bottom:clamp(18px,2.5vw,28px);
+  }
+  .ts.ts--dark .ts-hd{border-bottom-color:rgba(255,255,255,.08)}
+  .ts-eye{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11.5px;color:var(--ts-accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.1em;text-transform:uppercase;
+  }
+  .ts-eye::before{content:'';width:22px;height:1px;background:var(--ts-accent)}
+  .ts-hd-r{
+    font-size:12px;color:var(--ts-ink-3);
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500;
+  }
+  .ts.ts--dark .ts-hd-r{color:rgba(246,244,239,.6)}
+  .ts-hd-r a{color:var(--ts-ink);text-decoration:underline;text-decoration-color:rgba(0,0,0,.2);text-underline-offset:.18em;text-decoration-thickness:1px}
+  .ts.ts--dark .ts-hd-r a{color:#f6f4ef;text-decoration-color:rgba(246,244,239,.3)}
+
+  /* Four pillar cards */
+  .ts-grid{
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px;
+  }
+  @media(max-width:900px){.ts-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.ts-grid{grid-template-columns:1fr}}
+
+  .ts-c{
+    padding:18px 20px;border-radius:14px;
+    background:var(--ts-card);
+    border:1px solid var(--ts-border);
+    display:grid;gap:8px;align-content:start;
+    transition:border-color .2s cubic-bezier(.22,.8,.2,1),transform .2s cubic-bezier(.22,.8,.2,1),box-shadow .2s cubic-bezier(.22,.8,.2,1);
+    text-decoration:none;color:inherit;position:relative;
+  }
+  a.ts-c:hover{border-color:var(--ts-ink);transform:translateY(-2px);box-shadow:0 8px 20px rgba(11,14,15,.06)}
+  .ts.ts--dark .ts-c{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+  .ts.ts--dark a.ts-c:hover{border-color:#f6f4ef;background:rgba(255,255,255,.06)}
+
+  .ts-c-hd{
+    display:flex;align-items:center;gap:10px;
+    font-size:10.5px;
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+    letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ts-accent);
+  }
+  .ts-c-badge{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-width:40px;height:20px;padding:0 8px;border-radius:6px;
+    background:var(--ts-ink);color:#f6f4ef;font-size:9px;
+    font-variation-settings:'opsz' 10,'wdth' 100,'wght' 800;letter-spacing:.04em;
+  }
+  .ts.ts--dark .ts-c-badge{background:var(--ts-accent);color:#0b0e0f}
+
+  .ts-c-t{
+    font-size:15.5px;color:var(--ts-ink);line-height:1.25;
+    font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700;
+    letter-spacing:-.015em;
+  }
+  .ts.ts--dark .ts-c-t{color:#f6f4ef}
+  .ts-c-b{
+    font-size:12.5px;line-height:1.55;color:var(--ts-ink-2);
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500;
+  }
+  .ts.ts--dark .ts-c-b{color:rgba(246,244,239,.7)}
+  .ts-c-b strong{
+    color:var(--ts-ink);
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;
+  }
+  .ts.ts--dark .ts-c-b strong{color:#f6f4ef}
+
+  .ts-c-link{
+    margin-top:4px;display:inline-flex;align-items:center;gap:5px;
+    font-size:11.5px;color:var(--ts-accent);
+    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
+  }
+  .ts-c-link svg{width:10px;height:10px;transition:transform .2s cubic-bezier(.22,.8,.2,1)}
+  a.ts-c:hover .ts-c-link svg{transform:translateX(3px)}
+
+  /* Ledger row — long-horizontal proof bar */
+  .ts-ledger{
+    margin-top:clamp(14px,2vw,22px);padding-top:clamp(14px,2vw,20px);
+    border-top:1px dashed var(--ts-border);
+    display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;
+    font-size:12px;color:var(--ts-ink-3);
+    font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500;
+  }
+  .ts.ts--dark .ts-ledger{border-top-color:rgba(255,255,255,.08);color:rgba(246,244,239,.55)}
+  .ts-ledger-item{display:inline-flex;align-items:center;gap:6px}
+  .ts-ledger-item::before{
+    content:'';width:5px;height:5px;border-radius:50%;background:var(--ts-ok);
+    box-shadow:0 0 0 2px rgba(21,128,61,.16);
+  }
+  .ts-ledger-item strong{color:var(--ts-ink);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700}
+  .ts.ts--dark .ts-ledger-item strong{color:#f6f4ef}
+</style>
+
+<section class="ts" aria-labelledby="tsTitle">
+  <div class="ts-wrap">
+
+    <div class="ts-hd">
+      <div class="ts-eye" id="tsTitle">Trust, audited</div>
+      <div class="ts-hd-r">
+        Every claim below is refundable against.
+        <a href="/trust.html">See the full trust hub &rsaquo;</a>
+      </div>
+    </div>
+
+    <div class="ts-grid">
+
+      <!-- 01 Compliance -->
+      <a class="ts-c" href="/trust.html#s02">
+        <div class="ts-c-hd">
+          <span class="ts-c-badge">HIPAA</span>
+          <span>Compliance</span>
+        </div>
+        <div class="ts-c-t">BAA e-signed before any PHI moves.</div>
+        <div class="ts-c-b">
+          <strong>TCPA rate limits</strong> enforced at the dispatcher. <strong>FL &sect;817.505</strong> safe-harbor pricing. SOC 2 Type I complete, Type II in audit.
+        </div>
+        <span class="ts-c-link">
+          Compliance posture
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h6M6 2l3 3-3 3"/></svg>
+        </span>
+      </a>
+
+      <!-- 02 Founder -->
+      <a class="ts-c" href="/about.html">
+        <div class="ts-c-hd">
+          <span class="ts-c-badge">COLIN</span>
+          <span>Founder-accountable</span>
+        </div>
+        <div class="ts-c-t">Email me. I reply within 2h or credit the day.</div>
+        <div class="ts-c-b">
+          One person's name on the work. <strong>No ticket queue, no CSM layer.</strong> If it breaks, my phone rings.
+        </div>
+        <span class="ts-c-link">
+          Founder letter
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h6M6 2l3 3-3 3"/></svg>
+        </span>
+      </a>
+
+      <!-- 03 Exit on your terms -->
+      <a class="ts-c" href="/cancel.html">
+        <div class="ts-c-hd">
+          <span class="ts-c-badge">EXIT</span>
+          <span>No hostages</span>
+        </div>
+        <div class="ts-c-t">One-click cancel. Data export in under an hour.</div>
+        <div class="ts-c-b">
+          <strong>Full CSV + JSON</strong> \u2014 patients, messages, replies, bookings \u2014 in your inbox under 60 minutes. Free, any time.
+        </div>
+        <span class="ts-c-link">
+          Data commitments
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h6M6 2l3 3-3 3"/></svg>
+        </span>
+      </a>
+
+      <!-- 04 Money-back -->
+      <a class="ts-c" href="/pilot.html">
+        <div class="ts-c-hd">
+          <span class="ts-c-badge">REFUND</span>
+          <span>Pilot guarantee</span>
+        </div>
+        <div class="ts-c-t">Under 10 rebookings month 1? Fully refunded.</div>
+        <div class="ts-c-b">
+          <strong>Founding-10 pilot</strong>: lifetime $697/mo rate lock + 30-day money-back. Closes at slot 10.
+        </div>
+        <span class="ts-c-link">
+          Pilot program
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 5h6M6 2l3 3-3 3"/></svg>
+        </span>
+      </a>
+
+    </div>
+
+    <div class="ts-ledger" aria-label="Proof ledger">
+      <span class="ts-ledger-item"><strong>14-day trial</strong> no card</span>
+      <span class="ts-ledger-item"><strong>~15 min</strong> self-serve onboarding</span>
+      <span class="ts-ledger-item"><strong>&lt; 1 hr</strong> data export SLA</span>
+      <span class="ts-ledger-item"><strong>2 h</strong> founder email SLA</span>
+      <span class="ts-ledger-item"><strong>99.9%</strong> uptime target</span>
+      <span class="ts-ledger-item"><strong>Zero</strong> per-patient fees, ever</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     END trust strip
+     ═══════════════════════════════════════════════════════════════════════════ -->

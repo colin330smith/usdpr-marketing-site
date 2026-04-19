@@ -1,0 +1,42 @@
+# robots.txt — usdentalpatientrecovery.com
+#
+# Traditional crawlers + AI crawlers both welcomed to index every
+# public page. Only the raw brand-asset directory is off-limits (SVG
+# sources, Gmail signature HTML, pitch deck — marketing internals).
+#
+# Note on AI: we explicitly allow GPTBot / Google-Extended / Claude /
+# PerplexityBot. We want to be cited in generative answers — GEO is a
+# real acquisition channel in 2026. See also llms.txt for a
+# human+machine-readable summary at the root.
+
+User-agent: *
+Allow: /
+Allow: /blog/
+Allow: /pms/
+Allow: /alternatives/
+Allow: /resources.html
+Allow: /partners.html
+Allow: /compare.html
+Allow: /security.html
+Allow: /changelog.html
+Allow: /status.html
+Allow: /privacy.html
+Allow: /terms.html
+Disallow: /brand/
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://usdpr.netlify.app/sitemap.xml

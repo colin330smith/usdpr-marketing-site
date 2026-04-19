@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Free 4-minute audit of your dental practice's reactivation setup. Get a personalized score across compliance, sequencing, segmentation, and tooling \u2014 plus a 90-day fix plan. No signup to view the result.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Reactivation audit \u00B7 4 min \u00B7 usdpr.">
+<meta property="og:description" content="Free score + 90-day fix plan for your dental practice's reactivation setup.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/audit.html">
+<meta property="og:image" content="/og.svg">
+<title>Free reactivation audit \u00B7 usdpr.</title>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Dental Reactivation Audit","url":"https://usdpr.netlify.app/audit.html","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free 4-minute self-scoring audit of a US dental practice's patient reactivation setup \u2014 covers compliance, sequencing, segmentation, and tooling.","creator":{"@type":"Organization","name":"US Dental Patient Recovery"}}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdentalpatientrecovery.com"></script>
+<style>
+  .au-hero{padding:clamp(36px,5vw,80px) 0 clamp(24px,3vw,40px);background:var(--bg);border-bottom:1px solid var(--border)}
+  .au-hero-wrap{max-width:var(--container-narrow);margin:0 auto;padding:0 var(--gutter)}
+  .au-kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:16px}
+  .au-kicker::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .au-hero h1{font-size:clamp(38px,5.5vw,84px);color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 88,'wght' 800;letter-spacing:-.048em;line-height:.96;max-width:17ch;margin-bottom:18px}
+  .au-hero h1 .accent{color:var(--accent)}
+  .au-hero .lede{font-size:clamp(16px,1.4vw,19px);color:var(--ink-2);max-width:56ch;line-height:1.55;font-variation-settings:'opsz' 18,'wdth' 100,'wght' 400}
+  .au-hero .lede strong{color:var(--ink);font-variation-settings:'opsz' 18,'wdth' 100,'wght' 700}
+
+  .au-shell{max-width:var(--container);margin:0 auto;padding:clamp(28px,4vw,56px) var(--gutter) clamp(56px,7vw,96px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start}
+  @media(max-width:860px){.au-shell{grid-template-columns:1fr}}
+
+  .au-form{background:var(--bg-card);border:1.5px solid var(--border);border-radius:18px;padding:clamp(22px,3vw,32px);box-shadow:var(--shadow-sm)}
+  .au-form-hd{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-bottom:14px;margin-bottom:18px;border-bottom:1px solid var(--border)}
+  .au-step{font-size:11px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;display:inline-flex;align-items:center;gap:8px}
+  .au-step::before{content:'\u00A7';color:var(--ink-3);letter-spacing:0}
+  .au-prog-label{font-size:11px;color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 600}
+  .au-prog-bar{height:4px;border-radius:100px;background:var(--border);overflow:hidden;margin-top:10px;margin-bottom:6px}
+  .au-prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent) 0%,var(--accent-hover) 100%);transition:width .3s var(--ease);border-radius:100px}
+
+  .au-q{padding:18px 0;border-top:1px solid var(--border)}
+  .au-q:first-of-type{border-top:0;padding-top:0}
+  .au-q h3{font-size:16.5px;color:var(--ink);font-variation-settings:'opsz' 17,'wdth' 100,'wght' 700;letter-spacing:-.01em;line-height:1.3;margin-bottom:4px}
+  .au-q small{display:block;font-size:12.5px;color:var(--ink-3);margin-bottom:12px;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500;line-height:1.5}
+  .au-opts{display:grid;gap:6px}
+  .au-opt{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:12px 14px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-md);cursor:pointer;transition:border-color .18s var(--ease),background .18s var(--ease)}
+  .au-opt:hover{border-color:var(--ink-3);background:var(--bg-card)}
+  .au-opt input[type=radio]{margin-top:3px;accent-color:var(--accent);width:16px;height:16px}
+  .au-opt.on{border-color:var(--accent);background:var(--accent-soft)}
+  .au-opt-l{font-size:14px;line-height:1.5;color:var(--ink-2);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 500}
+  .au-opt-l strong{color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+
+  .au-nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px;padding-top:16px;border-top:1px solid var(--border)}
+  .au-btn{padding:12px 22px;border-radius:var(--r-pill);font-family:inherit;font-size:14px;cursor:pointer;border:1.5px solid transparent;font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700;letter-spacing:-.005em;transition:all .18s var(--ease);display:inline-flex;align-items:center;gap:8px}
+  .au-btn.p{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .au-btn.p:hover:not(:disabled){background:var(--accent);border-color:var(--accent);color:var(--ink-bg);transform:translateY(-1px);box-shadow:var(--shadow-accent)}
+  .au-btn.p:disabled{opacity:.4;cursor:not-allowed}
+  .au-btn.g{background:transparent;color:var(--ink);border-color:var(--border-2)}
+  .au-btn.g:hover:not(:disabled){border-color:var(--ink);background:var(--bg-card)}
+  .au-btn.g:disabled{opacity:.4;cursor:not-allowed}
+  .au-btn svg{width:14px;height:14px;transition:transform .2s var(--ease)}
+  .au-btn.p:hover:not(:disabled) svg{transform:translateX(3px)}
+
+  .au-result{position:sticky;top:80px;background:var(--ink-bg);color:var(--bg);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg)}
+  .au-result-hd{padding:22px 28px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+  .au-result-k{font-size:11px;color:rgba(246,244,239,.55);letter-spacing:.1em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+  .au-result-state{font-size:11px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+  .au-result-state::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:6px;vertical-align:middle;box-shadow:0 0 0 3px rgba(249,115,22,.25);animation:au-pulse 2s ease-in-out infinite}
+  @keyframes au-pulse{0%,100%{box-shadow:0 0 0 3px rgba(249,115,22,.25)}50%{box-shadow:0 0 0 8px rgba(249,115,22,0)}}
+
+  .au-result-body{padding:24px 28px 28px}
+  .au-score-ring{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .au-ring{position:relative;width:110px;height:110px;flex:none}
+  .au-ring svg{transform:rotate(-90deg);width:100%;height:100%}
+  .au-ring circle{fill:none;stroke-width:8;transition:stroke-dashoffset .6s cubic-bezier(.22,.8,.2,1)}
+  .au-ring .track{stroke:rgba(255,255,255,.08)}
+  .au-ring .fill{stroke:var(--accent);stroke-linecap:round}
+  .au-ring-n{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--bg);line-height:1}
+  .au-ring-n .v{font-size:30px;font-variation-settings:'opsz' 48,'wdth' 90,'wght' 800;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+  .au-ring-n .t{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(246,244,239,.55);margin-top:2px;font-variation-settings:'opsz' 10,'wdth' 100,'wght' 700}
+  .au-grade{font-size:44px;color:var(--accent);line-height:1;font-variation-settings:'opsz' 72,'wdth' 82,'wght' 800;letter-spacing:-.045em;margin-bottom:3px}
+  .au-grade-t{font-size:14px;color:var(--bg);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700;letter-spacing:-.012em}
+  .au-grade-s{font-size:12px;color:rgba(246,244,239,.55);margin-top:2px;line-height:1.5;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 500}
+
+  .au-axes{display:grid;gap:10px}
+  .au-axis{display:grid;grid-template-columns:110px 1fr auto;gap:12px;align-items:center;font-size:12.5px}
+  .au-axis-k{color:rgba(246,244,239,.65);font-variation-settings:'opsz' 13,'wdth' 100,'wght' 600}
+  .au-axis-bar{position:relative;height:6px;background:rgba(255,255,255,.08);border-radius:100px;overflow:hidden}
+  .au-axis-fill{height:100%;background:var(--accent);border-radius:100px;width:0%;transition:width .5s cubic-bezier(.22,.8,.2,1)}
+  .au-axis-v{color:var(--bg);font-variant-numeric:tabular-nums;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 800;text-align:right;min-width:28px}
+
+  .au-plan{padding:20px 28px 26px;background:#151a1c;border-top:1px solid rgba(255,255,255,.08)}
+  .au-plan-t{font-size:12px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 700;margin-bottom:12px}
+  .au-plan-t::before{content:'\u00A7 ';color:var(--ink-3)}
+  .au-plan ol{counter-reset:p;display:grid;gap:10px;list-style:none}
+  .au-plan ol li{counter-increment:p;display:grid;grid-template-columns:26px 1fr;gap:12px;font-size:13.5px;line-height:1.55;color:rgba(246,244,239,.78)}
+  .au-plan ol li::before{content:counter(p,decimal-leading-zero);color:var(--accent);font-size:14px;font-variation-settings:'opsz' 15,'wdth' 90,'wght' 800;letter-spacing:-.015em;font-variant-numeric:tabular-nums}
+  .au-plan ol li strong{color:var(--bg);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .au-plan ol li a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(249,115,22,.4);text-underline-offset:.18em}
+
+  .au-cta{padding:20px 28px;background:var(--ink-bg);border-top:1px solid rgba(255,255,255,.08);display:grid;gap:8px}
+  .au-cta-l{font-size:12.5px;color:rgba(246,244,239,.7);line-height:1.5}
+  .au-cta-l strong{color:var(--bg)}
+  .au-cta a{background:var(--accent);color:var(--ink-bg);border-color:var(--accent);padding:12px 20px;font-size:14px;border-radius:var(--r-pill);display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700;transition:all .18s var(--ease)}
+  .au-cta a:hover{background:var(--bg);color:var(--ink-bg);transform:translateY(-1px)}
+  .au-cta a svg{width:14px;height:14px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="/calculator.html" class="nav-link">Calculator</a>
+      <a href="/pilot.html" class="nav-link">Pilot</a>
+      <a href="/about.html" class="nav-link">Founder</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=audit" class="nav-cta">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+<section class="au-hero">
+  <div class="au-hero-wrap">
+    <span class="au-kicker">Free audit \u00B7 ~4 minutes</span>
+    <h1>How <span class="accent">leak-tight</span> is your practice reactivation setup?</h1>
+    <p class="lede">12 questions across compliance, sequencing, segmentation, and tooling. <strong>Score updates live</strong> as you answer. No signup to see your result. At the end you get a personalized 90-day fix plan with the 3 highest-leverage moves for your specific gaps.</p>
+  </div>
+</section>
+
+<section class="au-shell">
+
+  <form class="au-form" id="auForm" autocomplete="off" onsubmit="event.preventDefault()">
+    <div class="au-form-hd">
+      <span class="au-step" id="auStepLabel">Question 1 of 12</span>
+      <span class="au-prog-label"><span id="auProgPct">0</span>% complete</span>
+    </div>
+    <div class="au-prog-bar"><div class="au-prog-fill" id="auProgFill"></div></div>
+
+    <div id="auQuestions"></div>
+
+    <div class="au-nav">
+      <button type="button" class="au-btn g" id="auPrev" disabled>Previous</button>
+      <button type="button" class="au-btn p" id="auNext" disabled>
+        <span id="auNextLabel">Next</span>
+        <svg id="auNextArrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+    </div>
+  </form>
+
+  <aside class="au-result" aria-live="polite">
+    <div class="au-result-hd">
+      <span class="au-result-k">Your reactivation score</span>
+      <span class="au-result-state">Live</span>
+    </div>
+
+    <div class="au-result-body">
+      <div class="au-score-ring">
+        <div class="au-ring">
+          <svg viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="52"/>
+            <circle class="fill"  cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7" id="auRingFill"/>
+          </svg>
+          <div class="au-ring-n">
+            <div class="v"><span id="auScoreV">\u2014</span></div>
+            <div class="t">of 100</div>
+          </div>
+        </div>
+        <div>
+          <div class="au-grade" id="auGrade">\u2014</div>
+          <div class="au-grade-t" id="auGradeT">Start the audit to see your score</div>
+          <div class="au-grade-s" id="auGradeS">Updates live as you answer.</div>
+        </div>
+      </div>
+
+      <div class="au-axes">
+        <div class="au-axis">
+          <div class="au-axis-k">Compliance</div>
+          <div class="au-axis-bar"><div class="au-axis-fill" id="auAxC"></div></div>
+          <div class="au-axis-v" id="auAxCV">\u2014</div>
+        </div>
+        <div class="au-axis">
+          <div class="au-axis-k">Sequencing</div>
+          <div class="au-axis-bar"><div class="au-axis-fill" id="auAxS"></div></div>
+          <div class="au-axis-v" id="auAxSV">\u2014</div>
+        </div>
+        <div class="au-axis">
+          <div class="au-axis-k">Segmentation</div>
+          <div class="au-axis-bar"><div class="au-axis-fill" id="auAxG"></div></div>
+          <div class="au-axis-v" id="auAxGV">\u2014</div>
+        </div>
+        <div class="au-axis">
+          <div class="au-axis-k">Tooling</div>
+          <div class="au-axis-bar"><div class="au-axis-fill" id="auAxT"></div></div>
+          <div class="au-axis-v" id="auAxTV">\u2014</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="au-plan">
+      <div class="au-plan-t">Your 90-day fix plan</div>
+      <ol id="auPlan">
+        <li><strong>Start the audit.</strong> Plan appears based on your specific answers.</li>
+      </ol>
+    </div>
+
+    <div class="au-cta">
+      <div class="au-cta-l"><strong>Want the fix on autopilot?</strong> 14-day free trial \u00B7 no card \u00B7 one-click cancel.</div>
+      <a href="/signup?tier=practice_pro&amp;utm_source=audit&amp;utm_campaign=result" id="auSignup" data-track="Audit result CTA">
+        Start the 14-day trial
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </aside>
+
+</section>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Tools</h4>
+        <ul><li><a href="/audit.html">Free audit</a></li><li><a href="/calculator.html">ROI calculator</a></li><li><a href="/playbook.html">Playbook</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/about.html">Founder letter</a></li><li><a href="/security.html">Security</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/pilot.html">Pilot</a></li><li><a href="/compare.html">Compare</a></li><li><a href="/schedule.html">Book a call</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>Free reactivation audit \u00B7 4 min \u00B7 no signup</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  const Q = [
+    {ax:'C', q:"Has your practice signed a Business Associate Agreement (BAA) with every vendor that touches patient data?",
+     s:"Every SMS/email vendor, every analytics tool, every integration that can see patient names + contact info.",
+     o:[["BAA signed with every vendor",3],["BAA signed with some vendors",1],["Not sure / no current BAAs",0]]},
+    {ax:'C', q:"Are your outbound SMS campaigns A2P 10DLC registered with the carriers?",
+     s:"Since 2023, unregistered business SMS is filtered or blocked. Your vendor handles registration, but verify.",
+     o:[["Yes, 10DLC registered + active",3],["In progress / not sure",1],["No / we're on a generic SMS tool",0]]},
+    {ax:'C', q:"Do your SMS sends rate-limit to 1/day and 3/week per patient?",
+     s:"TCPA case law suggests these caps. Enforced in code is safer than enforced by policy.",
+     o:[["Yes, enforced at the tool level",3],["We rely on operators to watch it",1],["Not enforced / not sure",0]]},
+    {ax:'S', q:"When a patient lapses, how many outreach touches are sent in the first 14 days?",
+     s:"Research shows 5 touches cap at 8\u201315% reactivation; a single touch at 1\u20133%.",
+     o:[["5+ touches (email, SMS, phone)",3],["3\u20134 touches",2],["1\u20132 touches",1],["No systematic outreach",0]]},
+    {ax:'S', q:"Does your reactivation sequence mix channels (email + SMS + phone), or is it one channel?",
+     s:"Multi-channel sequences reactivate ~2\u00D7 as many patients as single-channel.",
+     o:[["Email + SMS + phone in sequence",3],["Two channels (e.g. email + SMS)",2],["One channel only",0]]},
+    {ax:'S', q:"Do you follow up on replies within 30 minutes during business hours?",
+     s:"Reply-to-book conversion drops ~40% after 1 hour. First-hour reply is critical.",
+     o:[["Yes, within 30 minutes",3],["Same business day",2],["Next day or later",1],["No systematic reply process",0]]},
+    {ax:'G', q:"Do you treat broken-appointment patients (A-segment) differently from overdue-hygiene patients (B-segment)?",
+     s:"A-segment responds to 'find me a time' framing. B-segment responds to 'reset, not reminder' framing. Generic messaging halves both.",
+     o:[["Yes, separate campaigns + copy",3],["Same campaign, slightly different copy",1],["One campaign for both",0]]},
+    {ax:'G', q:"Do you break overdue-hygiene patients into 0\u201390, 90\u2013365, and 365+ day windows?",
+     s:"B1/B2/B3 windows have different reactivation ceilings (14% / 9% / 5%). Treating them identically loses 2\u20135 pts overall.",
+     o:[["Yes, 3+ windows with different copy",3],["2 windows",1],["One window / all-in-one list",0]]},
+    {ax:'G', q:"Do you tag by referral source (GP referral) or PMS tag (new/recall/emergency)?",
+     s:"Specialty practices especially: referral-source tagging lets you close the loop with the GP and double their referral rate.",
+     o:[["Yes, fully tagged",3],["Some tags, not systematic",1],["Not tagged",0]]},
+    {ax:'T', q:"Is your reactivation work automated, or does the front desk do it manually?",
+     s:"Manual front-desk recall is ~3 hr/week per 2,000 active patients. That time is scarce.",
+     o:[["Fully automated tool",3],["Semi-automated (templates, manual send)",2],["Fully manual recall calls",0]]},
+    {ax:'T', q:"Does your tool use AI to classify replies and draft front-desk responses?",
+     s:"Reply-intent classification + draft response lifts book rate per reply ~40% and saves 60\u201390 min/day.",
+     o:[["Yes",3],["Some AI features, no reply-intent",1],["No AI / manual everything",0]]},
+    {ax:'T', q:"Can you cancel your current tool in one click, with data export under 1 hour?",
+     s:"Dark-pattern cancel + locked data is the #1 sign of a vendor you'll regret. Portability = trust signal.",
+     o:[["Yes, one-click cancel + export",3],["Can cancel, but notice period or calls",1],["Annual contract / locked data",0]]},
+  ];
+
+  const AX_LABEL = {C:'Compliance', S:'Sequencing', G:'Segmentation', T:'Tooling'};
+  const AX_FIX_LEAD = {
+    C: 'Sign BAAs with every SMS + email + analytics vendor this week.',
+    S: 'Replace single-send recall blasts with a 5-touch sequence (email \u2192 SMS \u2192 email \u2192 phone \u2192 SMS) over 14 days.',
+    G: 'Split lapsed patients into A1/A2 (broken-appt) and B1/B2/B3 (overdue-hygiene) windows \u2014 5 segments, not one.',
+    T: 'Move reactivation off the front desk\u2019s desk and pick a tool with AI reply-intent classification.',
+  };
+
+  const form  = document.getElementById('auQuestions');
+  const prev  = document.getElementById('auPrev');
+  const next  = document.getElementById('auNext');
+  const nextL = document.getElementById('auNextLabel');
+  const nextA = document.getElementById('auNextArrow');
+  const stepL = document.getElementById('auStepLabel');
+  const progL = document.getElementById('auProgPct');
+  const progF = document.getElementById('auProgFill');
+
+  const ringFill = document.getElementById('auRingFill');
+  const ringC   = 326.7;
+  const axC = document.getElementById('auAxC');  const axCV = document.getElementById('auAxCV');
+  const axS = document.getElementById('auAxS');  const axSV = document.getElementById('auAxSV');
+  const axG = document.getElementById('auAxG');  const axGV = document.getElementById('auAxGV');
+  const axT = document.getElementById('auAxT');  const axTV = document.getElementById('auAxTV');
+  const scoreV = document.getElementById('auScoreV');
+  const grade  = document.getElementById('auGrade');
+  const gradeT = document.getElementById('auGradeT');
+  const gradeS = document.getElementById('auGradeS');
+  const planEl = document.getElementById('auPlan');
+  const signup = document.getElementById('auSignup');
+
+  let answers = new Array(Q.length).fill(null);
+  let pos = 0;
+
+  function render() {
+    while (form.firstChild) form.removeChild(form.firstChild);
+    const q = Q[pos];
+    const card = document.createElement('div');
+    card.className = 'au-q';
+    const h3 = document.createElement('h3');
+    h3.textContent = q.q;
+    const sm = document.createElement('small');
+    sm.textContent = q.s;
+    const opts = document.createElement('div');
+    opts.className = 'au-opts';
+    q.o.forEach((opt, i) => {
+      const label = document.createElement('label');
+      label.className = 'au-opt' + (answers[pos] === i ? ' on' : '');
+      const inp = document.createElement('input');
+      inp.type = 'radio';
+      inp.name = 'q_' + pos;
+      inp.value = String(i);
+      if (answers[pos] === i) inp.checked = true;
+      inp.addEventListener('change', () => {
+        answers[pos] = i;
+        render();
+        update();
+      });
+      const span = document.createElement('span');
+      span.className = 'au-opt-l';
+      span.textContent = opt[0];
+      label.appendChild(inp);
+      label.appendChild(span);
+      opts.appendChild(label);
+    });
+    card.appendChild(h3);
+    card.appendChild(sm);
+    card.appendChild(opts);
+    form.appendChild(card);
+
+    stepL.textContent = 'Question ' + (pos + 1) + ' of ' + Q.length;
+    const answered = answers.filter(v => v !== null).length;
+    const pct = Math.round((answered / Q.length) * 100);
+    progL.textContent = String(pct);
+    progF.style.width = pct + '%';
+
+    prev.disabled = pos === 0;
+    next.disabled = answers[pos] === null;
+    const isLast = pos === Q.length - 1;
+    nextL.textContent = isLast ? 'See final plan' : 'Next';
+    nextA.style.display = isLast ? 'none' : '';
+  }
+
+  function update() {
+    const tallies = {C:[0,0], S:[0,0], G:[0,0], T:[0,0]};
+    Q.forEach((q, i) => {
+      const maxScore = Math.max(...q.o.map(x => x[1]));
+      tallies[q.ax][1] += maxScore;
+      if (answers[i] !== null) {
+        tallies[q.ax][0] += q.o[answers[i]][1];
+      }
+    });
+
+    const pctOf = (k) => tallies[k][1] > 0 ? Math.round((tallies[k][0] / tallies[k][1]) * 100) : 0;
+    const pctC = pctOf('C');
+    const pctS = pctOf('S');
+    const pctG = pctOf('G');
+    const pctT = pctOf('T');
+    const overall = Math.round((pctC + pctS + pctG + pctT) / 4);
+
+    axC.style.width = pctC + '%'; axCV.textContent = String(pctC);
+    axS.style.width = pctS + '%'; axSV.textContent = String(pctS);
+    axG.style.width = pctG + '%'; axGV.textContent = String(pctG);
+    axT.style.width = pctT + '%'; axTV.textContent = String(pctT);
+
+    const answered = answers.filter(v => v !== null).length;
+    if (answered === 0) {
+      scoreV.textContent = '\u2014';
+      grade.textContent = '\u2014';
+      gradeT.textContent = 'Start the audit to see your score';
+      gradeS.textContent = 'Updates live as you answer.';
+      ringFill.setAttribute('stroke-dashoffset', String(ringC));
+      return;
+    }
+
+    scoreV.textContent = String(overall);
+    ringFill.setAttribute('stroke-dashoffset', String(ringC * (1 - overall/100)));
+
+    let g = 'C', gt = 'Under-engineered', gs = 'Most practices are here. Most revenue leaves here.';
+    if (overall >= 85)      { g = 'A'; gt = 'Flagship-tight';     gs = 'Top 5% of US practices. The only gains left are marginal tuning.'; }
+    else if (overall >= 70) { g = 'B'; gt = 'Ahead of the curve'; gs = 'Top 20%. Two or three moves away from flagship-tight.'; }
+    else if (overall >= 55) { g = 'C'; gt = 'Working but leaking';gs = 'Industry-average. Biggest gains: sequencing + segmentation.'; }
+    else if (overall >= 35) { g = 'D'; gt = 'Major leaks';        gs = 'Per-patient LTV is leaking significantly. Fix the top 3 gaps first.'; }
+    else                    { g = 'F'; gt = 'Critical gaps';      gs = 'High compliance exposure + high revenue leak. Start today.'; }
+
+    grade.textContent = g;
+    gradeT.textContent = gt;
+    gradeS.textContent = gs;
+
+    const axScores = [
+      ['C', pctC],
+      ['S', pctS],
+      ['G', pctG],
+      ['T', pctT],
+    ].sort((a, b) => a[1] - b[1]);
+    const weakest = axScores.slice(0, 3);
+
+    // Safe DOM rebuild — no innerHTML anywhere
+    while (planEl.firstChild) planEl.removeChild(planEl.firstChild);
+    weakest.forEach(([code, pct]) => {
+      const li = document.createElement('li');
+      const strong = document.createElement('strong');
+      strong.textContent = AX_LABEL[code];
+      li.appendChild(strong);
+      li.appendChild(document.createTextNode(' (' + pct + '/100) \u2014 ' + AX_FIX_LEAD[code]));
+      planEl.appendChild(li);
+    });
+    // Final CTA item
+    const liCTA = document.createElement('li');
+    const strongCTA = document.createElement('strong');
+    strongCTA.textContent = 'Faster path:';
+    liCTA.appendChild(strongCTA);
+    liCTA.appendChild(document.createTextNode(' '));
+    const a = document.createElement('a');
+    a.href = '/signup?tier=practice_pro&utm_source=audit&utm_campaign=plan_step';
+    a.textContent = 'start the 14-day trial';
+    liCTA.appendChild(a);
+    liCTA.appendChild(document.createTextNode(' and have the top 3 fixes wired this week.'));
+    planEl.appendChild(liCTA);
+
+    signup.href = '/signup?tier=practice_pro&utm_source=audit&utm_campaign=result&score=' + overall + '&grade=' + g.toLowerCase();
+
+    try {
+      if (window.usdprTrack) {
+        window.usdprTrack('Audit question answered', {pos: pos+1, overall, grade: g});
+        if (answered === Q.length) window.usdprTrack('Audit completed', {overall, grade: g});
+      }
+    } catch(e){}
+  }
+
+  prev.addEventListener('click', () => { if (pos > 0) { pos--; render(); } });
+  next.addEventListener('click', () => {
+    if (pos < Q.length - 1) { pos++; render(); }
+    else { document.querySelector('.au-result').scrollIntoView({behavior:'smooth', block:'start'}); }
+  });
+
+  render();
+  update();
+})();
+</script>
+<script defer src="/founder-widget.js"></script>
+</body>
+</html>

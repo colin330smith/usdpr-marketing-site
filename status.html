@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>usdpr. — System Status</title>
+<meta name="description" content="Live operational status for US Dental Patient Recovery. DB, scheduler, webhook queue, tenant dashboards.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f6f4ef;--bg-card:#ffffff;--ink:#0b0e0f;--ink-2:#3a3d3f;--ink-3:#6b6e70;--accent:#f97316;--border:#e3ddd1;--ok:#15803d;--warn:#ea580c;--bad:#dc2626}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Bricolage Grotesque',sans-serif;background:var(--bg);color:var(--ink-2);font-size:16px;line-height:1.6;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 400}
+  .container{max-width:760px;margin:0 auto;padding:48px 24px 96px}
+  h1{font-size:clamp(40px,6vw,56px);color:var(--ink);font-variation-settings:'opsz' 96,'wdth' 100,'wght' 800;letter-spacing:-.04em;margin-bottom:16px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.04em;color:var(--accent);font-size:12px;font-weight:700}
+  .nav{padding:20px 24px;border-bottom:1px solid var(--border)}
+  .nav-in{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:baseline}
+  .wm{font-size:22px;font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;color:var(--ink);letter-spacing:-.05em;text-decoration:none}
+  .wm-dot{color:var(--accent)}
+  .nav-back{font-size:13px;color:var(--ink-2);text-decoration:none}
+  .status-banner{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:24px;text-align:center}
+  .status-dot{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:middle;margin-right:8px}
+  .status-ok{background:var(--ok)}
+  .status-degraded{background:var(--warn)}
+  .status-down{background:var(--bad)}
+  .status-unknown{background:var(--ink-3)}
+  .status-headline{font-size:24px;color:var(--ink);font-variation-settings:'opsz' 32,'wdth' 100,'wght' 700;letter-spacing:-.02em;margin-bottom:8px}
+  .status-detail{color:var(--ink-3);font-size:14px}
+  .checks{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+  .check{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border)}
+  .check:last-child{border-bottom:none}
+  .check-name{font-size:14px;color:var(--ink)}
+  .check-val{font-size:13px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .check-val.ok{color:var(--ok)}
+  .check-val.bad{color:var(--bad)}
+  .meta{margin-top:32px;text-align:center;color:var(--ink-3);font-size:12.5px}
+  .meta a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .pulse{animation:pulse 2s infinite}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="/" class="wm">usdpr<span class="wm-dot">.</span></a>
+    <a href="/" class="nav-back">← Back</a>
+  </div>
+</nav>
+<div class="container">
+  <div class="eyebrow">System status · live</div>
+  <h1>Everything operational?</h1>
+
+  <div class="status-banner" id="banner">
+    <div class="status-headline">
+      <span class="status-dot status-unknown pulse" id="statusDot"></span>
+      <span id="statusHeadline">Checking…</span>
+    </div>
+    <div class="status-detail" id="statusDetail">Probing the app now.</div>
+  </div>
+
+  <div class="checks" id="checks"></div>
+
+  <div class="meta">
+    Auto-refreshes every 30 seconds. Last checked: <span id="lastChecked">—</span><br>
+    Questions? <a href="mailto:security@usdentalpatientrecovery.com">security@usdentalpatientrecovery.com</a>
+    · <a href="/changelog.html">Changelog</a>
+    · <a href="/security.html">Security</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var appBase = "https://app.usdentalpatientrecovery.com";
+  var dot = document.getElementById("statusDot");
+  var headline = document.getElementById("statusHeadline");
+  var detail = document.getElementById("statusDetail");
+  var checks = document.getElementById("checks");
+  var lastChecked = document.getElementById("lastChecked");
+
+  function setClass(el, cls) {
+    el.className = "status-dot " + cls;
+  }
+
+  function addCheckRow(parent, name, value, ok) {
+    var row = document.createElement("div");
+    row.className = "check";
+    var left = document.createElement("span");
+    left.className = "check-name";
+    left.textContent = name;
+    var right = document.createElement("span");
+    right.className = "check-val" + (ok === true ? " ok" : (ok === false ? " bad" : ""));
+    right.textContent = value == null ? "—" : String(value);
+    row.appendChild(left);
+    row.appendChild(right);
+    parent.appendChild(row);
+  }
+
+  function render(body, status) {
+    if (status === 200) {
+      setClass(dot, "status-ok");
+      headline.textContent = "All systems operational";
+      detail.textContent = "Every critical subsystem returned healthy.";
+    } else if (status === 503) {
+      setClass(dot, "status-degraded");
+      headline.textContent = "Degraded service";
+      detail.textContent = "At least one subsystem is not responding. The team is already paged.";
+    } else {
+      setClass(dot, "status-down");
+      headline.textContent = "Status unknown";
+      detail.textContent = "Probe returned HTTP " + status + ".";
+    }
+
+    while (checks.firstChild) checks.removeChild(checks.firstChild);
+    if (body && body.critical) {
+      Object.keys(body.critical).forEach(function(k){
+        var v = body.critical[k];
+        var ok = typeof v === "string" && v.indexOf("ok") === 0;
+        addCheckRow(checks, k, v, ok);
+      });
+    }
+    if (body && body.info) {
+      Object.keys(body.info).forEach(function(k){
+        addCheckRow(checks, k, body.info[k], null);
+      });
+    }
+    lastChecked.textContent = new Date().toLocaleTimeString();
+  }
+
+  function probe() {
+    fetch(appBase + "/healthz/deep", {
+      method: "GET", mode: "cors", cache: "no-cache",
+    }).then(function(r){
+      return r.json().then(function(j){ return [j, r.status]; });
+    }).then(function(pair){
+      render(pair[0], pair[1]);
+    }).catch(function(err){
+      setClass(dot, "status-down");
+      headline.textContent = "Can't reach the app";
+      detail.textContent = "The status page is up. The app host is unreachable from this browser (or CORS blocked).";
+      lastChecked.textContent = new Date().toLocaleTimeString();
+    });
+  }
+
+  probe();
+  setInterval(probe, 30000);
+})();
+</script>
+</body>
+</html>

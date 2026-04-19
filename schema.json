@@ -1,0 +1,166 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://usdpr.netlify.app/#organization",
+      "name": "US Dental Patient Recovery",
+      "alternateName": "usdpr.",
+      "url": "https://usdpr.netlify.app/",
+      "logo": "https://usdpr.netlify.app/brand/logo-wordmark.svg",
+      "image": "https://usdpr.netlify.app/brand/og.svg",
+      "description": "Patient reactivation SaaS for US dental practices. Email, SMS, and phone outreach on autopilot. Self-serve plans from $297/month with a 14-day free trial. Multi-location DSO plans available.",
+      "slogan": "Bring back the patients you already have.",
+      "founder": {
+        "@type": "Person",
+        "name": "Colin Smith",
+        "jobTitle": "Founder"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Orlando",
+        "addressRegion": "FL",
+        "addressCountry": "US"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+      },
+      "serviceType": "Patient reactivation SaaS for dental practices",
+      "priceRange": "$$",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Practice",
+          "price": "297.00",
+          "priceCurrency": "USD",
+          "description": "Solo practice, 1–3 chairs. Up to 2,000 active patients. 14-day free trial, no credit card.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "297.00",
+            "priceCurrency": "USD",
+            "unitCode": "MON"
+          },
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Patient reactivation — Practice tier",
+            "serviceType": "Healthcare communication / patient engagement"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Practice Pro",
+          "price": "697.00",
+          "priceCurrency": "USD",
+          "description": "Growing practice, 3–8 chairs. Up to 10,000 active patients. Priority support + advanced features.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "697.00",
+            "priceCurrency": "USD",
+            "unitCode": "MON"
+          },
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Patient reactivation — Practice Pro tier",
+            "serviceType": "Healthcare communication / patient engagement"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "DSO",
+          "price": "1997.00",
+          "priceCurrency": "USD",
+          "description": "Multi-location DSO. Up to 50,000 patients. $297 per additional location. Dedicated CSM.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "1997.00",
+            "priceCurrency": "USD",
+            "unitCode": "MON"
+          },
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Patient reactivation — DSO tier",
+            "serviceType": "Healthcare communication / patient engagement"
+          }
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Sales",
+        "email": "colin@usdentalpatientrecovery.com",
+        "availableLanguage": "English",
+        "areaServed": "US"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://usdpr.netlify.app/#website",
+      "url": "https://usdpr.netlify.app/",
+      "name": "usdpr. — Bring back your lost dental patients",
+      "publisher": { "@id": "https://usdpr.netlify.app/#organization" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://usdpr.netlify.app/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this legal in my state?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We only contact your existing patients, under your practice name — follow-up care, not solicitation. We charge a flat SaaS fee, never per-patient, keeping the arrangement inside anti-kickback and patient-brokering safe harbors in every state."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about HIPAA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We sign a Business Associate Agreement before any patient data moves. Every message passes a PHI scrubber. Every send, reply, and booking is logged in an append-only audit log. Data sits on encrypted volumes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does my front desk have to do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Four things: export your patient list (or connect your PMS directly); approve our templates; receive warm handoffs when patients are ready to book; tell us who showed up for the weekly report."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if it doesn't work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cancel in one click. No per-patient invoice, no cancellation fee. Data export is free and always available via /onboarding/export or /api/v1."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why flat fee and not pay-per-rebook?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Per-patient payments trigger anti-kickback and patient-brokering statutes in most states (Florida's Patient Brokering Act treats it as a third-degree felony). Flat SaaS fee keeps the arrangement compliant and keeps incentives aligned on quality, not volume."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast can I actually start?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Checkout takes under 90 seconds. BAA auto-signs via HelloSign. Upload your CSV when you're ready. Email campaigns go live on day one; SMS layers in once the carrier approves your 10DLC brand (2–3 weeks)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What dental software do you work with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Open Dental has a direct REST API integration available today. Dentrix, Eaglesoft, Curve Dental, and Dentrix Ascend are supported via partner-program activation (1–4 weeks). CSV upload works with any PMS."
+          }
+        }
+      ]
+    }
+  ]
+}

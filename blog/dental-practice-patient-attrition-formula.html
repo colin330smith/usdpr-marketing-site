@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Three common formulas — &#x27;lost patients,&#x27; &#x27;lapsed,&#x27; and &#x27;dormant&#x27; — each compute a different number. Pick wrong and your dashboard lies to you.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Dental practice patient attrition formula — the 3 versions and which to use">
+<meta property="og:description" content="Three common formulas — &#x27;lost patients,&#x27; &#x27;lapsed,&#x27; and &#x27;dormant&#x27; — each compute a different number. Pick wrong and your dashboard lies to you.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://usdpr.netlify.app/blog/dental-practice-patient-attrition-formula.html">
+<meta property="og:image" content="/og.svg">
+<link rel="canonical" href="https://usdpr.netlify.app/blog/dental-practice-patient-attrition-formula.html">
+<title>Dental practice patient attrition formula — the 3 versions and which to use · usdpr.</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Dental practice patient attrition formula \u2014 the 3 versions and which to use","description":"Three common formulas \u2014 'lost patients,' 'lapsed,' and 'dormant' \u2014 each compute a different number. Pick wrong and your dashboard lies to you.","author":{"@type":"Person","name":"Colin Smith"},"publisher":{"@type":"Organization","name":"usdpr.","logo":{"@type":"ImageObject","url":"https://usdpr.netlify.app/brand/logo-wordmark.svg"}},"datePublished":"2026-04-19","dateModified":"2026-04-19","inLanguage":"en-US","url":"https://usdpr.netlify.app/blog/dental-practice-patient-attrition-formula.html","mainEntityOfPage":"https://usdpr.netlify.app/blog/dental-practice-patient-attrition-formula.html","keywords":"dental patient attrition formula"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What's the 'right' dental patient attrition rate?","acceptedAnswer":{"@type":"Answer","text":"Industry range: 6-14%. Below 6% = exceptional retention (rare). Above 14% = urban high-churn market or structural patient-experience problem."}},{"@type":"Question","name":"Does insurance churn count as attrition?","acceptedAnswer":{"@type":"Answer","text":"Usually yes. If a patient switches insurance and doesn't come back, that's attrition even if their life circumstances are unchanged. Recovering these requires a specific insurance-change-focused outreach."}},{"@type":"Question","name":"How often should I recalculate attrition?","acceptedAnswer":{"@type":"Answer","text":"Monthly rolling for Formula 01 and 02. Quarterly for Formula 03. Set a dashboard alert if Formula 02 rises >2 percentage points in any quarter."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdpr.netlify.app"></script>
+<style>
+  .bp-wrap{max-width:760px;margin:0 auto;padding:clamp(40px,5vw,72px) var(--gutter) clamp(56px,7vw,96px)}
+  .bp-kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;margin-bottom:18px}
+  .bp-kicker::before{content:'';width:22px;height:1px;background:var(--accent)}
+  .bp-h1{font-size:clamp(32px,4.8vw,56px);color:var(--ink);font-variation-settings:'opsz' 72,'wdth' 92,'wght' 800;letter-spacing:-.038em;line-height:1.05;margin-bottom:16px}
+  .bp-dek{font-size:clamp(17px,1.6vw,20px);color:var(--ink-2);line-height:1.55;margin-bottom:22px;padding-bottom:20px;border-bottom:1px solid var(--border);font-variation-settings:'opsz' 20,'wdth' 100,'wght' 400}
+  .bp-s{margin-bottom:clamp(24px,3vw,36px)}
+  .bp-s h2{font-size:clamp(22px,2.4vw,30px);color:var(--ink);font-variation-settings:'opsz' 36,'wdth' 100,'wght' 700;letter-spacing:-.028em;line-height:1.2;margin-bottom:12px;padding-top:12px}
+  .bp-s p{font-size:16px;line-height:1.7;color:var(--ink-2);margin-bottom:14px;max-width:64ch}
+  .bp-s p strong{color:var(--ink);font-variation-settings:'opsz' 17,'wdth' 100,'wght' 700}
+  .bp-s p a{color:var(--accent);text-decoration:underline;text-decoration-color:rgba(249,115,22,.35);text-underline-offset:.2em}
+  .bp-s ul{margin:12px 0 16px;padding-left:1.2em;max-width:64ch}
+  .bp-s li{font-size:15.5px;line-height:1.65;color:var(--ink-2);margin-bottom:6px}
+  .bp-s li strong{color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700}
+  .bp-t{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden}
+  .bp-t th{text-align:left;padding:10px 12px;background:var(--bg-soft);color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;border-bottom:1px solid var(--border);font-size:12px}
+  .bp-t td{padding:10px 12px;border-top:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+  .bp-faq{margin-top:clamp(32px,4vw,56px);padding-top:24px;border-top:1px solid var(--border)}
+  .bp-faq h2{font-size:clamp(22px,2.4vw,30px);color:var(--ink);font-variation-settings:'opsz' 36,'wdth' 100,'wght' 700;margin-bottom:14px;letter-spacing:-.028em}
+  .bp-faq-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 20px;margin-bottom:8px}
+  .bp-faq-item summary{font-size:15.5px;color:var(--ink);font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700;letter-spacing:-.015em;cursor:pointer}
+  .bp-faq-item p{font-size:14.5px;line-height:1.65;color:var(--ink-2);margin-top:10px;max-width:60ch}
+  .bp-cta{margin-top:clamp(40px,5vw,64px);padding:clamp(24px,3vw,36px);background:var(--bg-vellum);border-radius:var(--r-lg);text-align:center}
+  .bp-cta h3{font-size:clamp(20px,2.4vw,28px);color:var(--ink);font-variation-settings:'opsz' 32,'wdth' 100,'wght' 700;letter-spacing:-.022em;margin-bottom:8px;line-height:1.2}
+  .bp-cta p{font-size:14.5px;color:var(--ink-2);max-width:52ch;margin:0 auto 18px;line-height:1.55}
+  .bp-cta .row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="/trust.html" class="nav-link">Trust</a>
+      <a href="/pilot.html" class="nav-link">Pilot</a>
+      <a href="/calculator.html" class="nav-link">Calculator</a>
+      <a href="/about.html" class="nav-link">Founder</a>
+      <a href="/signup?tier=practice_pro&amp;utm_source=blog_dental-practice-patient-attrition-formula" class="nav-cta">Start trial</a>
+    </nav>
+  </div>
+</header>
+
+<article class="bp-wrap">
+  <div class="bp-kicker">Field guide · 2026-04-19</div>
+  <h1 class="bp-h1">Dental practice patient attrition formula — the 3 versions and which to use</h1>
+  <p class="bp-dek">Three common formulas — &#x27;lost patients,&#x27; &#x27;lapsed,&#x27; and &#x27;dormant&#x27; — each compute a different number. Pick wrong and your dashboard lies to you.</p>
+
+<section class="bp-s"><h2>Why you need a formal formula</h2>
+<p>Every dental practice-management consultant uses a different 'attrition' number. Some count any patient not seen in 6 months. Some only count patients with no future appointment. Some exclude new patients with <1 completed visit. The three formulas below each have valid use cases; using the wrong one systematically over- or under-reports your leak.</p>
+</section>
+<section class="bp-s"><h2>Formula 01 · Lost-patient rate (Levin Group standard)</h2>
+<p><strong>Formula:</strong> (Patients seen in prior 18 months - Patients seen in current 18 months) / Patients seen in prior 18 months × 100</p>
+<p><strong>Example:</strong> If you saw 2,100 patients in the 18 months ending Dec 2024 and 1,920 in the 18 months ending Dec 2025, your lost-patient rate is (2,100-1,920)/2,100 = 8.6%.</p>
+<p><strong>Use case:</strong> Year-over-year practice health. Industry benchmark 8-12%.</p>
+</section>
+<section class="bp-s"><h2>Formula 02 · Lapse rate (simpler, more common)</h2>
+<p><strong>Formula:</strong> Patients whose last visit is 13+ months old / Total active patient list × 100</p>
+<p><strong>Example:</strong> 2,000 active patients, 180 haven't been in 13+ months → 9% lapse rate.</p>
+<p><strong>Use case:</strong> Point-in-time snapshot. Easier to calculate. What most PMS systems and marketing tools use. Slightly understates attrition vs. Formula 01 because it ignores patients who aged out of 'active' entirely.</p>
+</section>
+<section class="bp-s"><h2>Formula 03 · Dormant-patient rate (the one everyone uses wrong)</h2>
+<p><strong>Formula:</strong> Patients whose last visit is 24+ months old AND who have NOT been flagged as moved/deceased / Total all-time patient list × 100</p>
+<p><strong>Example:</strong> Practice has 5,000 all-time patients; 850 are 24+ months with no flag = 17% dormant rate.</p>
+<p><strong>Use case:</strong> Useful for bulk reactivation campaigns (one-time sweep). NOT a useful year-over-year metric — the denominator grows every year as new patients age in.</p>
+</section>
+<section class="bp-s"><h2>Which to use for what</h2>
+<p><strong>Track quarterly:</strong> Formula 01 (Lost-patient rate). Standardizes year-over-year.</p>
+<p><strong>Trigger reactivation campaigns:</strong> Formula 02 (Lapse rate). Most actionable weekly.</p>
+<p><strong>Plan an annual sweep:</strong> Formula 03 (Dormant rate). Once per year, go after the whole dormant list in a coordinated 30-day push.</p>
+</section>
+<section class="bp-s"><h2>The $77k number for a typical practice</h2>
+<p>Formula 02 at 9% on a 2,000-patient practice = 180 lapsed patients/year. At a conservative 1.5 future visits × $285/visit, that's $77,000/year of unrealized production walking out. [Calculator with your specific numbers →](/calculator.html)</p>
+</section>
+
+<section class="bp-faq"><h2>Frequently asked</h2><details class="bp-faq-item"><summary>What&#x27;s the &#x27;right&#x27; dental patient attrition rate?</summary><p>Industry range: 6-14%. Below 6% = exceptional retention (rare). Above 14% = urban high-churn market or structural patient-experience problem.</p></details><details class="bp-faq-item"><summary>Does insurance churn count as attrition?</summary><p>Usually yes. If a patient switches insurance and doesn't come back, that's attrition even if their life circumstances are unchanged. Recovering these requires a specific insurance-change-focused outreach.</p></details><details class="bp-faq-item"><summary>How often should I recalculate attrition?</summary><p>Monthly rolling for Formula 01 and 02. Quarterly for Formula 03. Set a dashboard alert if Formula 02 rises >2 percentage points in any quarter.</p></details></section>
+
+  <div class="bp-cta">
+    <h3>Want to put this on autopilot?</h3>
+    <p>The 5-touch reactivation sequence runs end-to-end in [usdpr.](/) — pre-written templates, reply-intent AI, TCPA rate limits enforced in code. 14-day free trial, no card.</p>
+    <div class="row">
+      <a href="/signup?tier=practice_pro&amp;utm_source=blog&amp;utm_campaign=dental-practice-patient-attrition-formula" class="btn btn-primary" data-track="Blog CTA signup">Start the 14-day trial</a>
+      <a href="/calculator.html?utm_source=blog&amp;utm_campaign=dental-practice-patient-attrition-formula" class="btn btn-ghost">Run the calculator first</a>
+    </div>
+  </div>
+</article>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-col">
+        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
+        <div class="foot-tagline">Self-serve patient reactivation for US dental practices.</div>
+      </div>
+      <div class="foot-col">
+        <h4>Tools</h4>
+        <ul><li><a href="/calculator.html">Calculator</a></li><li><a href="/audit.html">Audit</a></li><li><a href="/playbook.html">Playbook</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Trust</h4>
+        <ul><li><a href="/trust.html">Trust hub</a></li><li><a href="/about.html">Founder letter</a></li><li><a href="/security.html">Security</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <ul><li><a href="/pilot.html">Pilot</a></li><li><a href="/compare.html">Compare</a></li><li><a href="/schedule.html">Book a call</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>TCPA compliant · HIPAA BAA · SOC 2 in progress</span>
+    </div>
+  </div>
+</footer>
+<script defer src="/founder-widget.js"></script>
+</body>
+</html>
