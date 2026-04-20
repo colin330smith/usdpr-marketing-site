@@ -1,275 +1,494 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="index,follow">
-<meta name="description" content="Privacy policy for usdpr. — US Dental Patient Recovery. HIPAA-aligned handling of patient data, subprocessor list, retention, and your opt-out rights.">
-<meta name="theme-color" content="#f6f4ef">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<meta property="og:title" content="Privacy Policy · usdpr.">
-<meta property="og:description" content="How US Dental Patient Recovery handles data. HIPAA-aligned. BAA first. No selling, no ad retargeting, no cross-practice data sharing.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://usdpr.netlify.app/privacy.html">
-<meta property="og:image" content="/og.svg">
-<title>Privacy Policy · usdpr.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/brand.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Privacy Notice — USDPR</title>
+<meta name="description" content="How US Dental Patient Recovery handles PHI, practice data, and customer contact information. BAA-first, minimum-necessary under 45 CFR §164.502." />
+<link rel="canonical" href="https://usdentalpatientrecovery.com/privacy.html" />
+<link rel="stylesheet" href="/brand/design-system.css" />
 <style>
-  /* ───── Per-page: rail layout for document + TOC ───── */
-  .doc-layout{
-    display:grid;
-    grid-template-columns:minmax(0,220px) minmax(0,1fr);
-    gap:clamp(28px,5vw,72px);
-    max-width:1100px;
-    margin:0 auto;
-    padding:clamp(48px,6vw,88px) var(--gutter) clamp(64px,8vw,112px);
-  }
-  @media(max-width:900px){
-    .doc-layout{grid-template-columns:1fr;gap:28px}
-    .toc-rail{display:none}
-  }
-  .toc-rail{padding-top:clamp(64px,6vw,110px)} /* align with h1 baseline */
-  .doc-layout .doc{padding:0;max-width:100%}
+  .legal-wrap { max-width: 820px; margin: 0 auto; padding: 0 var(--gutter); }
 
-  /* Shipping kicker — a one-line summary in the hero */
-  .doc-tldr{
-    margin-bottom:clamp(32px,4vw,48px);
-    padding:16px 18px 16px 20px;
-    border:1px solid var(--border);
-    border-left:3px solid var(--accent);
-    border-radius:var(--r-md);
-    background:var(--bg-card);
-    display:grid;
-    grid-template-columns:auto 1fr;
-    gap:14px;align-items:center;
-    font-size:14px;line-height:1.55;color:var(--ink-2);
+  .legal-mast {
+    padding: clamp(48px, 7vw, 96px) 0 clamp(32px, 4vw, 56px);
+    border-bottom: 1px solid var(--rule);
   }
-  .doc-tldr-l{
-    font-size:10px;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--accent);
-    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700;
-    padding:3px 10px;background:var(--accent-soft);
-    border-radius:var(--r-pill);
+  .legal-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber-700);
+    margin-bottom: 24px;
   }
-  .doc-tldr strong{color:var(--ink);font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .legal-title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.028em;
+    color: var(--ink-900);
+    margin: 0 0 24px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    text-wrap: balance;
+  }
+  .legal-title em { font-style: italic; font-variation-settings: "opsz" 144, "SOFT" 80; }
+  .legal-dek {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(20px, 2.4vw, 28px);
+    line-height: 1.3;
+    color: var(--ink-600);
+    max-width: 48ch;
+    margin: 0;
+    font-variation-settings: "opsz" 48, "SOFT" 60;
+    letter-spacing: -0.01em;
+  }
+  .legal-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+  }
+  .legal-meta dt {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-500);
+    margin-bottom: 6px;
+  }
+  .legal-meta dd {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--ink-900);
+    margin: 0;
+    font-weight: 500;
+  }
 
-  /* Small diff line — see what's new between versions */
-  .doc-diff{
-    display:inline-flex;align-items:center;gap:8px;
-    margin-left:auto;
-    font-size:11.5px;color:var(--ink-3);
-    font-variation-settings:'opsz' 12,'wdth' 100,'wght' 500;
+  .legal-body {
+    padding: clamp(48px, 7vw, 96px) 0 clamp(64px, 9vw, 120px);
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
   }
-  .doc-diff a{color:var(--ink-2);text-decoration:underline;text-decoration-color:var(--border-2);text-underline-offset:.18em}
-  .doc-diff a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+  @media (max-width: 820px) {
+    .legal-body { grid-template-columns: 1fr; gap: 24px; }
+    .legal-toc { position: static !important; }
+  }
+  .legal-toc {
+    position: sticky;
+    top: 88px;
+  }
+  .legal-toc h4 {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-500);
+    margin: 0 0 16px;
+    font-weight: 600;
+  }
+  .legal-toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: toc;
+  }
+  .legal-toc li {
+    counter-increment: toc;
+    margin-bottom: 8px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.4;
+    position: relative;
+    padding-left: 28px;
+  }
+  .legal-toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--amber-700);
+    font-weight: 500;
+  }
+  .legal-toc a {
+    color: var(--ink-600);
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  .legal-toc a:hover { color: var(--ink-900); }
+
+  .legal-article section {
+    padding: 0 0 clamp(32px, 4vw, 56px);
+    margin-bottom: clamp(24px, 3vw, 40px);
+    border-bottom: 1px solid var(--rule);
+    scroll-margin-top: 96px;
+  }
+  .legal-article section:last-child { border-bottom: 0; }
+  .legal-article h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.1;
+    letter-spacing: -0.018em;
+    color: var(--ink-900);
+    margin: 0 0 8px;
+    font-variation-settings: "opsz" 72;
+    text-wrap: balance;
+  }
+  .legal-article h2 em { font-style: italic; font-variation-settings: "opsz" 72, "SOFT" 70; }
+  .legal-article .sec-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-700);
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+  .legal-article h3 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.008em;
+    color: var(--ink-900);
+    margin: 28px 0 10px;
+  }
+  .legal-article p {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-700);
+    margin: 0 0 16px;
+  }
+  .legal-article ul {
+    padding: 0;
+    margin: 0 0 16px;
+    list-style: none;
+  }
+  .legal-article ul li {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-700);
+    margin-bottom: 8px;
+    padding-left: 24px;
+    position: relative;
+  }
+  .legal-article ul li::before {
+    content: '·';
+    position: absolute;
+    left: 6px;
+    top: -2px;
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--amber-600);
+    font-weight: 700;
+  }
+  .legal-article a {
+    color: var(--clinical-700);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
+  .legal-article strong {
+    color: var(--ink-900);
+    font-weight: 600;
+  }
+  .legal-article .callout {
+    background: var(--paper-100);
+    border-left: 2px solid var(--amber-600);
+    padding: 20px 24px;
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    margin: 20px 0;
+  }
+  .legal-article .callout p { margin: 0; font-size: 15px; color: var(--ink-700); }
+  .legal-article .callout p + p { margin-top: 8px; }
+
+  .legal-article .statute {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-500);
+    background: var(--paper-100);
+    padding: 2px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .legal-footer {
+    background: var(--ink-900);
+    color: var(--ink-300);
+    padding: clamp(48px, 6vw, 80px) 0;
+    border-top: 1px solid var(--rule);
+  }
+  .legal-footer-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  @media (max-width: 600px) { .legal-footer-inner { grid-template-columns: 1fr; } }
+  .legal-footer h5 {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--paper-100);
+    margin: 0 0 12px;
+  }
+  .legal-footer p, .legal-footer a {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--ink-300);
+    line-height: 1.55;
+    margin: 0 0 8px;
+  }
+  .legal-footer a { color: var(--amber-500); }
 </style>
 </head>
 <body>
 
-<header class="nav">
-  <div class="nav-in">
-    <a href="/" class="wordmark" aria-label="usdpr — US Dental Patient Recovery">usdpr<span class="wordmark-dot">.</span></a>
-    <nav class="nav-links">
-      <a href="/#how" class="nav-link">How it works</a>
-      <a href="/#pricing" class="nav-link">Pricing</a>
-      <a href="/demo" class="nav-link">Demo</a>
-      <a href="/compare.html" class="nav-link">Compare</a>
-      <a href="/security.html" class="nav-link">Security</a>
-      <a href="/signup?tier=practice_pro" class="nav-cta">Start free trial</a>
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <a href="/" class="wordmark" aria-label="USDPR — home">
+      <span style="display:inline-flex; align-items:baseline;">usdpr<span class="wordmark-dot">.</span></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/#product">Product</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/security.html">Security</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="/pilot.html" class="btn btn-primary arrow">Start a pilot</a>
     </nav>
   </div>
 </header>
 
-<div class="doc-layout">
-
-  <aside class="toc-rail" aria-label="On this page">
-    <nav class="toc">
-      <h6>On this page</h6>
-      <ol>
-        <li><a href="#s01">What we collect</a></li>
-        <li><a href="#s02">How we use it</a></li>
-        <li><a href="#s03">Text messages &amp; consent</a></li>
-        <li><a href="#s04">Subprocessors</a></li>
-        <li><a href="#s05">Security</a></li>
-        <li><a href="#s06">Retention</a></li>
-        <li><a href="#s07">Your choices</a></li>
-        <li><a href="#s08">Children</a></li>
-        <li><a href="#s09">Jurisdiction</a></li>
-        <li><a href="#s10">Changes</a></li>
-        <li><a href="#s11">Contact</a></li>
-      </ol>
-    </nav>
-  </aside>
-
-  <main class="doc">
-    <div class="doc-meta">
-      <span><strong>Effective</strong> · 2026-04-18</span>
-      <span><strong>Last updated</strong> · 2026-04-18</span>
-      <span><strong>Version</strong> · 1.0</span>
-      <span class="doc-diff">12 min read · <a href="/terms.html">Terms →</a></span>
-    </div>
-
-    <div class="doc-eye">Privacy</div>
-    <h1>Privacy Policy</h1>
-
-    <p class="doc-intro">This explains how <strong>usdpr.</strong> (US Dental Patient Recovery) collects, uses, and protects information when you visit our site, reply to our outreach, or become a client. Patient data we handle on behalf of a dental practice is governed by that practice's privacy notice and our signed Business Associate Agreement — not this policy.</p>
-
-    <div class="doc-tldr">
-      <span class="doc-tldr-l">TL;DR</span>
-      <span>We don't sell data. We don't share for ads. Patient data sits behind a signed BAA with encrypted storage, TCPA-compliant rate limits, and instant STOP honoring. Opt out any time.</span>
-    </div>
-
-    <section id="s01">
-      <header><span class="n">01</span>What we collect</header>
-      <div>
-        <h2>Information we gather, and from whom.</h2>
-        <h3>From orthodontic practices</h3>
-        <p>Practice name, owner name, address, office phone and email, billing contact. Under a signed BAA, we receive the patient list exports the practice sends us (name, phone, email, last visit date).</p>
-        <h3>From patients of our client practices</h3>
-        <p>Only what the practice shares under the BAA. We do not sell, rent, or share this data with anyone except the subprocessors listed below. Replies from patients come into our operator console and into the weekly report.</p>
-        <h3>From website visitors</h3>
-        <p>Standard server request data (IP, user agent, pages viewed), kept briefly. If you email us or book a call, we keep the exchange to honor any opt-out.</p>
-      </div>
-    </section>
-
-    <section id="s02">
-      <header><span class="n">02</span>How we use it</header>
-      <div>
-        <h2>Only for what you hired us to do.</h2>
-        <ul>
-          <li>Run reactivation outreach (text, email, phone) for your practice</li>
-          <li>Send weekly reports on outreach volume, responses, and bookings</li>
-          <li>Bill the practice, comply with our BAA, respond to legal requests</li>
-          <li>Contact dental practice owners about our service — opt out anytime (section 07)</li>
-        </ul>
-        <div class="pull">
-          <p>We never use patient data to train models, build audience segments, target ads, or cross-reference with other practices. Every reply you see in your report is a reply sent to your practice.</p>
-          <span class="pull-cite">Core commitment</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="s03">
-      <header><span class="n">03</span>Text messages and consent</header>
-      <div>
-        <h2>TCPA compliant. STOP honored. Carrier registered.</h2>
-        <p>Patient texts only go out after the practice confirms the patient's consent, per the <strong>Telephone Consumer Protection Act (TCPA)</strong> and our A2P 10DLC campaign registration. Every text includes the practice name and "Reply STOP to opt out." STOP is honored immediately and permanently. Texts are rate-limited: max 1 per day, 3 per week, per patient.</p>
-        <p>If you get outreach from us as a practice owner, reply STOP and we won't text you again.</p>
-      </div>
-    </section>
-
-    <section id="s04">
-      <header><span class="n">04</span>Subprocessors</header>
-      <div>
-        <h2>Who else handles the data.</h2>
-        <p>We only share data with services we need to run ours, under written agreements that require HIPAA compliance where patient data is involved:</p>
-        <dl class="defs">
-          <div class="defs-row"><dt>Twilio</dt><dd>SMS delivery, 10DLC carrier registration, phone number hosting. HIPAA-eligible with BAA.</dd></div>
-          <div class="defs-row"><dt>Resend</dt><dd>Transactional + outreach email delivery. DPA in place; no patient clinical detail in message bodies.</dd></div>
-          <div class="defs-row"><dt>Anthropic</dt><dd>Reply-intent classification and draft suggestions. Zero-data-retention tier; inputs are not used for training.</dd></div>
-          <div class="defs-row"><dt>Stripe</dt><dd>Card tokenization and subscription billing. PCI-DSS Level 1; we never see card numbers.</dd></div>
-          <div class="defs-row"><dt>HelloSign</dt><dd>BAA + Service Agreement e-signing. Signed documents stored encrypted, retained for audit.</dd></div>
-          <div class="defs-row"><dt>Fly.io</dt><dd>Application hosting on encrypted volumes, US-only regions, with IAM-scoped keys.</dd></div>
-        </dl>
-        <p>We do not sell data. We do not share data for cross-site advertising. We do not enroll patient data in any analytics, remarketing, or audience tool.</p>
-      </div>
-    </section>
-
-    <section id="s05">
-      <header><span class="n">05</span>Security</header>
-      <div>
-        <h2>Built to the HIPAA Security Rule.</h2>
-        <p>Data at rest on encrypted volumes. Data in transit uses TLS 1.2+. Access is role-based with least-privilege defaults. Every send, reply, and booking is logged with an immutable audit trail. Soft-delete semantics mean no record disappears in a hurry. We have a written incident-response plan tested quarterly. We don't store payment card data — payments go through a PCI-DSS Level 1 processor.</p>
-        <p><a href="/security.html">Our full security page →</a></p>
-      </div>
-    </section>
-
-    <section id="s06">
-      <header><span class="n">06</span>Retention</header>
-      <div>
-        <h2>Patient data lives as long as the BAA does.</h2>
-        <p>At the end of the engagement we return or destroy the data per the BAA. Our own business records (invoices, prospect emails) we keep up to seven years for tax and contractual purposes, unless you ask us to delete them.</p>
-      </div>
-    </section>
-
-    <section id="s07">
-      <header><span class="n">07</span>Your choices</header>
-      <div>
-        <h2>Opt out anytime.</h2>
-        <ul>
-          <li><strong>Email:</strong> reply "REMOVE" to any of our messages — removed within 10 business days</li>
-          <li><strong>Text:</strong> reply "STOP" to any of our texts — immediate and permanent</li>
-          <li><strong>Patient rights:</strong> if you're a patient of one of our client practices, contact that practice directly</li>
-          <li><strong>Data export:</strong> active clients can download their full data (patients, messages, replies, bookings) any time from the dashboard</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="s08">
-      <header><span class="n">08</span>Children</header>
-      <div>
-        <h2>We don't collect from minors directly.</h2>
-        <p>Practices may share minor-patient contact data under the BAA using the parental consent mechanisms they control. We don't collect data from children directly.</p>
-      </div>
-    </section>
-
-    <section id="s09">
-      <header><span class="n">09</span>Jurisdiction</header>
-      <div>
-        <h2>Florida law. Orange County venue.</h2>
-        <p>We operate under Florida law. Any dispute is resolved in Orange County, Florida courts. Nothing here limits rights you have under HIPAA, the Florida Information Protection Act of 2014, or other applicable law.</p>
-      </div>
-    </section>
-
-    <section id="s10">
-      <header><span class="n">10</span>Changes</header>
-      <div>
-        <h2>When we update, we date the change.</h2>
-        <p>We update this policy from time to time. The "Last updated" date at the top reflects any change. We email active clients when something material changes, with a plain-English summary of what's different.</p>
-      </div>
-    </section>
-
-    <section id="s11">
-      <header><span class="n">11</span>Contact</header>
-      <div>
-        <h2>Questions or complaints.</h2>
-        <p><strong>usdpr.</strong> — US Dental Patient Recovery<br>Orlando, FL<br><a href="mailto:colin@usdentalpatientrecovery.com">colin@usdentalpatientrecovery.com</a></p>
-      </div>
-    </section>
-
-    <div class="disclaimer">
-      <strong>About this document.</strong> This policy is a living document reviewed by Florida healthcare counsel before any client data moves. It is not a substitute for independent legal advice for your practice. If you spot something unclear, email us — we'll fix it.
-    </div>
-  </main>
-
+<div class="legal-wrap">
+  <section class="legal-mast">
+    <div class="legal-eyebrow">Legal · Document I of III</div>
+    <h1 class="legal-title">Privacy <em>Notice</em>.</h1>
+    <p class="legal-dek">How we handle protected health information, practice data, and the ordinary contact details you share with us — in plain language first, with the statutes beneath.</p>
+    <dl class="legal-meta">
+      <div><dt>Effective</dt><dd>April 20, 2026</dd></div>
+      <div><dt>Version</dt><dd>v2026.04</dd></div>
+      <div><dt>Jurisdiction</dt><dd>Florida, USA</dd></div>
+      <div><dt>Entity</dt><dd>USDPR LLC</dd></div>
+    </dl>
+  </section>
 </div>
 
-<footer class="foot">
-  <div class="foot-in">
-    <div class="foot-top">
-      <div class="foot-col">
-        <a href="/" class="wordmark wordmark--inv">usdpr<span class="wordmark-dot">.</span></a>
-        <div class="foot-tagline">Self-serve orthodontic patient recovery for US orthodontic practices. Orlando, Florida. BAA signed before any patient data moves.</div>
-      </div>
-      <div class="foot-col">
-        <h4>Product</h4>
-        <ul><li><a href="/#how">How it works</a></li><li><a href="/#pricing">Pricing</a></li><li><a href="/demo">Live demo</a></li><li><a href="/compare.html">Compare</a></li></ul>
-      </div>
-      <div class="foot-col">
-        <h4>Trust</h4>
-        <ul><li><a href="/security.html">Security</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/status.html">Status</a></li></ul>
-      </div>
-      <div class="foot-col">
-        <h4>Company</h4>
-        <ul><li><a href="/resources.html">Resources</a></li><li><a href="/changelog.html">Changelog</a></li><li><a href="/partners.html">Partners</a></li><li><a href="mailto:colin@usdentalpatientrecovery.com">Contact</a></li></ul>
-      </div>
+<div class="legal-wrap">
+  <div class="legal-body">
+    <aside class="legal-toc">
+      <h4>Contents</h4>
+      <ol>
+        <li><a href="#p1">Who we are</a></li>
+        <li><a href="#p2">Two kinds of data</a></li>
+        <li><a href="#p3">Marketing data — website &amp; email</a></li>
+        <li><a href="#p4">Patient data — PHI under BAA</a></li>
+        <li><a href="#p5">Sub-processors</a></li>
+        <li><a href="#p6">Retention &amp; deletion</a></li>
+        <li><a href="#p7">Your rights</a></li>
+        <li><a href="#p8">Security posture</a></li>
+        <li><a href="#p9">Breach notification</a></li>
+        <li><a href="#p10">Children's data</a></li>
+        <li><a href="#p11">Changes to this notice</a></li>
+        <li><a href="#p12">Contact the privacy officer</a></li>
+      </ol>
+    </aside>
+
+    <article class="legal-article">
+
+      <section id="p1">
+        <div class="sec-num">§ 01</div>
+        <h2>Who we are.</h2>
+        <p>US Dental Patient Recovery ("USDPR," "we," "us") is an orthodontic-focused patient recovery software operated by USDPR LLC, a Florida limited-liability company based in Orlando, FL. Founder: Colin Smith. Sole operator at publication. Contact details are at the bottom of this document.</p>
+        <p>This privacy notice governs the personal information we collect through <a href="https://usdentalpatientrecovery.com">usdentalpatientrecovery.com</a>, our marketing emails, and our customer-facing product dashboards. Protected health information (PHI) we process as a HIPAA Business Associate on behalf of customer practices is governed separately by the signed Business Associate Agreement (BAA) and by §04 of this notice.</p>
+      </section>
+
+      <section id="p2">
+        <div class="sec-num">§ 02</div>
+        <h2>Two kinds of data. <em>Different rules for each.</em></h2>
+        <p>We keep a clean separation between two data domains. This separation is not just stylistic — it's load-bearing, and it governs what we can and can't do with each.</p>
+        <ul>
+          <li><strong>Marketing data.</strong> Your name, work email, practice name, phone number, website analytics, calculator submissions, newsletter subscriptions. Governed by this privacy notice and ordinary US privacy law.</li>
+          <li><strong>Patient data.</strong> PHI — protected health information of the patients seen by our customer practices. We never touch a byte of this until a <strong>Business Associate Agreement</strong> is signed. Governed by HIPAA, the BAA, and §04 below.</li>
+        </ul>
+      </section>
+
+      <section id="p3">
+        <div class="sec-num">§ 03</div>
+        <h2>Marketing data — website &amp; email.</h2>
+
+        <h3>What we collect</h3>
+        <ul>
+          <li>Contact information you give us: email, name, practice name, phone, role.</li>
+          <li>Content you submit: recall-audit calculator inputs, pilot application answers, support tickets.</li>
+          <li>Usage data: pages viewed, links clicked, approximate IP-derived geography, browser/device, referrer. Collected through a first-party analytics tool; no third-party advertising cookies.</li>
+          <li>Email engagement: opens, clicks, bounces, unsubscribes (through Resend).</li>
+        </ul>
+
+        <h3>Why we collect it</h3>
+        <ul>
+          <li>To deliver the audit, whitepaper, or calculator result you asked for.</li>
+          <li>To send you follow-up emails about the pilot — only while you're actively opted in.</li>
+          <li>To measure which pages convert and which fail, so we can build a better product.</li>
+          <li>To comply with tax, accounting, and anti-fraud obligations.</li>
+        </ul>
+
+        <h3>What we <em>do not</em> do</h3>
+        <div class="callout">
+          <p>We do not sell your contact information. We do not share it with data brokers. We do not run third-party retargeting pixels (no Meta pixel, no Google Ads pixel, no LinkedIn insight tag on this site). We do not auto-enroll you in marketing sequences you didn't ask for.</p>
+        </div>
+
+        <h3>Legal basis</h3>
+        <p>Under US consumer-privacy law generally, and applicable state laws (CCPA/CPRA, VCDPA, CPA, CTDPA, UCPA where you reside), we process marketing data under the basis of <strong>performance of contract or legitimate interest</strong> with opt-out available at any time. EU/UK residents: see <a href="mailto:privacy@usdentalpatientrecovery.com">privacy@usdentalpatientrecovery.com</a> for your specific rights.</p>
+      </section>
+
+      <section id="p4">
+        <div class="sec-num">§ 04</div>
+        <h2>Patient data — PHI under BAA.</h2>
+
+        <p>When a customer practice signs a BAA with USDPR and connects their practice management system (Open Dental, Dentrix, Cloud 9, Ortho2), USDPR becomes a <strong>HIPAA Business Associate</strong> of that practice under <span class="statute">45 CFR §160.103</span>.</p>
+
+        <h3>Minimum necessary</h3>
+        <p>We access only the data fields required to compute Recovery Opportunity states — per <span class="statute">45 CFR §164.502(b)</span>. Specifically, we read: patient identifiers (name, DOB, phone, email), appointment history, scheduled/completed/missed status, treatment phase codes, responsible-party linkage for family groupings. We do not read: SSNs, insurance account numbers, clinical notes, imaging, financial ledgers.</p>
+
+        <h3>What we do with it</h3>
+        <ul>
+          <li>Classify each patient into one of the eight Recovery Opportunity states.</li>
+          <li>Rank opportunities by probability × expected shown-value.</li>
+          <li>Deliver a weekly Friday call list to the customer's designated staff via email.</li>
+          <li>Track shown-patient attribution against the list.</li>
+        </ul>
+
+        <h3>What we do not do</h3>
+        <div class="callout">
+          <p>We do not sell, lease, license, or otherwise transfer PHI to any third party. We do not use PHI to train general AI models. We do not market to patients directly — our outputs are delivered exclusively to the contracting practice.</p>
+        </div>
+
+        <h3>AI reply triage (disclosure)</h3>
+        <p>With the customer's opt-in, we process inbound SMS reply text (from patients to the customer's messaging number) through Anthropic's Claude API under a BAA with Anthropic. Only the reply text, a numeric patient ID, and the triage category (positive / reschedule request / complaint / opt-out) are exchanged. Anthropic operates under its own BAA; inputs are not used for model training. Customers who decline this feature receive a manual triage inbox instead.</p>
+
+        <h3>De-identification for product improvement</h3>
+        <p>We may derive <em>de-identified</em> aggregated statistics (e.g., "average retainer-check overdue ratio across all practices = 18%") per Safe Harbor under <span class="statute">45 CFR §164.514(b)(2)</span>. De-identified statistics cannot reasonably be used to re-identify any patient and may be published in our marketing or benchmarks without practice consent beyond what's already in the BAA.</p>
+      </section>
+
+      <section id="p5">
+        <div class="sec-num">§ 05</div>
+        <h2>Sub-processors.</h2>
+
+        <p>USDPR uses a small, auditable set of sub-processors. Each is either (a) covered by a signed BAA where PHI flows, or (b) restricted to non-PHI marketing data. Current list:</p>
+
+        <ul>
+          <li><strong>Amazon Web Services (us-east-1).</strong> BAA in place. Primary infrastructure — compute, database, storage, KMS key management.</li>
+          <li><strong>Anthropic.</strong> BAA in place. Reply-text classification; opt-in only.</li>
+          <li><strong>Twilio.</strong> BAA in place. SMS delivery for customer outbound messaging; 10DLC-registered.</li>
+          <li><strong>Resend.</strong> No BAA; marketing-email delivery only. No PHI transits Resend.</li>
+          <li><strong>Stripe.</strong> No BAA; payment processing only. Practice billing contact info only. No PHI.</li>
+          <li><strong>Netlify / Vercel.</strong> No BAA; static-site and marketing-form hosting only. No PHI.</li>
+        </ul>
+
+        <p>We maintain a current sub-processor register at <a href="/security.html">/security</a>. Material changes to the PHI-bearing list are notified to customers at least 30 days in advance.</p>
+      </section>
+
+      <section id="p6">
+        <div class="sec-num">§ 06</div>
+        <h2>Retention &amp; deletion.</h2>
+
+        <p><strong>Marketing data.</strong> We retain contact information for as long as you're in active communication plus 24 months of inactivity, then we purge. You can request deletion at any time via the unsubscribe footer or <a href="mailto:privacy@usdentalpatientrecovery.com">privacy@usdentalpatientrecovery.com</a>.</p>
+
+        <p><strong>Patient data (PHI).</strong> Retained for the duration of the BAA. Upon BAA termination, we return or destroy all PHI per <span class="statute">45 CFR §164.504(e)(2)(ii)(J)</span> within 30 days, with a signed attestation of destruction where return is infeasible. Customers may request destruction logs on request.</p>
+
+        <p><strong>Backups.</strong> Encrypted database backups are retained for 35 days and rotate out automatically.</p>
+      </section>
+
+      <section id="p7">
+        <div class="sec-num">§ 07</div>
+        <h2>Your rights.</h2>
+
+        <p>Depending on where you reside, you may have some or all of the following rights over your <em>marketing data</em> held by USDPR:</p>
+        <ul>
+          <li>Right to know what personal information we have collected about you</li>
+          <li>Right to correct inaccurate personal information</li>
+          <li>Right to delete personal information (subject to legal retention)</li>
+          <li>Right to opt out of the sale or sharing of personal information (we do not sell or share)</li>
+          <li>Right to non-discrimination for exercising any of the above</li>
+        </ul>
+
+        <p>Rights over <em>PHI</em> — including access, amendment, accounting of disclosures — are exercised through your treating practice (the HIPAA "covered entity"), not through USDPR directly. We will support the practice's fulfillment of any such request within five business days.</p>
+
+        <p>To exercise marketing-data rights, email <a href="mailto:privacy@usdentalpatientrecovery.com">privacy@usdentalpatientrecovery.com</a>. We respond within 45 days. We do not require you to create an account to exercise these rights, and we do not charge a fee.</p>
+      </section>
+
+      <section id="p8">
+        <div class="sec-num">§ 08</div>
+        <h2>Security posture.</h2>
+        <ul>
+          <li>All data in transit is protected by TLS 1.3.</li>
+          <li>All data at rest is encrypted with AWS KMS-managed keys; PHI-bearing volumes use customer-managed-key isolation.</li>
+          <li>Access to production is limited to the founder and requires hardware security key + 2FA.</li>
+          <li>All production access is logged; logs are retained 12 months and are available to customers on request.</li>
+          <li>We do not export PHI to local developer machines. Ever.</li>
+          <li>SOC 2 Type II is on the Q2 2027 roadmap. Pre-audit posture is published at <a href="/security.html">/security</a>.</li>
+        </ul>
+      </section>
+
+      <section id="p9">
+        <div class="sec-num">§ 09</div>
+        <h2>Breach notification.</h2>
+        <p>Should an incident affect the confidentiality, integrity, or availability of PHI, we notify the affected customer-practice in writing without unreasonable delay and in no case later than <strong>24 hours</strong> from detection — faster than the HIPAA floor of 60 days at <span class="statute">45 CFR §164.410</span>. We support the customer's notification obligations with forensic timelines, affected-record counts, and regulator-ready disclosures.</p>
+        <p>For marketing-data incidents, we follow the applicable US state breach-notification statutes where you reside.</p>
+      </section>
+
+      <section id="p10">
+        <div class="sec-num">§ 10</div>
+        <h2>Children's data.</h2>
+        <p>Many orthodontic patients are minors. PHI about minor patients flows through USDPR only under the BAA with the treating practice, with all the same protections described in §04. We do not directly collect personal information from children through our marketing website or emails, and our product is not offered to end-users under 13.</p>
+      </section>
+
+      <section id="p11">
+        <div class="sec-num">§ 11</div>
+        <h2>Changes to this notice.</h2>
+        <p>We update this notice when our practices change. Material changes are posted at the top of this page with a revised Effective date, and (for active customers) notified by email at least 14 days before they take effect. The version history is maintained in the public Git repository at the footer of this page.</p>
+      </section>
+
+      <section id="p12">
+        <div class="sec-num">§ 12</div>
+        <h2>Contact the privacy officer.</h2>
+        <p>USDPR's privacy officer is the founder until the company hires one. Reach out at:</p>
+        <p>
+          <strong>Colin Smith, Privacy Officer</strong><br/>
+          <a href="mailto:privacy@usdentalpatientrecovery.com">privacy@usdentalpatientrecovery.com</a><br/>
+          USDPR LLC · Orlando, Florida, USA
+        </p>
+        <p>For HIPAA complaints you may also contact the US Department of Health and Human Services, Office for Civil Rights at <a href="https://www.hhs.gov/hipaa/filing-a-complaint/">hhs.gov/hipaa</a>.</p>
+      </section>
+
+    </article>
+  </div>
+</div>
+
+<footer class="legal-footer">
+  <div class="legal-footer-inner">
+    <div>
+      <h5>Supersedes</h5>
+      <p>No prior public privacy notice was in effect before April 20, 2026. This is the initial document of record.</p>
     </div>
-    <div class="foot-bot">
-      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
-      <span>TCPA compliant · HIPAA BAA · SOC 2 in progress</span>
+    <div>
+      <h5>Related</h5>
+      <p><a href="/terms.html">Terms of Service</a> · <a href="/security.html">Security</a> · <a href="/about.html">About USDPR</a></p>
     </div>
   </div>
 </footer>

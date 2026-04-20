@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>USDPR — The Leave-Behind</title>
+<meta name="description" content="A printable one-pager for orthodontic practice owners, office managers, and DSO operators. USDPR in four panels: what it is, what it recovers, what it costs, what's guaranteed." />
+<link rel="stylesheet" href="/brand/design-system.css" />
+<style>
+/* Document-style container that reads like an editorial tear-sheet on screen
+   and prints cleanly as a single-sided leave-behind. */
+
+body {
+  background: var(--ink-900);
+  padding: 40px 0;
+}
+@media print {
+  body { background: #fff; padding: 0; }
+}
+
+.sheet {
+  max-width: 8.5in;
+  margin: 0 auto;
+  background: var(--paper-50);
+  box-shadow: 0 24px 80px -12px rgba(0,0,0,0.45);
+  padding: 0.55in;
+  min-height: 11in;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 0.35in;
+}
+@media print {
+  @page { size: letter; margin: 0; }
+  .sheet {
+    max-width: none;
+    width: 8.5in;
+    margin: 0;
+    box-shadow: none;
+    padding: 0.55in;
+    min-height: 11in;
+    page-break-after: always;
+  }
+  .no-print { display: none !important; }
+}
+
+/* Masthead */
+.mast {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 20px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--ink-900);
+}
+.mast-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.mast-mark {
+  width: 36px; height: 36px;
+  background: var(--amber-600);
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--paper-50);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  font-variation-settings: "opsz" 48;
+}
+.mast-wordmark {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: -0.03em;
+  color: var(--ink-900);
+  font-variation-settings: "opsz" 48, "SOFT" 20;
+}
+.mast-wordmark .dot { color: var(--amber-600); font-weight: 700; }
+.mast-tag {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-600);
+  letter-spacing: 0;
+  padding-left: 18px;
+  border-left: 1px solid var(--rule-strong);
+  margin-left: 4px;
+  line-height: 1.3;
+  max-width: 32ch;
+  font-variation-settings: "opsz" 24;
+}
+.mast-ed {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  text-align: right;
+  line-height: 1.4;
+}
+
+/* Hero */
+.lb-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: end;
+  padding: 12px 0 20px;
+}
+.lb-headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 52px;
+  line-height: 0.96;
+  letter-spacing: -0.028em;
+  color: var(--ink-900);
+  margin: 0;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  text-wrap: balance;
+}
+.lb-headline em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+}
+.lb-sub {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-600);
+  margin: 0;
+}
+
+/* Four panel grid */
+.panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 18px;
+}
+.panel {
+  border: 1px solid var(--rule-strong);
+  border-radius: 6px;
+  padding: 20px 22px;
+  background: var(--paper-50);
+  position: relative;
+}
+.panel-bone { background: var(--paper-100); }
+.panel-ink { background: var(--ink-900); color: var(--paper-100); }
+
+.panel-num {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--ink-400);
+}
+.panel-ink .panel-num { color: rgba(250,247,241,0.45); }
+
+.panel-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amber-700);
+  margin: 0 0 12px;
+}
+.panel-ink .panel-label { color: var(--amber-500); }
+
+.panel-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--ink-900);
+  margin: 0 0 10px;
+  font-variation-settings: "opsz" 36;
+  text-wrap: balance;
+}
+.panel-ink .panel-title { color: var(--paper-50); }
+.panel-title em { font-style: italic; font-variation-settings: "opsz" 36, "SOFT" 70; }
+
+.panel-body {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-600);
+  margin: 0;
+}
+.panel-ink .panel-body { color: var(--ink-300); }
+
+/* Recovery opportunities list (compact) */
+.mini-roster {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 18px;
+}
+.mini-roster li {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--ink-700);
+  line-height: 1.4;
+  padding-left: 22px;
+  position: relative;
+  min-height: 18px;
+}
+.mini-roster li::before {
+  content: attr(data-num);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--amber-700);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* Mini pricing grid */
+.mini-pricing {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin-top: 12px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.mini-price {
+  padding: 14px 14px 16px;
+  border-right: 1px solid var(--rule);
+  background: var(--paper-50);
+}
+.mini-price:last-child { border-right: 0; }
+.mini-price.feat { background: var(--paper-200); }
+.mini-price .mp-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  margin: 0 0 8px;
+}
+.mini-price.feat .mp-label { color: var(--amber-700); }
+.mini-price .mp-num {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--ink-900);
+  margin: 0 0 4px;
+  font-variation-settings: "opsz" 72;
+  font-variant-numeric: oldstyle-nums;
+}
+.mini-price .mp-num small {
+  font-size: 0.4em;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: var(--ink-500);
+  margin-left: 2px;
+}
+.mini-price .mp-desc {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  color: var(--ink-500);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Guarantee panel */
+.guar-panel {
+  background: var(--ink-900);
+  color: var(--paper-100);
+  grid-column: 1 / -1;
+  padding: 24px 28px;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+.guar-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 100%, rgba(181, 100, 29, 0.20), transparent 60%);
+  pointer-events: none;
+}
+.guar-seal {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  border: 1px solid rgba(250,247,241,0.28);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--amber-500);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: 0.14em;
+  flex-direction: column;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+.guar-seal svg { width: 18px; height: 18px; margin-bottom: 3px; }
+.guar-copy { position: relative; z-index: 1; }
+.guar-copy h3 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--paper-100);
+  margin: 0 0 6px;
+  font-variation-settings: "opsz" 72, "SOFT" 40;
+}
+.guar-copy h3 em { color: var(--amber-500); font-style: italic; font-variation-settings: "opsz" 72, "SOFT" 80; }
+.guar-copy p {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--ink-300);
+  margin: 0;
+  max-width: 48ch;
+}
+.guar-cta {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--amber-500);
+  white-space: nowrap;
+  padding-left: 20px;
+  border-left: 1px solid rgba(250, 247, 241, 0.16);
+  line-height: 1.2;
+  font-variation-settings: "opsz" 36, "SOFT" 80;
+  text-align: right;
+  position: relative;
+  z-index: 1;
+}
+.guar-cta small {
+  display: block;
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: rgba(250, 247, 241, 0.5);
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+/* Footer */
+.colophon {
+  border-top: 1px solid var(--rule-strong);
+  padding-top: 18px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr auto;
+  gap: 24px;
+  align-items: end;
+}
+.colophon-item h5 {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  margin: 0 0 6px;
+}
+.colophon-item p,
+.colophon-item a {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--ink-800);
+  margin: 0;
+  line-height: 1.4;
+  display: block;
+}
+.colophon-item a {
+  color: var(--clinical-700);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+.colophon-item .folio {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--ink-500);
+  font-variation-settings: "opsz" 48;
+}
+
+/* Floating action bar (screen only) */
+.actions {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  background: var(--paper-50);
+  padding: 8px;
+  border-radius: 40px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  z-index: 20;
+}
+@media print { .actions { display: none; } }
+.action-btn {
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink-900);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.action-btn.primary {
+  background: var(--ink-900);
+  color: var(--paper-50);
+}
+.action-btn:hover { background: var(--paper-100); }
+.action-btn.primary:hover { background: var(--amber-600); color: var(--paper-50); }
+
+/* Screen frame (so the sheet reads like a document when viewing in a dark void) */
+.frame-label {
+  max-width: 8.5in;
+  margin: 0 auto 16px;
+  color: var(--ink-400);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+}
+@media print { .frame-label { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="frame-label no-print">
+  <span>USDPR · Leave-Behind · Letter (8.5 × 11 in)</span>
+  <span>Edition I · v2026.04</span>
+</div>
+
+<article class="sheet">
+
+  <!-- Masthead -->
+  <header class="mast">
+    <div class="mast-brand">
+      <div class="mast-mark">u</div>
+      <div class="mast-wordmark">usdpr<span class="dot">.</span></div>
+      <div class="mast-tag"><em>Orthodontic patient recovery — purpose-built for the eight patient states every practice already owns.</em></div>
+    </div>
+    <div class="mast-ed">
+      Edition I · Orlando, FL <br/>
+      Printed for practice review <br/>
+      usdentalpatientrecovery.com
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="lb-hero">
+    <h1 class="lb-headline">
+      Recover the ortho patients<br/><em>already in your system</em>.
+    </h1>
+    <p class="lb-sub">
+      The typical orthodontic practice has 31% of its active chart sitting unseen — retainer checks overdue, observation no-starts, consult no-starts, financing gone cold. USDPR finds them, ranks them, and hands your TC a Friday-morning call list that actually recovers revenue. This is the four-panel leave-behind. Read in five minutes. Hand it to the owner.
+    </p>
+  </section>
+
+  <!-- Four panels -->
+  <section class="panels">
+
+    <!-- Panel 01: The Problem -->
+    <div class="panel panel-bone">
+      <div class="panel-num">§ 01</div>
+      <p class="panel-label">The figure nobody reports</p>
+      <h3 class="panel-title"><em>$487M</em> of shown-patient value goes unrecovered annually across US ortho practices.</h3>
+      <p class="panel-body">
+        Every orthodontist averages 696 active-treatment patients, plus an observation file, plus a consult pipeline, plus a post-debond retention cohort. One missed prompt, any of them lapse. PubMed data shows a 23% attendance decline per 6-month adherence gap. At a typical $5,108–$9,221 case fee, even a 2% slippage compounds to six figures of forfeited visits a year.
+      </p>
+    </div>
+
+    <!-- Panel 02: The Product -->
+    <div class="panel">
+      <div class="panel-num">§ 02</div>
+      <p class="panel-label">The primitive · Recovery Opportunity</p>
+      <h3 class="panel-title">Eight patient states. <em>Eight plays.</em> One weekly email.</h3>
+      <p class="panel-body">USDPR models the ortho recovery pipeline as eight queryable states:</p>
+      <ol class="mini-roster">
+        <li data-num="01">Retainer Check Overdue</li>
+        <li data-num="02">Observation Overdue</li>
+        <li data-num="03">Consult No-Start</li>
+        <li data-num="04">No-Show Not Rescheduled</li>
+        <li data-num="05">Debond Follow-Up Missed</li>
+        <li data-num="06">Financing Went Cold</li>
+        <li data-num="07">Inactive Family / Siblings</li>
+        <li data-num="08">Former Patient Return</li>
+      </ol>
+    </div>
+
+    <!-- Panel 03: The Method -->
+    <div class="panel">
+      <div class="panel-num">§ 03</div>
+      <p class="panel-label">The method · how it lands</p>
+      <h3 class="panel-title"><em>Friday, 8:00 AM.</em> An email. A ranked call list. A Shown column.</h3>
+      <p class="panel-body">
+        We connect to your PMS (Open Dental REST, Dentrix CSV, Cloud 9, Ortho2) read-only under a signed BAA. Within 72 hours, a signed audit arrives. Each Friday thereafter, your OM opens one email: who to call today, what to say, and which last-week calls actually <em>showed up</em>. No bulk blasts. No auto-book. Your team calls, we measure.
+      </p>
+    </div>
+
+    <!-- Panel 04: Pricing -->
+    <div class="panel">
+      <div class="panel-num">§ 04</div>
+      <p class="panel-label">The offer · plain numbers</p>
+      <h3 class="panel-title">One Launch. One monthly. <em>No seat games.</em></h3>
+      <div class="mini-pricing">
+        <div class="mini-price">
+          <p class="mp-label">Launch</p>
+          <div class="mp-num">$1,500</div>
+          <p class="mp-desc">One-time. Refunded under §16 if guarantee misses.</p>
+        </div>
+        <div class="mini-price feat">
+          <p class="mp-label">Pro</p>
+          <div class="mp-num">$697<small>/mo</small></div>
+          <p class="mp-desc">Founding cohort — first 10 practices. List price $997/mo.</p>
+        </div>
+        <div class="mini-price">
+          <p class="mp-label">Scale</p>
+          <div class="mp-num">$1,497<small>/loc</small></div>
+          <p class="mp-desc">Per location for multi-site groups and DSOs.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guarantee (full width) -->
+    <div class="guar-panel">
+      <div class="guar-seal">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z" stroke="currentColor" stroke-width="1.4"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.4"/></svg>
+        60-day<br/>Sealed
+      </div>
+      <div class="guar-copy">
+        <h3>$5,000 of <em>shown-patient</em> value in 60 days. Or your Launch Fee is refunded.</h3>
+        <p>Measured with a scheduled/shown/incremental attribution model against a matched holdout group inside your own chart. No counting SMS delivered. No counting replies. CFO-signed escrow release. Advertised in accordance with 16 CFR Part 239.</p>
+      </div>
+      <div class="guar-cta">
+        Begin<br/>
+        <small>pilot.usdpr →</small>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Colophon -->
+  <footer class="colophon">
+    <div class="colophon-item">
+      <h5>Contact</h5>
+      <a href="mailto:founder@usdentalpatientrecovery.com">founder@usdentalpatientrecovery.com</a>
+      <a href="https://usdentalpatientrecovery.com/pilot.html">usdentalpatientrecovery.com/pilot</a>
+    </div>
+    <div class="colophon-item">
+      <h5>Founded by</h5>
+      <p>Colin Smith<br/>Orlando, Florida</p>
+    </div>
+    <div class="colophon-item">
+      <h5>Standards</h5>
+      <p>HIPAA · BAA-first · TCPA · 45 CFR §164.502 · SOC 2 Type II (Q2 2027)</p>
+    </div>
+    <div class="colophon-item" style="text-align:right">
+      <h5>Folio</h5>
+      <div class="folio">I · 01</div>
+    </div>
+  </footer>
+
+</article>
+
+<!-- Screen-only actions -->
+<div class="actions no-print" role="toolbar" aria-label="Leave-behind actions">
+  <button class="action-btn primary" onclick="window.print()">Print leave-behind</button>
+  <a class="action-btn" href="/pilot.html">Start a pilot →</a>
+  <a class="action-btn" href="/">Back to site</a>
+</div>
+
+</body>
+</html>
