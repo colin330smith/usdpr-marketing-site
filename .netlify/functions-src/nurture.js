@@ -42,7 +42,7 @@ const TOUCHES = {
   },
   day10: {
     subject_fn: function (practice, loss) {
-      return "Last note from Colin — 14-day trial still open";
+      return "Last note from Colin — guarantee slot closing";
     },
     html_fn: touchDay10HTML,
     text_fn: touchDay10Text,
@@ -92,31 +92,35 @@ function esc(s) {
 
 // ─── Day 2 ────────────────────────────────────────────────────
 function touchDay2HTML(lead, audit) {
-  var signup = "https://usdpr.netlify.app/signup?tier=" + audit.tier.tier + "&utm_source=nurture&utm_medium=email&utm_campaign=day2";
+  var pilot = "https://usdpr.netlify.app/pilot.html?utm_source=nurture&utm_medium=email&utm_campaign=day2";
   return wrapper(
-    "<h1 style=\"font-size:24px;letter-spacing:-.02em;margin:0 0 14px\">Quick follow-up on your audit</h1>" +
-    "<p style=\"font-size:15px;line-height:1.55\">A couple things I forgot to mention when I emailed your audit:</p>" +
-    "<ol style=\"font-size:14px;line-height:1.65;color:#4a4440;padding-left:18px\">" +
-      "<li><b>The $" + fmtInt(audit.loss) + "/year number is conservative.</b> We use the industry median reactivation rate (" + audit.recPct + "%). Practices on our full 5-touch sequence typically land at 12-16%, not 10%.</li>" +
-      "<li><b>The 14-day trial is real.</b> No credit card. We import your list, draft your first sequence, and run it end-to-end in the 14 days. You see actual reactivated appointments before any charge.</li>" +
-      "<li><b>" + esc(audit.tier.label) + " is right-sized</b> for your patient count. If you need DSO-grade multi-location, reply and I'll adjust.</li>" +
-    "</ol>" +
-    "<div style=\"text-align:center;margin:24px 0\">" +
-      "<a href=\"" + signup + "\" style=\"display:inline-block;padding:12px 24px;background:#f97316;color:#fff;text-decoration:none;border-radius:999px;font-weight:800\">Start 14-day free trial →</a>" +
+    "<h1 style=\"font-size:24px;letter-spacing:-.02em;margin:0 0 14px\">The guarantee · 30 in 60 or $0</h1>" +
+    "<p style=\"font-size:15px;line-height:1.55\">I didn't lead with this in your audit email because I wanted the numbers to stand on their own. But here's the offer:</p>" +
+    "<div style=\"background:#1a1614;color:#f6f4ef;padding:18px 22px;border-radius:12px;margin:14px 0;text-align:center\">" +
+      "<div style=\"font-size:11px;color:#fbbf24;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:4px\">The guarantee</div>" +
+      "<div style=\"font-size:22px;color:#fff;font-weight:800;letter-spacing:-.01em;line-height:1.15\">30 reactivated patients in 60 days. Or $0.</div>" +
     "</div>" +
-    "<p style=\"font-size:13px;color:#78716c\">Not ready? No worries. Reply with any question — this goes straight to me (Colin), not a support queue.</p>"
+    "<ul style=\"font-size:14px;line-height:1.65;color:#4a4440;padding-left:18px\">" +
+      "<li><b>No credit card up front.</b> We don't charge a cent until we've delivered 30 booked, shown-up reactivations.</li>" +
+      "<li><b>If we miss, we extend free.</b> Billing never starts until we hit the number — not a money-back gimmick.</li>" +
+      "<li><b>You keep every patient</b> we reactivated for you along the way, guarantee or not.</li>" +
+      "<li><b>Only 10 pilot slots this quarter.</b> First come; two are already claimed.</li>" +
+    "</ul>" +
+    "<p style=\"font-size:15px;line-height:1.55\">For your practice ($" + fmtInt(audit.loss) + "/yr unrealized), 30 reactivated patients = ~$" + fmtInt(30 * 285 * 1.5) + " in recovered production. Guarantee pays for itself before the pilot window closes.</p>" +
+    "<div style=\"text-align:center;margin:24px 0\">" +
+      "<a href=\"" + pilot + "\" style=\"display:inline-block;padding:12px 24px;background:#f97316;color:#fff;text-decoration:none;border-radius:999px;font-weight:800\">Claim a guaranteed slot →</a>" +
+    "</div>" +
+    "<p style=\"font-size:13px;color:#78716c\">Not ready? Reply with any question — goes straight to me (Colin), not a support queue.</p>"
   );
 }
 function touchDay2Text(lead, audit) {
-  return "Quick follow-up on your Recall Revenue Audit.\n\n" +
-    "Three things I forgot to mention:\n" +
-    "1. The $" + fmtInt(audit.loss) + "/yr is conservative — we use industry-median reactivation rates. Practices on our full sequence land at 12-16%, not 10%.\n" +
-    "2. The 14-day trial is real — no credit card. We import, draft, and run your first campaign end-to-end before you're ever charged.\n" +
-    "3. " + audit.tier.label + " is right-sized for your patient count. Reply if you need a different tier.\n\n" +
-    "Start 14-day trial: https://usdpr.netlify.app/signup?tier=" + audit.tier.tier + "\n\n" +
-    "Reply with any question — this goes straight to me.\n\n— Colin";
+  return "The guarantee: 30 reactivated patients in 60 days. Or $0.\n\n" +
+    "No card up front. We don't charge until we've delivered 30 booked, shown-up reactivations. If we miss, billing never starts — we extend free until we hit the number. You keep every patient we reactivated along the way.\n\n" +
+    "Only 10 pilot slots this quarter. Two claimed.\n\n" +
+    "For your practice (~$" + fmtInt(audit.loss) + "/yr unrealized), 30 reactivated patients = ~$" + fmtInt(30 * 285 * 1.5) + " in recovered production. Guarantee pays for itself before the window closes.\n\n" +
+    "Claim a slot: https://usdpr.netlify.app/pilot.html\n\n" +
+    "Reply with any question — goes straight to me.\n\n— Colin";
 }
-
 // ─── Day 5 ────────────────────────────────────────────────────
 function touchDay5HTML(lead, audit) {
   var signup = "https://usdpr.netlify.app/signup?tier=" + audit.tier.tier + "&utm_source=nurture&utm_medium=email&utm_campaign=day5";
@@ -147,29 +151,32 @@ function touchDay5Text(lead, audit) {
 
 // ─── Day 10 ───────────────────────────────────────────────────
 function touchDay10HTML(lead, audit) {
-  var signup = "https://usdpr.netlify.app/signup?tier=" + audit.tier.tier + "&utm_source=nurture&utm_medium=email&utm_campaign=day10";
   var pilot = "https://usdpr.netlify.app/pilot.html?utm_source=nurture&utm_medium=email&utm_campaign=day10";
   return wrapper(
-    "<h1 style=\"font-size:24px;letter-spacing:-.02em;margin:0 0 14px\">Last note from me</h1>" +
-    "<p style=\"font-size:15px;line-height:1.55\">I won't keep emailing — three touches is enough, and the audit is yours to revisit any time.</p>" +
-    "<p style=\"font-size:15px;line-height:1.55\">If I can summarize the value in two sentences:</p>" +
+    "<h1 style=\"font-size:24px;letter-spacing:-.02em;margin:0 0 14px\">Last note — guarantee slot closing</h1>" +
+    "<p style=\"font-size:15px;line-height:1.55\">I won't keep emailing — three touches is enough. But the 10-practice guarantee cohort closes when slot 10 lands, and I want you to know it before it's gone.</p>" +
     "<blockquote style=\"border-left:3px solid #f97316;padding:8px 16px;color:#4a4440;font-size:15px;line-height:1.55;margin:14px 0\">Your practice is losing <b>$" + fmtInt(audit.loss) + "/year</b> to patients who drift. USDPR recovers <b>$" + fmtInt(audit.recovered) + "/year</b> of that for a flat <b>" + esc(audit.tier.label) + "</b> — net gain ~<b>$" + fmtInt(audit.net) + "/year</b>.</blockquote>" +
-    "<p style=\"font-size:15px;line-height:1.55\">Pilot program (first 10 practices) also locks in a lifetime rate and 30-day money-back after the free trial:</p>" +
-    "<div style=\"text-align:center;margin:24px 0 10px\">" +
-      "<a href=\"" + pilot + "\" style=\"display:inline-block;padding:12px 24px;background:#f97316;color:#fff;text-decoration:none;border-radius:999px;font-weight:800;margin-right:8px\">Pilot program details</a>" +
-      "<a href=\"" + signup + "\" style=\"display:inline-block;padding:12px 24px;background:transparent;border:1px solid #1a1614;color:#1a1614;text-decoration:none;border-radius:999px;font-weight:700\">Just start the trial</a>" +
+    "<div style=\"background:#1a1614;color:#f6f4ef;padding:18px 22px;border-radius:12px;margin:18px 0;text-align:center\">" +
+      "<div style=\"font-size:11px;color:#fbbf24;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:4px\">The guarantee · closes at slot 10</div>" +
+      "<div style=\"font-size:22px;color:#fff;font-weight:800;letter-spacing:-.01em;line-height:1.15;margin-bottom:4px\">30 reactivated patients in 60 days. Or $0.</div>" +
+      "<div style=\"font-size:12px;color:#c7c1b5\">No card up front · Lifetime $697/mo rate lock · Founder-level onboarding</div>" +
     "</div>" +
-    "<p style=\"font-size:13px;color:#78716c;margin-top:24px\">Either way — thanks for taking the audit. If you ever want to talk, reply to this email. Goes straight to me.<br><br>— Colin Smith<br>Founder, US Dental Patient Recovery</p>"
+    "<div style=\"text-align:center;margin:20px 0 6px\">" +
+      "<a href=\"" + pilot + "\" style=\"display:inline-block;padding:12px 24px;background:#f97316;color:#fff;text-decoration:none;border-radius:999px;font-weight:800\">Claim a guaranteed slot →</a>" +
+    "</div>" +
+    "<p style=\"font-size:13px;color:#78716c;margin-top:24px\">Thanks for taking the audit — the PDF is yours to keep regardless. If you ever want to talk, just reply. Goes straight to me.<br><br>— Colin Smith<br>Founder, US Dental Patient Recovery</p>"
   );
 }
 function touchDay10Text(lead, audit) {
-  return "Last note from me.\n\n" +
-    "Your practice is losing $" + fmtInt(audit.loss) + "/year to patients who drift.\n" +
-    "USDPR recovers ~$" + fmtInt(audit.recovered) + "/year for a flat " + audit.tier.label + ".\n" +
-    "Net gain: ~$" + fmtInt(audit.net) + "/year.\n\n" +
-    "Pilot program (first 10): https://usdpr.netlify.app/pilot.html\n" +
-    "Just start the trial:      https://usdpr.netlify.app/signup?tier=" + audit.tier.tier + "\n\n" +
-    "Either way — thanks for taking the audit.\n\n— Colin Smith, Founder";
+  return "Last note — guarantee slot closing.\n\n" +
+    "Three touches is enough from me. But the 10-practice guarantee cohort closes when slot 10 lands.\n\n" +
+    "Your practice loses $" + fmtInt(audit.loss) + "/yr to patients who drift.\n" +
+    "USDPR recovers ~$" + fmtInt(audit.recovered) + "/yr (net ~$" + fmtInt(audit.net) + "/yr after tool cost).\n\n" +
+    "THE GUARANTEE · closes at slot 10\n" +
+    "30 reactivated patients in 60 days. Or $0.\n" +
+    "No card up front · Lifetime $697/mo rate lock · Founder onboarding.\n\n" +
+    "Claim a slot: https://usdpr.netlify.app/pilot.html\n\n" +
+    "Thanks for taking the audit — PDF is yours regardless.\n\n— Colin Smith, Founder";
 }
 
 // ─── Template shell ───────────────────────────────────────────

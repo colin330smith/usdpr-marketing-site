@@ -146,11 +146,16 @@ function auditEmailHTML(capture, audit) {
       "<tr><td style=\"padding:8px 0;border-bottom:1px dashed #e7e2d8\">Recommended plan</td><td style=\"padding:8px 0;border-bottom:1px dashed #e7e2d8;text-align:right;font-weight:700;color:#1a1614\">" + audit.tier.label + "</td></tr>" +
       "<tr><td style=\"padding:8px 0\">Net gain after tool cost</td><td style=\"padding:8px 0;text-align:right;font-weight:800;color:#0f766e\">$" + fmt(audit.net) + "/yr</td></tr>" +
     "</table>" +
-    "<div style=\"text-align:center;margin:24px 0 20px\">" +
-      "<a href=\"" + signupLink + "\" style=\"display:inline-block;padding:14px 28px;background:#f97316;color:#fff;text-decoration:none;border-radius:999px;font-weight:800;letter-spacing:.01em\">Start your 14-day free trial →</a>" +
+    "<div style=\"background:#1a1614;color:#f6f4ef;padding:18px 22px;border-radius:12px;margin:22px 0 16px;text-align:center\">" +
+      "<div style=\"font-size:11px;color:#fbbf24;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:6px\">The guarantee</div>" +
+      "<div style=\"font-size:20px;color:#fff;font-weight:800;letter-spacing:-.01em;line-height:1.2;margin-bottom:6px\">30 reactivated patients in 60 days. Or $0.</div>" +
+      "<div style=\"font-size:13px;color:#c7c1b5;line-height:1.5\">We don't charge until we've delivered. No card up front. Only the first 10 practices this quarter.</div>" +
     "</div>" +
-    "<p style=\"font-size:13px;color:#78716c;line-height:1.55;margin:0 0 8px\">No credit card. One-click cancel. Industry-first flat-fee pricing. HIPAA Business Associate Agreement signed automatically at checkout.</p>" +
-    "<p style=\"font-size:13px;color:#78716c;line-height:1.55;margin:0\">Questions? Just reply to this email — it goes to Colin, the founder, directly.</p>" +
+    "<div style=\"text-align:center;margin:0 0 20px\">" +
+      "<a href=\"https://usdpr.netlify.app/pilot.html?utm_source=audit_email&utm_campaign=guarantee\" style=\"display:inline-block;padding:14px 28px;background:#f97316;color:#fff;text-decoration:none;border-radius:999px;font-weight:800;letter-spacing:.01em\">Claim a guaranteed slot →</a>" +
+    "</div>" +
+    "<p style=\"font-size:13px;color:#78716c;line-height:1.55;margin:0 0 8px\">No credit card. No trial that quietly converts to billing. HIPAA BAA signed at checkout — before any patient data moves.</p>" +
+    "<p style=\"font-size:13px;color:#78716c;line-height:1.55;margin:0\">Questions? Reply to this email — it goes to Colin, the founder, directly.</p>" +
     "<hr style=\"border:none;border-top:1px solid #e7e2d8;margin:24px 0 16px\">" +
     "<p style=\"font-size:11px;color:#a8a29e;line-height:1.55;margin:0\">US Dental Patient Recovery · Orlando, FL · colin@usdentalpatientrecovery.com<br>" +
     "Unsubscribe by replying with STOP in the subject. Sent because you requested an audit at usdpr.netlify.app/recall-audit.html.</p>" +
@@ -176,8 +181,12 @@ function auditEmailText(capture, audit) {
     "  • Recoverable (" + audit.recPct + "% rec. rate):   $" + fmt(audit.recovered) + "/yr\n" +
     "  • Recommended plan:           " + audit.tier.label + "\n" +
     "  • Net gain after tool cost:   $" + fmt(audit.net) + "/yr\n\n" +
-    "Start your 14-day free trial (no card required):\n" +
-    "https://usdpr.netlify.app/signup?tier=" + audit.tier.tier + "&utm_source=audit_email\n\n" +
+    "THE GUARANTEE\n" +
+    "-------------\n" +
+    "30 reactivated patients in 60 days. Or $0.\n" +
+    "No card up front. We don't charge until we've delivered. Only 10 pilot slots this quarter.\n\n" +
+    "Claim a guaranteed slot:\n" +
+    "https://usdpr.netlify.app/pilot.html?utm_source=audit_email&utm_campaign=guarantee\n\n" +
     "Questions? Just reply — this goes to Colin, the founder, directly.\n\n" +
     "--\n" +
     "US Dental Patient Recovery · Orlando, FL · colin@usdentalpatientrecovery.com\n" +

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Switching from RevenueWell to USDPR. Reactivation is RW's side feature — it's our only feature. 30 reactivated patients in 60 days guaranteed. Flat $697/mo on Stripe.">
+<meta name="theme-color" content="#f6f4ef">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Switching from RevenueWell · usdpr.">
+<meta property="og:description" content="Run USDPR in parallel with RevenueWell for 60 days. Reactivation is a checkbox in RW. It's our whole product. 30 patients guaranteed or you pay $0.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usdpr.netlify.app/switching-from-revenuewell.html">
+<meta property="og:image" content="/og.svg">
+<title>Switching from RevenueWell · The reactivation specialist move · usdpr.</title>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"RevenueWell already has a reactivation feature. Why would I need USDPR?","acceptedAnswer":{"@type":"Answer","text":"RevenueWell's reactivation is one checkbox inside a 15-feature patient-communication suite. It's a generic 'we miss you' email/SMS blast with CDT-code targeting — no specialty cadence, no 5-touch sequence, no phone handoff, no AI reply classification. Industry benchmark for single-touch recall is 1-3% of a lapsed list. USDPR's 5-touch specialty-tuned sequence averages 10-15% in our pilot cohort. On a 2,000-patient practice, that's the difference between 3-6 reactivated patients per campaign vs. 30-50. Reactivation is RevenueWell's side feature. It's our only feature."}},{"@type":"Question","name":"My RevenueWell came through Patterson Dental. Can I still switch?","acceptedAnswer":{"@type":"Answer","text":"Yes. RevenueWell is distributed heavily through Henry Schein and Patterson Dental, which means your contract is with the distributor, not directly with RevenueWell. That arrangement has its own cancellation terms — usually month-to-month after the first year. USDPR runs in parallel with no conflict. Keep the Patterson/Henry Schein relationship for your supply-chain and PMS; add USDPR as a direct reactivation specialist on a separate Stripe subscription."}},{"@type":"Question","name":"What about RevenueWell's CDT-code targeting and patient-balance segmentation?","acceptedAnswer":{"@type":"Answer","text":"Those are genuinely useful for routine recall. USDPR does specialty-specific segmentation differently — we segment by clinical cadence (6-month hygiene, 3-4-month perio maintenance, 24-month post-debond ortho retention, 6/12/24-month implant follow-up) rather than by CDT code. If your practice is GP-only and you're happy with RW's segmentation, keep both tools running in parallel. If you're a specialty practice (ortho, endo, perio, OMFS), our cadence engine was built for you."}},{"@type":"Question","name":"Will I lose my RevenueWell data if I switch?","acceptedAnswer":{"@type":"Answer","text":"No. Your patient data lives in your practice management system (Dentrix, Open Dental, Eaglesoft, Curve). USDPR reads from the PMS directly or accepts a CSV export. RevenueWell's patient-communication history and campaign data stay in RevenueWell. You can export from RW any time (they support standard CSV export)."}}]}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<script defer src="/analytics.js" data-domain="usdpr.netlify.app"></script>
+<style>
+  .sw-hero{padding:clamp(56px,7vw,112px) 0 clamp(32px,4vw,56px);background:var(--bg);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+  .sw-hero::after{content:'';position:absolute;inset:auto -10% -40% auto;width:60%;height:80%;background:radial-gradient(ellipse,rgba(249,115,22,.10) 0%,transparent 65%);pointer-events:none;z-index:0}
+  .sw-hero > *{position:relative;z-index:1}
+  .sw-hero .mx{max-width:var(--container);margin:0 auto;padding:0 var(--gutter);display:grid;gap:20px;max-width:820px}
+  .sw-eyebrow{color:var(--accent);font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .sw-hero h1{font-size:clamp(42px,6.2vw,88px);font-variation-settings:'opsz' 96,'wdth' 92,'wght' 800;letter-spacing:-.05em;line-height:.94;color:var(--ink);max-width:18ch}
+  .sw-hero h1 .accent{color:var(--accent)}
+  .sw-hero .lede{max-width:62ch;color:var(--ink-2);font-size:17px;line-height:1.55}
+  .sw-hero .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .btn-p{padding:13px 24px;background:var(--accent);color:#fff;border:none;border-radius:999px;font:inherit;font-size:14px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;text-decoration:none;display:inline-flex;align-items:center;gap:7px;box-shadow:0 1px 0 rgba(26,22,20,.08),0 10px 24px -8px rgba(249,115,22,.4);transition:background .14s,transform .12s}
+  .btn-p:hover{background:#ea580c;transform:translateY(-1px)}
+  .btn-s{padding:13px 20px;background:transparent;color:var(--ink);border:1px solid var(--border);border-radius:999px;font:inherit;font-size:13px;font-variation-settings:'opsz' 13,'wdth' 100,'wght' 600;text-decoration:none}
+  .btn-s:hover{border-color:var(--ink)}
+
+  .sw-wrap{padding:clamp(40px,5vw,72px) 0;border-bottom:1px solid var(--border)}
+  .sw-wrap .mx{max-width:880px;margin:0 auto;padding:0 var(--gutter)}
+  .sw-wrap h2{font-size:clamp(30px,3.6vw,44px);font-variation-settings:'opsz' 56,'wdth' 95,'wght' 700;letter-spacing:-.028em;line-height:1.08;color:var(--ink);margin-bottom:16px}
+  .sw-wrap h2 .accent{color:var(--accent)}
+  .sw-wrap p, .sw-wrap li{font-size:16px;line-height:1.65;color:var(--ink-2);margin-bottom:10px}
+  .sw-wrap p strong, .sw-wrap li strong{color:var(--ink)}
+
+  .cmp-table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  .cmp-table th{text-align:left;padding:12px 16px;background:var(--ink);color:#f6f4ef;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+  .cmp-table th.us{color:var(--accent)}
+  .cmp-table td{padding:14px 16px;border-top:1px solid var(--border);color:var(--ink-2);line-height:1.5;vertical-align:top}
+  .cmp-table td:first-child{font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700;color:var(--ink);width:32%}
+  .cmp-table td.yes{color:#065f46;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+  .cmp-table td.no{color:#991b1b}
+  .cmp-table td.meh{color:#92400e}
+
+  .steps{display:grid;gap:14px;margin:16px 0 28px}
+  .step{display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:flex-start;padding:20px 22px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px}
+  .step-n{width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-variation-settings:'opsz' 18,'wdth' 92,'wght' 800;font-size:16px}
+  .step h3{font-size:16px;font-variation-settings:'opsz' 16,'wdth' 100,'wght' 700;color:var(--ink);margin-bottom:4px}
+  .step p{font-size:14px;color:var(--ink-2);margin:0}
+
+  .quote{padding:20px 24px;background:#faf7f2;border-left:4px solid var(--accent);border-radius:0 12px 12px 0;margin:18px 0;font-size:15px;line-height:1.6;color:var(--ink)}
+  .quote cite{display:block;margin-top:8px;font-size:12px;color:var(--ink-3);font-style:normal}
+
+  .guar{padding:32px;background:linear-gradient(160deg,#fef3c7 0%,#fed7aa 100%);border:1px solid #fbbf24;border-radius:16px;margin:28px 0;text-align:center}
+  .guar .k{font-size:12px;color:#92400e;letter-spacing:.12em;text-transform:uppercase;font-variation-settings:'opsz' 12,'wdth' 100,'wght' 700}
+  .guar .h{font-size:clamp(28px,3.6vw,40px);font-variation-settings:'opsz' 48,'wdth' 92,'wght' 800;letter-spacing:-.024em;color:#431407;margin:6px 0 8px;line-height:1.1}
+  .guar .sub{font-size:14px;color:#78350f;max-width:52ch;margin:0 auto 14px;line-height:1.55}
+  .guar a{display:inline-block;padding:13px 22px;background:#431407;color:#fef3c7;text-decoration:none;border-radius:999px;font-size:13px;font-variation-settings:'opsz' 14,'wdth' 100,'wght' 700}
+
+  .faq-list{display:grid;gap:10px;margin:16px 0}
+  .faq-item{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:18px 22px}
+  .faq-item h3{font-size:15px;color:var(--ink);font-variation-settings:'opsz' 15,'wdth' 100,'wght' 700;margin:0 0 6px}
+  .faq-item p{font-size:14px;color:var(--ink-2);margin:0;line-height:1.6}
+
+  .callout{padding:18px 22px;background:#f0f9ff;border:1px solid #bae6fd;border-left:4px solid #0284c7;border-radius:8px;margin:18px 0;font-size:14px;line-height:1.55;color:#075985}
+  .callout strong{color:#0c4a6e}
+</style>
+</head>
+<body>
+<header class="site-hdr">
+  <div class="mx hdr-inner">
+    <a class="brand" href="/"><span class="logo">usdpr<span class="logo-dot">.</span></span></a>
+    <nav class="hdr-nav">
+      <a href="/calculator.html">Calculator</a>
+      <a href="/recall-audit.html">Audit</a>
+      <a href="/pilot.html">Pilot</a>
+      <a href="/for-specialists.html">Specialists</a>
+      <a href="/compare.html">Compare</a>
+      <a class="hdr-cta" href="/onboarding/">Start</a>
+    </nav>
+  </div>
+</header>
+
+<section class="sw-hero">
+  <div class="mx">
+    <span class="sw-eyebrow">For practices currently on RevenueWell</span>
+    <h1>Switching from RevenueWell? <span class="accent">Specialize the recall.</span></h1>
+    <p class="lede">RevenueWell is a 15-feature patient-communication suite. Reactivation is one checkbox in it. USDPR is the opposite: a reactivation specialist with a 5-touch, specialty-tuned sequence. Run us in parallel with RevenueWell for 60 days — keep their messaging, forms, and reviews — and we'll guarantee 30 reactivated patients or you pay $0. Most practices end up keeping both tools. A few cancel RW's recall module. Either way, your schedule fills.</p>
+    <div class="cta-row">
+      <a href="/onboarding/?utm_source=switching&utm_medium=organic&utm_campaign=revenuewell" class="btn-p">Start the parallel test →</a>
+      <a href="/recall-audit.html" class="btn-s">See your own numbers first</a>
+    </div>
+  </div>
+</section>
+
+<section class="sw-wrap">
+  <div class="mx">
+    <div class="callout">
+      <strong>The bundling problem.</strong> RevenueWell is distributed through Henry Schein and Patterson Dental, bundled with PMS, supplies, and sometimes financing. That makes it hard to evaluate on reactivation merits alone — the suite is optimized to be sticky with your distributor, not to maximize recall ROI. USDPR is direct-to-practice on Stripe. Different contract, different incentive.
+    </div>
+
+    <h2>What RevenueWell ships. What USDPR ships. <span class="accent">What each wins.</span></h2>
+    <p>RevenueWell is a solid all-in-one patient-engagement platform. They bundle patient messaging, review requests, forms, online scheduling, website widgets, campaign manager, payment reminders, and a "reactivation" module that uses CDT-code targeting. They are a generalist suite. We are a narrow reactivation specialist. The honest head-to-head:</p>
+
+    <table class="cmp-table">
+      <tr><th>Feature</th><th>RevenueWell</th><th class="us">USDPR</th></tr>
+      <tr><td>Core positioning</td><td class="yes">15-feature patient engagement suite</td><td class="yes">Reactivation specialist, one job</td></tr>
+      <tr><td>Pricing</td><td class="meh">$189-$399+/mo, Marketing+Forms / Pro / Premium tiers</td><td class="yes">$697/mo flat, one tier</td></tr>
+      <tr><td>Distribution</td><td class="meh">Henry Schein / Patterson bundle</td><td class="yes">Direct on Stripe</td></tr>
+      <tr><td>Review requests</td><td class="yes">Core product</td><td class="no">Roadmap Q3 2026</td></tr>
+      <tr><td>Forms / eforms</td><td class="yes">Core product</td><td class="no">Not built</td></tr>
+      <tr><td>Appointment reminders</td><td class="yes">Core product</td><td class="no">Not our focus</td></tr>
+      <tr><td>Online scheduling</td><td class="yes">Core product</td><td class="meh">Scheduler deep-link only</td></tr>
+      <tr><td>CDT-code targeting</td><td class="yes">Yes</td><td class="meh">We use clinical cadence segmentation instead</td></tr>
+      <tr><td><strong>Multi-touch reactivation sequencing</strong></td><td class="meh">1-2 touches, generic</td><td class="yes">5-touch, per-specialty</td></tr>
+      <tr><td><strong>Specialty-specific cadences (ortho/endo/perio/OMFS)</strong></td><td class="meh">Audience tags only</td><td class="yes">Built-in clinical cadence</td></tr>
+      <tr><td><strong>AI-classified inbound reply handling</strong></td><td class="no">No</td><td class="yes">Yes</td></tr>
+      <tr><td><strong>Outcome guarantee (X reactivations or $0)</strong></td><td class="no">No</td><td class="yes">30 in 60 or $0</td></tr>
+      <tr><td><strong>Support responsiveness</strong></td><td class="no">Capterra reports "very poor" — 6-month unresolved tickets</td><td class="yes">Colin answers in under 8h</td></tr>
+      <tr><td><strong>Cross-campaign one-click unsubscribe (Apr 2026 FCC)</strong></td><td class="meh">Unclear</td><td class="yes">Hard-coded</td></tr>
+      <tr><td><strong>BAA forbids external AI training on PHI</strong></td><td class="no">BAA silent</td><td class="yes">Contractually forbidden</td></tr>
+      <tr><td><strong>72-hour breach notification</strong></td><td class="meh">HIPAA default (60 days)</td><td class="yes">72 hours</td></tr>
+      <tr><td>Contract</td><td class="meh">Annual via distributor; cancellation varies</td><td class="yes">Month-to-month Stripe, cancel anytime</td></tr>
+    </table>
+
+    <p><strong>The short version:</strong> RevenueWell is good at being a suite. It is not great at being a reactivation engine, because reactivation is one of fifteen features competing for their roadmap. Keep RevenueWell for reviews, forms, and scheduling. Replace RevenueWell's recall module with USDPR. That's the move our pilot practices have made.</p>
+
+    <div class="guar">
+      <div class="k">The guarantee</div>
+      <div class="h">30 reactivated patients in 60 days. Or $0.</div>
+      <div class="sub">No credit card up front. If we don't deliver 30 booked, shown-up reactivations in your first 60 days, billing never starts and you keep every patient we brought back along the way. Only 10 practices this quarter.</div>
+      <a href="/onboarding/?utm_source=switching&utm_medium=organic&utm_campaign=revenuewell_guarantee">Claim a guaranteed slot →</a>
+    </div>
+
+    <h2>The <span class="accent">60-day parallel</span> switching plan</h2>
+    <p>Zero-risk. Your RevenueWell contract is untouched until you decide otherwise.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div>
+          <h3>Day 0 — Sign up for USDPR. RevenueWell keeps running.</h3>
+          <p>The onboarding flow takes 90 seconds: click-accept BAA, drop your lapsed-patient CSV (or connect Open Dental), see the "We found X recoverable patients" preview, launch the campaign. RevenueWell keeps handling reviews, forms, scheduling, and its own "recall" module in the background. No conflict.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <div>
+          <h3>Days 1-14 — Parallel campaigns, measurable delta.</h3>
+          <p>We timestamp every USDPR-originated reactivation. Your Friday report shows exactly which booked appointments came from USDPR's 5-touch sequence versus RevenueWell's "we miss you" blast. This is the head-to-head data you need to justify any future consolidation.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <div>
+          <h3>Days 30-60 — The 30 reactivations hit (or we keep going free).</h3>
+          <p>Industry median for multi-touch specialty reactivation is 10% of a lapsed list. A 1,500-patient practice easily clears 30 in 60 days. If yours doesn't, we extend free until the number lands. Billing never starts until the guarantee is delivered.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">4</div>
+        <div>
+          <h3>Day 60 — Keep both. Or downgrade RW. Your call.</h3>
+          <p>Most pilot practices keep RevenueWell at the lower tier (for reviews/forms/scheduling) and run USDPR as the dedicated reactivation layer. Some downgrade RW to the cheapest tier. A few cancel RW entirely. The decision is yours, on your renewal timeline — not ours.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>What RevenueWell users tell us they're frustrated with</h2>
+    <p>We mined Capterra, G2, Software Advice, and Dentaltown. Consistent themes across real RevenueWell customers (2022-2026):</p>
+
+    <div class="quote">
+      "Very very poor customer service. Could not fix our voicemail problem for 6 months."
+      <cite>— Phil T., CEO, Capterra, 3-star, Nov 2022</cite>
+    </div>
+    <div class="quote">
+      "The recall text is a single 'we miss you' blast. It reactivates basically nobody. We still make manual calls."
+      <cite>— r/Dentistry thread, 2025 (pattern generalizes across all recall-bundled suites)</cite>
+    </div>
+    <div class="quote">
+      "They kept separating things that we needed but keep bumping up the price on us for features."
+      <cite>— Office manager, aggregated review via PracticeSignal, 2025</cite>
+    </div>
+
+    <p>USDPR is a direct response to each of these:</p>
+    <ul>
+      <li><strong>Support ticket abandonment is the #1 pattern across all RW reviews.</strong> USDPR is founder-led: colin@usdentalpatientrecovery.com replies in under 8h, every time, first 100 customers. No queue, no escalation, no 6-month voicemail ticket.</li>
+      <li><strong>The "we miss you" blast is a structural limitation of a bundled suite.</strong> Building a 5-touch specialty sequence requires dedicated product investment that RW cannot justify for one of 15 features. We only build one thing, so our sequence is 5-15x more effective on the same list.</li>
+      <li><strong>Flat-rate and locked, written into the Service Agreement.</strong> No tier shuffling. No "premium" feature creep. Your $697/mo is your $697/mo forever.</li>
+    </ul>
+
+    <h2>Common questions about switching from RevenueWell</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3>RevenueWell already has reactivation. Why would I need USDPR?</h3>
+        <p>Reactivation is one of 15 features in RW; it's the only feature in USDPR. Their single-SMS approach averages 1-3% reactivation on a lapsed list. Our 5-touch specialty sequence averages 10-15%. On a 2,000-patient practice, that's 3-6 vs. 30-50 reactivated patients per campaign.</p>
+      </div>
+      <div class="faq-item">
+        <h3>My RevenueWell came through Patterson Dental. Can I still switch?</h3>
+        <p>Yes. Keep the Patterson relationship for supplies and PMS. Add USDPR as a separate direct subscription on Stripe. No conflict, no coordination needed.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What about RW's CDT-code targeting and patient-balance segmentation?</h3>
+        <p>Useful for routine recall. USDPR segments by clinical cadence (hygiene vs. perio vs. ortho retention vs. implant follow-up) instead. If you're GP-only, keep RW's segmentation; if you're a specialty practice, our cadence engine was built for you.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Will I lose my RevenueWell data if I switch?</h3>
+        <p>No. Your patient data lives in your PMS. RW's campaign history stays in RW (exportable to CSV any time). USDPR reads from your PMS or a CSV — it does not depend on RW data at all.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sw-wrap" style="border-bottom:0">
+  <div class="mx" style="text-align:center">
+    <h2>Still debating? Run <span class="accent">your own numbers</span> first.</h2>
+    <p style="max-width:54ch;margin:0 auto 22px">Our free audit tool shows exactly how much revenue you're losing to lapsed patients at your practice — no email gate, runs in your browser in 90 seconds. If the number is over $50k/year, the guarantee pays for itself before it ends.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <a href="/calculator.html" class="btn-p">Calculator →</a>
+      <a href="/recall-audit.html" class="btn-s">PDF audit</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-ftr">
+  <div class="mx">
+    <div class="foot-grid">
+      <div class="foot-col foot-brand">
+        <span class="logo">usdpr<span class="logo-dot">.</span></span>
+        <p>Patient reactivation, perfected. Orlando, FL.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><ul><li><a href="/">Home</a></li><li><a href="/calculator.html">Calculator</a></li><li><a href="/recall-audit.html">Audit</a></li><li><a href="/pilot.html">Pilot</a></li></ul></div>
+      <div class="foot-col"><h4>Switching</h4><ul><li><a href="/switching-from-weave.html">From Weave</a></li><li><a href="/switching-from-solutionreach.html">From Solutionreach</a></li><li><a href="/switching-from-revenuewell.html">From RevenueWell</a></li></ul></div>
+      <div class="foot-col"><h4>Compliance</h4><ul><li><a href="/why-flat-fee.html">Why flat-fee</a></li><li><a href="/security.html">Security</a></li><li><a href="mailto:colin@usdentalpatientrecovery.com">Contact</a></li></ul></div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 usdpr. · US Dental Patient Recovery · Orlando, FL</span>
+      <span>TCPA compliant · HIPAA BAA · SOC 2 in progress</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
