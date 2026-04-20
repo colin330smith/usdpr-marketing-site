@@ -42,46 +42,73 @@
   status = 200
   force  = true
 
-# ─── Stripe Payment Links — live ───────────────────────────────────────────
-# Generated 2026-04-19 via Stripe MCP. Three subscription products, each with
-# a 14-day free trial and post-checkout redirect to /welcome.html.
-# To rotate / regenerate: re-run ACTIVATE_REVENUE.sh.
-# NOTE: the current URLs are sandbox test-mode (/test_... prefix). Swap to
-# live-mode links once the Stripe live account clears KYC — same structure.
+# ─── Stripe Payment Links — USDPR:Ortho pricing ────────────────────────────
+# Three offerings: Recovery Launch (one-time), Pro (monthly), Scale (monthly per loc).
+# Current URLs are sandbox test-mode; swap to live links once Stripe KYC clears.
+# New Stripe products need to be created on the live account — the legacy links
+# below are placeholders until ACTIVATE_REVENUE.sh is re-run with new product SKUs.
+# For now, all /signup routes direct to /pilot.html to capture lead before payment.
 
 [[redirects]]
   from = "/signup"
-  to   = "https://buy.stripe.com/test_dRm00k1h48UQfZR0mD4ZG00"
+  to   = "/pilot.html"
   status = 302
   force  = true
-  query  = {tier = "practice"}
+  query  = {tier = "pro"}
 
 [[redirects]]
   from = "/signup"
-  to   = "https://buy.stripe.com/test_fZu6oI0d03Aw2912uL4ZG01"
+  to   = "/pilot.html"
   status = 302
   force  = true
-  query  = {tier = "practice_pro"}
+  query  = {tier = "scale"}
 
 [[redirects]]
   from = "/signup"
-  to   = "https://buy.stripe.com/test_7sY5kEbVI7QM14Xd9p4ZG02"
+  to   = "mailto:colin@usdentalpatientrecovery.com?subject=Enterprise%20inquiry"
   status = 302
   force  = true
-  query  = {tier = "dso"}
+  query  = {tier = "enterprise"}
 
-# Default: Practice Pro (the flagship tier)
+# Default: land on pilot.html (founding-cohort capture page)
 [[redirects]]
   from = "/signup"
-  to   = "https://buy.stripe.com/test_fZu6oI0d03Aw2912uL4ZG01"
+  to   = "/pilot.html"
   status = 302
   force  = true
 
 # Demo + dashboard placeholders until FastAPI backend is wired.
 [[redirects]]
   from = "/demo"
-  to   = "/compare.html"
+  to   = "/for-orthodontics.html"
   status = 302
+
+# Horizontal-specialty pages — deprecated in USDPR:Ortho narrowing.
+# 301 to /for-orthodontics.html for Google to reassign link equity.
+[[redirects]]
+  from = "/for-specialists.html"
+  to   = "/for-orthodontics.html"
+  status = 301
+
+[[redirects]]
+  from = "/for-managers.html"
+  to   = "/for-orthodontics.html"
+  status = 301
+
+[[redirects]]
+  from = "/for-dsos.html"
+  to   = "/for-orthodontics.html"
+  status = 301
+
+[[redirects]]
+  from = "/for-owners.html"
+  to   = "/for-orthodontics.html"
+  status = 301
+
+[[redirects]]
+  from = "/compare-matrix.html"
+  to   = "/compare.html"
+  status = 301
 
 # Post-Stripe redirect lands on the frictionless onboarding flow.
 # /welcome.html is also alive (legacy), but /onboarding/ is the canonical experience.
