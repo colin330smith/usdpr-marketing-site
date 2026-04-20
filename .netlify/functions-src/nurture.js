@@ -62,7 +62,7 @@ const SPEC = {
 };
 
 function tierFor(patients, specialty) {
-  // USDPR:Ortho — founding cohort $697/mo, standard Pro $997/mo, Scale $1,497 per extra location
+  // USDPR — founding cohort $697/mo, standard Pro $997/mo, Scale $1,497 per extra location
   if (specialty === "dso") return { tier: "scale", monthly: 1497, label: "Ortho Recovery Scale · $1,497/mo per location" };
   return { tier: "pro", monthly: 997, label: "Ortho Recovery Pro · $997/mo (founding: $697/mo)" };
 }

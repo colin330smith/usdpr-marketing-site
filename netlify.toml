@@ -42,7 +42,7 @@
   status = 200
   force  = true
 
-# ─── Stripe Payment Links — USDPR:Ortho pricing ────────────────────────────
+# ─── Stripe Payment Links — USDPR pricing ────────────────────────────
 # Three offerings: Recovery Launch (one-time), Pro (monthly), Scale (monthly per loc).
 # Current URLs are sandbox test-mode; swap to live links once Stripe KYC clears.
 # New Stripe products need to be created on the live account — the legacy links
@@ -83,7 +83,7 @@
   to   = "/for-orthodontics.html"
   status = 302
 
-# Horizontal-specialty pages — deprecated in USDPR:Ortho narrowing.
+# Horizontal-specialty pages — deprecated in USDPR narrowing.
 # 301 to /for-orthodontics.html for Google to reassign link equity.
 [[redirects]]
   from = "/for-specialists.html"
