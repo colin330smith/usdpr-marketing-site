@@ -330,7 +330,7 @@
           <span class="cx-opt-badge">Option 02</span>
           <span style="color:var(--ink-3)">Move to a smaller plan</span>
         </div>
-        <h2>Drop to Practice \u2014 <span class="accent">$297/mo</span>. Keep running.</h2>
+        <h2>Drop to Practice \u2014 <span class="accent">$997/mo</span>. Keep running.</h2>
         <p>If Practice Pro is more than you need right now, downgrade to the Practice tier and keep the reactivation engine running on your first <strong>2,000 active patients</strong>. Takes effect on your next billing date. No data loss.</p>
         <div class="cx-opt-sub">
           <span class="cx-opt-sub-chip">Saves $4,800/year</span>
@@ -515,7 +515,7 @@
       showOk('Account paused for ' + pauseDays + ' days.', 'No charges until the pause ends. Your data stays exactly where you left it. We\u2019ll email you a resume link three days before the pause lifts.');
     } else if (action === 'downgrade') {
       fireAction('downgrade', {from:'practice_pro', to:'practice'});
-      showOk('Downgrade scheduled.', 'You\u2019ll move to the Practice tier ($297/mo) on your next billing date. Everything keeps running until then. Re-upgrade from the dashboard any time.');
+      showOk('Downgrade scheduled.', 'You\u2019ll move to the Practice tier ($997/mo) on your next billing date. Everything keeps running until then. Re-upgrade from the dashboard any time.');
     } else if (action === 'open_feedback') {
       document.getElementById('cxFeedback').classList.add('on');
       document.getElementById('cxCancelActions').style.display = 'none';

@@ -367,7 +367,7 @@
 </style>
 <!-- BEGIN auto FAQ schema -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate lapsed patient revenue loss?","acceptedAnswer":{"@type":"Answer","text":"Multiply your active patient count by your annual lapse rate (9% is the US industry average) to get lapsed patients per year. Multiply that by your average visit value ($285 is national benchmark) and expected visits per reactivated patient (1.5x is conservative). For a 2,000-patient practice: 2,000 \u00d7 9% \u00d7 $285 \u00d7 1.5 = ~$77,000 of annual revenue at risk."}},{"@type":"Question","name":"What's the average dental practice reactivation rate?","acceptedAnswer":{"@type":"Answer","text":"Generic SMS recall blasts typically reactivate 1-3% of lapsed patients. Multi-touch sequences using email + SMS + phone with personalized templates consistently reactivate 8-15%. The free calculator lets you adjust the reactivation rate slider to see how much revenue you recover at different conversion levels."}},{"@type":"Question","name":"How much does a orthodontic patient recovery service cost?","acceptedAnswer":{"@type":"Answer","text":"US Dental Patient Recovery charges a flat monthly SaaS fee: $297/mo for solo practices up to 2,000 patients, $697/mo for growing practices up to 10,000 patients, $1,997/mo for DSOs. All plans include a free Ortho Recovery Audit with no credit card required. Flat fees keep the arrangement inside anti-kickback safe harbors \u2014 per-patient pricing triggers state patient-brokering statutes."}},{"@type":"Question","name":"Is the dental ROI calculator free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes, the calculator is 100% free with no signup or email required. It runs entirely in your browser \u2014 no analytics tracking, no lead capture, no popup. Dental consultants and bloggers can embed it on their own site free at usdpr.netlify.app/embed.html."}},{"@type":"Question","name":"What is a good average visit value for a dental practice?","acceptedAnswer":{"@type":"Answer","text":"The 2026 national average for a general dental patient visit is approximately $285 (includes hygiene appointment + diagnostic imaging averaged across recall visits). Specialty practices run higher: ortho consults $400-$600, endo $900-$1,400 per RCT, perio SRP quadrants $320-$480, OMFS consults $280-$450."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I calculate lapsed patient revenue loss?","acceptedAnswer":{"@type":"Answer","text":"Multiply your active patient count by your annual lapse rate (9% is the US industry average) to get lapsed patients per year. Multiply that by your average visit value ($285 is national benchmark) and expected visits per reactivated patient (1.5x is conservative). For a 2,000-patient practice: 2,000 \u00d7 9% \u00d7 $285 \u00d7 1.5 = ~$77,000 of annual revenue at risk."}},{"@type":"Question","name":"What's the average dental practice reactivation rate?","acceptedAnswer":{"@type":"Answer","text":"Generic SMS recall blasts typically reactivate 1-3% of lapsed patients. Multi-touch sequences using email + SMS + phone with personalized templates consistently reactivate 8-15%. The free calculator lets you adjust the reactivation rate slider to see how much revenue you recover at different conversion levels."}},{"@type":"Question","name":"How much does a orthodontic patient recovery service cost?","acceptedAnswer":{"@type":"Answer","text":"US Dental Patient Recovery charges a flat monthly SaaS fee: $997/mo for solo practices up to 2,000 patients, $697/mo for growing practices up to 10,000 patients, $1,497/mo per location for DSOs. All plans include a free Ortho Recovery Audit with no credit card required. Flat fees keep the arrangement inside anti-kickback safe harbors \u2014 per-patient pricing triggers state patient-brokering statutes."}},{"@type":"Question","name":"Is the dental ROI calculator free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes, the calculator is 100% free with no signup or email required. It runs entirely in your browser \u2014 no analytics tracking, no lead capture, no popup. Dental consultants and bloggers can embed it on their own site free at usdpr.netlify.app/embed.html."}},{"@type":"Question","name":"What is a good average visit value for a dental practice?","acceptedAnswer":{"@type":"Answer","text":"The 2026 national average for a general dental patient visit is approximately $285 (includes hygiene appointment + diagnostic imaging averaged across recall visits). Specialty practices run higher: ortho consults $400-$600, endo $900-$1,400 per RCT, perio SRP quadrants $320-$480, OMFS consults $280-$450."}}]}
 </script>
 <!-- END auto FAQ schema -->
 </head>
@@ -487,7 +487,7 @@
           <div class="calc-net-v"><span class="d">$</span><span id="outNet">2,592</span></div>
         </div>
 
-        <div class="calc-tier-pill" id="outTier">Recommended: Practice · $297/mo</div>
+        <div class="calc-tier-pill" id="outTier">Recommended: Ortho Recovery Pro · $997/mo</div>
 
       </div>
 
@@ -596,9 +596,8 @@
   const inMulti    = $('inMulti');
 
   function tierFor(patients){
-    if (patients <= 2000)  return {tier:'practice',     monthly:297,  label:'Practice · $297/mo'};
-    if (patients <= 10000) return {tier:'practice_pro', monthly:697,  label:'Practice Pro · $697/mo'};
-    return                        {tier:'dso',          monthly:1997, label:'DSO · $1,997/mo'};
+    if (patients > 10000) return {tier:'scale', monthly:1497, label:'Ortho Recovery Scale · $1,497/mo per loc'};
+    return                        {tier:'pro',   monthly:997,  label:'Ortho Recovery Pro · $997/mo'};
   }
 
   function recompute(){

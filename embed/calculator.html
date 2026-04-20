@@ -212,7 +212,7 @@
     <div class="cta-row">
       <a id="outSignupLink" class="btn btn-primary" href="https://usdpr.netlify.app/signup?tier=practice_pro&utm_source=embed&utm_medium=calculator" target="_blank" rel="noopener">Start free Ortho Recovery Audit</a>
       <a class="btn btn-ghost" href="https://usdpr.netlify.app/calculator.html?utm_source=embed&utm_medium=calculator" target="_blank" rel="noopener">Full calculator</a>
-      <span class="tier-badge" id="outTier">Recommended: Practice · $297/mo</span>
+      <span class="tier-badge" id="outTier">Recommended: Ortho Recovery Pro · $997/mo</span>
     </div>
   </div>
   <div class="wm">
@@ -232,9 +232,8 @@
   const inMulti    = $('inMulti');
 
   function tierFor(patients){
-    if (patients <= 2000)  return {tier:'practice',     monthly:297,  label:'Practice · $297/mo'};
-    if (patients <= 10000) return {tier:'practice_pro', monthly:697,  label:'Practice Pro · $697/mo'};
-    return                        {tier:'dso',          monthly:1997, label:'DSO · $1,997/mo'};
+    if (patients > 10000) return {tier:'scale', monthly:1497, label:'Ortho Recovery Scale · $1,497/mo per loc'};
+    return                        {tier:'pro',   monthly:997,  label:'Ortho Recovery Pro · $997/mo'};
   }
 
   function recompute(){

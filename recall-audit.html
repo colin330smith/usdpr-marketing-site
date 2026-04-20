@@ -274,7 +274,7 @@
         <div class="ra-stack">
           <div class="ra-row"><span class="k">Patients likely to lapse this year</span><span class="v"><span id="raPvLapsed">180</span></span></div>
           <div class="ra-row"><span class="k">Recoverable with a dedicated sequence <span style="color:var(--ink-3)">(@ <span id="raPvRecPct">10%</span>)</span></span><span class="v">$<span id="raPvRecovered">7,700</span>/yr</span></div>
-          <div class="ra-row"><span class="k">Recommended plan</span><span class="v" id="raPvTier">Practice · $297/mo</span></div>
+          <div class="ra-row"><span class="k">Recommended plan</span><span class="v" id="raPvTier">Ortho Recovery Pro · $997/mo</span></div>
           <div class="ra-row"><span class="k">Net gain after tool cost</span><span class="v" style="color:#0f766e">$<span id="raPvNet">—</span>/yr</span></div>
         </div>
         <div class="ra-seq">
@@ -404,10 +404,9 @@
   };
 
   function tierFor(patients, specialty){
-    if (specialty === 'dso')             return {tier:'dso',          monthly:1997, label:'DSO · $1,997/mo'};
-    if (patients <= 2000)                return {tier:'practice',     monthly:297,  label:'Practice · $297/mo'};
-    if (patients <= 10000)               return {tier:'practice_pro', monthly:697,  label:'Practice Pro · $697/mo'};
-    return                                     {tier:'dso',          monthly:1997, label:'DSO · $1,997/mo'};
+    if (specialty === 'dso') return {tier:'scale', monthly:1497, label:'Ortho Recovery Scale · $1,497/mo per loc'};
+    if (patients > 10000)    return {tier:'scale', monthly:1497, label:'Ortho Recovery Scale · $1,497/mo per loc'};
+    return                          {tier:'pro',   monthly:997,  label:'Ortho Recovery Pro · $997/mo'};
   }
 
   function compute(inputs){
