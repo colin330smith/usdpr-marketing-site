@@ -76,10 +76,9 @@ const SPEC = {
 };
 
 function tierFor(patients, specialty) {
-  if (specialty === "dso")      return { tier: "dso",          monthly: 1997, label: "DSO · $1,997/mo" };
-  if (patients <= 2000)         return { tier: "practice",     monthly:  297, label: "Practice · $297/mo" };
-  if (patients <= 10000)        return { tier: "practice_pro", monthly:  697, label: "Practice Pro · $697/mo" };
-  return                               { tier: "dso",          monthly: 1997, label: "DSO · $1,997/mo" };
+  // USDPR:Ortho tier mapping — founding cohort available for ortho practices
+  if (specialty === "dso")      return { tier: "scale",        monthly: 1497, label: "Ortho Recovery Scale · $1,497/mo per location" };
+  return { tier: "pro", monthly: 997, label: "Ortho Recovery Pro · $997/mo (founding: $697/mo)" };
 }
 
 function computeAudit(input) {
@@ -148,7 +147,7 @@ function auditEmailHTML(capture, audit) {
     "</table>" +
     "<div style=\"background:#1a1614;color:#f6f4ef;padding:18px 22px;border-radius:12px;margin:22px 0 16px;text-align:center\">" +
       "<div style=\"font-size:11px;color:#fbbf24;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:6px\">The guarantee</div>" +
-      "<div style=\"font-size:20px;color:#fff;font-weight:800;letter-spacing:-.01em;line-height:1.2;margin-bottom:6px\">30 reactivated patients in 60 days. Or $0.</div>" +
+      "<div style=\"font-size:20px;color:#fff;font-weight:800;letter-spacing:-.01em;line-height:1.2;margin-bottom:6px\">$5,000 attributed shown-value in 60 days. Or Launch Fee refunded.</div>" +
       "<div style=\"font-size:13px;color:#c7c1b5;line-height:1.5\">We don't charge until we've delivered. No card up front. Only the first 10 practices this quarter.</div>" +
     "</div>" +
     "<div style=\"text-align:center;margin:0 0 20px\">" +
@@ -183,7 +182,7 @@ function auditEmailText(capture, audit) {
     "  • Net gain after tool cost:   $" + fmt(audit.net) + "/yr\n\n" +
     "THE GUARANTEE\n" +
     "-------------\n" +
-    "30 reactivated patients in 60 days. Or $0.\n" +
+    "$5,000 attributed shown-value in 60 days. Or Launch Fee refunded.\n" +
     "No card up front. We don't charge until we've delivered. Only 10 pilot slots this quarter.\n\n" +
     "Claim a guaranteed slot:\n" +
     "https://usdpr.netlify.app/pilot.html?utm_source=audit_email&utm_campaign=guarantee\n\n" +

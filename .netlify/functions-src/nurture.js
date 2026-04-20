@@ -62,10 +62,9 @@ const SPEC = {
 };
 
 function tierFor(patients, specialty) {
-  if (specialty === "dso") return { tier: "dso", monthly: 1997, label: "DSO · $1,997/mo" };
-  if (patients <= 2000)    return { tier: "practice", monthly: 297, label: "Practice · $297/mo" };
-  if (patients <= 10000)   return { tier: "practice_pro", monthly: 697, label: "Practice Pro · $697/mo" };
-  return                         { tier: "dso", monthly: 1997, label: "DSO · $1,997/mo" };
+  // USDPR:Ortho — founding cohort $697/mo, standard Pro $997/mo, Scale $1,497 per extra location
+  if (specialty === "dso") return { tier: "scale", monthly: 1497, label: "Ortho Recovery Scale · $1,497/mo per location" };
+  return { tier: "pro", monthly: 997, label: "Ortho Recovery Pro · $997/mo (founding: $697/mo)" };
 }
 
 function computeAudit(input) {
@@ -98,7 +97,7 @@ function touchDay2HTML(lead, audit) {
     "<p style=\"font-size:15px;line-height:1.55\">I didn't lead with this in your audit email because I wanted the numbers to stand on their own. But here's the offer:</p>" +
     "<div style=\"background:#1a1614;color:#f6f4ef;padding:18px 22px;border-radius:12px;margin:14px 0;text-align:center\">" +
       "<div style=\"font-size:11px;color:#fbbf24;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:4px\">The guarantee</div>" +
-      "<div style=\"font-size:22px;color:#fff;font-weight:800;letter-spacing:-.01em;line-height:1.15\">30 reactivated patients in 60 days. Or $0.</div>" +
+      "<div style=\"font-size:22px;color:#fff;font-weight:800;letter-spacing:-.01em;line-height:1.15\">$5,000 attributed shown-value in 60 days. Or Launch Fee refunded.</div>" +
     "</div>" +
     "<ul style=\"font-size:14px;line-height:1.65;color:#4a4440;padding-left:18px\">" +
       "<li><b>No credit card up front.</b> We don't charge a cent until we've delivered 30 booked, shown-up reactivations.</li>" +
@@ -106,7 +105,7 @@ function touchDay2HTML(lead, audit) {
       "<li><b>You keep every patient</b> we reactivated for you along the way, guarantee or not.</li>" +
       "<li><b>Only 10 pilot slots this quarter.</b> First come; two are already claimed.</li>" +
     "</ul>" +
-    "<p style=\"font-size:15px;line-height:1.55\">For your practice ($" + fmtInt(audit.loss) + "/yr unrealized), 30 reactivated patients = ~$" + fmtInt(30 * 285 * 1.5) + " in recovered production. Guarantee pays for itself before the pilot window closes.</p>" +
+    "<p style=\"font-size:15px;line-height:1.55\">For your practice ($" + fmtInt(audit.loss) + "/yr unrealized), $5,000 shown-value = ~$" + fmtInt(30 * 285 * 1.5) + " in recovered production. Guarantee pays for itself before the pilot window closes.</p>" +
     "<div style=\"text-align:center;margin:24px 0\">" +
       "<a href=\"" + pilot + "\" style=\"display:inline-block;padding:12px 24px;background:#f97316;color:#fff;text-decoration:none;border-radius:999px;font-weight:800\">Claim a guaranteed slot →</a>" +
     "</div>" +
@@ -114,10 +113,10 @@ function touchDay2HTML(lead, audit) {
   );
 }
 function touchDay2Text(lead, audit) {
-  return "The guarantee: 30 reactivated patients in 60 days. Or $0.\n\n" +
+  return "The guarantee: $5,000 attributed shown-value in 60 days. Or Launch Fee refunded.\n\n" +
     "No card up front. We don't charge until we've delivered 30 booked, shown-up reactivations. If we miss, billing never starts — we extend free until we hit the number. You keep every patient we reactivated along the way.\n\n" +
     "Only 10 pilot slots this quarter. Two claimed.\n\n" +
-    "For your practice (~$" + fmtInt(audit.loss) + "/yr unrealized), 30 reactivated patients = ~$" + fmtInt(30 * 285 * 1.5) + " in recovered production. Guarantee pays for itself before the window closes.\n\n" +
+    "For your practice (~$" + fmtInt(audit.loss) + "/yr unrealized), $5,000 shown-value = ~$" + fmtInt(30 * 285 * 1.5) + " in recovered production. Guarantee pays for itself before the window closes.\n\n" +
     "Claim a slot: https://usdpr.netlify.app/pilot.html\n\n" +
     "Reply with any question — goes straight to me.\n\n— Colin";
 }
@@ -158,8 +157,8 @@ function touchDay10HTML(lead, audit) {
     "<blockquote style=\"border-left:3px solid #f97316;padding:8px 16px;color:#4a4440;font-size:15px;line-height:1.55;margin:14px 0\">Your practice is losing <b>$" + fmtInt(audit.loss) + "/year</b> to patients who drift. USDPR recovers <b>$" + fmtInt(audit.recovered) + "/year</b> of that for a flat <b>" + esc(audit.tier.label) + "</b> — net gain ~<b>$" + fmtInt(audit.net) + "/year</b>.</blockquote>" +
     "<div style=\"background:#1a1614;color:#f6f4ef;padding:18px 22px;border-radius:12px;margin:18px 0;text-align:center\">" +
       "<div style=\"font-size:11px;color:#fbbf24;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:4px\">The guarantee · closes at slot 10</div>" +
-      "<div style=\"font-size:22px;color:#fff;font-weight:800;letter-spacing:-.01em;line-height:1.15;margin-bottom:4px\">30 reactivated patients in 60 days. Or $0.</div>" +
-      "<div style=\"font-size:12px;color:#c7c1b5\">No card up front · Lifetime $697/mo rate lock · Founder-level onboarding</div>" +
+      "<div style=\"font-size:22px;color:#fff;font-weight:800;letter-spacing:-.01em;line-height:1.15;margin-bottom:4px\">$5,000 attributed shown-value in 60 days. Or Launch Fee refunded.</div>" +
+      "<div style=\"font-size:12px;color:#c7c1b5\">No card up front · Lifetime $697/mo founding rate lock · Founder-level onboarding</div>" +
     "</div>" +
     "<div style=\"text-align:center;margin:20px 0 6px\">" +
       "<a href=\"" + pilot + "\" style=\"display:inline-block;padding:12px 24px;background:#f97316;color:#fff;text-decoration:none;border-radius:999px;font-weight:800\">Claim a guaranteed slot →</a>" +
@@ -173,8 +172,8 @@ function touchDay10Text(lead, audit) {
     "Your practice loses $" + fmtInt(audit.loss) + "/yr to patients who drift.\n" +
     "USDPR recovers ~$" + fmtInt(audit.recovered) + "/yr (net ~$" + fmtInt(audit.net) + "/yr after tool cost).\n\n" +
     "THE GUARANTEE · closes at slot 10\n" +
-    "30 reactivated patients in 60 days. Or $0.\n" +
-    "No card up front · Lifetime $697/mo rate lock · Founder onboarding.\n\n" +
+    "$5,000 attributed shown-value in 60 days. Or Launch Fee refunded.\n" +
+    "No card up front · Lifetime $697/mo founding rate lock · Founder onboarding.\n\n" +
     "Claim a slot: https://usdpr.netlify.app/pilot.html\n\n" +
     "Thanks for taking the audit — PDF is yours regardless.\n\n— Colin Smith, Founder";
 }
