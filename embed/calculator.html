@@ -245,7 +245,7 @@
 
     $('lapseOut').textContent    = inLapse.value + '%';
     $('recoveryOut').textContent = inRecovery.value + '%';
-    $('multiOut').textContent    = (+inMulti.value).toFixed(1) + '\u00D7';
+    $('multiOut').textContent    = (+inMulti.value).toFixed(1) + '×';
 
     const lapsed            = active * lapsePct;
     const loss              = lapsed * visit * multi;
