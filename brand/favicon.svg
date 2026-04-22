@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <rect width="48" height="48" rx="8" fill="#0B0C0E"/>
+  <rect x="5"  y="5"  width="10" height="10" rx="1.5" fill="none" stroke="#E6E4DF" stroke-width="1.4"/>
+  <rect x="19" y="5"  width="10" height="10" rx="1.5" fill="none" stroke="#E6E4DF" stroke-width="1.4"/>
+  <rect x="33" y="5"  width="10" height="10" rx="1.5" fill="none" stroke="#E6E4DF" stroke-width="1.4"/>
+  <rect x="5"  y="19" width="10" height="10" rx="1.5" fill="none" stroke="#E6E4DF" stroke-width="1.4"/>
+  <rect x="19" y="19" width="10" height="10" rx="1.5" fill="#E58028" stroke="#E58028" stroke-width="1.4"/>
+  <rect x="33" y="19" width="10" height="10" rx="1.5" fill="none" stroke="#E6E4DF" stroke-width="1.4"/>
+  <rect x="5"  y="33" width="10" height="10" rx="1.5" fill="none" stroke="#E6E4DF" stroke-width="1.4"/>
+  <rect x="19" y="33" width="10" height="10" rx="1.5" fill="none" stroke="#E6E4DF" stroke-width="1.4"/>
+  <rect x="33" y="33" width="10" height="10" rx="1.5" fill="none" stroke="#E6E4DF" stroke-width="1.4"/>
+  <text x="24" y="27.5" text-anchor="middle" font-family="serif" font-size="9" font-style="italic" font-weight="600" fill="#0B0C0E">u</text>
+</svg>
