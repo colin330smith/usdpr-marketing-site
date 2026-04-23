@@ -631,6 +631,53 @@ img, svg { max-width: 100%; display: block; }
 .hp-row-shown.yes::before { content: '●'; color: var(--n-900); margin-right: 3px; }
 .hp-row-shown.no { color: var(--n-300); }
 
+/* ============ PROOF STRIP — NexHealth-pattern quantified above-fold === */
+.proof-strip {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: var(--n-025);
+}
+.proof-strip-inner {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 32px var(--gutter);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+}
+@media (max-width: 820px) {
+  .proof-strip-inner { grid-template-columns: 1fr 1fr; }
+}
+.proof-cell {
+  background: var(--n-025);
+  padding: 8px 20px 8px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.proof-cell .num {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--n-900);
+  letter-spacing: -0.028em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.proof-cell .label {
+  font-size: 12.5px;
+  color: var(--n-500);
+  line-height: 1.4;
+}
+.proof-cell .src {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  color: var(--n-400);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: auto;
+}
+
 /* ============ MARQUEE TICKER =========================================== */
 .ticker {
   background: var(--n-900);
@@ -1281,16 +1328,16 @@ img, svg { max-width: 100%; display: block; }
       </h1>
 
       <p class="hero-sub r2">
-        The average orthodontic practice carries 696 active patients — and around 200 more who've gone quiet. Overdue retainer checks. Consults that stalled. Financing approved but never started. We find them, rank them by probability of return, and email your treatment coordinator a weekly call list. If we don't recover <strong>$5,000 in shown-up appointments in 60 days, every dollar is refundable.</strong>
+        Retainer checks, stalled consults, and approved financing that never started — ranked by probability, delivered every Friday at 8 AM. <strong>One email. Zero dashboards. $5,000 recovered in 60 days or every dollar refunded.</strong>
       </p>
 
       <ul class="hero-features r3">
-        <li>Overdue retainer checks</li>
-        <li>Consults that stalled before start</li>
-        <li>Observation recalls lapsed</li>
-        <li>Approved financing, never used</li>
-        <li>Untouched sibling consults</li>
-        <li>Measured results: who actually came in</li>
+        <li>Recover overdue retainer checks</li>
+        <li>Restart stalled consults</li>
+        <li>Close observation recall gaps</li>
+        <li>Activate approved financing</li>
+        <li>Consult inactive siblings</li>
+        <li>Attribute shown-up patients</li>
       </ul>
 
       <div class="hero-cta r4">
@@ -1300,8 +1347,8 @@ img, svg { max-width: 100%; display: block; }
 
       <div class="hero-trust r5">
         <span><strong>HIPAA</strong> · BAA-first</span>
-        <span><strong>TCPA</strong> compliant</span>
-        <span><strong>SOC 2</strong> · Q2 2027 roadmap</span>
+        <span><strong>Month-to-month</strong> · no long-term contract</span>
+        <span><strong>SOC 2</strong> Q2 2027 roadmap</span>
       </div>
     </div>
 
@@ -1376,6 +1423,32 @@ img, svg { max-width: 100%; display: block; }
   </div>
 </section>
 
+<!-- PROOF STRIP — NexHealth pattern, quantified, above fold -->
+<section class="proof-strip">
+  <div class="proof-strip-inner">
+    <div class="proof-cell">
+      <div class="num">696</div>
+      <div class="label">Active patients in the average orthodontic practice</div>
+      <div class="src">AAO 2025</div>
+    </div>
+    <div class="proof-cell">
+      <div class="num">23%</div>
+      <div class="label">Attendance drop every six months of silence</div>
+      <div class="src">PubMed</div>
+    </div>
+    <div class="proof-cell">
+      <div class="num">$5,108<span style="font-size:0.5em;color:var(--n-400);font-weight:500;">–$9,221</span></div>
+      <div class="label">Revenue per comprehensive orthodontic case</div>
+      <div class="src">CareCredit · ADA 2024</div>
+    </div>
+    <div class="proof-cell">
+      <div class="num">$5,000</div>
+      <div class="label">Recovered in 60 days, or the launch fee is refunded</div>
+      <div class="src">Our guarantee</div>
+    </div>
+  </div>
+</section>
+
 <section class="ticker" aria-label="Research citations">
   <div class="ticker-track">
     <span>AAO 2025</span><span class="sep">·</span>
@@ -1434,10 +1507,10 @@ img, svg { max-width: 100%; display: block; }
   <div class="research-spotlight" id="spotlight"></div>
   <div class="research-inner">
     <div class="reveal">
-      <div class="research-eyebrow">The math, sourced</div>
-      <h2 class="research-title">What your quiet patients are worth. <span class="uline">Per the research.</span></h2>
+      <div class="research-eyebrow">The arithmetic</div>
+      <h2 class="research-title">We don't have testimonials yet. <span class="uline">We have math.</span></h2>
       <p class="research-body">
-        USDPR is pre-revenue. No case studies yet. What we have is primary-sourced research from AAO, CareCredit, PubMed, and ADA that sized the problem — and a guarantee built around it. If we don't recover $5,000 in shown-up appointments inside 60 days, the launch fee is refunded in full. Your downside is three hours of setup time.
+        696 active patients (AAO 2025) × 23% who drop off every six months (PubMed) × $5,108 minimum per comprehensive case (CareCredit/ADA 2024). That's the revenue quietly sitting in the average orthodontic chart. USDPR finds it, ranks it, delivers it to your treatment coordinator every Friday morning. And if we don't recover $5,000 in your first 60 days, the launch fee is refunded in full.
       </p>
     </div>
 
@@ -1468,7 +1541,7 @@ img, svg { max-width: 100%; display: block; }
 
 <section class="founder">
   <div class="founder-inner reveal">
-    <div class="section-eyebrow" style="margin-bottom: 28px;">A note from the founder</div>
+    <div class="section-eyebrow" style="margin-bottom: 28px;">Why the launch fee is refundable</div>
     <p class="founder-body">
       Every dental software company I've watched sell to orthodontists has over-promised and under-delivered. <strong>That's why there's no testimonial below this sentence — we haven't shipped to a paying practice yet.</strong> The first ten orthodontists to sign up are the ones who'll prove the product works. Their rate locks forever. Their launch fee is refundable if we miss the $5,000 guarantee. My skin — their game.
     </p>
@@ -1548,8 +1621,8 @@ img, svg { max-width: 100%; display: block; }
 
 <section class="final-cta">
   <div class="final-cta-inner reveal">
-    <h2 class="final-cta-head">See exactly what's in your chart. <span class="uline">The audit is free.</span></h2>
-    <p class="final-cta-lede">We plug into your practice management software. Three business days later, a signed document arrives — every patient in every category, what each is worth, top fifty to call first. No credit card. No sales call. Read it. Decide after.</p>
+    <h2 class="final-cta-head">See what's in your chart. <span class="uline">Free. Seventy-two hours.</span></h2>
+    <p class="final-cta-lede">We connect to your practice management software. Three business days later, a signed audit arrives — every patient in every category, what each is worth, and the top fifty to call first. No credit card. No sales call. No long-term contract. Read it. Decide after.</p>
     <form class="capture" action="/api/capture" method="POST">
       <input type="email" name="email" placeholder="you@yourpractice.com" required autocomplete="email" />
       <button type="submit">Email me the audit →</button>
