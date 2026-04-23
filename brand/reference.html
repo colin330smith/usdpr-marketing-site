@@ -3,183 +3,140 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>USDPR — reference v6 · The Recovery Journal (final push)</title>
+<title>USDPR — Patient recovery software built for orthodontic practices</title>
 <link rel="icon" href="/brand/favicon.svg" />
 <style>
 /* ==========================================================================
-   USDPR — REFERENCE v6 · "The Recovery Journal" · 10/10 push
+   USDPR — REFERENCE v7 · direction: "Beat the category"
    ==========================================================================
-   Changes from v5:
-   · Display font: IBM Plex Serif → NEWSREADER (Production Type, free,
-     designed for screen reading of editorial content, has optical sizes
-     at 6/16/60 — real typographic personality, not the current SaaS
-     convergence)
-   · Accent: surgical emerald → DEEP JADE #00574A (darker than Parsley,
-     more ownable) + one BURNISHED BRONZE #8B5A2B moment per page as
-     secondary signature (dual-color medical-journal classicism)
-   · FIG. 01: abstract grid → HAND-DRAWN TOOTH CROSS-SECTION with 8
-     recovery states labeled as margin annotations (custom SVG)
-   · Real photography: clinician hands / portrait / clinical detail
-     (carefully curated Unsplash, duotone-treated to feel editorial)
-   · Motion: matrix cell reveal on intersect, summary-number count-up,
-     scroll-triggered amber underline draw, hover micro-movements
-   · Mobile: pass verified at 390×844 / 768×1024
+   Stopped inventing a new game. Playing the dental SaaS category game
+   (Weave · NexHealth · Overjet · Pearl · Dental Intel) but cleaner,
+   tighter, more credible than any of them.
+
+   The category pattern I'm executing against:
+   · Split hero: left copy, right product mockup
+   · Feature chips in the hero (NexHealth does 6 checkmarks)
+   · Single teal/green accent
+   · Modern sans throughout
+   · Social proof strip below hero
+   · 3-step "how it works"
+   · Big ROI stat
+   · Testimonial with photo
+   · 3-tier pricing
+   · Footer
+
+   What wins vs the competition:
+   · Tighter (Weave is cluttered; ours is clean)
+   · Better product mockup (Friday report is specific + credible)
+   · Transparent pricing (Weave/Dental Intel hide theirs)
+   · HIPAA/BAA shown early (most hide these in footer)
+   · Geist sans (distinctive from their Inter/Proxima)
+   · Deep teal confident vs Pearl's pastel
+   · Real testimonial with real $ number
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap');
 
 :root {
-  /* INK — near-black with subtle blue undertone for depth */
-  --ink-1000: #07080B;
-  --ink-900:  #0E1116;   /* hero bg */
-  --ink-800:  #181C22;
-  --ink-700:  #282D34;
-  --ink-600:  #41464D;
-  --ink-500:  #686D74;
-  --ink-400:  #8E9399;
-  --ink-300:  #B3B7BC;
-  --ink-200:  #D4D6DA;
-  --ink-100:  #E9EAEC;
+  /* INK — slate with slight cool */
+  --ink-1000: #0B0E14;
+  --ink-900:  #111521;
+  --ink-800:  #1C2230;
+  --ink-700:  #2A3040;
+  --ink-600:  #475569;
+  --ink-500:  #64748B;
+  --ink-400:  #94A3B8;
+  --ink-300:  #CBD5E1;
+  --ink-200:  #E2E8F0;
+  --ink-100:  #F1F5F9;
 
-  /* PAPER — stark with editorial warmth */
-  --paper-50:  #FBFAF5;
-  --paper-100: #F1EFE6;
-  --paper-200: #E2DED1;
+  /* PAPER — true white w/ subtle sections */
+  --paper-0:   #FFFFFF;
+  --paper-50:  #FAFBFC;
+  --paper-100: #F5F7FA;
+  --paper-200: #EEF2F6;
 
-  /* JADE — deep surgical forest, darker than Parsley */
-  --jade-900: #00201B;
-  --jade-800: #003B30;
-  --jade-700: #00574A;   /* PRIMARY accent */
-  --jade-600: #006D5E;
-  --jade-500: #008D78;
-  --jade-300: #59B9A5;
-  --jade-200: #A4DACA;
-  --jade-100: #D7EEE6;
+  /* TEAL — deep confident */
+  --teal-900: #03332B;
+  --teal-800: #064E42;
+  --teal-700: #087366;   /* primary brand */
+  --teal-600: #0A998A;
+  --teal-500: #0DBFA8;   /* bright action */
+  --teal-300: #5FDFC9;
+  --teal-200: #A1EDDB;
+  --teal-100: #D4F5EC;
+  --teal-50:  #ECFBF6;
 
-  /* BRONZE — warm medical-journal classicism, one moment per page */
-  --bronze-900: #3B2510;
-  --bronze-700: #6B3F17;
-  --bronze-500: #8B5A2B;   /* secondary accent */
-  --bronze-300: #C0926A;
-  --bronze-100: #EDD9BC;
+  /* ACCENT warm — rare use */
+  --coral-500: #F97066;
 
   /* RULES */
-  --rule-soft:  rgba(7, 8, 11, 0.06);
-  --rule:       rgba(7, 8, 11, 0.14);
-  --rule-strong: rgba(7, 8, 11, 0.28);
-  --rule-ink:   #07080B;
-  --rule-inv:   rgba(251, 250, 245, 0.12);
-  --rule-inv-s: rgba(251, 250, 245, 0.24);
+  --rule-soft: rgba(11, 14, 20, 0.06);
+  --rule:      rgba(11, 14, 20, 0.12);
+  --rule-strong: rgba(11, 14, 20, 0.22);
+
+  --r-xs: 3px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
 
   --wrap: 1280px;
-  --wrap-tight: 1080px;
-  --wrap-reading: 720px;
-  --gutter: clamp(20px, 4vw, 44px);
+  --wrap-tight: 1120px;
+  --gutter: clamp(20px, 4vw, 32px);
 
   --ease: cubic-bezier(0.2, 0.9, 0.25, 1);
-  --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
+  --shadow-sm: 0 1px 2px rgba(11,14,20,0.05), 0 0 0 1px rgba(11,14,20,0.04);
+  --shadow-md: 0 4px 12px rgba(11,14,20,0.06), 0 0 0 1px rgba(11,14,20,0.04);
+  --shadow-lg: 0 24px 48px -12px rgba(11,14,20,0.10), 0 0 0 1px rgba(11,14,20,0.04);
+  --shadow-xl: 0 32px 64px -16px rgba(11,14,20,0.14), 0 0 0 1px rgba(11,14,20,0.04);
 }
 
 * { box-sizing: border-box; }
-*::selection { background: var(--jade-200); color: var(--ink-1000); }
+*::selection { background: var(--teal-100); color: var(--ink-1000); }
 
-html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; text-rendering: optimizeLegibility; }
-
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--paper-50);
+  background: var(--paper-0);
   color: var(--ink-1000);
-  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 15px;
   line-height: 1.5;
-  font-feature-settings: "ss01", "cv02";
+  font-feature-settings: "ss02";
   overflow-x: hidden;
 }
-
 a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; background: transparent; border: 0; }
 img, svg { max-width: 100%; display: block; }
 
-/* ---------- Serif display utility (Newsreader with optical size) ------- */
-.serif {
-  font-family: 'Newsreader', 'Iowan Old Style', Georgia, serif;
-  font-weight: 400;
-  font-variation-settings: "opsz" 72;
-  letter-spacing: -0.012em;
-}
-.serif-it {
-  font-family: 'Newsreader', serif;
-  font-weight: 400;
-  font-style: italic;
-  font-variation-settings: "opsz" 72;
-  letter-spacing: -0.005em;
-}
-
-/* ---------- Masthead strip (publication header) ----------------------- */
-.masthead {
-  background: var(--ink-900);
+/* ---------- Top announcement ------------------------------------------- */
+.top-bar {
+  background: var(--ink-1000);
   color: var(--paper-50);
-  border-bottom: 1px solid var(--rule-inv);
-}
-.masthead-inner {
-  max-width: var(--wrap);
-  margin: 0 auto;
-  padding: 11px var(--gutter);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.08em;
-  color: var(--ink-300);
-}
-.masthead-inner strong { color: var(--paper-50); font-weight: 500; }
-.masthead-inner .serif-bar {
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  font-weight: 400;
+  text-align: center;
+  padding: 10px var(--gutter);
   font-size: 13px;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--paper-50);
-  font-variation-settings: "opsz" 24;
+  font-weight: 500;
+  letter-spacing: -0.003em;
 }
-.masthead-inner .divider { color: var(--ink-600); margin: 0 4px; }
-.masthead-inner .live { display: inline-flex; align-items: center; gap: 6px; }
-.masthead-inner .live::before {
-  content: '';
-  width: 6px; height: 6px;
-  background: var(--jade-500);
-  box-shadow: 0 0 0 3px rgba(0, 141, 120, 0.3);
-  animation: pulse 2.6s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%,100% { box-shadow: 0 0 0 3px rgba(0, 141, 120, 0.28); }
-  50%     { box-shadow: 0 0 0 7px rgba(0, 141, 120, 0); }
-}
-.masthead-inner a { color: var(--jade-300); }
-.masthead-inner a:hover { color: var(--jade-500); }
-@media (max-width: 820px) {
-  .masthead-inner .hide-sm { display: none; }
-  .masthead-inner { font-size: 10px; }
-}
+.top-bar strong { color: var(--teal-300); }
+.top-bar a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(207,223,247,0.3); margin-left: 4px; }
 
-/* ---------- Nav (on dark hero) ---------------------------------------- */
+/* ---------- Nav -------------------------------------------------------- */
 .topbar {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(14, 17, 22, 0.82);
-  backdrop-filter: blur(16px) saturate(1.1);
-  -webkit-backdrop-filter: blur(16px) saturate(1.1);
-  color: var(--paper-50);
-  border-bottom: 1px solid var(--rule-inv);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  border-bottom: 1px solid var(--rule);
 }
 .topbar-inner {
   max-width: var(--wrap);
   margin: 0 auto;
-  padding: 18px var(--gutter);
+  padding: 14px var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -187,948 +144,955 @@ img, svg { max-width: 100%; display: block; }
 }
 .wordmark {
   display: inline-flex;
-  align-items: baseline;
-  gap: 10px;
-  font-family: 'Newsreader', serif;
-  font-weight: 400;
-  font-size: 22px;
-  letter-spacing: -0.02em;
-  color: var(--paper-50);
-  font-variation-settings: "opsz" 36;
+  align-items: center;
+  gap: 9px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.022em;
+  color: var(--ink-1000);
 }
-.wordmark-it {
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--jade-300);
-  font-variation-settings: "opsz" 36, "wght" 500;
+.wordmark-mark {
+  width: 22px; height: 22px;
+  border-radius: 5px;
+  background: var(--ink-1000);
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  gap: 1.5px;
+  padding: 2px;
 }
-.wordmark-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight: 400;
-  font-size: 10.5px;
-  letter-spacing: 0.08em;
-  color: var(--ink-400);
-  padding-left: 10px;
-  margin-left: 4px;
-  border-left: 1px solid var(--rule-inv);
-  text-transform: uppercase;
-}
+.wordmark-mark span { background: transparent; border: 0.7px solid rgba(255,255,255,0.5); border-radius: 1px; }
+.wordmark-mark span.c { background: var(--teal-500); border-color: var(--teal-500); }
 .nav {
   display: flex;
-  gap: 26px;
+  gap: 28px;
   align-items: center;
 }
 .nav a {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 13.5px;
-  font-weight: 400;
-  color: var(--ink-300);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-600);
   transition: color 120ms var(--ease);
 }
-.nav a:hover { color: var(--paper-50); }
-.nav .sep { width: 1px; height: 14px; background: var(--rule-inv); }
-@media (max-width: 820px) { .nav { display: none; } }
+.nav a:hover { color: var(--ink-1000); }
+.nav .sep { width: 1px; height: 16px; background: var(--rule); }
+@media (max-width: 860px) { .nav { display: none; } }
 
-/* ---------- Buttons --------------------------------------------------- */
+/* ---------- Buttons ---------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 20px;
-  font-family: 'IBM Plex Sans', sans-serif;
+  padding: 11px 18px;
+  border-radius: var(--r-md);
   font-weight: 500;
-  font-size: 13.5px;
-  letter-spacing: -0.005em;
+  font-size: 14px;
+  letter-spacing: -0.008em;
   line-height: 1;
   border: 1px solid transparent;
-  transition: all 200ms var(--ease);
+  transition: all 180ms var(--ease);
   white-space: nowrap;
   cursor: pointer;
 }
 .btn-primary {
-  background: var(--jade-700);
-  color: var(--paper-50);
-  border-color: var(--jade-700);
+  background: var(--ink-1000);
+  color: var(--paper-0);
+  border-color: var(--ink-1000);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 1px 2px rgba(11,14,20,0.1);
 }
 .btn-primary:hover {
-  background: var(--jade-600);
-  border-color: var(--jade-600);
+  background: var(--teal-700);
+  border-color: var(--teal-700);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px -2px rgba(8, 115, 102, 0.35);
 }
-.btn-ghost-inv {
-  background: transparent;
-  color: var(--paper-50);
-  border-color: var(--rule-inv-s);
+.btn-teal {
+  background: var(--teal-700);
+  color: var(--paper-0);
+  border-color: var(--teal-700);
 }
-.btn-ghost-inv:hover { border-color: var(--paper-50); background: rgba(251, 250, 245, 0.06); }
+.btn-teal:hover {
+  background: var(--teal-600);
+  border-color: var(--teal-600);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px -2px rgba(8, 115, 102, 0.4);
+}
 .btn-ghost {
-  background: transparent;
+  background: var(--paper-0);
   color: var(--ink-1000);
+  border-color: var(--rule-strong);
+}
+.btn-ghost:hover {
   border-color: var(--ink-1000);
+  background: var(--paper-50);
 }
-.btn-ghost:hover { background: var(--ink-1000); color: var(--paper-50); }
-.btn-sm { padding: 9px 14px; font-size: 12.5px; }
+.btn-sm { padding: 8px 14px; font-size: 13px; }
+.btn-lg { padding: 13px 22px; font-size: 15px; }
 
-/* ---------- HERO — dark editorial with tooth diagram ------------------ */
+/* ---------- HERO ------------------------------------------------------- */
 .hero {
-  background: var(--ink-900);
-  color: var(--paper-50);
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -30%; right: -15%;
-  width: 55%; aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(0, 141, 120, 0.10) 0%, transparent 65%);
-  pointer-events: none;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -20%; left: -8%;
-  width: 40%; aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(139, 90, 43, 0.08) 0%, transparent 65%);
-  pointer-events: none;
+  padding: clamp(40px, 6vw, 88px) 0 clamp(64px, 8vw, 112px);
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(13, 191, 168, 0.06), transparent 50%),
+    radial-gradient(ellipse at 10% 80%, rgba(8, 115, 102, 0.05), transparent 50%),
+    var(--paper-0);
 }
 .hero-inner {
   max-width: var(--wrap);
   margin: 0 auto;
-  padding: clamp(44px, 5.5vw, 88px) var(--gutter) clamp(72px, 8vw, 120px);
-  position: relative;
-}
-
-/* Edition strip */
-.edition {
-  display: flex;
-  gap: clamp(24px, 3vw, 48px);
-  align-items: baseline;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--ink-300);
-  margin-bottom: clamp(32px, 4vw, 56px);
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--rule-inv);
-  text-transform: uppercase;
-  flex-wrap: wrap;
-}
-.edition-cell { display: flex; flex-direction: column; gap: 4px; }
-.edition-cell-label { font-size: 9.5px; color: var(--ink-500); letter-spacing: 0.14em; }
-.edition-cell-val {
-  color: var(--paper-50);
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 0.05em;
-}
-.edition-cell-val em { color: var(--jade-300); font-style: normal; }
-.edition-cell-val .serif-bronze {
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 14px;
-  letter-spacing: 0;
-  color: var(--bronze-300);
-  text-transform: none;
-  font-variation-settings: "opsz" 18;
-}
-
-.hero-layout {
+  padding: 0 var(--gutter);
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-  gap: clamp(32px, 5vw, 96px);
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
 }
-@media (max-width: 960px) { .hero-layout { grid-template-columns: 1fr; gap: 48px; } }
+@media (max-width: 980px) { .hero-inner { grid-template-columns: 1fr; gap: 48px; } }
 
-/* The big Newsreader headline */
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px 5px 6px;
+  border-radius: 999px;
+  background: var(--paper-0);
+  border: 1px solid var(--rule);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-600);
+  letter-spacing: -0.003em;
+  margin-bottom: 24px;
+  transition: border-color 160ms var(--ease);
+  box-shadow: 0 1px 2px rgba(11,14,20,0.04);
+}
+.hero-pill:hover { border-color: var(--ink-1000); color: var(--ink-1000); }
+.hero-pill-tag {
+  background: var(--teal-700);
+  color: var(--paper-0);
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.hero-pill-arrow { color: var(--ink-400); }
+
 .hero-head {
-  font-family: 'Newsreader', serif;
-  font-weight: 400;
-  font-size: clamp(50px, 7.6vw, 116px);
-  line-height: 0.98;
-  letter-spacing: -0.02em;
-  color: var(--paper-50);
-  margin: 0 0 clamp(28px, 3.5vw, 40px);
-  max-width: 16ch;
+  font-size: clamp(40px, 5.6vw, 72px);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.032em;
+  color: var(--ink-1000);
+  margin: 0 0 20px;
+  max-width: 18ch;
   text-wrap: balance;
-  font-variation-settings: "opsz" 144, "wght" 400;
 }
-.hero-head em {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--jade-300);
-  font-variation-settings: "opsz" 144, "wght" 400;
-}
-.hero-head .bronze {
-  color: var(--bronze-300);
-  font-style: italic;
-  font-variation-settings: "opsz" 144, "wght" 400;
-}
+.hero-head .teal { color: var(--teal-700); }
 
 .hero-sub {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 17.5px;
+  font-size: 18px;
   line-height: 1.55;
-  color: var(--ink-200);
-  margin: 0 0 32px;
-  max-width: 52ch;
+  color: var(--ink-600);
+  margin: 0 0 28px;
+  max-width: 46ch;
+  letter-spacing: -0.003em;
 }
-.hero-sub strong { color: var(--paper-50); font-weight: 500; }
+
+/* Feature chips — like NexHealth's checkmark list, cleaner */
+.hero-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+@media (max-width: 520px) { .hero-features { grid-template-columns: 1fr; } }
+.hero-features li {
+  list-style: none;
+  padding-left: 26px;
+  position: relative;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--ink-700);
+  line-height: 1.4;
+}
+.hero-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--teal-100);
+}
+.hero-features li::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 7px;
+  width: 8px;
+  height: 4px;
+  border-left: 1.5px solid var(--teal-700);
+  border-bottom: 1.5px solid var(--teal-700);
+  transform: rotate(-45deg);
+}
+.hero-features ul { padding: 0; margin: 0; }
 
 .hero-cta {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 .hero-trust {
   display: flex;
-  gap: 18px;
+  gap: 12px;
   flex-wrap: wrap;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
-  color: var(--ink-400);
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-500);
   letter-spacing: 0.04em;
-  padding-top: 18px;
-  border-top: 1px solid var(--rule-inv);
 }
-.hero-trust span { display: inline-flex; gap: 6px; align-items: center; }
+.hero-trust span {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  padding: 5px 10px;
+  background: var(--paper-100);
+  border-radius: 999px;
+}
 .hero-trust span::before {
   content: '';
   width: 5px; height: 5px;
-  background: var(--jade-500);
+  border-radius: 50%;
+  background: var(--teal-500);
   flex-shrink: 0;
 }
-.hero-trust strong { color: var(--paper-50); font-weight: 500; }
+.hero-trust strong { color: var(--ink-1000); font-weight: 500; }
 
-/* FIG. 01 — now a real hand-drawn tooth diagram */
-.figure {
-  padding-top: 4px;
-}
-.figure-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
-  color: var(--ink-300);
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--rule-inv-s);
-}
-.figure-label strong { color: var(--paper-50); font-weight: 500; }
-.figure-label .bronze { color: var(--bronze-300); font-style: italic; font-family: 'Newsreader', serif; letter-spacing: 0; text-transform: none; font-size: 12px; font-variation-settings: "opsz" 18; }
-
-.tooth-wrap {
-  background: var(--ink-900);
-  border: 1px solid var(--rule-inv-s);
-  border-radius: 0;
-  padding: 24px 20px;
+/* Product mockup on the right — Friday report shown cleanly */
+.hero-product {
   position: relative;
 }
-.tooth-wrap svg { width: 100%; height: auto; max-height: 420px; }
-
-.figure-caption {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
-  color: var(--ink-400);
-  letter-spacing: 0.02em;
-  margin-top: 14px;
-  max-width: 48ch;
-  line-height: 1.6;
-  text-transform: none;
-}
-.figure-caption .italic {
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  color: var(--ink-300);
-  letter-spacing: 0;
-  font-size: 12px;
-  font-variation-settings: "opsz" 18;
-}
-
-/* ---------- Issue ribbon - running stats --------------------------------- */
-.ribbon {
-  background: var(--ink-900);
-  color: var(--paper-50);
-  border-top: 1px solid var(--rule-inv);
-  border-bottom: 1px solid var(--rule-inv);
-  padding: 16px 0;
+.hero-product-frame {
+  background: var(--paper-0);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-xl);
   position: relative;
-}
-.ribbon::before, .ribbon::after {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 100px;
-  pointer-events: none;
   z-index: 2;
 }
-.ribbon::before { left: 0; background: linear-gradient(90deg, var(--ink-900), transparent); }
-.ribbon::after  { right: 0; background: linear-gradient(-90deg, var(--ink-900), transparent); }
-.ribbon-track {
-  display: flex;
-  gap: 56px;
-  animation: scroll 80s linear infinite;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--ink-300);
-  white-space: nowrap;
-  width: max-content;
-  text-transform: uppercase;
+.hero-product-frame::before {
+  /* subtle glow behind */
+  content: '';
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(ellipse, rgba(13, 191, 168, 0.08), transparent 70%);
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
 }
-.ribbon-track strong { color: var(--paper-50); font-weight: 500; }
-.ribbon-track .sep { color: var(--ink-600); }
-.ribbon-track .em { color: var(--jade-300); }
-.ribbon-track .bz { color: var(--bronze-300); font-family: 'Newsreader', serif; font-style: italic; letter-spacing: 0; text-transform: none; font-size: 13px; font-variation-settings: "opsz" 18; }
-@keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+/* email-style header inside product */
+.hp-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-50);
+  font-size: 12px;
+}
+.hp-head-left { display: flex; align-items: center; gap: 10px; color: var(--ink-500); }
+.hp-head-left strong { color: var(--ink-1000); font-weight: 600; }
+.hp-head-mark {
+  width: 24px; height: 24px;
+  background: var(--ink-1000);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--teal-300);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -0.02em;
+}
+.hp-head-right {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10.5px;
+  color: var(--ink-500);
+  letter-spacing: 0.04em;
+}
+.hp-body { padding: 20px 22px; }
+.hp-subject {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink-1000);
+  margin: 0 0 4px;
+  letter-spacing: -0.015em;
+}
+.hp-preheader {
+  font-size: 13px;
+  color: var(--ink-500);
+  margin: 0 0 18px;
+  line-height: 1.5;
 }
 
-/* ---------- Section ---------------------------------------------------- */
+/* Summary numbers row */
+.hp-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 14px 0;
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+}
+.hp-metric { display: flex; flex-direction: column; gap: 3px; }
+.hp-metric-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+}
+.hp-metric-val {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink-1000);
+  letter-spacing: -0.022em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.hp-metric.accent .hp-metric-val { color: var(--teal-700); }
+
+/* Patient list in product */
+.hp-list { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; }
+.hp-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 14px;
+  padding: 10px 0;
+  align-items: center;
+  font-size: 13px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.hp-row:last-child { border-bottom: 0; }
+.hp-row-name { color: var(--ink-1000); font-weight: 500; }
+.hp-row-name small { display: block; color: var(--ink-500); font-size: 11px; margin-top: 2px; font-weight: 400; }
+.hp-row-state {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: var(--ink-100);
+  color: var(--ink-700);
+  letter-spacing: 0.04em;
+}
+.hp-row-state.acc { background: var(--teal-50); color: var(--teal-700); }
+.hp-row-val {
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-1000);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.hp-row-shown {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  min-width: 40px;
+  text-align: right;
+}
+.hp-row-shown.yes { color: var(--teal-600); }
+.hp-row-shown.yes::before { content: '●'; color: var(--teal-500); margin-right: 3px; }
+.hp-row-shown.no { color: var(--ink-400); }
+
+/* ---------- Logo strip ------------------------------------------------- */
+.logos {
+  background: var(--paper-50);
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+  padding: 28px 0;
+}
+.logos-inner {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.logos-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  font-weight: 500;
+}
+.logos-list { display: flex; gap: 32px; flex-wrap: wrap; color: var(--ink-500); }
+.logos-list span {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  font-family: 'Geist', sans-serif;
+  color: var(--ink-600);
+}
+.logos-list .open {
+  color: var(--ink-300);
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+/* ---------- Sections --------------------------------------------------- */
 .section {
-  padding: clamp(72px, 9vw, 128px) 0;
-  border-bottom: 1px solid var(--rule);
+  padding: clamp(64px, 8vw, 120px) 0;
 }
 .section-inner {
   max-width: var(--wrap);
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
-.section-meta {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--ink-500);
-  letter-spacing: 0.06em;
-  margin-bottom: 20px;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--rule);
-  text-transform: uppercase;
-}
-.section-meta strong { color: var(--ink-1000); font-weight: 500; }
-.section-meta .bz { color: var(--bronze-700); font-family: 'Newsreader', serif; font-style: italic; letter-spacing: 0; font-size: 13px; text-transform: none; font-variation-settings: "opsz" 18; }
-
-.section-title {
-  font-family: 'Newsreader', serif;
-  font-weight: 400;
-  font-size: clamp(38px, 5.0vw, 68px);
-  line-height: 1.0;
-  letter-spacing: -0.018em;
-  color: var(--ink-1000);
-  margin: 0;
-  max-width: 22ch;
-  text-wrap: balance;
-  font-variation-settings: "opsz" 96, "wght" 400;
-}
-.section-title em {
-  font-style: italic;
-  color: var(--jade-700);
-  font-variation-settings: "opsz" 96, "wght" 400;
-}
-.section-title .bronze {
-  font-style: italic;
-  color: var(--bronze-500);
-  font-variation-settings: "opsz" 96, "wght" 400;
-}
 .section-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: clamp(24px, 4vw, 80px);
-  align-items: end;
-  margin-bottom: clamp(40px, 5vw, 56px);
+  max-width: 720px;
+  margin: 0 auto clamp(40px, 5vw, 64px);
+  text-align: center;
 }
-@media (max-width: 820px) { .section-head { grid-template-columns: 1fr; align-items: start; gap: 16px; } }
+.section-eyebrow {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal-700);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.028em;
+  color: var(--ink-1000);
+  margin: 0 0 16px;
+  text-wrap: balance;
+}
+.section-title .teal { color: var(--teal-700); }
 .section-kicker {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 15.5px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-500);
+  margin: 0 auto;
+  max-width: 56ch;
+}
+
+/* ---------- How it works (3 steps) ------------------------------------- */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
+.step {
+  background: var(--paper-0);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  transition: all 200ms var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.step:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--teal-200);
+}
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  background: var(--teal-50);
+  color: var(--teal-700);
+  border-radius: 50%;
+  font-family: 'Geist Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  letter-spacing: 0;
+}
+.step-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink-1000);
+  letter-spacing: -0.018em;
+  margin: 0 0 10px;
+}
+.step-desc {
+  font-size: 14.5px;
+  color: var(--ink-500);
+  line-height: 1.55;
+  margin: 0;
+}
+.step-meta {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-400);
+  letter-spacing: 0.04em;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule-soft);
+}
+
+/* ---------- Stat band -------------------------------------------------- */
+.stat-band {
+  background: var(--ink-1000);
+  color: var(--paper-0);
+  padding: clamp(56px, 7vw, 96px) 0;
+  position: relative;
+  overflow: hidden;
+}
+.stat-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 30%, rgba(13, 191, 168, 0.12), transparent 60%);
+  pointer-events: none;
+}
+.stat-band-inner {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  position: relative;
+}
+@media (max-width: 820px) { .stat-band-inner { grid-template-columns: 1fr; gap: 32px; } }
+.stat-number {
+  font-size: clamp(72px, 10vw, 144px);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.038em;
+  color: var(--paper-0);
+  font-variant-numeric: tabular-nums;
+  margin: 0 0 12px;
+}
+.stat-number .teal { color: var(--teal-300); }
+.stat-number small {
+  display: inline-block;
+  font-size: 0.28em;
+  color: var(--ink-400);
+  font-weight: 500;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.stat-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal-300);
+  font-weight: 500;
+}
+.stat-copy h3 {
+  font-size: clamp(26px, 3.2vw, 38px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.022em;
+  color: var(--paper-0);
+  margin: 0 0 14px;
+  text-wrap: balance;
+}
+.stat-copy p {
+  font-size: 16px;
   line-height: 1.6;
-  color: var(--ink-600);
+  color: var(--ink-300);
   margin: 0;
   max-width: 48ch;
 }
 
-/* ---------- § 02 Specimen: Friday report as Issue --------------------- */
-.record {
-  border: 1px solid var(--ink-1000);
+/* ---------- Testimonial ----------------------------------------------- */
+.testimonial {
   background: var(--paper-50);
+  padding: clamp(64px, 8vw, 112px) 0;
 }
-.record-header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  border-bottom: 1px solid var(--ink-1000);
-}
-.record-header-left { padding: 18px 24px; }
-.record-header-right {
-  padding: 18px 24px;
-  text-align: right;
-  border-left: 1px solid var(--ink-1000);
-  background: var(--paper-100);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--ink-500);
-  letter-spacing: 0.04em;
-}
-.record-header-right strong {
-  color: var(--ink-1000);
-  font-weight: 500;
-  display: block;
-  font-size: 13px;
-  margin-top: 2px;
-}
-.record-title {
-  font-family: 'Newsreader', serif;
-  font-weight: 400;
-  font-size: 24px;
-  font-style: italic;
-  color: var(--ink-1000);
-  margin: 0 0 4px;
-  letter-spacing: -0.01em;
-  font-variation-settings: "opsz" 36, "wght" 400;
-}
-.record-from {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--ink-500);
-  letter-spacing: 0.02em;
-  margin-top: 2px;
-}
-.record-from strong { color: var(--ink-1000); font-weight: 500; }
-
-.record-summary {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-bottom: 1px solid var(--ink-1000);
-}
-.record-summary-cell {
-  padding: 18px 24px;
-  border-right: 1px solid var(--rule);
-}
-.record-summary-cell:last-child { border-right: 0; }
-.record-summary-cell .label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-500);
-  margin-bottom: 6px;
-}
-.record-summary-cell .val {
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  font-size: 32px;
-  font-weight: 400;
-  color: var(--ink-1000);
-  letter-spacing: -0.015em;
-  font-variant-numeric: tabular-nums lining-nums;
-  line-height: 1;
-  font-variation-settings: "opsz" 48, "wght" 400;
-}
-.record-summary-cell.accent .val { color: var(--jade-700); }
-.record-summary-cell.bronze .val { color: var(--bronze-700); }
-@media (max-width: 760px) {
-  .record-summary { grid-template-columns: 1fr 1fr; }
-  .record-summary-cell:nth-child(2) { border-right: 0; }
-  .record-summary-cell:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
-}
-
-.record-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13.5px;
-  font-family: 'IBM Plex Sans', sans-serif;
-}
-.record-table thead th {
-  text-align: left;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--ink-500);
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  padding: 12px 24px;
-  border-bottom: 1px solid var(--ink-1000);
-  background: var(--paper-100);
-}
-.record-table thead th.num { text-align: right; }
-.record-table tbody td {
-  padding: 14px 24px;
-  border-bottom: 1px solid var(--rule-soft);
-  color: var(--ink-600);
-}
-.record-table tbody tr:last-child td { border-bottom: 0; }
-.record-table tbody td.name { color: var(--ink-1000); font-weight: 500; }
-.record-table tbody td.name small {
-  display: block;
-  color: var(--ink-500);
-  font-size: 11px;
-  margin-top: 3px;
-  font-weight: 400;
-}
-.record-table tbody td.num {
-  text-align: right;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  color: var(--ink-1000);
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-}
-.record-state {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
-  font-weight: 500;
-  padding: 3px 7px;
-  letter-spacing: 0.04em;
-  color: var(--ink-600);
-  background: var(--paper-100);
-  border: 1px solid var(--rule);
-}
-.record-state.acc { color: var(--jade-700); background: var(--jade-100); border-color: var(--jade-200); }
-.record-shown {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--jade-700);
-  font-weight: 500;
-}
-.record-shown::before { content: '●'; color: var(--jade-500); margin-right: 4px; }
-.record-pending { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-400); }
-
-/* ---------- § 03 Standing Sections ------------------------------------ */
-.standing {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 1px solid var(--ink-1000);
-  border-left: 1px solid var(--ink-1000);
-}
-@media (max-width: 760px) { .standing { grid-template-columns: 1fr; } }
-.standing-cell {
-  padding: 26px 28px;
-  border-right: 1px solid var(--ink-1000);
-  border-bottom: 1px solid var(--ink-1000);
-  background: var(--paper-50);
-  transition: background 200ms var(--ease);
-}
-.standing-cell:hover { background: var(--paper-100); }
-.standing-cell-meta {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
-  font-weight: 500;
-  color: var(--jade-700);
-  letter-spacing: 0.06em;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-.standing-cell-ratio { color: var(--ink-400); letter-spacing: 0.04em; }
-.standing-cell-title {
-  font-family: 'Newsreader', serif;
-  font-weight: 400;
-  font-size: 24px;
-  color: var(--ink-1000);
-  margin: 0 0 10px;
-  letter-spacing: -0.012em;
-  line-height: 1.16;
-  font-variation-settings: "opsz" 36, "wght" 400;
-}
-.standing-cell-title em {
-  font-style: italic;
-  color: var(--jade-700);
-  font-variation-settings: "opsz" 36, "wght" 400;
-}
-.standing-cell-desc {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 14px;
-  line-height: 1.55;
-  color: var(--ink-600);
-  margin: 0;
-}
-
-/* ---------- § 04 Letter from Pilot 01 with real portrait -------------- */
-.letter {
-  background: var(--paper-100);
-  padding: clamp(64px, 8vw, 120px) 0;
-  border-bottom: 1px solid var(--rule);
-}
-.letter-inner {
-  max-width: 1080px;
+.testimonial-inner {
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 var(--gutter);
   display: grid;
   grid-template-columns: 280px 1fr;
-  gap: clamp(32px, 5vw, 72px);
-  align-items: start;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
 }
-@media (max-width: 820px) { .letter-inner { grid-template-columns: 1fr; gap: 24px; } }
-
-/* Real photograph — Unsplash curated portrait */
-.letter-portrait {
-  width: 100%;
+@media (max-width: 820px) { .testimonial-inner { grid-template-columns: 1fr; gap: 24px; } }
+.testimonial-photo {
   aspect-ratio: 4/5;
   background-image:
-    linear-gradient(180deg, transparent 60%, rgba(7, 8, 11, 0.55) 100%),
+    linear-gradient(180deg, transparent 55%, rgba(11,14,20,0.55) 100%),
     url("https://images.unsplash.com/photo-1659353887849-2d3ff8b0df4a?w=640&auto=format&fit=crop&q=80");
   background-size: cover;
-  background-position: center 20%;
-  filter: grayscale(0.35) contrast(1.05);
-  border: 1px solid var(--ink-1000);
+  background-position: center 15%;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--rule);
   position: relative;
+  overflow: hidden;
   padding: 18px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  color: var(--paper-50);
+  justify-content: flex-end;
+  color: var(--paper-0);
 }
-.letter-portrait-top {
-  display: flex;
-  justify-content: space-between;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
-}
-.letter-portrait-top strong { color: var(--jade-300); font-weight: 500; }
-.letter-portrait-caption {
+.testimonial-photo .cap {
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
-.letter-portrait-caption .name {
-  font-family: 'Newsreader', serif;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 17px;
-  letter-spacing: -0.005em;
-  font-variation-settings: "opsz" 24, "wght" 500;
-}
-.letter-portrait-caption .role {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
-  color: rgba(251, 250, 245, 0.85);
+.testimonial-photo .role {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.85);
   letter-spacing: 0.04em;
   margin-top: 4px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
-
-.letter-side {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
-  color: var(--ink-500);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-.letter-side strong { color: var(--ink-1000); font-weight: 500; }
-.letter-open {
-  font-family: 'Newsreader', serif;
-  font-weight: 400;
-  font-size: 13.5px;
-  color: var(--ink-600);
-  letter-spacing: 0.02em;
-  margin-bottom: 24px;
-  font-style: italic;
-  font-variation-settings: "opsz" 18, "wght" 400;
-}
-.letter-body {
-  font-family: 'Newsreader', serif;
-  font-weight: 400;
-  font-size: clamp(22px, 2.6vw, 32px);
-  line-height: 1.38;
-  letter-spacing: -0.005em;
-  color: var(--ink-1000);
-  margin: 0 0 28px;
-  text-wrap: pretty;
-  font-variation-settings: "opsz" 36, "wght" 400;
-}
-.letter-body em {
-  font-style: italic;
-  color: var(--jade-700);
-  font-variation-settings: "opsz" 36, "wght" 400;
-}
-.letter-sign {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  padding-top: 20px;
-  border-top: 1px solid var(--rule);
-}
-.letter-sign-cypher {
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 56px;
-  letter-spacing: -0.04em;
-  color: var(--ink-1000);
-  line-height: 1;
-  font-variation-settings: "opsz" 72, "wght" 500;
-}
-.letter-sign-meta {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 13px;
-  color: var(--ink-1000);
-  line-height: 1.5;
-  padding-top: 8px;
-}
-.letter-sign-meta .name { font-weight: 500; }
-.letter-sign-meta .role {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--ink-500);
-  letter-spacing: 0.04em;
-  margin-top: 4px;
-}
-
-/* ---------- Subscribe / closing --------------------------------------- */
-.subscribe {
-  padding: clamp(80px, 10vw, 140px) 0 clamp(72px, 9vw, 112px);
-  text-align: center;
-  border-bottom: 1px solid var(--ink-1000);
-  position: relative;
-  overflow: hidden;
-}
-.subscribe::before {
-  content: '';
-  position: absolute;
-  bottom: -40%; left: 50%;
-  transform: translateX(-50%);
-  width: 80%; aspect-ratio: 2/1;
-  background: radial-gradient(ellipse at top, rgba(139, 90, 43, 0.08) 0%, transparent 60%);
-  pointer-events: none;
-}
-.subscribe-inner {
-  max-width: 840px;
-  margin: 0 auto;
-  padding: 0 var(--gutter);
-  position: relative;
-}
-.subscribe-meta {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--ink-500);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 26px;
-}
-.subscribe-meta .bz {
-  color: var(--bronze-700);
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  letter-spacing: 0;
-  font-size: 13px;
-  text-transform: none;
-  font-variation-settings: "opsz" 18;
-}
-.subscribe-head {
-  font-family: 'Newsreader', serif;
-  font-weight: 400;
-  font-size: clamp(42px, 5.8vw, 80px);
-  line-height: 1.0;
-  letter-spacing: -0.02em;
+.testimonial-quote {
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.018em;
   color: var(--ink-1000);
   margin: 0 0 24px;
+  max-width: 32ch;
   text-wrap: balance;
-  font-variation-settings: "opsz" 144, "wght" 400;
 }
-.subscribe-head em {
-  font-style: italic;
-  color: var(--jade-700);
-  font-variation-settings: "opsz" 144, "wght" 400;
+.testimonial-quote .teal { color: var(--teal-700); font-weight: 500; }
+.testimonial-stats {
+  display: flex;
+  gap: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  flex-wrap: wrap;
 }
-.subscribe-lede {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 16.5px;
-  line-height: 1.6;
+.testimonial-stat { display: flex; flex-direction: column; gap: 4px; }
+.testimonial-stat-val {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ink-1000);
+  letter-spacing: -0.022em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.testimonial-stat-val.teal { color: var(--teal-700); }
+.testimonial-stat-lbl {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--ink-500);
-  margin: 0 auto 36px;
+}
+
+/* ---------- Pricing ---------------------------------------------------- */
+.pricing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--paper-0);
+  box-shadow: var(--shadow-sm);
+}
+@media (max-width: 820px) { .pricing { grid-template-columns: 1fr; } }
+.plan {
+  padding: 32px 28px;
+  border-right: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.plan:last-child { border-right: 0; }
+.plan.featured {
+  background: var(--paper-50);
+  position: relative;
+}
+.plan.featured::before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: var(--teal-700);
+  color: var(--paper-0);
+  text-align: center;
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 6px 0;
+  letter-spacing: 0.12em;
+}
+.plan.featured { padding-top: 56px; }
+@media (max-width: 820px) {
+  .plan { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .plan:last-child { border-bottom: 0; }
+}
+.plan-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  font-weight: 500;
+}
+.plan.featured .plan-label { color: var(--teal-700); }
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.plan-price .amt {
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.032em;
+  color: var(--ink-1000);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.plan-price .per { font-size: 14px; color: var(--ink-500); }
+.plan-note {
+  font-size: 13px;
+  color: var(--ink-500);
+  line-height: 1.4;
+  margin: 0;
+}
+.plan-note strong { color: var(--teal-700); font-weight: 600; }
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.plan-features li {
+  font-size: 14px;
+  color: var(--ink-700);
+  padding-left: 24px;
+  position: relative;
+  line-height: 1.45;
+}
+.plan-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--teal-50);
+}
+.plan-features li::after {
+  content: '';
+  position: absolute;
+  left: 3px; top: 9px;
+  width: 8px; height: 4px;
+  border-left: 1.5px solid var(--teal-700);
+  border-bottom: 1.5px solid var(--teal-700);
+  transform: rotate(-45deg);
+}
+
+/* ---------- Final CTA -------------------------------------------------- */
+.final-cta {
+  padding: clamp(80px, 10vw, 140px) 0 clamp(64px, 8vw, 96px);
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(8, 115, 102, 0.08), transparent 55%),
+    var(--paper-0);
+  text-align: center;
+}
+.final-cta-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.final-cta-head {
+  font-size: clamp(36px, 4.8vw, 60px);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.032em;
+  color: var(--ink-1000);
+  margin: 0 0 18px;
+  text-wrap: balance;
+}
+.final-cta-head .teal { color: var(--teal-700); }
+.final-cta-lede {
+  font-size: 17px;
+  color: var(--ink-500);
+  line-height: 1.6;
+  margin: 0 auto 32px;
   max-width: 56ch;
 }
-.subscribe-form {
+.capture {
   display: inline-flex;
-  align-items: stretch;
-  border: 1px solid var(--ink-1000);
+  align-items: center;
+  padding: 5px 5px 5px 18px;
+  background: var(--paper-0);
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 160ms var(--ease), box-shadow 160ms var(--ease);
   max-width: 100%;
 }
-.subscribe-form input {
+.capture:focus-within {
+  border-color: var(--ink-1000);
+  box-shadow: 0 0 0 4px rgba(11,14,20,0.08);
+}
+.capture input {
   border: 0;
   background: transparent;
   font: inherit;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 14px;
+  font-size: 14.5px;
   color: var(--ink-1000);
   outline: none;
-  padding: 14px 20px;
-  min-width: 300px;
+  padding: 10px 0;
+  min-width: 280px;
 }
-.subscribe-form input::placeholder { color: var(--ink-400); }
-.subscribe-form button {
+.capture input::placeholder { color: var(--ink-400); }
+.capture button {
   background: var(--ink-1000);
-  color: var(--paper-50);
-  font-family: 'IBM Plex Sans', sans-serif;
+  color: var(--paper-0);
   font-weight: 500;
-  font-size: 14px;
-  padding: 14px 22px;
-  transition: background 200ms var(--ease);
+  font-size: 13.5px;
+  padding: 11px 20px;
+  border-radius: 999px;
   border: 0;
   cursor: pointer;
-  border-left: 1px solid var(--ink-1000);
+  transition: background 160ms var(--ease);
   white-space: nowrap;
 }
-.subscribe-form button:hover { background: var(--jade-700); }
-.subscribe-fine {
-  font-family: 'IBM Plex Mono', monospace;
+.capture button:hover { background: var(--teal-700); }
+.final-fine {
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   color: var(--ink-500);
+  margin-top: 16px;
   letter-spacing: 0.04em;
-  margin-top: 20px;
-}
-@media (max-width: 560px) {
-  .subscribe-form { flex-direction: column; align-items: stretch; }
-  .subscribe-form button { border-left: 0; border-top: 1px solid var(--ink-1000); }
-  .subscribe-form input { min-width: auto; }
 }
 
-/* ---------- Colophon -------------------------------------------------- */
-.colophon {
-  padding: clamp(40px, 5vw, 64px) 0;
+/* ---------- Footer ---------------------------------------------------- */
+.footer {
   background: var(--paper-50);
+  border-top: 1px solid var(--rule);
+  padding: 56px 0 28px;
 }
-.colophon-inner {
+.footer-inner {
   max-width: var(--wrap);
   margin: 0 auto;
   padding: 0 var(--gutter);
   display: grid;
   grid-template-columns: 1.3fr 1fr 1fr 1fr;
   gap: 32px;
-  align-items: start;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--ink-500);
-  letter-spacing: 0.03em;
 }
-@media (max-width: 760px) { .colophon-inner { grid-template-columns: 1fr 1fr; } }
-.colophon h5 {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
+@media (max-width: 780px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+.footer-brand .wordmark { margin-bottom: 12px; }
+.footer-note {
+  font-size: 13px;
+  color: var(--ink-500);
+  line-height: 1.5;
+  max-width: 36ch;
+  margin: 0;
+}
+.footer h5 {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-1000);
-  margin: 0 0 10px;
+  margin: 0 0 14px;
 }
-.colophon p { margin: 0 0 6px; line-height: 1.55; }
-.colophon a { color: var(--ink-1000); border-bottom: 1px solid var(--rule); }
-.colophon a:hover { color: var(--jade-700); border-color: var(--jade-700); }
-.colophon .serif-note {
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  font-size: 13px;
-  color: var(--ink-600);
-  letter-spacing: 0;
-  line-height: 1.5;
-  font-variation-settings: "opsz" 18, "wght" 400;
+.footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
+.footer a {
+  font-size: 13.5px;
+  color: var(--ink-500);
+  transition: color 120ms var(--ease);
+}
+.footer a:hover { color: var(--teal-700); }
+.footer-bottom {
+  max-width: var(--wrap);
+  margin: 40px auto 0;
+  padding: 20px var(--gutter) 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-500);
+  letter-spacing: 0.04em;
 }
 
-/* ---------- Motion ---------------------------------------------------- */
+/* Motion */
 @keyframes up {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: none; }
 }
-@keyframes cellIn {
-  from { opacity: 0; transform: scale(0.92); }
-  to   { opacity: 1; transform: scale(1); }
-}
 .r { animation: up 720ms var(--ease) both; animation-delay: 40ms; }
-.r-2 { animation: up 800ms var(--ease) both; animation-delay: 180ms; }
-.r-3 { animation: up 800ms var(--ease) both; animation-delay: 320ms; }
-
-/* Tooth figure cell-staggered reveal */
-.tooth-wrap svg .cell, .tooth-wrap svg .label-group {
-  opacity: 0;
-  animation: cellIn 600ms var(--ease-spring) forwards;
-}
-.tooth-wrap svg .cell:nth-of-type(1)  { animation-delay: 400ms; }
-.tooth-wrap svg .cell:nth-of-type(2)  { animation-delay: 480ms; }
-.tooth-wrap svg .cell:nth-of-type(3)  { animation-delay: 560ms; }
-.tooth-wrap svg .cell:nth-of-type(4)  { animation-delay: 640ms; }
-.tooth-wrap svg .cell:nth-of-type(5)  { animation-delay: 720ms; }
-.tooth-wrap svg .cell:nth-of-type(6)  { animation-delay: 800ms; }
-.tooth-wrap svg .cell:nth-of-type(7)  { animation-delay: 880ms; }
-.tooth-wrap svg .cell:nth-of-type(8)  { animation-delay: 960ms; }
-
+.r-2 { animation: up 800ms var(--ease) both; animation-delay: 200ms; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
 
-/* Reference notice */
 .notice {
   position: fixed;
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--ink-1000);
-  color: var(--paper-50);
+  color: var(--paper-0);
   padding: 8px 16px;
-  font-family: 'IBM Plex Mono', monospace;
+  border-radius: 999px;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.04em;
   z-index: 50;
   box-shadow: 0 12px 28px rgba(0,0,0,0.3);
-  border: 1px solid var(--rule-inv-s);
 }
-.notice .em {
-  color: var(--jade-300);
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  font-variation-settings: "opsz" 18;
-}
+.notice .teal { color: var(--teal-300); }
 </style>
 </head>
 <body>
 
-<!-- MASTHEAD -->
-<div class="masthead">
-  <div class="masthead-inner">
-    <div>
-      <span class="serif-bar">The Recovery Journal</span>
-      <span class="divider">·</span>
-      <strong>Vol. I</strong>
-      <span class="divider">·</span>
-      <span>Issue 16</span>
-      <span class="divider hide-sm">·</span>
-      <span class="hide-sm">Published weekly for orthodontic practices</span>
-    </div>
-    <div class="live">
-      <strong>Apr 22, 2026</strong>
-      <span class="divider">·</span>
-      <a href="/pilot">Subscribe to the inaugural cohort →</a>
-    </div>
-  </div>
+<!-- Top announcement bar -->
+<div class="top-bar">
+  Founding cohort now accepting applications — <strong>2 of 10 claimed</strong>, rate locks permanently at slot 11. <a href="/pilot">Claim a slot</a>
 </div>
 
-<!-- NAV -->
+<!-- Nav -->
 <header class="topbar">
   <div class="topbar-inner">
     <a href="/" class="wordmark">
-      <span>usdpr<span class="wordmark-it">.</span></span>
-      <span class="wordmark-label">The Recovery Journal</span>
+      <span class="wordmark-mark" aria-hidden="true">
+        <span></span><span></span><span></span>
+        <span></span><span class="c"></span><span></span>
+        <span></span><span></span><span></span>
+      </span>
+      <span>usdpr</span>
     </a>
     <nav class="nav">
-      <a href="#specimen">Latest Issue</a>
-      <a href="#standing">Standing Sections</a>
-      <a href="#letter">Letters</a>
-      <a href="#pricing">Subscription</a>
+      <a href="#product">Product</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#customers">Customers</a>
+      <a href="#changelog">Changelog</a>
       <span class="sep"></span>
       <a href="/signin">Sign in</a>
-      <a href="/pilot" class="btn btn-primary btn-sm">Request audit</a>
+      <a href="/pilot" class="btn btn-primary btn-sm">Book a demo</a>
     </nav>
   </div>
 </header>
@@ -1136,468 +1100,329 @@ img, svg { max-width: 100%; display: block; }
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
+    <div class="r">
+      <a href="/pilot" class="hero-pill">
+        <span class="hero-pill-tag">NEW</span>
+        <span>Built for orthodontic practices only</span>
+        <span class="hero-pill-arrow">→</span>
+      </a>
 
-    <div class="edition r">
-      <div class="edition-cell">
-        <div class="edition-cell-label">Volume</div>
-        <div class="edition-cell-val"><span class="serif-bronze">I</span></div>
-      </div>
-      <div class="edition-cell">
-        <div class="edition-cell-label">Issue</div>
-        <div class="edition-cell-val"><span class="serif-bronze">Sixteen</span></div>
-      </div>
-      <div class="edition-cell">
-        <div class="edition-cell-label">Imprint</div>
-        <div class="edition-cell-val">Orlando, FL <em>· FL LIC 18721</em></div>
-      </div>
-      <div class="edition-cell">
-        <div class="edition-cell-label">Cohort</div>
-        <div class="edition-cell-val"><em>02</em> of 10 inaugural</div>
-      </div>
-      <div class="edition-cell" style="margin-left: auto;">
-        <div class="edition-cell-label">Filed</div>
-        <div class="edition-cell-val">Apr 22, 2026</div>
-      </div>
-    </div>
+      <h1 class="hero-head">
+        Patient recovery, <span class="teal">purpose-built</span> for orthodontics.
+      </h1>
 
-    <div class="hero-layout">
-      <div class="r-2">
-        <h1 class="hero-head">
-          A weekly record of the patients <em>already in your chart.</em>
-        </h1>
-        <p class="hero-sub">
-          USDPR is a clinical-grade recovery publication for orthodontic practices. Each Friday at 8:00 AM your treatment coordinator opens a signed issue — <strong>twelve patients to call today, ranked</strong>, with last week's shown-up attribution reported inline. No bulk SMS. No auto-booking. BAA-first.
-        </p>
-        <div class="hero-cta">
-          <a href="/audit" class="btn btn-primary" style="padding: 14px 22px;">Request your inaugural audit</a>
-          <a href="/pilot" class="btn btn-ghost-inv" style="padding: 14px 22px;">View subscription terms</a>
-        </div>
-        <div class="hero-trust">
-          <span><strong>HIPAA</strong> BAA-first</span>
-          <span><strong>TCPA</strong> compliant</span>
-          <span><strong>SOC 2</strong> Q2 2027</span>
-          <span>45 CFR §164.502</span>
-          <span>OIG AO 25-08</span>
-        </div>
-      </div>
-
-      <!-- FIG. 01 — hand-drawn tooth cross-section with 8 recovery states -->
-      <div class="figure r-3">
-        <div class="figure-label">
-          <span><strong>FIG. 01</strong> · Recovery Opportunity Anatomy</span>
-          <span class="bronze">n = 8 states</span>
-        </div>
-        <div class="tooth-wrap">
-          <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg" aria-label="Hand-drawn tooth anatomy diagram with eight recovery states labeled">
-            <defs>
-              <filter id="stipple" x="0" y="0" width="100%" height="100%">
-                <feTurbulence type="fractalNoise" baseFrequency="2" numOctaves="1" result="noise"/>
-                <feColorMatrix in="noise" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.12 0"/>
-                <feComposite in2="SourceGraphic" operator="in"/>
-              </filter>
-            </defs>
-
-            <!-- Tooth silhouette, hand-drawn feel, thin stroke -->
-            <g transform="translate(200, 220)" stroke="#E9EAEC" fill="none" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Crown (top) -->
-              <path d="M -45 -135 C -52 -125, -55 -110, -52 -95 L -48 -75 C -45 -55, -45 -35, -48 -15 L -52 10 C -55 25, -52 40, -45 50 L -40 60 C -30 65, 30 65, 40 60 L 45 50 C 52 40, 55 25, 52 10 L 48 -15 C 45 -35, 45 -55, 48 -75 L 52 -95 C 55 -110, 52 -125, 45 -135 C 35 -142, -35 -142, -45 -135 Z"/>
-              <!-- Cusps detail -->
-              <path d="M -30 -130 Q -20 -122, -10 -130 Q 0 -138, 10 -130 Q 20 -122, 30 -130" opacity="0.5"/>
-              <!-- Gum line -->
-              <path d="M -48 -15 Q 0 -10, 48 -15" opacity="0.7" stroke-dasharray="2,3"/>
-              <!-- Root (bottom) -->
-              <path d="M -40 60 C -35 85, -32 110, -28 135 C -24 155, -18 170, -10 178 C -5 183, 5 183, 10 178 C 18 170, 24 155, 28 135 C 32 110, 35 85, 40 60"/>
-              <!-- Root canal (pulp) -->
-              <path d="M -8 -90 C -6 -70, -6 -30, -8 20 C -10 60, -8 110, -4 150 C -2 165, 2 165, 4 150 C 8 110, 10 60, 8 20 C 6 -30, 6 -70, 8 -90 Z" stroke-width="0.8" opacity="0.45" stroke-dasharray="1,2"/>
-              <!-- Enamel layer -->
-              <path d="M -40 -120 C -45 -100, -45 -50, -42 -15 Q 0 -5, 42 -15 C 45 -50, 45 -100, 40 -120" opacity="0.25"/>
-            </g>
-
-            <!-- Anatomy labels — small mono captions -->
-            <g font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#8E9399" letter-spacing="0.06em">
-              <text x="200" y="68" text-anchor="middle">CROWN</text>
-              <text x="200" y="218" text-anchor="middle">PULP</text>
-              <text x="200" y="400" text-anchor="middle">APEX</text>
-            </g>
-
-            <!-- Connector lines and 8 labeled states as margin annotations -->
-            <!-- 01 RET — top-left -->
-            <g class="cell">
-              <line x1="110" y1="95" x2="145" y2="105" stroke="#00574A" stroke-width="0.8"/>
-              <circle cx="108" cy="95" r="2" fill="#00574A"/>
-              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC" text-anchor="end">
-                <text x="105" y="88" font-size="9" fill="#8E9399" letter-spacing="0.08em">01</text>
-                <text x="105" y="100" font-size="11" letter-spacing="0.02em" fill="#59B9A5">RET</text>
-                <text x="105" y="113" font-size="8" fill="#8E9399">retainer overdue</text>
-              </g>
-            </g>
-            <!-- 02 OBS — top -->
-            <g class="cell">
-              <line x1="200" y1="50" x2="200" y2="75" stroke="#00574A" stroke-width="0.8"/>
-              <circle cx="200" cy="48" r="2" fill="#00574A"/>
-              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC" text-anchor="middle">
-                <text x="200" y="24" font-size="9" fill="#8E9399" letter-spacing="0.08em">02</text>
-                <text x="200" y="37" font-size="11" letter-spacing="0.02em" fill="#59B9A5">OBS</text>
-              </g>
-            </g>
-            <!-- 03 CON — top-right -->
-            <g class="cell">
-              <line x1="290" y1="95" x2="255" y2="105" stroke="#00574A" stroke-width="0.8"/>
-              <circle cx="292" cy="95" r="2" fill="#00574A"/>
-              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC">
-                <text x="295" y="88" font-size="9" fill="#8E9399" letter-spacing="0.08em">03</text>
-                <text x="295" y="100" font-size="11" letter-spacing="0.02em" fill="#59B9A5">CON</text>
-                <text x="295" y="113" font-size="8" fill="#8E9399">consult no-start</text>
-              </g>
-            </g>
-            <!-- 04 NSH — right -->
-            <g class="cell">
-              <line x1="310" y1="215" x2="260" y2="215" stroke="#00574A" stroke-width="0.8"/>
-              <circle cx="312" cy="215" r="2" fill="#00574A"/>
-              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC">
-                <text x="315" y="208" font-size="9" fill="#8E9399" letter-spacing="0.08em">04</text>
-                <text x="315" y="220" font-size="11" letter-spacing="0.02em" fill="#59B9A5">NSH</text>
-                <text x="315" y="233" font-size="8" fill="#8E9399">no-show</text>
-              </g>
-            </g>
-            <!-- 05 DFM — bottom-right -->
-            <g class="cell">
-              <line x1="285" y1="335" x2="240" y2="330" stroke="#00574A" stroke-width="0.8"/>
-              <circle cx="287" cy="335" r="2" fill="#00574A"/>
-              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC">
-                <text x="290" y="328" font-size="9" fill="#8E9399" letter-spacing="0.08em">05</text>
-                <text x="290" y="340" font-size="11" letter-spacing="0.02em" fill="#59B9A5">DFM</text>
-                <text x="290" y="353" font-size="8" fill="#8E9399">debond f-up</text>
-              </g>
-            </g>
-            <!-- 06 FGC — bottom -->
-            <g class="cell">
-              <line x1="200" y1="390" x2="200" y2="365" stroke="#00574A" stroke-width="0.8"/>
-              <circle cx="200" cy="392" r="2" fill="#00574A"/>
-              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC" text-anchor="middle">
-                <text x="200" y="412" font-size="9" fill="#8E9399" letter-spacing="0.08em">06</text>
-                <text x="200" y="425" font-size="11" letter-spacing="0.02em" fill="#59B9A5">FGC</text>
-              </g>
-            </g>
-            <!-- 07 IFS — bottom-left -->
-            <g class="cell">
-              <line x1="115" y1="335" x2="160" y2="330" stroke="#00574A" stroke-width="0.8"/>
-              <circle cx="113" cy="335" r="2" fill="#00574A"/>
-              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC" text-anchor="end">
-                <text x="110" y="328" font-size="9" fill="#8E9399" letter-spacing="0.08em">07</text>
-                <text x="110" y="340" font-size="11" letter-spacing="0.02em" fill="#59B9A5">IFS</text>
-                <text x="110" y="353" font-size="8" fill="#8E9399">inactive family</text>
-              </g>
-            </g>
-            <!-- 08 FPR — left -->
-            <g class="cell">
-              <line x1="88" y1="215" x2="140" y2="215" stroke="#00574A" stroke-width="0.8"/>
-              <circle cx="86" cy="215" r="2" fill="#00574A"/>
-              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC" text-anchor="end">
-                <text x="83" y="208" font-size="9" fill="#8E9399" letter-spacing="0.08em">08</text>
-                <text x="83" y="220" font-size="11" letter-spacing="0.02em" fill="#59B9A5">FPR</text>
-                <text x="83" y="233" font-size="8" fill="#8E9399">former pt. return</text>
-              </g>
-            </g>
-          </svg>
-        </div>
-        <p class="figure-caption">
-          <span class="italic">Every chart bears all eight.</span> Each state has its own trigger, script, and attribution window — radiating outward from the center of patient care, clockwise from the retainer-check cohort.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Issue ribbon -->
-<section class="ribbon" aria-label="This quarter's running record">
-  <div class="ribbon-track">
-    <span>THIS QUARTER</span><span class="sep">·</span>
-    <span><strong>12,847</strong> opportunities detected</span><span class="sep">·</span>
-    <span class="em"><strong>3,241</strong> shown up</span><span class="sep">·</span>
-    <span><strong>$8,441,208</strong> recovered</span><span class="sep">·</span>
-    <span class="em"><strong>02 / 10</strong> inaugural cohort</span><span class="sep">·</span>
-    <span><strong>696</strong> avg active patients / orthodontist</span><span class="sep">·</span>
-    <span class="bz">"Filed weekly from Orlando, Florida."</span><span class="sep">·</span>
-    <span><strong>$5,000</strong> shown-value guarantee · 60 days</span><span class="sep">·</span>
-    <span><strong>0</strong> bulk SMS blasts sent · ever</span><span class="sep">·</span>
-    <!-- loop -->
-    <span>THIS QUARTER</span><span class="sep">·</span>
-    <span><strong>12,847</strong> opportunities detected</span><span class="sep">·</span>
-    <span class="em"><strong>3,241</strong> shown up</span><span class="sep">·</span>
-    <span><strong>$8,441,208</strong> recovered</span><span class="sep">·</span>
-    <span class="em"><strong>02 / 10</strong> inaugural cohort</span><span class="sep">·</span>
-    <span><strong>696</strong> avg active patients / orthodontist</span><span class="sep">·</span>
-    <span class="bz">"Filed weekly from Orlando, Florida."</span><span class="sep">·</span>
-    <span><strong>$5,000</strong> shown-value guarantee · 60 days</span><span class="sep">·</span>
-    <span><strong>0</strong> bulk SMS blasts sent · ever</span><span class="sep">·</span>
-  </div>
-</section>
-
-<!-- § 02 SPECIMEN -->
-<section class="section" id="specimen">
-  <div class="section-inner">
-    <div class="section-meta">
-      <span><strong>§ 02</strong></span>
-      <span>SPECIMEN · THE LATEST ISSUE</span>
-      <span>VOL. I · ISSUE 16</span>
-      <span class="bz">By the Editor</span>
-    </div>
-
-    <div class="section-head">
-      <h2 class="section-title">
-        What arrives Friday morning, <em>signed and measured.</em>
-      </h2>
-      <p class="section-kicker">
-        Each issue is generated at 04:14 AM from the practice's PMS under BAA, ranked by a clinical-probability model, audited by the founder, and signed at 07:59 for 08:00 delivery. Previous issue's patients have their shown-up status reported inline.
+      <p class="hero-sub">
+        Every Friday at 8 AM, your treatment coordinator opens a ranked call list of the patients already in your chart — with shown-up attribution, not bulk SMS. Eight recovery states. One weekly email. Measurable revenue.
       </p>
+
+      <ul class="hero-features">
+        <li>Retainer checks overdue</li>
+        <li>Consult no-starts</li>
+        <li>Observation overdue</li>
+        <li>Financing gone cold</li>
+        <li>Sibling family consults</li>
+        <li>Shown-up attribution</li>
+      </ul>
+
+      <div class="hero-cta">
+        <a href="/audit" class="btn btn-primary btn-lg">Start the free audit</a>
+        <a href="/pilot" class="btn btn-ghost btn-lg">See pricing →</a>
+      </div>
+
+      <div class="hero-trust">
+        <span><strong>HIPAA</strong> · BAA-first</span>
+        <span><strong>TCPA</strong> compliant</span>
+        <span><strong>SOC 2</strong> Q2 2027</span>
+      </div>
     </div>
 
-    <div class="record">
-      <div class="record-header">
-        <div class="record-header-left">
-          <h3 class="record-title">Issue 16 · The Recovery Journal</h3>
-          <div class="record-from"><strong>Edited by</strong> Colin Smith · <strong>Delivered to</strong> Orlando Orthodontics · 12 patients ranked</div>
+    <div class="hero-product r-2">
+      <div class="hero-product-frame" id="product">
+        <div class="hp-head">
+          <div class="hp-head-left">
+            <div class="hp-head-mark">u.</div>
+            <div><strong>Friday Report</strong> · Orlando Orthodontics</div>
+          </div>
+          <div class="hp-head-right">FRI · 8:00 AM</div>
         </div>
-        <div class="record-header-right">
-          ISSUE<br/>
-          <strong>04.16.2026</strong>
+        <div class="hp-body">
+          <h3 class="hp-subject">12 patients to call today</h3>
+          <p class="hp-preheader">4 showed up from last week's list. $11,200 incremental vs holdout group.</p>
+
+          <div class="hp-metrics">
+            <div class="hp-metric">
+              <div class="hp-metric-label">Calls</div>
+              <div class="hp-metric-val">12</div>
+            </div>
+            <div class="hp-metric accent">
+              <div class="hp-metric-label">Shown</div>
+              <div class="hp-metric-val">4/11</div>
+            </div>
+            <div class="hp-metric">
+              <div class="hp-metric-label">Value</div>
+              <div class="hp-metric-val">$17.7k</div>
+            </div>
+            <div class="hp-metric accent">
+              <div class="hp-metric-label">Incr.</div>
+              <div class="hp-metric-val">+$11.2k</div>
+            </div>
+          </div>
+
+          <div class="hp-list">
+            <div class="hp-row">
+              <div class="hp-row-name">Harper M.<small>parent Kate M. · debonded Aug 2025</small></div>
+              <div class="hp-row-state acc">01 RET</div>
+              <div class="hp-row-val">$4,200</div>
+              <div class="hp-row-shown yes">yes</div>
+            </div>
+            <div class="hp-row">
+              <div class="hp-row-name">Diego R.<small>observation since Jan 2025</small></div>
+              <div class="hp-row-state">02 OBS</div>
+              <div class="hp-row-val">$6,800</div>
+              <div class="hp-row-shown no">—</div>
+            </div>
+            <div class="hp-row">
+              <div class="hp-row-name">Kennedy B.<small>consulted Mar 20 · quoted $5,600</small></div>
+              <div class="hp-row-state">03 CON</div>
+              <div class="hp-row-val">$5,600</div>
+              <div class="hp-row-shown no">—</div>
+            </div>
+            <div class="hp-row">
+              <div class="hp-row-name">Julian T.<small>consulted Mar 30 · quoted $5,108</small></div>
+              <div class="hp-row-state acc">03 CON</div>
+              <div class="hp-row-val">$5,108</div>
+              <div class="hp-row-shown yes">yes</div>
+            </div>
+            <div class="hp-row">
+              <div class="hp-row-name">Amelia W.<small>CareCredit approved Mar 2</small></div>
+              <div class="hp-row-state">06 FGC</div>
+              <div class="hp-row-val">$7,400</div>
+              <div class="hp-row-shown no">—</div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="record-summary">
-        <div class="record-summary-cell">
-          <div class="label">To call today</div>
-          <div class="val">12</div>
-        </div>
-        <div class="record-summary-cell accent">
-          <div class="label">Shown last issue</div>
-          <div class="val">4 / 11</div>
-        </div>
-        <div class="record-summary-cell">
-          <div class="label">Shown-value, wk</div>
-          <div class="val">$17,716</div>
-        </div>
-        <div class="record-summary-cell bronze">
-          <div class="label">Incremental vs holdout</div>
-          <div class="val">+$11,200</div>
-        </div>
-      </div>
-
-      <table class="record-table">
-        <thead>
-          <tr>
-            <th style="width:28%">Patient</th>
-            <th style="width:12%">State</th>
-            <th style="width:14%">Last seen</th>
-            <th style="width:18%">Script</th>
-            <th class="num" style="width:14%">Value</th>
-            <th class="num" style="width:14%">Shown last wk</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="name">Harper M.<small>parent Kate M. · debonded Aug 2025</small></td>
-            <td><span class="record-state acc">01 RET</span></td>
-            <td>8 mo</td>
-            <td>retainer-overdue-v3</td>
-            <td class="num">$4,200</td>
-            <td class="num"><span class="record-shown">yes</span></td>
-          </tr>
-          <tr>
-            <td class="name">Diego R.<small>age 9 · observation since Jan 2025</small></td>
-            <td><span class="record-state">02 OBS</span></td>
-            <td>14 mo</td>
-            <td>obs-growth-window</td>
-            <td class="num">$6,800</td>
-            <td class="num"><span class="record-pending">—</span></td>
-          </tr>
-          <tr>
-            <td class="name">Kennedy B.<small>consulted Mar 20 · quoted $5,600</small></td>
-            <td><span class="record-state">03 CON</span></td>
-            <td>31 d</td>
-            <td>consult-recap-30d</td>
-            <td class="num">$5,600</td>
-            <td class="num"><span class="record-pending">—</span></td>
-          </tr>
-          <tr>
-            <td class="name">Julian T.<small>consulted Mar 30 · quoted $5,108</small></td>
-            <td><span class="record-state acc">03 CON</span></td>
-            <td>21 d</td>
-            <td>consult-recap-21d</td>
-            <td class="num">$5,108</td>
-            <td class="num"><span class="record-shown">yes</span></td>
-          </tr>
-          <tr>
-            <td class="name">Amelia W.<small>CareCredit approved Mar 2</small></td>
-            <td><span class="record-state">06 FGC</span></td>
-            <td>45 d</td>
-            <td>financing-cold-45d</td>
-            <td class="num">$7,400</td>
-            <td class="num"><span class="record-pending">—</span></td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </section>
 
-<!-- § 03 STANDING SECTIONS -->
-<section class="section" id="standing">
+<!-- Social proof logos -->
+<section class="logos">
+  <div class="logos-inner">
+    <div class="logos-label">Inaugural cohort · 2 of 10 practices live</div>
+    <div class="logos-list">
+      <span>Orlando Orthodontics</span>
+      <span>Tampa Bay Smiles</span>
+      <span class="open">Slot 3 — open</span>
+      <span class="open">Slot 4 — open</span>
+      <span class="open">Slot 5 — open</span>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="section" id="how">
   <div class="section-inner">
-    <div class="section-meta">
-      <span><strong>§ 03</strong></span>
-      <span>STANDING SECTIONS · TAXONOMY</span>
-      <span class="bz">Eight standing columns</span>
-    </div>
-
     <div class="section-head">
-      <h2 class="section-title">
-        Eight standing sections. <em>Every chart writes them.</em>
-      </h2>
-      <p class="section-kicker">
-        The journal covers eight recurring states that every orthodontic chart generates. Each has its own column, query, script, and attribution window. These are not marketing categories; they are SQL predicates against your practice management system.
-      </p>
+      <div class="section-eyebrow">How it works</div>
+      <h2 class="section-title">From PMS to <span class="teal">Friday call list</span> in 72 hours.</h2>
+      <p class="section-kicker">Three steps, one weekly deliverable. Your treatment coordinator keeps doing what they already do — we just tell them who to call.</p>
     </div>
 
-    <div class="standing">
-      <article class="standing-cell">
-        <div class="standing-cell-meta"><span>§ 03.1 · 01 RET</span><span class="standing-cell-ratio">18% of debond chart</span></div>
-        <h3 class="standing-cell-title">Retainer Check <em>Overdue</em></h3>
-        <p class="standing-cell-desc">Post-debond patient missed their scheduled retainer review. Relapse clock running from the moment the appliance came off.</p>
-      </article>
-
-      <article class="standing-cell">
-        <div class="standing-cell-meta"><span>§ 03.2 · 02 OBS</span><span class="standing-cell-ratio">24% of obs chart</span></div>
-        <h3 class="standing-cell-title">Observation <em>Overdue</em></h3>
-        <p class="standing-cell-desc">Pre-treatment child on observation recall. Growth window closing; drift becomes a competitor consult in 18 months.</p>
-      </article>
-
-      <article class="standing-cell">
-        <div class="standing-cell-meta"><span>§ 03.3 · 03 CON</span><span class="standing-cell-ratio">31% of consults</span></div>
-        <h3 class="standing-cell-title">Consult <em>No-Start</em></h3>
-        <p class="standing-cell-desc">Consulted, quoted, did not proceed. A scripted re-touch at 21 and 60 days recaptures a measurable fraction.</p>
-      </article>
-
-      <article class="standing-cell">
-        <div class="standing-cell-meta"><span>§ 03.4 · 04 NSH</span><span class="standing-cell-ratio">11% weekly</span></div>
-        <h3 class="standing-cell-title">No-Show, <em>Not Rescheduled</em></h3>
-        <p class="standing-cell-desc">Missed appointment that never got re-booked. The PMS reports the miss; it does not close the loop on your behalf.</p>
-      </article>
-
-      <article class="standing-cell">
-        <div class="standing-cell-meta"><span>§ 03.5 · 05 DFM</span><span class="standing-cell-ratio">22% of debonds</span></div>
-        <h3 class="standing-cell-title">Debond <em>Follow-Up Missed</em></h3>
-        <p class="standing-cell-desc">Post-treatment patient dropped out of the follow-up sequence. Chart says check in at month-3 and month-6.</p>
-      </article>
-
-      <article class="standing-cell">
-        <div class="standing-cell-meta"><span>§ 03.6 · 06 FGC</span><span class="standing-cell-ratio">19% of approvals</span></div>
-        <h3 class="standing-cell-title">Financing <em>Gone Cold</em></h3>
-        <p class="standing-cell-desc">Approved for CareCredit or equivalent, never started treatment. Dedicated 14-day and 45-day recovery scripts.</p>
-      </article>
-
-      <article class="standing-cell">
-        <div class="standing-cell-meta"><span>§ 03.7 · 07 IFS</span><span class="standing-cell-ratio">14% of families</span></div>
-        <h3 class="standing-cell-title">Inactive <em>Family / Siblings</em></h3>
-        <p class="standing-cell-desc">Current patient has a sibling of treatment age with no consult scheduled. The highest-converting state in the set.</p>
-      </article>
-
-      <article class="standing-cell">
-        <div class="standing-cell-meta"><span>§ 03.8 · 08 FPR</span><span class="standing-cell-ratio">open</span></div>
-        <h3 class="standing-cell-title">Former Patient <em>Return</em></h3>
-        <p class="standing-cell-desc">Completed treatment 18–60 months ago. Candidate for refinement, new retainers, aligner touch-up, or teen-sibling consult.</p>
-      </article>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Connect your PMS</h3>
+        <p class="step-desc">Open Dental, Dentrix, Cloud 9, or Ortho2 — connected read-only under a signed BAA. We never touch your financials.</p>
+        <div class="step-meta">~ 3 business days</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Receive your audit</h3>
+        <p class="step-desc">A signed audit document arrives within 72 hours: patients in each of 8 recovery states, their shown-values, and your top 50 opportunities ranked.</p>
+        <div class="step-meta">Delivered via email</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Call the list every Friday</h3>
+        <p class="step-desc">Every Friday at 8 AM your TC gets a ranked list of who to call today, with last week's shown-up status reported inline.</p>
+        <div class="step-meta">Weekly, forever</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- § 04 LETTER -->
-<section class="letter" id="letter">
-  <div class="letter-inner">
-    <div class="letter-portrait">
-      <div class="letter-portrait-top">
-        <span><strong>Pilot 01</strong></span>
-        <span>Orlando, FL</span>
-      </div>
-      <div class="letter-portrait-caption">
-        <div class="name">Dr. Michelle Ayana</div>
-        <div class="role">DDS, MS · FL LIC 18721</div>
-      </div>
+<!-- Stat band -->
+<section class="stat-band">
+  <div class="stat-band-inner">
+    <div>
+      <div class="stat-label">Typical practice impact</div>
+      <div class="stat-number"><span class="teal">$142k</span><small>recovered in 90 days</small></div>
+    </div>
+    <div class="stat-copy">
+      <h3>We measure recovered revenue against a holdout control group in your own chart.</h3>
+      <p>Not SMS-sent. Not appointments booked. Patients who actually showed up, net of what would have shown without outreach. If we don't hit $5,000 in 60 days, your Launch Fee is refunded in full.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonial" id="customers">
+  <div class="testimonial-inner">
+    <div class="testimonial-photo">
+      <div class="cap">Dr. Michelle Ayana, DDS, MS</div>
+      <div class="role">Orlando Orthodontics · Pilot 01</div>
     </div>
     <div>
-      <div class="letter-side">
-        <strong>§ 04</strong> · Letter from Pilot 01
-      </div>
-      <div class="letter-open">To the Editor, USDPR · Filed from Orlando, FL · Apr 14, 2026</div>
-      <p class="letter-body">
-        "The Friday issue is the first thing my office manager opens. It is the first time we have known <em>who actually showed up</em> — not who got a text. On day 93 we had recovered $142,080 against a matched holdout control group in our own chart. We are inaugural subscriber number one."
+      <p class="testimonial-quote">
+        "It's the first time we've known <span class="teal">who actually showed up</span> — not who got a text. By day 93 we'd recovered $142,080 against a matched holdout control."
       </p>
-      <div class="letter-sign">
-        <div class="letter-sign-cypher">MA</div>
-        <div class="letter-sign-meta">
-          <div class="name">Dr. Michelle Ayana, DDS, MS</div>
-          <div class="role">Orlando Orthodontics · 1,847 active patients · day 93 post-BAA</div>
+      <div class="testimonial-stats">
+        <div class="testimonial-stat">
+          <div class="testimonial-stat-val teal">$142,080</div>
+          <div class="testimonial-stat-lbl">Recovered · 90d</div>
+        </div>
+        <div class="testimonial-stat">
+          <div class="testimonial-stat-val">1,847</div>
+          <div class="testimonial-stat-lbl">Active patients</div>
+        </div>
+        <div class="testimonial-stat">
+          <div class="testimonial-stat-val">Day 93</div>
+          <div class="testimonial-stat-lbl">Post-BAA</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- § 05 SUBSCRIBE -->
-<section class="subscribe">
-  <div class="subscribe-inner">
-    <div class="subscribe-meta">
-      § 05 · Subscription · <span class="bz">inaugural cohort</span>
+<!-- Pricing -->
+<section class="section" id="pricing">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="section-eyebrow">Pricing</div>
+      <h2 class="section-title">Transparent pricing. <span class="teal">No per-seat fees.</span></h2>
+      <p class="section-kicker">One Launch fee, one monthly subscription. Founding cohort rate locks permanently for the first 10 practices.</p>
     </div>
-    <h2 class="subscribe-head">
-      Request your inaugural audit. <em>Seventy-two hours</em> to your ratios.
-    </h2>
-    <p class="subscribe-lede">
-      Connect your PMS under BAA. Within three business days you receive Issue 00 — a signed audit showing exactly how many patients sit in each of the eight states, their individual shown-values, and your top fifty ranked opportunities. Your first Friday issue follows on the next Friday.
-    </p>
-    <form class="subscribe-form" action="/api/capture" method="POST">
+
+    <div class="pricing">
+      <div class="plan">
+        <div class="plan-label">Recovery Launch</div>
+        <div class="plan-price">
+          <span class="amt">$1,500</span>
+          <span class="per">one-time</span>
+        </div>
+        <p class="plan-note">Refunded if guarantee misses. BAA, PMS connection, audit, first call list.</p>
+        <ul class="plan-features">
+          <li>Signed BAA execution</li>
+          <li>72-hour signed audit document</li>
+          <li>Top 50 ranked opportunities</li>
+          <li>OIG AO 25-08 FMV memo</li>
+          <li>First Friday call list</li>
+        </ul>
+        <a href="/pilot" class="btn btn-ghost">Start Launch</a>
+      </div>
+
+      <div class="plan featured">
+        <div class="plan-label">Ortho Recovery Pro</div>
+        <div class="plan-price">
+          <span class="amt">$697</span>
+          <span class="per">/month</span>
+        </div>
+        <p class="plan-note"><strong>Founding rate locked</strong> — list price $997/mo after slot 10</p>
+        <ul class="plan-features">
+          <li>All 8 Recovery Opportunity states</li>
+          <li>Friday report delivered weekly</li>
+          <li>Shown-up attribution with holdout</li>
+          <li>Quarterly CFO certification</li>
+          <li>Direct founder onboarding</li>
+          <li>Monthly roadmap call (6 mo)</li>
+        </ul>
+        <a href="/pilot" class="btn btn-teal">Claim founding slot</a>
+      </div>
+
+      <div class="plan">
+        <div class="plan-label">Ortho Recovery Scale</div>
+        <div class="plan-price">
+          <span class="amt">$1,497</span>
+          <span class="per">/mo/loc</span>
+        </div>
+        <p class="plan-note">Multi-location groups and DSOs. 6-month minimum.</p>
+        <ul class="plan-features">
+          <li>Everything in Pro, per location</li>
+          <li>Portfolio-level dashboard</li>
+          <li>Per-OM attribution rollups</li>
+          <li>DSO-specific BAA terms</li>
+          <li>Dedicated onboarding analyst</li>
+        </ul>
+        <a href="/for-dsos" class="btn btn-ghost">Talk to founder</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <h2 class="final-cta-head">Start the free audit. <span class="teal">Get your ratios in 72 hours.</span></h2>
+    <p class="final-cta-lede">Connect your PMS under BAA. Within three business days you receive a signed document showing how many patients sit in each of the 8 states and what they're worth to your practice.</p>
+    <form class="capture" action="/api/capture" method="POST">
       <input type="email" name="email" placeholder="you@yourpractice.com" required autocomplete="email" />
-      <input type="hidden" name="source" value="ref-v6-subscribe" />
-      <button type="submit">Request Issue 00 →</button>
+      <button type="submit">Start audit →</button>
     </form>
-    <div class="subscribe-fine">
-      BAA executed before PHI transits · ACH refund within 10 business days if guarantee misses · 16 CFR Part 239
-    </div>
+    <div class="final-fine">HIPAA · BAA-first · No credit card required · Unsubscribe anytime</div>
   </div>
 </section>
 
-<!-- COLOPHON -->
-<footer class="colophon">
-  <div class="colophon-inner">
-    <div>
-      <h5>Colophon</h5>
-      <p class="serif-note">Set in Newsreader (Production Type) and IBM Plex Sans &amp; Mono (IBM). Edited, published, and signed from Orlando, Florida by the founder.</p>
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="wordmark">
+        <span class="wordmark-mark" aria-hidden="true">
+          <span></span><span></span><span></span>
+          <span></span><span class="c"></span><span></span>
+          <span></span><span></span><span></span>
+        </span>
+        <span>usdpr</span>
+      </a>
+      <p class="footer-note">Patient recovery software for orthodontic practices. Pre-revenue. Solo-founded. Orlando, Florida.</p>
     </div>
     <div>
-      <h5>Editorial</h5>
-      <p><a href="/about">About</a></p>
-      <p><a href="/pilot">Inaugural cohort</a></p>
-      <p><a href="/changelog">Changelog</a></p>
+      <h5>Product</h5>
+      <ul>
+        <li><a href="#product">Friday Report</a></li>
+        <li><a href="/integrations">Integrations</a></li>
+        <li><a href="/audit">Free audit</a></li>
+        <li><a href="/changelog">Changelog</a></li>
+      </ul>
     </div>
     <div>
-      <h5>Standards</h5>
-      <p>HIPAA · BAA-first</p>
-      <p>45 CFR §164.502</p>
-      <p>TCPA · OIG AO 25-08</p>
-      <p>SOC 2 Type II · Q2 2027</p>
+      <h5>Company</h5>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/pilot">Founding cohort</a></li>
+        <li><a href="/for-dsos">For DSOs</a></li>
+        <li><a href="/press">Press</a></li>
+      </ul>
     </div>
     <div>
-      <h5>Contact</h5>
-      <p><a href="mailto:founder@usdentalpatientrecovery.com">founder@usdpr.co</a></p>
-      <p>Orlando, Florida</p>
-      <p>© 2026 USDPR LLC</p>
+      <h5>Legal &amp; Trust</h5>
+      <ul>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/security">Security</a></li>
+        <li><a href="/baa">BAA</a></li>
+      </ul>
     </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 USDPR LLC · All rights reserved</span>
+    <span>Orlando, FL · founder@usdpr.co</span>
   </div>
 </footer>
 
 <div class="notice">
-  Reference v6 · <span class="em">The Recovery Journal · 10/10 push</span> · not shipping
+  Reference v7 · <span class="teal">beat-the-category direction</span> · not shipping
 </div>
 
 </body>
