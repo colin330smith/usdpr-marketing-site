@@ -3,92 +3,87 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>USDPR — reference v5 · The Recovery Journal (not shipping)</title>
+<title>USDPR — reference v6 · The Recovery Journal (final push)</title>
 <link rel="icon" href="/brand/favicon.svg" />
 <style>
 /* ==========================================================================
-   USDPR — REFERENCE v5 · direction: "The Recovery Journal"
+   USDPR — REFERENCE v6 · "The Recovery Journal" · 10/10 push
    ==========================================================================
-   Research basis: 20+ sites studied across healthcare authority (One Medical,
-   Parsley, Maven, Commure, Hippocratic AI), premium design-forward B2B
-   (Notion, Stripe Press), and tier-1 SaaS tech (Attio, Linear, Ramp, Vercel,
-   Anthropic, Abridge), plus human-made (Oxide, Cursor, Arc, Warp).
-
-   The insight that broke the problem open:
-   · Premium healthcare uses SERIF display, not sans (One Medical, Parsley,
-     Maven — all serif). This is opposite of tier-1 B2B SaaS.
-   · Stripe Press shows what "made by humans who care about craft" looks
-     like: dark + italic serif + volumes/issues + physical objects.
-   · USDPR's buyer (ortho practice owner) responds to premium healthcare
-     authority MORE than dev-tool precision. They run premium medical
-     businesses and read clinical journals.
-
-   The direction: USDPR is not software. It's a weekly clinical publication.
-   The Friday email is ISSUE 16 of VOL. I. The 8 states are its standing
-   sections. The founding cohort are inaugural subscribers. The pilot
-   testimonial is a "Letter from Pilot 01." This framing is distinctive,
-   defensible, warm, authoritative.
-
-   Changes from v4:
-   · Hero section is DARK (Stripe Press / Parsley), transitions to paper.
-   · Display font is IBM Plex Serif 400 (editorial, premium) — not Sans.
-   · IBM Plex Serif italic kept as the signature "one-word" move.
-   · Publication framing applied throughout: VOL. I, ISSUE 16, EDITION,
-     STANDING SECTIONS, LETTER FROM PILOT 01, ERRATA, SUBSCRIBE.
-   · Colophon in the footer (traditional publishing convention).
-   · Real orthodontic-grade imagery: teeth-arch diagram as FIG. 01 instead
-     of the abstract matrix.
+   Changes from v5:
+   · Display font: IBM Plex Serif → NEWSREADER (Production Type, free,
+     designed for screen reading of editorial content, has optical sizes
+     at 6/16/60 — real typographic personality, not the current SaaS
+     convergence)
+   · Accent: surgical emerald → DEEP JADE #00574A (darker than Parsley,
+     more ownable) + one BURNISHED BRONZE #8B5A2B moment per page as
+     secondary signature (dual-color medical-journal classicism)
+   · FIG. 01: abstract grid → HAND-DRAWN TOOTH CROSS-SECTION with 8
+     recovery states labeled as margin annotations (custom SVG)
+   · Real photography: clinician hands / portrait / clinical detail
+     (carefully curated Unsplash, duotone-treated to feel editorial)
+   · Motion: matrix cell reveal on intersect, summary-number count-up,
+     scroll-triggered amber underline draw, hover micro-movements
+   · Mobile: pass verified at 390×844 / 768×1024
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root {
-  /* INK — richer black with very slight warm undertone */
-  --ink-1000: #0A0A0B;
-  --ink-900:  #121214;   /* hero bg */
-  --ink-800:  #1C1D20;
-  --ink-700:  #2A2C30;
-  --ink-600:  #42454B;
-  --ink-500:  #6A6D73;
-  --ink-400:  #8F9298;
-  --ink-300:  #B4B7BC;
-  --ink-200:  #D6D8DB;
+  /* INK — near-black with subtle blue undertone for depth */
+  --ink-1000: #07080B;
+  --ink-900:  #0E1116;   /* hero bg */
+  --ink-800:  #181C22;
+  --ink-700:  #282D34;
+  --ink-600:  #41464D;
+  --ink-500:  #686D74;
+  --ink-400:  #8E9399;
+  --ink-300:  #B3B7BC;
+  --ink-200:  #D4D6DA;
   --ink-100:  #E9EAEC;
 
-  /* PAPER — stark with the slightest warmth for reading */
+  /* PAPER — stark with editorial warmth */
   --paper-50:  #FBFAF5;
-  --paper-100: #F2F0E7;
-  --paper-200: #E5E2D3;
+  --paper-100: #F1EFE6;
+  --paper-200: #E2DED1;
 
-  /* EMERALD — surgical forest, richer than v4 */
-  --emerald-900: #002A20;
-  --emerald-800: #004A36;
-  --emerald-700: #00624A;   /* primary accent */
-  --emerald-600: #00806B;
-  --emerald-500: #00A086;   /* bright action */
-  --emerald-300: #5CC4AE;
-  --emerald-200: #A3DDCC;
-  --emerald-100: #D9EDE4;
+  /* JADE — deep surgical forest, darker than Parsley */
+  --jade-900: #00201B;
+  --jade-800: #003B30;
+  --jade-700: #00574A;   /* PRIMARY accent */
+  --jade-600: #006D5E;
+  --jade-500: #008D78;
+  --jade-300: #59B9A5;
+  --jade-200: #A4DACA;
+  --jade-100: #D7EEE6;
+
+  /* BRONZE — warm medical-journal classicism, one moment per page */
+  --bronze-900: #3B2510;
+  --bronze-700: #6B3F17;
+  --bronze-500: #8B5A2B;   /* secondary accent */
+  --bronze-300: #C0926A;
+  --bronze-100: #EDD9BC;
 
   /* RULES */
-  --rule-soft:  rgba(10, 10, 11, 0.07);
-  --rule:       rgba(10, 10, 11, 0.16);
-  --rule-ink:   #0A0A0B;
-  --rule-inv:   rgba(251, 250, 245, 0.14);
-  --rule-inv-s: rgba(251, 250, 245, 0.28);
+  --rule-soft:  rgba(7, 8, 11, 0.06);
+  --rule:       rgba(7, 8, 11, 0.14);
+  --rule-strong: rgba(7, 8, 11, 0.28);
+  --rule-ink:   #07080B;
+  --rule-inv:   rgba(251, 250, 245, 0.12);
+  --rule-inv-s: rgba(251, 250, 245, 0.24);
 
   --wrap: 1280px;
-  --wrap-tight: 1040px;
-  --wrap-reading: 760px;
+  --wrap-tight: 1080px;
+  --wrap-reading: 720px;
   --gutter: clamp(20px, 4vw, 44px);
 
   --ease: cubic-bezier(0.2, 0.9, 0.25, 1);
+  --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
 }
 
 * { box-sizing: border-box; }
-*::selection { background: var(--emerald-200); color: var(--ink-1000); }
+*::selection { background: var(--jade-200); color: var(--ink-1000); }
 
-html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; text-rendering: optimizeLegibility; }
 
 body {
   margin: 0;
@@ -105,20 +100,22 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; background: transparent; border: 0; }
 img, svg { max-width: 100%; display: block; }
 
-/* ---------- Serif display utility --------------------------------------- */
+/* ---------- Serif display utility (Newsreader with optical size) ------- */
 .serif {
-  font-family: 'IBM Plex Serif', 'Iowan Old Style', Georgia, serif;
+  font-family: 'Newsreader', 'Iowan Old Style', Georgia, serif;
   font-weight: 400;
-  letter-spacing: -0.018em;
-}
-.serif-it {
-  font-family: 'IBM Plex Serif', serif;
-  font-weight: 400;
-  font-style: italic;
+  font-variation-settings: "opsz" 72;
   letter-spacing: -0.012em;
 }
+.serif-it {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-variation-settings: "opsz" 72;
+  letter-spacing: -0.005em;
+}
 
-/* ---------- Masthead strip ---------------------------------------------- */
+/* ---------- Masthead strip (publication header) ----------------------- */
 .masthead {
   background: var(--ink-900);
   color: var(--paper-50);
@@ -137,44 +134,45 @@ img, svg { max-width: 100%; display: block; }
   letter-spacing: 0.08em;
   color: var(--ink-300);
 }
-.masthead-inner strong {
+.masthead-inner strong { color: var(--paper-50); font-weight: 500; }
+.masthead-inner .serif-bar {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--paper-50);
-  font-weight: 500;
+  font-variation-settings: "opsz" 24;
 }
-.masthead-inner .divider {
-  color: var(--ink-500);
-  margin: 0 4px;
-}
-.masthead-inner .live {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
+.masthead-inner .divider { color: var(--ink-600); margin: 0 4px; }
+.masthead-inner .live { display: inline-flex; align-items: center; gap: 6px; }
 .masthead-inner .live::before {
   content: '';
   width: 6px; height: 6px;
-  background: var(--emerald-500);
-  box-shadow: 0 0 0 3px rgba(0, 160, 134, 0.3);
+  background: var(--jade-500);
+  box-shadow: 0 0 0 3px rgba(0, 141, 120, 0.3);
   animation: pulse 2.6s ease-in-out infinite;
 }
 @keyframes pulse {
-  0%,100% { box-shadow: 0 0 0 3px rgba(0, 160, 134, 0.28); }
-  50%     { box-shadow: 0 0 0 7px rgba(0, 160, 134, 0); }
+  0%,100% { box-shadow: 0 0 0 3px rgba(0, 141, 120, 0.28); }
+  50%     { box-shadow: 0 0 0 7px rgba(0, 141, 120, 0); }
 }
-.masthead-inner a { color: var(--emerald-300); }
-.masthead-inner a:hover { color: var(--emerald-500); }
-@media (max-width: 760px) {
+.masthead-inner a { color: var(--jade-300); }
+.masthead-inner a:hover { color: var(--jade-500); }
+@media (max-width: 820px) {
   .masthead-inner .hide-sm { display: none; }
+  .masthead-inner { font-size: 10px; }
 }
 
-/* ---------- Nav (on dark hero) ------------------------------------------ */
+/* ---------- Nav (on dark hero) ---------------------------------------- */
 .topbar {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(18, 18, 20, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(14, 17, 22, 0.82);
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
   color: var(--paper-50);
   border-bottom: 1px solid var(--rule-inv);
 }
@@ -191,17 +189,19 @@ img, svg { max-width: 100%; display: block; }
   display: inline-flex;
   align-items: baseline;
   gap: 10px;
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'Newsreader', serif;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 22px;
   letter-spacing: -0.02em;
   color: var(--paper-50);
+  font-variation-settings: "opsz" 36;
 }
 .wordmark-it {
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'Newsreader', serif;
   font-style: italic;
   font-weight: 400;
-  color: var(--emerald-300);
+  color: var(--jade-300);
+  font-variation-settings: "opsz" 36, "wght" 500;
 }
 .wordmark-label {
   font-family: 'IBM Plex Mono', monospace;
@@ -212,6 +212,7 @@ img, svg { max-width: 100%; display: block; }
   padding-left: 10px;
   margin-left: 4px;
   border-left: 1px solid var(--rule-inv);
+  text-transform: uppercase;
 }
 .nav {
   display: flex;
@@ -229,7 +230,7 @@ img, svg { max-width: 100%; display: block; }
 .nav .sep { width: 1px; height: 14px; background: var(--rule-inv); }
 @media (max-width: 820px) { .nav { display: none; } }
 
-/* ---------- Buttons ------------------------------------------------------ */
+/* ---------- Buttons --------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -241,40 +242,35 @@ img, svg { max-width: 100%; display: block; }
   letter-spacing: -0.005em;
   line-height: 1;
   border: 1px solid transparent;
-  transition: all 160ms var(--ease);
+  transition: all 200ms var(--ease);
   white-space: nowrap;
   cursor: pointer;
 }
 .btn-primary {
-  background: var(--emerald-700);
+  background: var(--jade-700);
   color: var(--paper-50);
-  border-color: var(--emerald-700);
+  border-color: var(--jade-700);
 }
 .btn-primary:hover {
-  background: var(--emerald-600);
-  border-color: var(--emerald-600);
+  background: var(--jade-600);
+  border-color: var(--jade-600);
+  transform: translateY(-1px);
 }
 .btn-ghost-inv {
   background: transparent;
   color: var(--paper-50);
   border-color: var(--rule-inv-s);
 }
-.btn-ghost-inv:hover {
-  border-color: var(--paper-50);
-  background: rgba(251, 250, 245, 0.06);
-}
+.btn-ghost-inv:hover { border-color: var(--paper-50); background: rgba(251, 250, 245, 0.06); }
 .btn-ghost {
   background: transparent;
   color: var(--ink-1000);
   border-color: var(--ink-1000);
 }
-.btn-ghost:hover {
-  background: var(--ink-1000);
-  color: var(--paper-50);
-}
+.btn-ghost:hover { background: var(--ink-1000); color: var(--paper-50); }
 .btn-sm { padding: 9px 14px; font-size: 12.5px; }
 
-/* ---------- HERO — dark editorial, Stripe Press × One Medical --------- */
+/* ---------- HERO — dark editorial with tooth diagram ------------------ */
 .hero {
   background: var(--ink-900);
   color: var(--paper-50);
@@ -284,30 +280,30 @@ img, svg { max-width: 100%; display: block; }
 .hero::before {
   content: '';
   position: absolute;
-  top: -30%; right: -20%;
-  width: 60%; aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(0, 160, 134, 0.12) 0%, transparent 60%);
+  top: -30%; right: -15%;
+  width: 55%; aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(0, 141, 120, 0.10) 0%, transparent 65%);
   pointer-events: none;
 }
 .hero::after {
   content: '';
   position: absolute;
-  bottom: -30%; left: -10%;
+  bottom: -20%; left: -8%;
   width: 40%; aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(0, 98, 74, 0.16) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(139, 90, 43, 0.08) 0%, transparent 65%);
   pointer-events: none;
 }
 .hero-inner {
   max-width: var(--wrap);
   margin: 0 auto;
-  padding: clamp(48px, 6vw, 96px) var(--gutter) clamp(72px, 8vw, 120px);
+  padding: clamp(44px, 5.5vw, 88px) var(--gutter) clamp(72px, 8vw, 120px);
   position: relative;
 }
 
-/* Edition strip — top of hero */
+/* Edition strip */
 .edition {
   display: flex;
-  gap: 40px;
+  gap: clamp(24px, 3vw, 48px);
   align-items: baseline;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
@@ -317,28 +313,27 @@ img, svg { max-width: 100%; display: block; }
   padding-bottom: 14px;
   border-bottom: 1px solid var(--rule-inv);
   text-transform: uppercase;
+  flex-wrap: wrap;
 }
-.edition-cell {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.edition-cell-label {
-  font-size: 9.5px;
-  color: var(--ink-500);
-  letter-spacing: 0.12em;
-}
+.edition-cell { display: flex; flex-direction: column; gap: 4px; }
+.edition-cell-label { font-size: 9.5px; color: var(--ink-500); letter-spacing: 0.14em; }
 .edition-cell-val {
   color: var(--paper-50);
   font-weight: 500;
   font-size: 12px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
 }
-.edition-cell-val em {
-  color: var(--emerald-300);
-  font-style: normal;
+.edition-cell-val em { color: var(--jade-300); font-style: normal; }
+.edition-cell-val .serif-bronze {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0;
+  color: var(--bronze-300);
+  text-transform: none;
+  font-variation-settings: "opsz" 18;
 }
-@media (max-width: 760px) { .edition { gap: 20px; flex-wrap: wrap; } }
 
 .hero-layout {
   display: grid;
@@ -346,75 +341,73 @@ img, svg { max-width: 100%; display: block; }
   gap: clamp(32px, 5vw, 96px);
   align-items: start;
 }
-@media (max-width: 960px) { .hero-layout { grid-template-columns: 1fr; gap: 40px; } }
+@media (max-width: 960px) { .hero-layout { grid-template-columns: 1fr; gap: 48px; } }
 
-/* The big serif headline — One Medical × Stripe Press */
+/* The big Newsreader headline */
 .hero-head {
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'Newsreader', serif;
   font-weight: 400;
-  font-size: clamp(48px, 7.5vw, 112px);
-  line-height: 1.0;
-  letter-spacing: -0.024em;
+  font-size: clamp(50px, 7.6vw, 116px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
   color: var(--paper-50);
-  margin: 0 0 clamp(24px, 3vw, 36px);
-  max-width: 18ch;
+  margin: 0 0 clamp(28px, 3.5vw, 40px);
+  max-width: 16ch;
   text-wrap: balance;
+  font-variation-settings: "opsz" 144, "wght" 400;
 }
 .hero-head em {
   font-style: italic;
   font-weight: 400;
-  color: var(--emerald-300);
-  letter-spacing: -0.015em;
+  color: var(--jade-300);
+  font-variation-settings: "opsz" 144, "wght" 400;
 }
-.hero-head .amp {
+.hero-head .bronze {
+  color: var(--bronze-300);
   font-style: italic;
-  color: var(--ink-400);
-  margin: 0 0.08em;
+  font-variation-settings: "opsz" 144, "wght" 400;
 }
 
 .hero-sub {
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 17px;
+  font-size: 17.5px;
   line-height: 1.55;
   color: var(--ink-200);
-  margin: 0 0 28px;
-  max-width: 50ch;
+  margin: 0 0 32px;
+  max-width: 52ch;
 }
-.hero-sub strong {
-  color: var(--paper-50);
-  font-weight: 500;
-}
+.hero-sub strong { color: var(--paper-50); font-weight: 500; }
 
 .hero-cta {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 .hero-trust {
   display: flex;
-  gap: 16px;
+  gap: 18px;
   flex-wrap: wrap;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 10.5px;
   color: var(--ink-400);
   letter-spacing: 0.04em;
-  padding-top: 16px;
+  padding-top: 18px;
   border-top: 1px solid var(--rule-inv);
 }
-.hero-trust span { display: inline-flex; gap: 5px; align-items: center; }
+.hero-trust span { display: inline-flex; gap: 6px; align-items: center; }
 .hero-trust span::before {
   content: '';
   width: 5px; height: 5px;
-  background: var(--emerald-500);
+  background: var(--jade-500);
   flex-shrink: 0;
 }
 .hero-trust strong { color: var(--paper-50); font-weight: 500; }
 
-/* FIG. 01 — rendered as a true technical figure over the dark bg */
+/* FIG. 01 — now a real hand-drawn tooth diagram */
 .figure {
-  padding-top: 6px;
+  padding-top: 4px;
 }
 .figure-label {
   font-family: 'IBM Plex Mono', monospace;
@@ -422,76 +415,51 @@ img, svg { max-width: 100%; display: block; }
   color: var(--ink-300);
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding-bottom: 8px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--rule-inv-s);
 }
 .figure-label strong { color: var(--paper-50); font-weight: 500; }
-.figure-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--rule-inv-s);
-  border: 1px solid var(--rule-inv-s);
-  aspect-ratio: 1 / 1;
-  max-width: 380px;
-}
-.figure-cell {
+.figure-label .bronze { color: var(--bronze-300); font-style: italic; font-family: 'Newsreader', serif; letter-spacing: 0; text-transform: none; font-size: 12px; font-variation-settings: "opsz" 18; }
+
+.tooth-wrap {
   background: var(--ink-900);
-  padding: 12px 14px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-family: 'IBM Plex Mono', monospace;
-  transition: background 160ms var(--ease);
+  border: 1px solid var(--rule-inv-s);
+  border-radius: 0;
+  padding: 24px 20px;
+  position: relative;
 }
-.figure-cell:hover { background: var(--ink-800); }
-.figure-cell .n {
-  font-size: 9.5px;
-  color: var(--ink-500);
-  letter-spacing: 0.08em;
-}
-.figure-cell .code {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--paper-50);
-  letter-spacing: -0.008em;
-}
-.figure-cell.center {
-  background: var(--emerald-700);
-  align-items: center;
-  justify-content: center;
-}
-.figure-cell.center:hover { background: var(--emerald-700); }
-.figure-cell.center .u {
-  font-family: 'IBM Plex Serif', serif;
-  font-style: italic;
-  font-size: 44px;
-  font-weight: 400;
-  color: var(--paper-50);
-  line-height: 1;
-}
+.tooth-wrap svg { width: 100%; height: auto; max-height: 420px; }
+
 .figure-caption {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 10.5px;
   color: var(--ink-400);
   letter-spacing: 0.02em;
   margin-top: 14px;
-  max-width: 40ch;
-  line-height: 1.55;
+  max-width: 48ch;
+  line-height: 1.6;
+  text-transform: none;
+}
+.figure-caption .italic {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  color: var(--ink-300);
+  letter-spacing: 0;
+  font-size: 12px;
+  font-variation-settings: "opsz" 18;
 }
 
-/* ---------- Issue ribbon — transitions from dark to paper -------------- */
+/* ---------- Issue ribbon - running stats --------------------------------- */
 .ribbon {
   background: var(--ink-900);
   color: var(--paper-50);
   border-top: 1px solid var(--rule-inv);
   border-bottom: 1px solid var(--rule-inv);
-  padding: 14px 0;
+  padding: 16px 0;
   overflow: hidden;
   position: relative;
 }
@@ -499,16 +467,16 @@ img, svg { max-width: 100%; display: block; }
   content: '';
   position: absolute;
   top: 0; bottom: 0;
-  width: 80px;
+  width: 100px;
   pointer-events: none;
   z-index: 2;
 }
 .ribbon::before { left: 0; background: linear-gradient(90deg, var(--ink-900), transparent); }
-.ribbon::after { right: 0; background: linear-gradient(-90deg, var(--ink-900), transparent); }
+.ribbon::after  { right: 0; background: linear-gradient(-90deg, var(--ink-900), transparent); }
 .ribbon-track {
   display: flex;
   gap: 56px;
-  animation: scroll 70s linear infinite;
+  animation: scroll 80s linear infinite;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -519,13 +487,14 @@ img, svg { max-width: 100%; display: block; }
 }
 .ribbon-track strong { color: var(--paper-50); font-weight: 500; }
 .ribbon-track .sep { color: var(--ink-600); }
-.ribbon-track .em { color: var(--emerald-300); }
+.ribbon-track .em { color: var(--jade-300); }
+.ribbon-track .bz { color: var(--bronze-300); font-family: 'Newsreader', serif; font-style: italic; letter-spacing: 0; text-transform: none; font-size: 13px; font-variation-settings: "opsz" 18; }
 @keyframes scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
-/* ---------- SECTION wrapper -------------------------------------------- */
+/* ---------- Section ---------------------------------------------------- */
 .section {
   padding: clamp(72px, 9vw, 128px) 0;
   border-bottom: 1px solid var(--rule);
@@ -535,40 +504,43 @@ img, svg { max-width: 100%; display: block; }
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
-
-/* Section number + meta marker — left margin, scientific-paper */
 .section-meta {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   color: var(--ink-500);
   letter-spacing: 0.06em;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   display: flex;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--rule);
+  text-transform: uppercase;
 }
-.section-meta strong {
-  color: var(--ink-1000);
-  font-weight: 500;
-}
+.section-meta strong { color: var(--ink-1000); font-weight: 500; }
+.section-meta .bz { color: var(--bronze-700); font-family: 'Newsreader', serif; font-style: italic; letter-spacing: 0; font-size: 13px; text-transform: none; font-variation-settings: "opsz" 18; }
 
-/* Section title — serif, confident */
 .section-title {
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'Newsreader', serif;
   font-weight: 400;
-  font-size: clamp(36px, 4.8vw, 64px);
-  line-height: 1.02;
-  letter-spacing: -0.024em;
+  font-size: clamp(38px, 5.0vw, 68px);
+  line-height: 1.0;
+  letter-spacing: -0.018em;
   color: var(--ink-1000);
   margin: 0;
   max-width: 22ch;
   text-wrap: balance;
+  font-variation-settings: "opsz" 96, "wght" 400;
 }
 .section-title em {
   font-style: italic;
-  color: var(--emerald-700);
+  color: var(--jade-700);
+  font-variation-settings: "opsz" 96, "wght" 400;
+}
+.section-title .bronze {
+  font-style: italic;
+  color: var(--bronze-500);
+  font-variation-settings: "opsz" 96, "wght" 400;
 }
 .section-head {
   display: grid;
@@ -587,7 +559,7 @@ img, svg { max-width: 100%; display: block; }
   max-width: 48ch;
 }
 
-/* ---------- § 02 Specimen: Friday report as ISSUE ---------------------- */
+/* ---------- § 02 Specimen: Friday report as Issue --------------------- */
 .record {
   border: 1px solid var(--ink-1000);
   background: var(--paper-50);
@@ -597,9 +569,7 @@ img, svg { max-width: 100%; display: block; }
   grid-template-columns: 1fr auto;
   border-bottom: 1px solid var(--ink-1000);
 }
-.record-header-left {
-  padding: 18px 24px;
-}
+.record-header-left { padding: 18px 24px; }
 .record-header-right {
   padding: 18px 24px;
   text-align: right;
@@ -618,13 +588,14 @@ img, svg { max-width: 100%; display: block; }
   margin-top: 2px;
 }
 .record-title {
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'Newsreader', serif;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 24px;
   font-style: italic;
   color: var(--ink-1000);
   margin: 0 0 4px;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 36, "wght" 400;
 }
 .record-from {
   font-family: 'IBM Plex Mono', monospace;
@@ -641,29 +612,31 @@ img, svg { max-width: 100%; display: block; }
   border-bottom: 1px solid var(--ink-1000);
 }
 .record-summary-cell {
-  padding: 16px 24px;
+  padding: 18px 24px;
   border-right: 1px solid var(--rule);
 }
 .record-summary-cell:last-child { border-right: 0; }
 .record-summary-cell .label {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 10px;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-500);
   margin-bottom: 6px;
 }
 .record-summary-cell .val {
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'Newsreader', serif;
   font-style: italic;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 400;
   color: var(--ink-1000);
   letter-spacing: -0.015em;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums lining-nums;
   line-height: 1;
+  font-variation-settings: "opsz" 48, "wght" 400;
 }
-.record-summary-cell.accent .val { color: var(--emerald-700); }
+.record-summary-cell.accent .val { color: var(--jade-700); }
+.record-summary-cell.bronze .val { color: var(--bronze-700); }
 @media (max-width: 760px) {
   .record-summary { grid-template-columns: 1fr 1fr; }
   .record-summary-cell:nth-child(2) { border-right: 0; }
@@ -721,25 +694,17 @@ img, svg { max-width: 100%; display: block; }
   background: var(--paper-100);
   border: 1px solid var(--rule);
 }
-.record-state.acc { color: var(--emerald-700); background: var(--emerald-100); border-color: var(--emerald-200); }
+.record-state.acc { color: var(--jade-700); background: var(--jade-100); border-color: var(--jade-200); }
 .record-shown {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
-  color: var(--emerald-700);
+  color: var(--jade-700);
   font-weight: 500;
 }
-.record-shown::before {
-  content: '●';
-  color: var(--emerald-500);
-  margin-right: 4px;
-}
-.record-pending {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--ink-400);
-}
+.record-shown::before { content: '●'; color: var(--jade-500); margin-right: 4px; }
+.record-pending { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-400); }
 
-/* ---------- § 03 Standing Sections — 8 states -------------------------- */
+/* ---------- § 03 Standing Sections ------------------------------------ */
 .standing {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -748,40 +713,39 @@ img, svg { max-width: 100%; display: block; }
 }
 @media (max-width: 760px) { .standing { grid-template-columns: 1fr; } }
 .standing-cell {
-  padding: 24px 28px;
+  padding: 26px 28px;
   border-right: 1px solid var(--ink-1000);
   border-bottom: 1px solid var(--ink-1000);
   background: var(--paper-50);
-  transition: background 160ms var(--ease);
+  transition: background 200ms var(--ease);
 }
 .standing-cell:hover { background: var(--paper-100); }
 .standing-cell-meta {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 10.5px;
   font-weight: 500;
-  color: var(--emerald-700);
+  color: var(--jade-700);
   letter-spacing: 0.06em;
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
-.standing-cell-ratio {
-  color: var(--ink-400);
-  letter-spacing: 0.04em;
-}
+.standing-cell-ratio { color: var(--ink-400); letter-spacing: 0.04em; }
 .standing-cell-title {
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'Newsreader', serif;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 24px;
   color: var(--ink-1000);
-  margin: 0 0 8px;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
+  margin: 0 0 10px;
+  letter-spacing: -0.012em;
+  line-height: 1.16;
+  font-variation-settings: "opsz" 36, "wght" 400;
 }
 .standing-cell-title em {
   font-style: italic;
-  color: var(--emerald-700);
+  color: var(--jade-700);
+  font-variation-settings: "opsz" 36, "wght" 400;
 }
 .standing-cell-desc {
   font-family: 'IBM Plex Sans', sans-serif;
@@ -791,77 +755,128 @@ img, svg { max-width: 100%; display: block; }
   margin: 0;
 }
 
-/* ---------- § 04 Letter from Pilot 01 ---------------------------------- */
+/* ---------- § 04 Letter from Pilot 01 with real portrait -------------- */
 .letter {
   background: var(--paper-100);
   padding: clamp(64px, 8vw, 120px) 0;
   border-bottom: 1px solid var(--rule);
 }
 .letter-inner {
-  max-width: var(--wrap-reading);
+  max-width: 1080px;
   margin: 0 auto;
   padding: 0 var(--gutter);
   display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 48px;
+  grid-template-columns: 280px 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
 }
-@media (max-width: 760px) { .letter-inner { grid-template-columns: 1fr; gap: 20px; } }
-.letter-sidemark {
+@media (max-width: 820px) { .letter-inner { grid-template-columns: 1fr; gap: 24px; } }
+
+/* Real photograph — Unsplash curated portrait */
+.letter-portrait {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background-image:
+    linear-gradient(180deg, transparent 60%, rgba(7, 8, 11, 0.55) 100%),
+    url("https://images.unsplash.com/photo-1659353887849-2d3ff8b0df4a?w=640&auto=format&fit=crop&q=80");
+  background-size: cover;
+  background-position: center 20%;
+  filter: grayscale(0.35) contrast(1.05);
+  border: 1px solid var(--ink-1000);
+  position: relative;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--paper-50);
+}
+.letter-portrait-top {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.letter-portrait-top strong { color: var(--jade-300); font-weight: 500; }
+.letter-portrait-caption {
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+.letter-portrait-caption .name {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 17px;
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 24, "wght" 500;
+}
+.letter-portrait-caption .role {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  color: rgba(251, 250, 245, 0.85);
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+}
+
+.letter-side {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 10.5px;
   color: var(--ink-500);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding-top: 8px;
-}
-.letter-sidemark strong { color: var(--ink-1000); font-weight: 500; display: block; margin-bottom: 4px; }
-.letter-open {
-  font-family: 'IBM Plex Serif', serif;
-  font-weight: 400;
-  font-size: 13px;
-  color: var(--ink-600);
-  letter-spacing: 0.04em;
   margin-bottom: 18px;
+}
+.letter-side strong { color: var(--ink-1000); font-weight: 500; }
+.letter-open {
+  font-family: 'Newsreader', serif;
+  font-weight: 400;
+  font-size: 13.5px;
+  color: var(--ink-600);
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
   font-style: italic;
+  font-variation-settings: "opsz" 18, "wght" 400;
 }
 .letter-body {
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'Newsreader', serif;
   font-weight: 400;
-  font-size: clamp(22px, 2.5vw, 30px);
+  font-size: clamp(22px, 2.6vw, 32px);
   line-height: 1.38;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.005em;
   color: var(--ink-1000);
   margin: 0 0 28px;
   text-wrap: pretty;
+  font-variation-settings: "opsz" 36, "wght" 400;
 }
 .letter-body em {
   font-style: italic;
-  color: var(--emerald-700);
+  color: var(--jade-700);
+  font-variation-settings: "opsz" 36, "wght" 400;
 }
 .letter-sign {
   display: flex;
-  gap: 16px;
-  align-items: center;
+  gap: 20px;
+  align-items: flex-start;
   padding-top: 20px;
   border-top: 1px solid var(--rule);
 }
 .letter-sign-cypher {
-  width: 52px; height: 52px;
-  background: var(--ink-1000);
-  color: var(--paper-50);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'Newsreader', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 28px;
-  letter-spacing: -0.02em;
-  flex-shrink: 0;
+  font-size: 56px;
+  letter-spacing: -0.04em;
+  color: var(--ink-1000);
+  line-height: 1;
+  font-variation-settings: "opsz" 72, "wght" 500;
 }
 .letter-sign-meta {
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 13px;
   color: var(--ink-1000);
-  line-height: 1.4;
+  line-height: 1.5;
+  padding-top: 8px;
 }
 .letter-sign-meta .name { font-weight: 500; }
 .letter-sign-meta .role {
@@ -869,19 +884,31 @@ img, svg { max-width: 100%; display: block; }
   font-size: 11px;
   color: var(--ink-500);
   letter-spacing: 0.04em;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
-/* ---------- Subscribe / closing ---------------------------------------- */
+/* ---------- Subscribe / closing --------------------------------------- */
 .subscribe {
   padding: clamp(80px, 10vw, 140px) 0 clamp(72px, 9vw, 112px);
   text-align: center;
   border-bottom: 1px solid var(--ink-1000);
+  position: relative;
+  overflow: hidden;
+}
+.subscribe::before {
+  content: '';
+  position: absolute;
+  bottom: -40%; left: 50%;
+  transform: translateX(-50%);
+  width: 80%; aspect-ratio: 2/1;
+  background: radial-gradient(ellipse at top, rgba(139, 90, 43, 0.08) 0%, transparent 60%);
+  pointer-events: none;
 }
 .subscribe-inner {
-  max-width: 820px;
+  max-width: 840px;
   margin: 0 auto;
   padding: 0 var(--gutter);
+  position: relative;
 }
 .subscribe-meta {
   font-family: 'IBM Plex Mono', monospace;
@@ -889,29 +916,40 @@ img, svg { max-width: 100%; display: block; }
   color: var(--ink-500);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
+}
+.subscribe-meta .bz {
+  color: var(--bronze-700);
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  letter-spacing: 0;
+  font-size: 13px;
+  text-transform: none;
+  font-variation-settings: "opsz" 18;
 }
 .subscribe-head {
-  font-family: 'IBM Plex Serif', serif;
+  font-family: 'Newsreader', serif;
   font-weight: 400;
-  font-size: clamp(40px, 5.6vw, 76px);
+  font-size: clamp(42px, 5.8vw, 80px);
   line-height: 1.0;
-  letter-spacing: -0.026em;
+  letter-spacing: -0.02em;
   color: var(--ink-1000);
-  margin: 0 0 22px;
+  margin: 0 0 24px;
   text-wrap: balance;
+  font-variation-settings: "opsz" 144, "wght" 400;
 }
 .subscribe-head em {
   font-style: italic;
-  color: var(--emerald-700);
+  color: var(--jade-700);
+  font-variation-settings: "opsz" 144, "wght" 400;
 }
 .subscribe-lede {
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 16.5px;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--ink-500);
   margin: 0 auto 36px;
-  max-width: 54ch;
+  max-width: 56ch;
 }
 .subscribe-form {
   display: inline-flex;
@@ -938,21 +976,27 @@ img, svg { max-width: 100%; display: block; }
   font-weight: 500;
   font-size: 14px;
   padding: 14px 22px;
-  transition: background 160ms var(--ease);
+  transition: background 200ms var(--ease);
   border: 0;
   cursor: pointer;
   border-left: 1px solid var(--ink-1000);
+  white-space: nowrap;
 }
-.subscribe-form button:hover { background: var(--emerald-700); }
+.subscribe-form button:hover { background: var(--jade-700); }
 .subscribe-fine {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   color: var(--ink-500);
   letter-spacing: 0.04em;
-  margin-top: 18px;
+  margin-top: 20px;
+}
+@media (max-width: 560px) {
+  .subscribe-form { flex-direction: column; align-items: stretch; }
+  .subscribe-form button { border-left: 0; border-top: 1px solid var(--ink-1000); }
+  .subscribe-form input { min-width: auto; }
 }
 
-/* ---------- Colophon (real publication convention) --------------------- */
+/* ---------- Colophon -------------------------------------------------- */
 .colophon {
   padding: clamp(40px, 5vw, 64px) 0;
   background: var(--paper-50);
@@ -962,7 +1006,7 @@ img, svg { max-width: 100%; display: block; }
   margin: 0 auto;
   padding: 0 var(--gutter);
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
   gap: 32px;
   align-items: start;
   font-family: 'IBM Plex Mono', monospace;
@@ -980,18 +1024,45 @@ img, svg { max-width: 100%; display: block; }
   color: var(--ink-1000);
   margin: 0 0 10px;
 }
-.colophon p { margin: 0 0 6px; line-height: 1.5; }
+.colophon p { margin: 0 0 6px; line-height: 1.55; }
 .colophon a { color: var(--ink-1000); border-bottom: 1px solid var(--rule); }
-.colophon a:hover { color: var(--emerald-700); border-color: var(--emerald-700); }
+.colophon a:hover { color: var(--jade-700); border-color: var(--jade-700); }
+.colophon .serif-note {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-600);
+  letter-spacing: 0;
+  line-height: 1.5;
+  font-variation-settings: "opsz" 18, "wght" 400;
+}
 
-/* ---------- Motion ------------------------------------------------------- */
+/* ---------- Motion ---------------------------------------------------- */
 @keyframes up {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: none; }
 }
+@keyframes cellIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
 .r { animation: up 720ms var(--ease) both; animation-delay: 40ms; }
 .r-2 { animation: up 800ms var(--ease) both; animation-delay: 180ms; }
 .r-3 { animation: up 800ms var(--ease) both; animation-delay: 320ms; }
+
+/* Tooth figure cell-staggered reveal */
+.tooth-wrap svg .cell, .tooth-wrap svg .label-group {
+  opacity: 0;
+  animation: cellIn 600ms var(--ease-spring) forwards;
+}
+.tooth-wrap svg .cell:nth-of-type(1)  { animation-delay: 400ms; }
+.tooth-wrap svg .cell:nth-of-type(2)  { animation-delay: 480ms; }
+.tooth-wrap svg .cell:nth-of-type(3)  { animation-delay: 560ms; }
+.tooth-wrap svg .cell:nth-of-type(4)  { animation-delay: 640ms; }
+.tooth-wrap svg .cell:nth-of-type(5)  { animation-delay: 720ms; }
+.tooth-wrap svg .cell:nth-of-type(6)  { animation-delay: 800ms; }
+.tooth-wrap svg .cell:nth-of-type(7)  { animation-delay: 880ms; }
+.tooth-wrap svg .cell:nth-of-type(8)  { animation-delay: 960ms; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -1013,20 +1084,25 @@ img, svg { max-width: 100%; display: block; }
   box-shadow: 0 12px 28px rgba(0,0,0,0.3);
   border: 1px solid var(--rule-inv-s);
 }
-.notice .em { color: var(--emerald-300); font-style: italic; font-family: 'IBM Plex Serif', serif; }
+.notice .em {
+  color: var(--jade-300);
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-variation-settings: "opsz" 18;
+}
 </style>
 </head>
 <body>
 
-<!-- MASTHEAD — dark strip, publication-header feel -->
+<!-- MASTHEAD -->
 <div class="masthead">
   <div class="masthead-inner">
     <div>
-      <strong>The Recovery Journal</strong>
+      <span class="serif-bar">The Recovery Journal</span>
       <span class="divider">·</span>
-      Vol. I
+      <strong>Vol. I</strong>
       <span class="divider">·</span>
-      Issue 16
+      <span>Issue 16</span>
       <span class="divider hide-sm">·</span>
       <span class="hide-sm">Published weekly for orthodontic practices</span>
     </div>
@@ -1057,19 +1133,18 @@ img, svg { max-width: 100%; display: block; }
   </div>
 </header>
 
-<!-- HERO — dark editorial -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
 
-    <!-- Edition strip -->
     <div class="edition r">
       <div class="edition-cell">
         <div class="edition-cell-label">Volume</div>
-        <div class="edition-cell-val">I</div>
+        <div class="edition-cell-val"><span class="serif-bronze">I</span></div>
       </div>
       <div class="edition-cell">
         <div class="edition-cell-label">Issue</div>
-        <div class="edition-cell-val">Sixteen</div>
+        <div class="edition-cell-val"><span class="serif-bronze">Sixteen</span></div>
       </div>
       <div class="edition-cell">
         <div class="edition-cell-label">Imprint</div>
@@ -1091,7 +1166,7 @@ img, svg { max-width: 100%; display: block; }
           A weekly record of the patients <em>already in your chart.</em>
         </h1>
         <p class="hero-sub">
-          USDPR is a clinical-grade recovery publication for orthodontic practices. Each Friday at 8:00 AM your treatment coordinator opens a signed issue — <strong>twelve patients to call today, ranked</strong>, with last week's shown-up attribution inline. No bulk SMS. No auto-booking. BAA-first.
+          USDPR is a clinical-grade recovery publication for orthodontic practices. Each Friday at 8:00 AM your treatment coordinator opens a signed issue — <strong>twelve patients to call today, ranked</strong>, with last week's shown-up attribution reported inline. No bulk SMS. No auto-booking. BAA-first.
         </p>
         <div class="hero-cta">
           <a href="/audit" class="btn btn-primary" style="padding: 14px 22px;">Request your inaugural audit</a>
@@ -1106,32 +1181,135 @@ img, svg { max-width: 100%; display: block; }
         </div>
       </div>
 
-      <!-- FIG. 01 -->
+      <!-- FIG. 01 — hand-drawn tooth cross-section with 8 recovery states -->
       <div class="figure r-3">
         <div class="figure-label">
-          <span><strong>FIG. 01</strong> · Recovery Opportunity Matrix</span>
-          <span>n=8 states</span>
+          <span><strong>FIG. 01</strong> · Recovery Opportunity Anatomy</span>
+          <span class="bronze">n = 8 states</span>
         </div>
-        <div class="figure-grid" aria-label="Eight recovery states surrounding the practice">
-          <div class="figure-cell"><span class="n">01</span><span class="code">RET</span></div>
-          <div class="figure-cell"><span class="n">02</span><span class="code">OBS</span></div>
-          <div class="figure-cell"><span class="n">03</span><span class="code">CON</span></div>
-          <div class="figure-cell"><span class="n">08</span><span class="code">FPR</span></div>
-          <div class="figure-cell center"><span class="u">u</span></div>
-          <div class="figure-cell"><span class="n">04</span><span class="code">NSH</span></div>
-          <div class="figure-cell"><span class="n">07</span><span class="code">IFS</span></div>
-          <div class="figure-cell"><span class="n">06</span><span class="code">FGC</span></div>
-          <div class="figure-cell"><span class="n">05</span><span class="code">DFM</span></div>
+        <div class="tooth-wrap">
+          <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg" aria-label="Hand-drawn tooth anatomy diagram with eight recovery states labeled">
+            <defs>
+              <filter id="stipple" x="0" y="0" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="2" numOctaves="1" result="noise"/>
+                <feColorMatrix in="noise" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.12 0"/>
+                <feComposite in2="SourceGraphic" operator="in"/>
+              </filter>
+            </defs>
+
+            <!-- Tooth silhouette, hand-drawn feel, thin stroke -->
+            <g transform="translate(200, 220)" stroke="#E9EAEC" fill="none" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Crown (top) -->
+              <path d="M -45 -135 C -52 -125, -55 -110, -52 -95 L -48 -75 C -45 -55, -45 -35, -48 -15 L -52 10 C -55 25, -52 40, -45 50 L -40 60 C -30 65, 30 65, 40 60 L 45 50 C 52 40, 55 25, 52 10 L 48 -15 C 45 -35, 45 -55, 48 -75 L 52 -95 C 55 -110, 52 -125, 45 -135 C 35 -142, -35 -142, -45 -135 Z"/>
+              <!-- Cusps detail -->
+              <path d="M -30 -130 Q -20 -122, -10 -130 Q 0 -138, 10 -130 Q 20 -122, 30 -130" opacity="0.5"/>
+              <!-- Gum line -->
+              <path d="M -48 -15 Q 0 -10, 48 -15" opacity="0.7" stroke-dasharray="2,3"/>
+              <!-- Root (bottom) -->
+              <path d="M -40 60 C -35 85, -32 110, -28 135 C -24 155, -18 170, -10 178 C -5 183, 5 183, 10 178 C 18 170, 24 155, 28 135 C 32 110, 35 85, 40 60"/>
+              <!-- Root canal (pulp) -->
+              <path d="M -8 -90 C -6 -70, -6 -30, -8 20 C -10 60, -8 110, -4 150 C -2 165, 2 165, 4 150 C 8 110, 10 60, 8 20 C 6 -30, 6 -70, 8 -90 Z" stroke-width="0.8" opacity="0.45" stroke-dasharray="1,2"/>
+              <!-- Enamel layer -->
+              <path d="M -40 -120 C -45 -100, -45 -50, -42 -15 Q 0 -5, 42 -15 C 45 -50, 45 -100, 40 -120" opacity="0.25"/>
+            </g>
+
+            <!-- Anatomy labels — small mono captions -->
+            <g font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#8E9399" letter-spacing="0.06em">
+              <text x="200" y="68" text-anchor="middle">CROWN</text>
+              <text x="200" y="218" text-anchor="middle">PULP</text>
+              <text x="200" y="400" text-anchor="middle">APEX</text>
+            </g>
+
+            <!-- Connector lines and 8 labeled states as margin annotations -->
+            <!-- 01 RET — top-left -->
+            <g class="cell">
+              <line x1="110" y1="95" x2="145" y2="105" stroke="#00574A" stroke-width="0.8"/>
+              <circle cx="108" cy="95" r="2" fill="#00574A"/>
+              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC" text-anchor="end">
+                <text x="105" y="88" font-size="9" fill="#8E9399" letter-spacing="0.08em">01</text>
+                <text x="105" y="100" font-size="11" letter-spacing="0.02em" fill="#59B9A5">RET</text>
+                <text x="105" y="113" font-size="8" fill="#8E9399">retainer overdue</text>
+              </g>
+            </g>
+            <!-- 02 OBS — top -->
+            <g class="cell">
+              <line x1="200" y1="50" x2="200" y2="75" stroke="#00574A" stroke-width="0.8"/>
+              <circle cx="200" cy="48" r="2" fill="#00574A"/>
+              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC" text-anchor="middle">
+                <text x="200" y="24" font-size="9" fill="#8E9399" letter-spacing="0.08em">02</text>
+                <text x="200" y="37" font-size="11" letter-spacing="0.02em" fill="#59B9A5">OBS</text>
+              </g>
+            </g>
+            <!-- 03 CON — top-right -->
+            <g class="cell">
+              <line x1="290" y1="95" x2="255" y2="105" stroke="#00574A" stroke-width="0.8"/>
+              <circle cx="292" cy="95" r="2" fill="#00574A"/>
+              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC">
+                <text x="295" y="88" font-size="9" fill="#8E9399" letter-spacing="0.08em">03</text>
+                <text x="295" y="100" font-size="11" letter-spacing="0.02em" fill="#59B9A5">CON</text>
+                <text x="295" y="113" font-size="8" fill="#8E9399">consult no-start</text>
+              </g>
+            </g>
+            <!-- 04 NSH — right -->
+            <g class="cell">
+              <line x1="310" y1="215" x2="260" y2="215" stroke="#00574A" stroke-width="0.8"/>
+              <circle cx="312" cy="215" r="2" fill="#00574A"/>
+              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC">
+                <text x="315" y="208" font-size="9" fill="#8E9399" letter-spacing="0.08em">04</text>
+                <text x="315" y="220" font-size="11" letter-spacing="0.02em" fill="#59B9A5">NSH</text>
+                <text x="315" y="233" font-size="8" fill="#8E9399">no-show</text>
+              </g>
+            </g>
+            <!-- 05 DFM — bottom-right -->
+            <g class="cell">
+              <line x1="285" y1="335" x2="240" y2="330" stroke="#00574A" stroke-width="0.8"/>
+              <circle cx="287" cy="335" r="2" fill="#00574A"/>
+              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC">
+                <text x="290" y="328" font-size="9" fill="#8E9399" letter-spacing="0.08em">05</text>
+                <text x="290" y="340" font-size="11" letter-spacing="0.02em" fill="#59B9A5">DFM</text>
+                <text x="290" y="353" font-size="8" fill="#8E9399">debond f-up</text>
+              </g>
+            </g>
+            <!-- 06 FGC — bottom -->
+            <g class="cell">
+              <line x1="200" y1="390" x2="200" y2="365" stroke="#00574A" stroke-width="0.8"/>
+              <circle cx="200" cy="392" r="2" fill="#00574A"/>
+              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC" text-anchor="middle">
+                <text x="200" y="412" font-size="9" fill="#8E9399" letter-spacing="0.08em">06</text>
+                <text x="200" y="425" font-size="11" letter-spacing="0.02em" fill="#59B9A5">FGC</text>
+              </g>
+            </g>
+            <!-- 07 IFS — bottom-left -->
+            <g class="cell">
+              <line x1="115" y1="335" x2="160" y2="330" stroke="#00574A" stroke-width="0.8"/>
+              <circle cx="113" cy="335" r="2" fill="#00574A"/>
+              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC" text-anchor="end">
+                <text x="110" y="328" font-size="9" fill="#8E9399" letter-spacing="0.08em">07</text>
+                <text x="110" y="340" font-size="11" letter-spacing="0.02em" fill="#59B9A5">IFS</text>
+                <text x="110" y="353" font-size="8" fill="#8E9399">inactive family</text>
+              </g>
+            </g>
+            <!-- 08 FPR — left -->
+            <g class="cell">
+              <line x1="88" y1="215" x2="140" y2="215" stroke="#00574A" stroke-width="0.8"/>
+              <circle cx="86" cy="215" r="2" fill="#00574A"/>
+              <g font-family="IBM Plex Mono, monospace" fill="#E9EAEC" text-anchor="end">
+                <text x="83" y="208" font-size="9" fill="#8E9399" letter-spacing="0.08em">08</text>
+                <text x="83" y="220" font-size="11" letter-spacing="0.02em" fill="#59B9A5">FPR</text>
+                <text x="83" y="233" font-size="8" fill="#8E9399">former pt. return</text>
+              </g>
+            </g>
+          </svg>
         </div>
         <p class="figure-caption">
-          Eight recovery states surrounding the practice. Center cell represents the contracting ortho practice. Enumerated clockwise from top-left.
+          <span class="italic">Every chart bears all eight.</span> Each state has its own trigger, script, and attribution window — radiating outward from the center of patient care, clockwise from the retainer-check cohort.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Issue ribbon transitioning from dark to paper -->
+<!-- Issue ribbon -->
 <section class="ribbon" aria-label="This quarter's running record">
   <div class="ribbon-track">
     <span>THIS QUARTER</span><span class="sep">·</span>
@@ -1140,6 +1318,7 @@ img, svg { max-width: 100%; display: block; }
     <span><strong>$8,441,208</strong> recovered</span><span class="sep">·</span>
     <span class="em"><strong>02 / 10</strong> inaugural cohort</span><span class="sep">·</span>
     <span><strong>696</strong> avg active patients / orthodontist</span><span class="sep">·</span>
+    <span class="bz">"Filed weekly from Orlando, Florida."</span><span class="sep">·</span>
     <span><strong>$5,000</strong> shown-value guarantee · 60 days</span><span class="sep">·</span>
     <span><strong>0</strong> bulk SMS blasts sent · ever</span><span class="sep">·</span>
     <!-- loop -->
@@ -1149,19 +1328,20 @@ img, svg { max-width: 100%; display: block; }
     <span><strong>$8,441,208</strong> recovered</span><span class="sep">·</span>
     <span class="em"><strong>02 / 10</strong> inaugural cohort</span><span class="sep">·</span>
     <span><strong>696</strong> avg active patients / orthodontist</span><span class="sep">·</span>
+    <span class="bz">"Filed weekly from Orlando, Florida."</span><span class="sep">·</span>
     <span><strong>$5,000</strong> shown-value guarantee · 60 days</span><span class="sep">·</span>
     <span><strong>0</strong> bulk SMS blasts sent · ever</span><span class="sep">·</span>
   </div>
 </section>
 
-<!-- § 02 SPECIMEN — the Friday issue -->
+<!-- § 02 SPECIMEN -->
 <section class="section" id="specimen">
   <div class="section-inner">
     <div class="section-meta">
       <span><strong>§ 02</strong></span>
       <span>SPECIMEN · THE LATEST ISSUE</span>
       <span>VOL. I · ISSUE 16</span>
-      <span>BY THE EDITOR</span>
+      <span class="bz">By the Editor</span>
     </div>
 
     <div class="section-head">
@@ -1198,7 +1378,7 @@ img, svg { max-width: 100%; display: block; }
           <div class="label">Shown-value, wk</div>
           <div class="val">$17,716</div>
         </div>
-        <div class="record-summary-cell accent">
+        <div class="record-summary-cell bronze">
           <div class="label">Incremental vs holdout</div>
           <div class="val">+$11,200</div>
         </div>
@@ -1262,13 +1442,13 @@ img, svg { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- § 03 STANDING SECTIONS — 8 states -->
+<!-- § 03 STANDING SECTIONS -->
 <section class="section" id="standing">
   <div class="section-inner">
     <div class="section-meta">
       <span><strong>§ 03</strong></span>
       <span>STANDING SECTIONS · TAXONOMY</span>
-      <span>8 STATES · CONTENT-BEARING</span>
+      <span class="bz">Eight standing columns</span>
     </div>
 
     <div class="section-head">
@@ -1282,65 +1462,49 @@ img, svg { max-width: 100%; display: block; }
 
     <div class="standing">
       <article class="standing-cell">
-        <div class="standing-cell-meta">
-          <span>§ 03.1 · 01 RET</span><span class="standing-cell-ratio">18% of debond chart</span>
-        </div>
+        <div class="standing-cell-meta"><span>§ 03.1 · 01 RET</span><span class="standing-cell-ratio">18% of debond chart</span></div>
         <h3 class="standing-cell-title">Retainer Check <em>Overdue</em></h3>
         <p class="standing-cell-desc">Post-debond patient missed their scheduled retainer review. Relapse clock running from the moment the appliance came off.</p>
       </article>
 
       <article class="standing-cell">
-        <div class="standing-cell-meta">
-          <span>§ 03.2 · 02 OBS</span><span class="standing-cell-ratio">24% of obs chart</span>
-        </div>
+        <div class="standing-cell-meta"><span>§ 03.2 · 02 OBS</span><span class="standing-cell-ratio">24% of obs chart</span></div>
         <h3 class="standing-cell-title">Observation <em>Overdue</em></h3>
         <p class="standing-cell-desc">Pre-treatment child on observation recall. Growth window closing; drift becomes a competitor consult in 18 months.</p>
       </article>
 
       <article class="standing-cell">
-        <div class="standing-cell-meta">
-          <span>§ 03.3 · 03 CON</span><span class="standing-cell-ratio">31% of consults</span>
-        </div>
+        <div class="standing-cell-meta"><span>§ 03.3 · 03 CON</span><span class="standing-cell-ratio">31% of consults</span></div>
         <h3 class="standing-cell-title">Consult <em>No-Start</em></h3>
         <p class="standing-cell-desc">Consulted, quoted, did not proceed. A scripted re-touch at 21 and 60 days recaptures a measurable fraction.</p>
       </article>
 
       <article class="standing-cell">
-        <div class="standing-cell-meta">
-          <span>§ 03.4 · 04 NSH</span><span class="standing-cell-ratio">11% weekly</span>
-        </div>
+        <div class="standing-cell-meta"><span>§ 03.4 · 04 NSH</span><span class="standing-cell-ratio">11% weekly</span></div>
         <h3 class="standing-cell-title">No-Show, <em>Not Rescheduled</em></h3>
         <p class="standing-cell-desc">Missed appointment that never got re-booked. The PMS reports the miss; it does not close the loop on your behalf.</p>
       </article>
 
       <article class="standing-cell">
-        <div class="standing-cell-meta">
-          <span>§ 03.5 · 05 DFM</span><span class="standing-cell-ratio">22% of debonds</span>
-        </div>
+        <div class="standing-cell-meta"><span>§ 03.5 · 05 DFM</span><span class="standing-cell-ratio">22% of debonds</span></div>
         <h3 class="standing-cell-title">Debond <em>Follow-Up Missed</em></h3>
         <p class="standing-cell-desc">Post-treatment patient dropped out of the follow-up sequence. Chart says check in at month-3 and month-6.</p>
       </article>
 
       <article class="standing-cell">
-        <div class="standing-cell-meta">
-          <span>§ 03.6 · 06 FGC</span><span class="standing-cell-ratio">19% of approvals</span>
-        </div>
+        <div class="standing-cell-meta"><span>§ 03.6 · 06 FGC</span><span class="standing-cell-ratio">19% of approvals</span></div>
         <h3 class="standing-cell-title">Financing <em>Gone Cold</em></h3>
         <p class="standing-cell-desc">Approved for CareCredit or equivalent, never started treatment. Dedicated 14-day and 45-day recovery scripts.</p>
       </article>
 
       <article class="standing-cell">
-        <div class="standing-cell-meta">
-          <span>§ 03.7 · 07 IFS</span><span class="standing-cell-ratio">14% of families</span>
-        </div>
+        <div class="standing-cell-meta"><span>§ 03.7 · 07 IFS</span><span class="standing-cell-ratio">14% of families</span></div>
         <h3 class="standing-cell-title">Inactive <em>Family / Siblings</em></h3>
         <p class="standing-cell-desc">Current patient has a sibling of treatment age with no consult scheduled. The highest-converting state in the set.</p>
       </article>
 
       <article class="standing-cell">
-        <div class="standing-cell-meta">
-          <span>§ 03.8 · 08 FPR</span><span class="standing-cell-ratio">open</span>
-        </div>
+        <div class="standing-cell-meta"><span>§ 03.8 · 08 FPR</span><span class="standing-cell-ratio">open</span></div>
         <h3 class="standing-cell-title">Former Patient <em>Return</em></h3>
         <p class="standing-cell-desc">Completed treatment 18–60 months ago. Candidate for refinement, new retainers, aligner touch-up, or teen-sibling consult.</p>
       </article>
@@ -1348,14 +1512,23 @@ img, svg { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- § 04 LETTER FROM PILOT 01 -->
+<!-- § 04 LETTER -->
 <section class="letter" id="letter">
   <div class="letter-inner">
-    <div class="letter-sidemark">
-      <strong>§ 04</strong>
-      LETTER FROM<br/>PILOT 01
+    <div class="letter-portrait">
+      <div class="letter-portrait-top">
+        <span><strong>Pilot 01</strong></span>
+        <span>Orlando, FL</span>
+      </div>
+      <div class="letter-portrait-caption">
+        <div class="name">Dr. Michelle Ayana</div>
+        <div class="role">DDS, MS · FL LIC 18721</div>
+      </div>
     </div>
     <div>
+      <div class="letter-side">
+        <strong>§ 04</strong> · Letter from Pilot 01
+      </div>
       <div class="letter-open">To the Editor, USDPR · Filed from Orlando, FL · Apr 14, 2026</div>
       <p class="letter-body">
         "The Friday issue is the first thing my office manager opens. It is the first time we have known <em>who actually showed up</em> — not who got a text. On day 93 we had recovered $142,080 against a matched holdout control group in our own chart. We are inaugural subscriber number one."
@@ -1364,7 +1537,7 @@ img, svg { max-width: 100%; display: block; }
         <div class="letter-sign-cypher">MA</div>
         <div class="letter-sign-meta">
           <div class="name">Dr. Michelle Ayana, DDS, MS</div>
-          <div class="role">Orlando Orthodontics · FL LIC 18721 · 1,847 active patients</div>
+          <div class="role">Orlando Orthodontics · 1,847 active patients · day 93 post-BAA</div>
         </div>
       </div>
     </div>
@@ -1374,7 +1547,9 @@ img, svg { max-width: 100%; display: block; }
 <!-- § 05 SUBSCRIBE -->
 <section class="subscribe">
   <div class="subscribe-inner">
-    <div class="subscribe-meta">§ 05 · SUBSCRIPTION · INAUGURAL COHORT</div>
+    <div class="subscribe-meta">
+      § 05 · Subscription · <span class="bz">inaugural cohort</span>
+    </div>
     <h2 class="subscribe-head">
       Request your inaugural audit. <em>Seventy-two hours</em> to your ratios.
     </h2>
@@ -1383,7 +1558,7 @@ img, svg { max-width: 100%; display: block; }
     </p>
     <form class="subscribe-form" action="/api/capture" method="POST">
       <input type="email" name="email" placeholder="you@yourpractice.com" required autocomplete="email" />
-      <input type="hidden" name="source" value="ref-v5-subscribe" />
+      <input type="hidden" name="source" value="ref-v6-subscribe" />
       <button type="submit">Request Issue 00 →</button>
     </form>
     <div class="subscribe-fine">
@@ -1397,7 +1572,7 @@ img, svg { max-width: 100%; display: block; }
   <div class="colophon-inner">
     <div>
       <h5>Colophon</h5>
-      <p>Set in IBM Plex Serif, IBM Plex Sans, and IBM Plex Mono. Edited, published, and signed from Orlando, FL by the founder.</p>
+      <p class="serif-note">Set in Newsreader (Production Type) and IBM Plex Sans &amp; Mono (IBM). Edited, published, and signed from Orlando, Florida by the founder.</p>
     </div>
     <div>
       <h5>Editorial</h5>
@@ -1422,7 +1597,7 @@ img, svg { max-width: 100%; display: block; }
 </footer>
 
 <div class="notice">
-  Reference v5 · direction <span class="em">"The Recovery Journal"</span> · 20+ site research · not shipping
+  Reference v6 · <span class="em">The Recovery Journal · 10/10 push</span> · not shipping
 </div>
 
 </body>
