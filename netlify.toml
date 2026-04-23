@@ -138,6 +138,33 @@
   to   = "/cities/index.html"
   status = 301
 
+
+# ─── auto: programmatic-page cleanup (97 stale pages 301'd to canonical)
+# ───────────────────────────────────────────────────────────────────────────
+# These subfolders were built during the dental-wide era. They're now
+# noindex'd AND 301-redirected to /for-orthodontics.html so both users
+# and search engines see a coherent canonical destination.
+
+[[redirects]]
+  from = "/cities/*"
+  to = "/for-orthodontics.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/states/*"
+  to = "/for-orthodontics.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/alternatives/*"
+  to = "/for-orthodontics.html"
+  status = 301
+  force = true
+
+# ─── end programmatic cleanup ─────────────────────────────────────────────
+
 # ─── Headers ───────────────────────────────────────────────────────────────
 [[headers]]
   for = "/*"

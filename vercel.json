@@ -3,44 +3,215 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/signup", "destination": "/pilot.html", "permanent": false, "missing": [{"type":"query","key":"tier"}] },
-    { "source": "/signup", "destination": "/pilot.html", "permanent": false, "has": [{"type":"query","key":"tier","value":"pro"}] },
-    { "source": "/signup", "destination": "/pilot.html", "permanent": false, "has": [{"type":"query","key":"tier","value":"scale"}] },
-    { "source": "/signup", "destination": "mailto:colin@usdentalpatientrecovery.com?subject=Enterprise%20inquiry", "permanent": false, "has": [{"type":"query","key":"tier","value":"enterprise"}] },
-    { "source": "/demo", "destination": "/for-orthodontics.html", "permanent": false },
-    { "source": "/for-specialists.html", "destination": "/for-orthodontics.html", "permanent": true },
-    { "source": "/for-managers.html", "destination": "/for-orthodontics.html", "permanent": true },
-    { "source": "/for-dsos.html", "destination": "/for-orthodontics.html", "permanent": true },
-    { "source": "/for-owners.html", "destination": "/for-orthodontics.html", "permanent": true },
-    { "source": "/compare-matrix.html", "destination": "/compare.html", "permanent": true },
-    { "source": "/welcome", "destination": "/onboarding/", "permanent": false },
-    { "source": "/onboard", "destination": "/onboarding/", "permanent": false },
-    { "source": "/app/dashboard", "destination": "/onboarding/", "permanent": false },
-    { "source": "/states", "destination": "/states/index.html", "permanent": true },
-    { "source": "/cities", "destination": "/cities/index.html", "permanent": true }
+    {
+      "source": "/signup",
+      "destination": "/pilot.html",
+      "permanent": false,
+      "missing": [
+        {
+          "type": "query",
+          "key": "tier"
+        }
+      ]
+    },
+    {
+      "source": "/signup",
+      "destination": "/pilot.html",
+      "permanent": false,
+      "has": [
+        {
+          "type": "query",
+          "key": "tier",
+          "value": "pro"
+        }
+      ]
+    },
+    {
+      "source": "/signup",
+      "destination": "/pilot.html",
+      "permanent": false,
+      "has": [
+        {
+          "type": "query",
+          "key": "tier",
+          "value": "scale"
+        }
+      ]
+    },
+    {
+      "source": "/signup",
+      "destination": "mailto:colin@usdentalpatientrecovery.com?subject=Enterprise%20inquiry",
+      "permanent": false,
+      "has": [
+        {
+          "type": "query",
+          "key": "tier",
+          "value": "enterprise"
+        }
+      ]
+    },
+    {
+      "source": "/demo",
+      "destination": "/for-orthodontics.html",
+      "permanent": false
+    },
+    {
+      "source": "/for-specialists.html",
+      "destination": "/for-orthodontics.html",
+      "permanent": true
+    },
+    {
+      "source": "/for-managers.html",
+      "destination": "/for-orthodontics.html",
+      "permanent": true
+    },
+    {
+      "source": "/for-dsos.html",
+      "destination": "/for-orthodontics.html",
+      "permanent": true
+    },
+    {
+      "source": "/for-owners.html",
+      "destination": "/for-orthodontics.html",
+      "permanent": true
+    },
+    {
+      "source": "/compare-matrix.html",
+      "destination": "/compare.html",
+      "permanent": true
+    },
+    {
+      "source": "/welcome",
+      "destination": "/onboarding/",
+      "permanent": false
+    },
+    {
+      "source": "/onboard",
+      "destination": "/onboarding/",
+      "permanent": false
+    },
+    {
+      "source": "/app/dashboard",
+      "destination": "/onboarding/",
+      "permanent": false
+    },
+    {
+      "source": "/states",
+      "destination": "/states/index.html",
+      "permanent": true
+    },
+    {
+      "source": "/cities",
+      "destination": "/cities/index.html",
+      "permanent": true
+    },
+    {
+      "source": "/cities/:path*",
+      "destination": "/for-orthodontics.html",
+      "permanent": true
+    },
+    {
+      "source": "/states/:path*",
+      "destination": "/for-orthodontics.html",
+      "permanent": true
+    },
+    {
+      "source": "/alternatives/:path*",
+      "destination": "/for-orthodontics.html",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/leads/:path*", "destination": "/api/capture" },
-    { "source": "/cancel/action", "destination": "/api/capture" },
-    { "source": "/schedule/book", "destination": "/api/capture" },
-    { "source": "/referrals/submit", "destination": "/api/capture" },
-    { "source": "/onboarding/step", "destination": "/api/capture" },
-    { "source": "/.netlify/functions/nurture", "destination": "/api/nurture" }
+    {
+      "source": "/leads/:path*",
+      "destination": "/api/capture"
+    },
+    {
+      "source": "/cancel/action",
+      "destination": "/api/capture"
+    },
+    {
+      "source": "/schedule/book",
+      "destination": "/api/capture"
+    },
+    {
+      "source": "/referrals/submit",
+      "destination": "/api/capture"
+    },
+    {
+      "source": "/onboarding/step",
+      "destination": "/api/capture"
+    },
+    {
+      "source": "/.netlify/functions/nurture",
+      "destination": "/api/nurture"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains" }
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(), microphone=(), camera=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains"
+        }
       ]
     },
-    { "source": "/(.*)\\.css", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
-    { "source": "/(.*)\\.js",  "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
-    { "source": "/(.*)\\.svg", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
-    { "source": "/sitemap\\.xml", "headers": [{ "key": "Content-Type", "value": "application/xml; charset=utf-8" }, { "key": "Cache-Control", "value": "public, max-age=3600" }] }
+    {
+      "source": "/(.*)\\.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.svg",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap\\.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    }
   ]
 }
