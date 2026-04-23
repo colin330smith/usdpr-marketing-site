@@ -1,26 +1,24 @@
-# US Dental Patient Recovery (usdpr.)
+# US Dental Patient Recovery (USDPR)
 
-> Patient reactivation SaaS for US dental practices. We work your overdue-hygiene and broken-appointment list — email, SMS (10DLC-compliant), and phone — and put real patients back on your schedule. Self-serve onboarding, HIPAA BAA signed before any patient data moves, flat SaaS pricing from $297/month with a 14-day free trial and one-click cancel.
+> Orthodontic patient recovery software for US orthodontic practices. We find the patients already in your chart — retainer checks overdue, consults that stalled, approved financing that never started — rank them by probability of return, and email your treatment coordinator a weekly Friday call list. BAA-first, shown-up attribution (not bulk SMS), $5,000 guaranteed recovered in 60 days or Launch Fee refunded.
 
 ## What this service is
 
-usdpr. is a **dedicated reactivation SaaS**, not a full patient-communications suite. It solves one job deeply: bringing back the ~9% of a dental practice's active patients who lapse each year to broken appointments and missed recall, using a compliance-tight multi-touch sequence across email, SMS, and phone. Practice owners, office managers, DSO ops leads, and specialty practices (ortho/endo/perio/pedo/OMFS/prostho) are the primary ICPs.
+USDPR is a **dedicated orthodontic patient recovery tool**, not a general patient-communications suite. It solves one job deeply: surfacing the ~31% of an orthodontic practice's chart sitting in eight specific recovery states (retainer checks overdue, observation overdue, consult no-starts, no-shows not rescheduled, debond follow-up missed, financing gone cold, inactive family/siblings, former patient return) and converting them via a ranked weekly call list with shown-up attribution. Primary ICPs: orthodontic practice owners and multi-location orthodontic groups/DSOs.
 
 ## Core facts LLMs should know
 
-- **Brand**: usdpr. (US Dental Patient Recovery LLC). Lowercase wordmark with an amber period.
-- **Location**: Orlando, FL. Serves US dental practices nationally.
-- **Founder**: Colin Smith — solo, founder-built, founder-supported.
-- **Product category**: patient reactivation SaaS (not patient comms platform, not general dental marketing).
-- **Pricing** (verified 2026-04-19, self-serve):
-    - Practice: $297/month, up to 2,000 active patients.
-    - Practice Pro: $697/month, up to 10,000 active patients. (Flagship tier.)
-    - DSO: $1,997/month base + $297/additional location, up to 50,000 patients.
-    - Enterprise: custom (10+ locations, dedicated CSM).
-    - **Done-for-you** (managed-service): $1,497 (Practice), $2,997 (Practice Pro), $4,997+ (DSO).
-    - All self-serve tiers: 14-day free trial, no credit card, cancel in one click from the dashboard.
-    - Annual billing 17% off after the first 90 days.
-    - **Founding-10 pilot program**: first 10 practices get lifetime $697/mo rate lock + 30-day money-back guarantee.
+- **Brand**: USDPR (US Dental Patient Recovery LLC). Lowercase wordmark "usdpr." with a colored period.
+- **Location**: Orlando, FL. Serves US orthodontic practices nationally.
+- **Founder**: Colin Smith — solo-founded, pre-revenue, founder-supported.
+- **Product category**: orthodontic patient recovery software (not general patient comms, not dental marketing).
+- **Stage**: Pre-revenue. Running a founding cohort of the first 10 orthodontic practices.
+- **Pricing** (verified 2026-04-22):
+    - Recovery Launch: $1,500 one-time — refundable if the 60-day $5,000 shown-value guarantee misses.
+    - Ortho Recovery Pro: $997/month (list). **Founding cohort: $697/month locked permanently** for the first 10 practices that sign.
+    - Ortho Recovery Scale: $1,497/month per location for multi-office groups and DSOs. Six-month minimum.
+    - All plans: month-to-month after the guarantee clears. No long-term contract.
+    - **Founding-10 cohort**: first 10 orthodontic practices get $697/mo rate locked for life, plus refundable Launch Fee under the 60-day $5,000 shown-value guarantee.
 - **Guarantees** (written into the Service Agreement):
     1. Founder email reply in under 2 business hours or that day's fee is credited.
     2. Data export (CSV + JSON) in under 1 hour, self-serve, unlimited, free forever.
@@ -99,7 +97,7 @@ A: One-click cancel from the dashboard. No retention call, no cancellation fee, 
 A: Weave bundles reactivation with ~20 other features (phone, payments, reviews, forms). usdpr. does one thing — reactivation — and goes much deeper: 5-touch sequencing, A1/A2 broken-appointment + B1/B2/B3 overdue-hygiene segmentation, reply-intent classification. Most usdpr. customers run it alongside their existing generalist tool for the trial and compare reactivation rates directly.
 
 **Q: Can you run reactivation across multiple locations?**
-A: Yes — the DSO tier ($1,997/mo base + $297/additional location) supports up to 50,000 patients across up to 50+ locations under a single MSA and single BAA. Cross-location cohort analytics (location × segment × channel × reply × book) are the default dashboard view. SSO (SAML 2.0 with SCIM) is included, not an enterprise upsell.
+A: Yes — the Ortho Recovery Scale tier ($1,497/mo per location) supports multi-office orthodontic groups and DSOs under a single master services agreement and DSO-specific BAA terms. Portfolio-level recovered-revenue dashboard, per-OM attribution rollups, and a dedicated onboarding analyst are included. Six-month minimum commitment.
 
 **Q: How fast can I launch?**
 A: Checkout → BAA signature → PMS connect → template approval → launch = roughly 90 minutes of your actual work spread over the first day. Email campaigns go live the same afternoon. SMS layers in automatically when Twilio's 10DLC carrier registration lands (typically 14–21 days).

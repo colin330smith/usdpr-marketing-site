@@ -338,7 +338,7 @@
   alt.appendChild(document.createTextNode('Or skip ahead: '));
   const altA = document.createElement('a');
   altA.href = '/signup?tier=practice_pro&utm_source=exit_intent&utm_medium=modal';
-  altA.appendChild(document.createTextNode('start the 14-day free trial \u2192'));
+  altA.appendChild(document.createTextNode('request a free audit \u2192'));
   alt.appendChild(altA);
 
   // Success state
