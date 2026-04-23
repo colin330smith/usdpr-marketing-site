@@ -3,102 +3,89 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>USDPR — Patient recovery software built for orthodontic practices</title>
+<title>USDPR — Patient recovery software for orthodontic practices</title>
 <link rel="icon" href="/brand/favicon.svg" />
 <style>
 /* ==========================================================================
-   USDPR — REFERENCE v7 · direction: "Beat the category"
+   USDPR — REFERENCE v8 · honest copy + new palette
    ==========================================================================
-   Stopped inventing a new game. Playing the dental SaaS category game
-   (Weave · NexHealth · Overjet · Pearl · Dental Intel) but cleaner,
-   tighter, more credible than any of them.
+   Two fixes from v7:
 
-   The category pattern I'm executing against:
-   · Split hero: left copy, right product mockup
-   · Feature chips in the hero (NexHealth does 6 checkmarks)
-   · Single teal/green accent
-   · Modern sans throughout
-   · Social proof strip below hero
-   · 3-step "how it works"
-   · Big ROI stat
-   · Testimonial with photo
-   · 3-tier pricing
-   · Footer
+   1. HONESTY — every fabricated stat, testimonial, customer name, and
+      made-up number removed. What remains is:
+      · research-citable industry stats (AAO 2025, PubMed, CareCredit)
+      · the actual offer (pricing, guarantee mechanics)
+      · a clearly-labeled SAMPLE product output
+      · an honest founder note in place of a testimonial
 
-   What wins vs the competition:
-   · Tighter (Weave is cluttered; ours is clean)
-   · Better product mockup (Friday report is specific + credible)
-   · Transparent pricing (Weave/Dental Intel hide theirs)
-   · HIPAA/BAA shown early (most hide these in footer)
-   · Geist sans (distinctive from their Inter/Proxima)
-   · Deep teal confident vs Pearl's pastel
-   · Real testimonial with real $ number
+   2. PALETTE — teal/green dropped entirely. Classical medical-journal
+      colorway instead:
+      · Navy-ink       #0E1B2C  (primary, serious, classical)
+      · Warm sand      #F6F2E7  (book-paper warm, not cream)
+      · Deep burgundy  #7A1A1F  (accent, used sparingly)
+      Zero overlap with Weave (purple), NexHealth (teal), Overjet,
+      Pearl, or my own v1-v7 attempts.
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap');
 
 :root {
-  /* INK — slate with slight cool */
-  --ink-1000: #0B0E14;
-  --ink-900:  #111521;
-  --ink-800:  #1C2230;
-  --ink-700:  #2A3040;
-  --ink-600:  #475569;
-  --ink-500:  #64748B;
-  --ink-400:  #94A3B8;
-  --ink-300:  #CBD5E1;
-  --ink-200:  #E2E8F0;
-  --ink-100:  #F1F5F9;
+  /* INK - deep navy, classical medical */
+  --ink-1000: #07111E;
+  --ink-900:  #0E1B2C;   /* primary dark */
+  --ink-800:  #182639;
+  --ink-700:  #253349;
+  --ink-600:  #3C4A60;
+  --ink-500:  #5F6D83;
+  --ink-400:  #8794A8;
+  --ink-300:  #AFB9CA;
+  --ink-200:  #D0D6E0;
+  --ink-100:  #E6EAEF;
 
-  /* PAPER — true white w/ subtle sections */
-  --paper-0:   #FFFFFF;
-  --paper-50:  #FAFBFC;
-  --paper-100: #F5F7FA;
-  --paper-200: #EEF2F6;
+  /* PAPER - warm sand (actual book-paper color, not cream) */
+  --paper-50:  #F6F2E7;
+  --paper-100: #EFEADC;
+  --paper-200: #E4DDC7;
+  --paper-300: #D4CAAE;
 
-  /* TEAL — deep confident */
-  --teal-900: #03332B;
-  --teal-800: #064E42;
-  --teal-700: #087366;   /* primary brand */
-  --teal-600: #0A998A;
-  --teal-500: #0DBFA8;   /* bright action */
-  --teal-300: #5FDFC9;
-  --teal-200: #A1EDDB;
-  --teal-100: #D4F5EC;
-  --teal-50:  #ECFBF6;
-
-  /* ACCENT warm — rare use */
-  --coral-500: #F97066;
+  /* BURGUNDY — classical medical accent */
+  --wine-900:  #3F0A0E;
+  --wine-800:  #5A0F15;
+  --wine-700:  #7A1A1F;   /* primary accent */
+  --wine-600:  #9A2A32;
+  --wine-500:  #BC3C46;
+  --wine-200:  #ECB8BD;
+  --wine-100:  #F7DEE1;
 
   /* RULES */
-  --rule-soft: rgba(11, 14, 20, 0.06);
-  --rule:      rgba(11, 14, 20, 0.12);
-  --rule-strong: rgba(11, 14, 20, 0.22);
+  --rule-soft: rgba(7, 17, 30, 0.06);
+  --rule:      rgba(7, 17, 30, 0.14);
+  --rule-strong: rgba(7, 17, 30, 0.24);
+  --rule-inv:  rgba(246, 242, 231, 0.14);
+  --rule-inv-s: rgba(246, 242, 231, 0.28);
 
   --r-xs: 3px;
-  --r-sm: 6px;
-  --r-md: 8px;
-  --r-lg: 12px;
-  --r-xl: 16px;
+  --r-sm: 5px;
+  --r-md: 7px;
+  --r-lg: 10px;
 
   --wrap: 1280px;
   --wrap-tight: 1120px;
   --gutter: clamp(20px, 4vw, 32px);
 
   --ease: cubic-bezier(0.2, 0.9, 0.25, 1);
-  --shadow-sm: 0 1px 2px rgba(11,14,20,0.05), 0 0 0 1px rgba(11,14,20,0.04);
-  --shadow-md: 0 4px 12px rgba(11,14,20,0.06), 0 0 0 1px rgba(11,14,20,0.04);
-  --shadow-lg: 0 24px 48px -12px rgba(11,14,20,0.10), 0 0 0 1px rgba(11,14,20,0.04);
-  --shadow-xl: 0 32px 64px -16px rgba(11,14,20,0.14), 0 0 0 1px rgba(11,14,20,0.04);
+  --shadow-sm: 0 1px 2px rgba(7,17,30,0.06), 0 0 0 1px rgba(7,17,30,0.04);
+  --shadow-md: 0 4px 16px rgba(7,17,30,0.08), 0 0 0 1px rgba(7,17,30,0.04);
+  --shadow-lg: 0 32px 64px -16px rgba(7,17,30,0.14), 0 0 0 1px rgba(7,17,30,0.05);
 }
 
 * { box-sizing: border-box; }
-*::selection { background: var(--teal-100); color: var(--ink-1000); }
+*::selection { background: var(--wine-100); color: var(--ink-1000); }
 
 html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--paper-0);
+  background: var(--paper-50);
   color: var(--ink-1000);
   font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 15px;
@@ -110,25 +97,31 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; background: transparent; border: 0; }
 img, svg { max-width: 100%; display: block; }
 
-/* ---------- Top announcement ------------------------------------------- */
+/* ---------- Top bar ---------------------------------------------------- */
 .top-bar {
-  background: var(--ink-1000);
+  background: var(--ink-900);
   color: var(--paper-50);
   text-align: center;
   padding: 10px var(--gutter);
   font-size: 13px;
   font-weight: 500;
   letter-spacing: -0.003em;
+  border-bottom: 1px solid var(--rule-inv);
 }
-.top-bar strong { color: var(--teal-300); }
-.top-bar a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(207,223,247,0.3); margin-left: 4px; }
+.top-bar strong { color: var(--wine-200); }
+.top-bar a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(246,242,231,0.3);
+  margin-left: 6px;
+}
 
 /* ---------- Nav -------------------------------------------------------- */
 .topbar {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(246, 242, 231, 0.86);
   backdrop-filter: blur(14px) saturate(1.1);
   -webkit-backdrop-filter: blur(14px) saturate(1.1);
   border-bottom: 1px solid var(--rule);
@@ -145,7 +138,7 @@ img, svg { max-width: 100%; display: block; }
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: -0.022em;
@@ -154,30 +147,21 @@ img, svg { max-width: 100%; display: block; }
 .wordmark-mark {
   width: 22px; height: 22px;
   border-radius: 5px;
-  background: var(--ink-1000);
+  background: var(--ink-900);
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   gap: 1.5px;
   padding: 2px;
 }
-.wordmark-mark span { background: transparent; border: 0.7px solid rgba(255,255,255,0.5); border-radius: 1px; }
-.wordmark-mark span.c { background: var(--teal-500); border-color: var(--teal-500); }
-.nav {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-}
-.nav a {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--ink-600);
-  transition: color 120ms var(--ease);
-}
+.wordmark-mark span { background: transparent; border: 0.7px solid rgba(246,242,231,0.5); border-radius: 1px; }
+.wordmark-mark span.c { background: var(--wine-500); border-color: var(--wine-500); }
+.nav { display: flex; gap: 28px; align-items: center; }
+.nav a { font-size: 14px; font-weight: 500; color: var(--ink-600); transition: color 120ms var(--ease); }
 .nav a:hover { color: var(--ink-1000); }
 .nav .sep { width: 1px; height: 16px; background: var(--rule); }
 @media (max-width: 860px) { .nav { display: none; } }
 
-/* ---------- Buttons ---------------------------------------------------- */
+/* ---------- Buttons --------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -194,47 +178,39 @@ img, svg { max-width: 100%; display: block; }
   cursor: pointer;
 }
 .btn-primary {
-  background: var(--ink-1000);
-  color: var(--paper-0);
-  border-color: var(--ink-1000);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 1px 2px rgba(11,14,20,0.1);
+  background: var(--ink-900);
+  color: var(--paper-50);
+  border-color: var(--ink-900);
 }
 .btn-primary:hover {
-  background: var(--teal-700);
-  border-color: var(--teal-700);
+  background: var(--wine-700);
+  border-color: var(--wine-700);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px -2px rgba(8, 115, 102, 0.35);
+  box-shadow: 0 6px 14px -4px rgba(122, 26, 31, 0.4);
 }
-.btn-teal {
-  background: var(--teal-700);
-  color: var(--paper-0);
-  border-color: var(--teal-700);
+.btn-wine {
+  background: var(--wine-700);
+  color: var(--paper-50);
+  border-color: var(--wine-700);
 }
-.btn-teal:hover {
-  background: var(--teal-600);
-  border-color: var(--teal-600);
+.btn-wine:hover {
+  background: var(--wine-800);
+  border-color: var(--wine-800);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px -2px rgba(8, 115, 102, 0.4);
 }
 .btn-ghost {
-  background: var(--paper-0);
+  background: var(--paper-50);
   color: var(--ink-1000);
   border-color: var(--rule-strong);
 }
-.btn-ghost:hover {
-  border-color: var(--ink-1000);
-  background: var(--paper-50);
-}
+.btn-ghost:hover { border-color: var(--ink-900); background: var(--paper-100); }
 .btn-sm { padding: 8px 14px; font-size: 13px; }
 .btn-lg { padding: 13px 22px; font-size: 15px; }
 
-/* ---------- HERO ------------------------------------------------------- */
+/* ---------- HERO ------------------------------------------------------ */
 .hero {
-  padding: clamp(40px, 6vw, 88px) 0 clamp(64px, 8vw, 112px);
-  background:
-    radial-gradient(ellipse at 80% 20%, rgba(13, 191, 168, 0.06), transparent 50%),
-    radial-gradient(ellipse at 10% 80%, rgba(8, 115, 102, 0.05), transparent 50%),
-    var(--paper-0);
+  padding: clamp(40px, 6vw, 80px) 0 clamp(56px, 8vw, 96px);
+  position: relative;
 }
 .hero-inner {
   max-width: var(--wrap);
@@ -253,7 +229,7 @@ img, svg { max-width: 100%; display: block; }
   gap: 8px;
   padding: 5px 12px 5px 6px;
   border-radius: 999px;
-  background: var(--paper-0);
+  background: var(--paper-50);
   border: 1px solid var(--rule);
   font-size: 12.5px;
   font-weight: 500;
@@ -261,12 +237,12 @@ img, svg { max-width: 100%; display: block; }
   letter-spacing: -0.003em;
   margin-bottom: 24px;
   transition: border-color 160ms var(--ease);
-  box-shadow: 0 1px 2px rgba(11,14,20,0.04);
+  box-shadow: 0 1px 2px rgba(7,17,30,0.04);
 }
-.hero-pill:hover { border-color: var(--ink-1000); color: var(--ink-1000); }
+.hero-pill:hover { border-color: var(--ink-900); color: var(--ink-1000); }
 .hero-pill-tag {
-  background: var(--teal-700);
-  color: var(--paper-0);
+  background: var(--wine-700);
+  color: var(--paper-50);
   padding: 3px 9px;
   border-radius: 999px;
   font-size: 10.5px;
@@ -274,7 +250,6 @@ img, svg { max-width: 100%; display: block; }
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-.hero-pill-arrow { color: var(--ink-400); }
 
 .hero-head {
   font-size: clamp(40px, 5.6vw, 72px);
@@ -286,7 +261,7 @@ img, svg { max-width: 100%; display: block; }
   max-width: 18ch;
   text-wrap: balance;
 }
-.hero-head .teal { color: var(--teal-700); }
+.hero-head .wine { color: var(--wine-700); }
 
 .hero-sub {
   font-size: 18px;
@@ -297,17 +272,17 @@ img, svg { max-width: 100%; display: block; }
   letter-spacing: -0.003em;
 }
 
-/* Feature chips — like NexHealth's checkmark list, cleaner */
 .hero-features {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px 24px;
   margin-bottom: 32px;
   max-width: 520px;
+  list-style: none;
+  padding: 0;
 }
 @media (max-width: 520px) { .hero-features { grid-template-columns: 1fr; } }
 .hero-features li {
-  list-style: none;
   padding-left: 26px;
   position: relative;
   font-size: 14.5px;
@@ -322,7 +297,7 @@ img, svg { max-width: 100%; display: block; }
   top: 3px;
   width: 18px; height: 18px;
   border-radius: 50%;
-  background: var(--teal-100);
+  background: var(--wine-100);
 }
 .hero-features li::after {
   content: '';
@@ -331,11 +306,10 @@ img, svg { max-width: 100%; display: block; }
   top: 7px;
   width: 8px;
   height: 4px;
-  border-left: 1.5px solid var(--teal-700);
-  border-bottom: 1.5px solid var(--teal-700);
+  border-left: 1.5px solid var(--wine-700);
+  border-bottom: 1.5px solid var(--wine-700);
   transform: rotate(-45deg);
 }
-.hero-features ul { padding: 0; margin: 0; }
 
 .hero-cta {
   display: flex;
@@ -366,54 +340,54 @@ img, svg { max-width: 100%; display: block; }
   content: '';
   width: 5px; height: 5px;
   border-radius: 50%;
-  background: var(--teal-500);
+  background: var(--wine-500);
   flex-shrink: 0;
 }
 .hero-trust strong { color: var(--ink-1000); font-weight: 500; }
 
-/* Product mockup on the right — Friday report shown cleanly */
-.hero-product {
-  position: relative;
-}
+/* Product mockup */
+.hero-product { position: relative; }
 .hero-product-frame {
-  background: var(--paper-0);
-  border: 1px solid var(--rule);
+  background: var(--paper-50);
+  border: 1px solid var(--rule-strong);
   border-radius: var(--r-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-lg);
   position: relative;
   z-index: 2;
 }
-.hero-product-frame::before {
-  /* subtle glow behind */
-  content: '';
-  position: absolute;
-  inset: -40px;
-  background: radial-gradient(ellipse, rgba(13, 191, 168, 0.08), transparent 70%);
-  z-index: -1;
-  pointer-events: none;
-  border-radius: 50%;
+/* Sample banner top */
+.hp-sample-banner {
+  background: var(--wine-700);
+  color: var(--paper-50);
+  text-align: center;
+  padding: 5px 8px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
-/* email-style header inside product */
+
 .hp-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 14px 20px;
   border-bottom: 1px solid var(--rule);
-  background: var(--paper-50);
+  background: var(--paper-100);
   font-size: 12px;
 }
 .hp-head-left { display: flex; align-items: center; gap: 10px; color: var(--ink-500); }
 .hp-head-left strong { color: var(--ink-1000); font-weight: 600; }
 .hp-head-mark {
   width: 24px; height: 24px;
-  background: var(--ink-1000);
-  border-radius: 6px;
+  background: var(--ink-900);
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--teal-300);
+  color: var(--wine-200);
   font-weight: 600;
   font-size: 13px;
   letter-spacing: -0.02em;
@@ -439,7 +413,6 @@ img, svg { max-width: 100%; display: block; }
   line-height: 1.5;
 }
 
-/* Summary numbers row */
 .hp-metrics {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -465,9 +438,8 @@ img, svg { max-width: 100%; display: block; }
   font-variant-numeric: tabular-nums;
   line-height: 1;
 }
-.hp-metric.accent .hp-metric-val { color: var(--teal-700); }
+.hp-metric.accent .hp-metric-val { color: var(--wine-700); }
 
-/* Patient list in product */
 .hp-list { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; }
 .hp-row {
   display: grid;
@@ -491,7 +463,7 @@ img, svg { max-width: 100%; display: block; }
   color: var(--ink-700);
   letter-spacing: 0.04em;
 }
-.hp-row-state.acc { background: var(--teal-50); color: var(--teal-700); }
+.hp-row-state.acc { background: var(--wine-100); color: var(--wine-700); }
 .hp-row-val {
   font-family: 'Geist Mono', monospace;
   font-size: 12px;
@@ -506,54 +478,18 @@ img, svg { max-width: 100%; display: block; }
   min-width: 40px;
   text-align: right;
 }
-.hp-row-shown.yes { color: var(--teal-600); }
-.hp-row-shown.yes::before { content: '●'; color: var(--teal-500); margin-right: 3px; }
+.hp-row-shown.yes { color: var(--wine-700); }
+.hp-row-shown.yes::before { content: '●'; color: var(--wine-500); margin-right: 3px; }
 .hp-row-shown.no { color: var(--ink-400); }
 
-/* ---------- Logo strip ------------------------------------------------- */
-.logos {
-  background: var(--paper-50);
-  border-top: 1px solid var(--rule-soft);
-  border-bottom: 1px solid var(--rule-soft);
-  padding: 28px 0;
-}
-.logos-inner {
-  max-width: var(--wrap);
-  margin: 0 auto;
-  padding: 0 var(--gutter);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-.logos-label {
-  font-family: 'Geist Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-500);
-  font-weight: 500;
-}
-.logos-list { display: flex; gap: 32px; flex-wrap: wrap; color: var(--ink-500); }
-.logos-list span {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  font-family: 'Geist', sans-serif;
-  color: var(--ink-600);
-}
-.logos-list .open {
-  color: var(--ink-300);
-  font-family: 'Geist Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  font-weight: 500;
-}
-
-/* ---------- Sections --------------------------------------------------- */
+/* ---------- Sections -------------------------------------------------- */
 .section {
-  padding: clamp(64px, 8vw, 120px) 0;
+  padding: clamp(64px, 8vw, 112px) 0;
+}
+.section-alt {
+  background: var(--paper-100);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
 }
 .section-inner {
   max-width: var(--wrap);
@@ -571,11 +507,11 @@ img, svg { max-width: 100%; display: block; }
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--teal-700);
+  color: var(--wine-700);
   margin-bottom: 12px;
 }
 .section-title {
-  font-size: clamp(32px, 4vw, 52px);
+  font-size: clamp(30px, 4vw, 48px);
   font-weight: 600;
   line-height: 1.05;
   letter-spacing: -0.028em;
@@ -583,7 +519,7 @@ img, svg { max-width: 100%; display: block; }
   margin: 0 0 16px;
   text-wrap: balance;
 }
-.section-title .teal { color: var(--teal-700); }
+.section-title .wine { color: var(--wine-700); }
 .section-kicker {
   font-size: 17px;
   line-height: 1.55;
@@ -592,7 +528,7 @@ img, svg { max-width: 100%; display: block; }
   max-width: 56ch;
 }
 
-/* ---------- How it works (3 steps) ------------------------------------- */
+/* ---------- How it works ---------------------------------------------- */
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -600,32 +536,25 @@ img, svg { max-width: 100%; display: block; }
 }
 @media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
 .step {
-  background: var(--paper-0);
+  background: var(--paper-50);
   border: 1px solid var(--rule);
   border-radius: var(--r-lg);
   padding: 28px;
   transition: all 200ms var(--ease);
-  position: relative;
-  overflow: hidden;
 }
-.step:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--teal-200);
-}
+.step:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--wine-200); }
 .step-num {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 32px; height: 32px;
-  background: var(--teal-50);
-  color: var(--teal-700);
+  background: var(--wine-100);
+  color: var(--wine-700);
   border-radius: 50%;
   font-family: 'Geist Mono', monospace;
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 18px;
-  letter-spacing: 0;
 }
 .step-title {
   font-size: 20px;
@@ -650,158 +579,163 @@ img, svg { max-width: 100%; display: block; }
   border-top: 1px solid var(--rule-soft);
 }
 
-/* ---------- Stat band -------------------------------------------------- */
-.stat-band {
-  background: var(--ink-1000);
-  color: var(--paper-0);
+/* ---------- Research citation block (replaces fake stat band) -------- */
+.research {
+  background: var(--ink-900);
+  color: var(--paper-50);
   padding: clamp(56px, 7vw, 96px) 0;
   position: relative;
   overflow: hidden;
 }
-.stat-band::before {
+.research::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 80% 30%, rgba(13, 191, 168, 0.12), transparent 60%);
+  background: radial-gradient(ellipse at 80% 20%, rgba(122, 26, 31, 0.18), transparent 55%);
   pointer-events: none;
 }
-.stat-band-inner {
-  max-width: var(--wrap);
+.research-inner {
+  max-width: var(--wrap-tight);
   margin: 0 auto;
   padding: 0 var(--gutter);
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 5vw, 80px);
-  align-items: center;
-  position: relative;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
 }
-@media (max-width: 820px) { .stat-band-inner { grid-template-columns: 1fr; gap: 32px; } }
-.stat-number {
-  font-size: clamp(72px, 10vw, 144px);
-  font-weight: 600;
-  line-height: 0.95;
-  letter-spacing: -0.038em;
-  color: var(--paper-0);
-  font-variant-numeric: tabular-nums;
-  margin: 0 0 12px;
-}
-.stat-number .teal { color: var(--teal-300); }
-.stat-number small {
-  display: inline-block;
-  font-size: 0.28em;
-  color: var(--ink-400);
-  font-weight: 500;
-  margin-left: 10px;
-  vertical-align: middle;
-}
-.stat-label {
+@media (max-width: 820px) { .research-inner { grid-template-columns: 1fr; gap: 32px; } }
+.research-copy {}
+.research-eyebrow {
   font-family: 'Geist Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--teal-300);
+  color: var(--wine-200);
   font-weight: 500;
+  margin-bottom: 14px;
 }
-.stat-copy h3 {
-  font-size: clamp(26px, 3.2vw, 38px);
+.research-title {
+  font-size: clamp(28px, 3.6vw, 42px);
   font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.022em;
-  color: var(--paper-0);
-  margin: 0 0 14px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--paper-50);
+  margin: 0 0 16px;
   text-wrap: balance;
 }
-.stat-copy p {
+.research-title .wine { color: var(--wine-200); }
+.research-body {
   font-size: 16px;
   line-height: 1.6;
   color: var(--ink-300);
   margin: 0;
   max-width: 48ch;
 }
-
-/* ---------- Testimonial ----------------------------------------------- */
-.testimonial {
-  background: var(--paper-50);
-  padding: clamp(64px, 8vw, 112px) 0;
-}
-.testimonial-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 var(--gutter);
+.research-stats {
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: clamp(32px, 5vw, 64px);
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
-@media (max-width: 820px) { .testimonial-inner { grid-template-columns: 1fr; gap: 24px; } }
-.testimonial-photo {
-  aspect-ratio: 4/5;
-  background-image:
-    linear-gradient(180deg, transparent 55%, rgba(11,14,20,0.55) 100%),
-    url("https://images.unsplash.com/photo-1659353887849-2d3ff8b0df4a?w=640&auto=format&fit=crop&q=80");
-  background-size: cover;
-  background-position: center 15%;
-  border-radius: var(--r-lg);
-  border: 1px solid var(--rule);
-  position: relative;
-  overflow: hidden;
-  padding: 18px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  color: var(--paper-0);
+.research-stat {
+  padding: 20px;
+  border: 1px solid var(--rule-inv);
+  border-radius: var(--r-md);
+  background: rgba(246, 242, 231, 0.03);
 }
-.testimonial-photo .cap {
+.research-stat-num {
+  font-size: 36px;
   font-weight: 600;
-  font-size: 15px;
-  letter-spacing: -0.01em;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-}
-.testimonial-photo .role {
-  font-family: 'Geist Mono', monospace;
-  font-size: 11px;
-  color: rgba(255,255,255,0.85);
-  letter-spacing: 0.04em;
-  margin-top: 4px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-}
-.testimonial-quote {
-  font-size: clamp(22px, 2.8vw, 32px);
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -0.018em;
-  color: var(--ink-1000);
-  margin: 0 0 24px;
-  max-width: 32ch;
-  text-wrap: balance;
-}
-.testimonial-quote .teal { color: var(--teal-700); font-weight: 500; }
-.testimonial-stats {
-  display: flex;
-  gap: 24px;
-  padding-top: 20px;
-  border-top: 1px solid var(--rule);
-  flex-wrap: wrap;
-}
-.testimonial-stat { display: flex; flex-direction: column; gap: 4px; }
-.testimonial-stat-val {
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--ink-1000);
-  letter-spacing: -0.022em;
-  font-variant-numeric: tabular-nums;
+  color: var(--paper-50);
+  letter-spacing: -0.028em;
   line-height: 1;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 8px;
 }
-.testimonial-stat-val.teal { color: var(--teal-700); }
-.testimonial-stat-lbl {
+.research-stat-num.wine { color: var(--wine-200); }
+.research-stat-label {
+  font-size: 13px;
+  color: var(--ink-300);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.research-stat-src {
   font-family: 'Geist Mono', monospace;
   font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--ink-500);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule-inv);
 }
 
-/* ---------- Pricing ---------------------------------------------------- */
+/* ---------- Founder note (replaces fake testimonial) ----------------- */
+.founder {
+  padding: clamp(64px, 8vw, 112px) 0;
+}
+.founder-inner {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.founder-eyebrow {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--wine-700);
+  margin-bottom: 24px;
+  text-align: center;
+  font-weight: 500;
+}
+.founder-body {
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.45;
+  color: var(--ink-1000);
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  max-width: 60ch;
+  margin: 0 auto 36px;
+  text-wrap: balance;
+}
+.founder-body strong { font-weight: 600; color: var(--ink-1000); }
+.founder-body .wine { color: var(--wine-700); font-weight: 500; }
+.founder-sig {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: center;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  max-width: 400px;
+  margin: 0 auto;
+}
+.founder-sig-mark {
+  width: 40px; height: 40px;
+  background: var(--ink-900);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--wine-200);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+}
+.founder-sig-meta {
+  font-size: 13.5px;
+  text-align: left;
+}
+.founder-sig-name { font-weight: 600; color: var(--ink-1000); }
+.founder-sig-role {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-500);
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+/* ---------- Pricing --------------------------------------------------- */
 .pricing {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -809,7 +743,7 @@ img, svg { max-width: 100%; display: block; }
   border: 1px solid var(--rule);
   border-radius: var(--r-lg);
   overflow: hidden;
-  background: var(--paper-0);
+  background: var(--paper-50);
   box-shadow: var(--shadow-sm);
 }
 @media (max-width: 820px) { .pricing { grid-template-columns: 1fr; } }
@@ -822,21 +756,21 @@ img, svg { max-width: 100%; display: block; }
 }
 .plan:last-child { border-right: 0; }
 .plan.featured {
-  background: var(--paper-50);
+  background: var(--paper-100);
   position: relative;
 }
 .plan.featured::before {
-  content: 'MOST POPULAR';
+  content: 'FOUNDING COHORT';
   position: absolute;
   top: 0; left: 0; right: 0;
-  background: var(--teal-700);
-  color: var(--paper-0);
+  background: var(--wine-700);
+  color: var(--paper-50);
   text-align: center;
   font-family: 'Geist Mono', monospace;
   font-size: 10px;
   font-weight: 600;
   padding: 6px 0;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
 }
 .plan.featured { padding-top: 56px; }
 @media (max-width: 820px) {
@@ -851,12 +785,8 @@ img, svg { max-width: 100%; display: block; }
   color: var(--ink-500);
   font-weight: 500;
 }
-.plan.featured .plan-label { color: var(--teal-700); }
-.plan-price {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
+.plan.featured .plan-label { color: var(--wine-700); }
+.plan-price { display: flex; align-items: baseline; gap: 8px; }
 .plan-price .amt {
   font-size: 44px;
   font-weight: 600;
@@ -866,13 +796,8 @@ img, svg { max-width: 100%; display: block; }
   font-variant-numeric: tabular-nums;
 }
 .plan-price .per { font-size: 14px; color: var(--ink-500); }
-.plan-note {
-  font-size: 13px;
-  color: var(--ink-500);
-  line-height: 1.4;
-  margin: 0;
-}
-.plan-note strong { color: var(--teal-700); font-weight: 600; }
+.plan-note { font-size: 13px; color: var(--ink-500); line-height: 1.4; margin: 0; }
+.plan-note strong { color: var(--wine-700); font-weight: 600; }
 .plan-features {
   list-style: none;
   padding: 0;
@@ -896,43 +821,50 @@ img, svg { max-width: 100%; display: block; }
   top: 6px;
   width: 14px; height: 14px;
   border-radius: 50%;
-  background: var(--teal-50);
+  background: var(--wine-100);
 }
 .plan-features li::after {
   content: '';
   position: absolute;
   left: 3px; top: 9px;
   width: 8px; height: 4px;
-  border-left: 1.5px solid var(--teal-700);
-  border-bottom: 1.5px solid var(--teal-700);
+  border-left: 1.5px solid var(--wine-700);
+  border-bottom: 1.5px solid var(--wine-700);
   transform: rotate(-45deg);
 }
 
-/* ---------- Final CTA -------------------------------------------------- */
+/* ---------- Final CTA ------------------------------------------------- */
 .final-cta {
-  padding: clamp(80px, 10vw, 140px) 0 clamp(64px, 8vw, 96px);
-  background:
-    radial-gradient(ellipse at 50% 100%, rgba(8, 115, 102, 0.08), transparent 55%),
-    var(--paper-0);
+  padding: clamp(72px, 9vw, 128px) 0 clamp(56px, 7vw, 88px);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 100%, rgba(122, 26, 31, 0.06), transparent 55%);
+  pointer-events: none;
 }
 .final-cta-inner {
   max-width: 720px;
   margin: 0 auto;
   padding: 0 var(--gutter);
+  position: relative;
 }
 .final-cta-head {
-  font-size: clamp(36px, 4.8vw, 60px);
+  font-size: clamp(32px, 4.4vw, 52px);
   font-weight: 600;
-  line-height: 1.02;
-  letter-spacing: -0.032em;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
   color: var(--ink-1000);
   margin: 0 0 18px;
   text-wrap: balance;
 }
-.final-cta-head .teal { color: var(--teal-700); }
+.final-cta-head .wine { color: var(--wine-700); }
 .final-cta-lede {
-  font-size: 17px;
+  font-size: 16.5px;
   color: var(--ink-500);
   line-height: 1.6;
   margin: 0 auto 32px;
@@ -942,7 +874,7 @@ img, svg { max-width: 100%; display: block; }
   display: inline-flex;
   align-items: center;
   padding: 5px 5px 5px 18px;
-  background: var(--paper-0);
+  background: var(--paper-50);
   border: 1px solid var(--rule-strong);
   border-radius: 999px;
   box-shadow: var(--shadow-sm);
@@ -950,8 +882,8 @@ img, svg { max-width: 100%; display: block; }
   max-width: 100%;
 }
 .capture:focus-within {
-  border-color: var(--ink-1000);
-  box-shadow: 0 0 0 4px rgba(11,14,20,0.08);
+  border-color: var(--ink-900);
+  box-shadow: 0 0 0 4px rgba(7,17,30,0.08);
 }
 .capture input {
   border: 0;
@@ -965,8 +897,8 @@ img, svg { max-width: 100%; display: block; }
 }
 .capture input::placeholder { color: var(--ink-400); }
 .capture button {
-  background: var(--ink-1000);
-  color: var(--paper-0);
+  background: var(--ink-900);
+  color: var(--paper-50);
   font-weight: 500;
   font-size: 13.5px;
   padding: 11px 20px;
@@ -976,7 +908,7 @@ img, svg { max-width: 100%; display: block; }
   transition: background 160ms var(--ease);
   white-space: nowrap;
 }
-.capture button:hover { background: var(--teal-700); }
+.capture button:hover { background: var(--wine-700); }
 .final-fine {
   font-family: 'Geist Mono', monospace;
   font-size: 11px;
@@ -987,7 +919,7 @@ img, svg { max-width: 100%; display: block; }
 
 /* ---------- Footer ---------------------------------------------------- */
 .footer {
-  background: var(--paper-50);
+  background: var(--paper-100);
   border-top: 1px solid var(--rule);
   padding: 56px 0 28px;
 }
@@ -1018,12 +950,8 @@ img, svg { max-width: 100%; display: block; }
   margin: 0 0 14px;
 }
 .footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
-.footer a {
-  font-size: 13.5px;
-  color: var(--ink-500);
-  transition: color 120ms var(--ease);
-}
-.footer a:hover { color: var(--teal-700); }
+.footer a { font-size: 13.5px; color: var(--ink-500); transition: color 120ms var(--ease); }
+.footer a:hover { color: var(--wine-700); }
 .footer-bottom {
   max-width: var(--wrap);
   margin: 40px auto 0;
@@ -1035,9 +963,10 @@ img, svg { max-width: 100%; display: block; }
   font-size: 11px;
   color: var(--ink-500);
   letter-spacing: 0.04em;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-/* Motion */
 @keyframes up {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: none; }
@@ -1053,24 +982,24 @@ img, svg { max-width: 100%; display: block; }
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--ink-1000);
-  color: var(--paper-0);
+  background: var(--ink-900);
+  color: var(--paper-50);
   padding: 8px 16px;
   border-radius: 999px;
   font-family: 'Geist Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.04em;
   z-index: 50;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+  box-shadow: 0 12px 28px rgba(7,17,30,0.3);
 }
-.notice .teal { color: var(--teal-300); }
+.notice .wine { color: var(--wine-200); }
 </style>
 </head>
 <body>
 
-<!-- Top announcement bar -->
+<!-- Top bar — HONEST: no customer count claimed -->
 <div class="top-bar">
-  Founding cohort now accepting applications — <strong>2 of 10 claimed</strong>, rate locks permanently at slot 11. <a href="/pilot">Claim a slot</a>
+  Founding cohort now accepting applications — <strong>10 practices only</strong>. Founding rate locks for life. <a href="/pilot">Apply now</a>
 </div>
 
 <!-- Nav -->
@@ -1087,12 +1016,12 @@ img, svg { max-width: 100%; display: block; }
     <nav class="nav">
       <a href="#product">Product</a>
       <a href="#how">How it works</a>
+      <a href="#research">Research</a>
       <a href="#pricing">Pricing</a>
-      <a href="#customers">Customers</a>
       <a href="#changelog">Changelog</a>
       <span class="sep"></span>
       <a href="/signin">Sign in</a>
-      <a href="/pilot" class="btn btn-primary btn-sm">Book a demo</a>
+      <a href="/pilot" class="btn btn-primary btn-sm">Apply for founding cohort</a>
     </nav>
   </div>
 </header>
@@ -1104,15 +1033,15 @@ img, svg { max-width: 100%; display: block; }
       <a href="/pilot" class="hero-pill">
         <span class="hero-pill-tag">NEW</span>
         <span>Built for orthodontic practices only</span>
-        <span class="hero-pill-arrow">→</span>
+        <span style="color: var(--ink-400);">→</span>
       </a>
 
       <h1 class="hero-head">
-        Patient recovery, <span class="teal">purpose-built</span> for orthodontics.
+        Patient recovery, <span class="wine">purpose-built</span> for orthodontics.
       </h1>
 
       <p class="hero-sub">
-        Every Friday at 8 AM, your treatment coordinator opens a ranked call list of the patients already in your chart — with shown-up attribution, not bulk SMS. Eight recovery states. One weekly email. Measurable revenue.
+        Every Friday at 8 AM, your treatment coordinator opens a ranked list of the patients already in your chart — with shown-up attribution, not bulk SMS. Eight recovery states. One weekly email. Measurable revenue.
       </p>
 
       <ul class="hero-features">
@@ -1125,29 +1054,30 @@ img, svg { max-width: 100%; display: block; }
       </ul>
 
       <div class="hero-cta">
-        <a href="/audit" class="btn btn-primary btn-lg">Start the free audit</a>
+        <a href="/audit" class="btn btn-primary btn-lg">Request a free audit</a>
         <a href="/pilot" class="btn btn-ghost btn-lg">See pricing →</a>
       </div>
 
       <div class="hero-trust">
         <span><strong>HIPAA</strong> · BAA-first</span>
         <span><strong>TCPA</strong> compliant</span>
-        <span><strong>SOC 2</strong> Q2 2027</span>
+        <span><strong>SOC 2</strong> Q2 2027 roadmap</span>
       </div>
     </div>
 
     <div class="hero-product r-2">
       <div class="hero-product-frame" id="product">
+        <div class="hp-sample-banner">Sample · illustrative report output</div>
         <div class="hp-head">
           <div class="hp-head-left">
             <div class="hp-head-mark">u.</div>
-            <div><strong>Friday Report</strong> · Orlando Orthodontics</div>
+            <div><strong>Friday Report</strong> · example practice</div>
           </div>
           <div class="hp-head-right">FRI · 8:00 AM</div>
         </div>
         <div class="hp-body">
           <h3 class="hp-subject">12 patients to call today</h3>
-          <p class="hp-preheader">4 showed up from last week's list. $11,200 incremental vs holdout group.</p>
+          <p class="hp-preheader">Previous week's shown-up status reported inline. Incremental value measured against a matched holdout cohort inside your own chart.</p>
 
           <div class="hp-metrics">
             <div class="hp-metric">
@@ -1170,31 +1100,31 @@ img, svg { max-width: 100%; display: block; }
 
           <div class="hp-list">
             <div class="hp-row">
-              <div class="hp-row-name">Harper M.<small>parent Kate M. · debonded Aug 2025</small></div>
+              <div class="hp-row-name">Patient A<small>parent consent on file · debonded 8 months ago</small></div>
               <div class="hp-row-state acc">01 RET</div>
               <div class="hp-row-val">$4,200</div>
               <div class="hp-row-shown yes">yes</div>
             </div>
             <div class="hp-row">
-              <div class="hp-row-name">Diego R.<small>observation since Jan 2025</small></div>
+              <div class="hp-row-name">Patient B<small>age 9 · observation recall overdue</small></div>
               <div class="hp-row-state">02 OBS</div>
               <div class="hp-row-val">$6,800</div>
               <div class="hp-row-shown no">—</div>
             </div>
             <div class="hp-row">
-              <div class="hp-row-name">Kennedy B.<small>consulted Mar 20 · quoted $5,600</small></div>
+              <div class="hp-row-name">Patient C<small>consulted 31 days ago · quoted</small></div>
               <div class="hp-row-state">03 CON</div>
               <div class="hp-row-val">$5,600</div>
               <div class="hp-row-shown no">—</div>
             </div>
             <div class="hp-row">
-              <div class="hp-row-name">Julian T.<small>consulted Mar 30 · quoted $5,108</small></div>
+              <div class="hp-row-name">Patient D<small>consulted 21 days ago · quoted</small></div>
               <div class="hp-row-state acc">03 CON</div>
               <div class="hp-row-val">$5,108</div>
               <div class="hp-row-shown yes">yes</div>
             </div>
             <div class="hp-row">
-              <div class="hp-row-name">Amelia W.<small>CareCredit approved Mar 2</small></div>
+              <div class="hp-row-name">Patient E<small>CareCredit approved · 45 days ago</small></div>
               <div class="hp-row-state">06 FGC</div>
               <div class="hp-row-val">$7,400</div>
               <div class="hp-row-shown no">—</div>
@@ -1206,27 +1136,13 @@ img, svg { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- Social proof logos -->
-<section class="logos">
-  <div class="logos-inner">
-    <div class="logos-label">Inaugural cohort · 2 of 10 practices live</div>
-    <div class="logos-list">
-      <span>Orlando Orthodontics</span>
-      <span>Tampa Bay Smiles</span>
-      <span class="open">Slot 3 — open</span>
-      <span class="open">Slot 4 — open</span>
-      <span class="open">Slot 5 — open</span>
-    </div>
-  </div>
-</section>
-
 <!-- How it works -->
-<section class="section" id="how">
+<section class="section section-alt" id="how">
   <div class="section-inner">
     <div class="section-head">
       <div class="section-eyebrow">How it works</div>
-      <h2 class="section-title">From PMS to <span class="teal">Friday call list</span> in 72 hours.</h2>
-      <p class="section-kicker">Three steps, one weekly deliverable. Your treatment coordinator keeps doing what they already do — we just tell them who to call.</p>
+      <h2 class="section-title">From PMS to <span class="wine">Friday call list</span> in 72 hours.</h2>
+      <p class="section-kicker">Three steps. One weekly deliverable. Your treatment coordinator keeps doing what they already do — we tell them who to call.</p>
     </div>
 
     <div class="steps">
@@ -1239,7 +1155,7 @@ img, svg { max-width: 100%; display: block; }
       <div class="step">
         <div class="step-num">02</div>
         <h3 class="step-title">Receive your audit</h3>
-        <p class="step-desc">A signed audit document arrives within 72 hours: patients in each of 8 recovery states, their shown-values, and your top 50 opportunities ranked.</p>
+        <p class="step-desc">A signed audit arrives within 72 hours: patients in each of the 8 recovery states, their shown-values, and top 50 opportunities ranked.</p>
         <div class="step-meta">Delivered via email</div>
       </div>
       <div class="step">
@@ -1252,56 +1168,66 @@ img, svg { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- Stat band -->
-<section class="stat-band">
-  <div class="stat-band-inner">
-    <div>
-      <div class="stat-label">Typical practice impact</div>
-      <div class="stat-number"><span class="teal">$142k</span><small>recovered in 90 days</small></div>
+<!-- RESEARCH — real citations instead of fake stats -->
+<section class="research" id="research">
+  <div class="research-inner">
+    <div class="research-copy">
+      <div class="research-eyebrow">The math, sourced</div>
+      <h2 class="research-title">Every ortho chart carries <span class="wine">recoverable revenue</span> — the industry research confirms how much.</h2>
+      <p class="research-body">
+        USDPR is pre-revenue. We don't have customer case studies to show yet. What we have is the primary-sourced industry research that sized the problem — and an offer designed around it: $5,000 of shown-patient value in 60 days, or your Launch Fee is refunded.
+      </p>
     </div>
-    <div class="stat-copy">
-      <h3>We measure recovered revenue against a holdout control group in your own chart.</h3>
-      <p>Not SMS-sent. Not appointments booked. Patients who actually showed up, net of what would have shown without outreach. If we don't hit $5,000 in 60 days, your Launch Fee is refunded in full.</p>
+
+    <div class="research-stats">
+      <div class="research-stat">
+        <div class="research-stat-num wine">696</div>
+        <div class="research-stat-label">Average active-treatment patients per orthodontist</div>
+        <div class="research-stat-src">AAO 2025 Member Survey</div>
+      </div>
+      <div class="research-stat">
+        <div class="research-stat-num">23%</div>
+        <div class="research-stat-label">Attendance loss per 6-month adherence gap</div>
+        <div class="research-stat-src">PubMed (ortho adherence)</div>
+      </div>
+      <div class="research-stat">
+        <div class="research-stat-num">$5,108<span style="font-size:0.5em; color: var(--ink-400); font-weight:500;">–$9,221</span></div>
+        <div class="research-stat-label">Comprehensive ortho case fee range</div>
+        <div class="research-stat-src">CareCredit / ADA 2024</div>
+      </div>
+      <div class="research-stat">
+        <div class="research-stat-num wine">$5,000</div>
+        <div class="research-stat-label">Shown-patient value in 60 days, guaranteed — or Launch Fee refunded</div>
+        <div class="research-stat-src">16 CFR Part 239</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Testimonial -->
-<section class="testimonial" id="customers">
-  <div class="testimonial-inner">
-    <div class="testimonial-photo">
-      <div class="cap">Dr. Michelle Ayana, DDS, MS</div>
-      <div class="role">Orlando Orthodontics · Pilot 01</div>
-    </div>
-    <div>
-      <p class="testimonial-quote">
-        "It's the first time we've known <span class="teal">who actually showed up</span> — not who got a text. By day 93 we'd recovered $142,080 against a matched holdout control."
-      </p>
-      <div class="testimonial-stats">
-        <div class="testimonial-stat">
-          <div class="testimonial-stat-val teal">$142,080</div>
-          <div class="testimonial-stat-lbl">Recovered · 90d</div>
-        </div>
-        <div class="testimonial-stat">
-          <div class="testimonial-stat-val">1,847</div>
-          <div class="testimonial-stat-lbl">Active patients</div>
-        </div>
-        <div class="testimonial-stat">
-          <div class="testimonial-stat-val">Day 93</div>
-          <div class="testimonial-stat-lbl">Post-BAA</div>
-        </div>
+<!-- FOUNDER NOTE — replaces fake testimonial -->
+<section class="founder">
+  <div class="founder-inner">
+    <div class="founder-eyebrow">A note from the founder</div>
+    <p class="founder-body">
+      I'm building USDPR because every dental vendor I've watched sell into orthodontic practices has over-promised and under-delivered. <strong>There's no testimonial below this sentence because we're pre-revenue</strong> — the first ten practices in the founding cohort will be the ones who prove out the product. <span class="wine">That's why the rate is locked for life and the Launch Fee is refundable if the guarantee misses.</span>
+    </p>
+    <div class="founder-sig">
+      <div class="founder-sig-mark">CS</div>
+      <div class="founder-sig-meta">
+        <div class="founder-sig-name">Colin Smith</div>
+        <div class="founder-sig-role">Founder · Orlando, FL · reachable by email</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Pricing -->
-<section class="section" id="pricing">
+<section class="section section-alt" id="pricing">
   <div class="section-inner">
     <div class="section-head">
       <div class="section-eyebrow">Pricing</div>
-      <h2 class="section-title">Transparent pricing. <span class="teal">No per-seat fees.</span></h2>
-      <p class="section-kicker">One Launch fee, one monthly subscription. Founding cohort rate locks permanently for the first 10 practices.</p>
+      <h2 class="section-title">Transparent pricing. <span class="wine">No per-seat fees.</span></h2>
+      <p class="section-kicker">One Launch fee, one monthly subscription. Founding cohort rate locks permanently for the first 10 practices that sign.</p>
     </div>
 
     <div class="pricing">
@@ -1311,7 +1237,7 @@ img, svg { max-width: 100%; display: block; }
           <span class="amt">$1,500</span>
           <span class="per">one-time</span>
         </div>
-        <p class="plan-note">Refunded if guarantee misses. BAA, PMS connection, audit, first call list.</p>
+        <p class="plan-note">Refunded if the 60-day $5,000 shown-value guarantee misses.</p>
         <ul class="plan-features">
           <li>Signed BAA execution</li>
           <li>72-hour signed audit document</li>
@@ -1328,25 +1254,25 @@ img, svg { max-width: 100%; display: block; }
           <span class="amt">$697</span>
           <span class="per">/month</span>
         </div>
-        <p class="plan-note"><strong>Founding rate locked</strong> — list price $997/mo after slot 10</p>
+        <p class="plan-note"><strong>Founding rate</strong> — locked permanently for the first 10 practices. List rises to $997/mo after slot 10.</p>
         <ul class="plan-features">
           <li>All 8 Recovery Opportunity states</li>
-          <li>Friday report delivered weekly</li>
+          <li>Friday report, every week at 8 AM</li>
           <li>Shown-up attribution with holdout</li>
           <li>Quarterly CFO certification</li>
           <li>Direct founder onboarding</li>
-          <li>Monthly roadmap call (6 mo)</li>
+          <li>Monthly roadmap call · 6 months</li>
         </ul>
-        <a href="/pilot" class="btn btn-teal">Claim founding slot</a>
+        <a href="/pilot" class="btn btn-wine">Apply for founding cohort</a>
       </div>
 
       <div class="plan">
         <div class="plan-label">Ortho Recovery Scale</div>
         <div class="plan-price">
           <span class="amt">$1,497</span>
-          <span class="per">/mo/loc</span>
+          <span class="per">/mo per location</span>
         </div>
-        <p class="plan-note">Multi-location groups and DSOs. 6-month minimum.</p>
+        <p class="plan-note">Multi-location groups and DSOs. 6-month minimum commitment.</p>
         <ul class="plan-features">
           <li>Everything in Pro, per location</li>
           <li>Portfolio-level dashboard</li>
@@ -1363,13 +1289,13 @@ img, svg { max-width: 100%; display: block; }
 <!-- Final CTA -->
 <section class="final-cta">
   <div class="final-cta-inner">
-    <h2 class="final-cta-head">Start the free audit. <span class="teal">Get your ratios in 72 hours.</span></h2>
-    <p class="final-cta-lede">Connect your PMS under BAA. Within three business days you receive a signed document showing how many patients sit in each of the 8 states and what they're worth to your practice.</p>
+    <h2 class="final-cta-head">Request a free audit. <span class="wine">Your ratios in 72 hours.</span></h2>
+    <p class="final-cta-lede">Connect your PMS under BAA. Within three business days you receive a signed audit document showing how many patients sit in each of the eight states and what they're worth to your practice.</p>
     <form class="capture" action="/api/capture" method="POST">
       <input type="email" name="email" placeholder="you@yourpractice.com" required autocomplete="email" />
-      <button type="submit">Start audit →</button>
+      <button type="submit">Request audit →</button>
     </form>
-    <div class="final-fine">HIPAA · BAA-first · No credit card required · Unsubscribe anytime</div>
+    <div class="final-fine">HIPAA · BAA-first · No credit card · Unsubscribe anytime</div>
   </div>
 </section>
 
@@ -1422,7 +1348,7 @@ img, svg { max-width: 100%; display: block; }
 </footer>
 
 <div class="notice">
-  Reference v7 · <span class="teal">beat-the-category direction</span> · not shipping
+  Reference v8 · <span class="wine">honest copy + navy/wine palette</span> · not shipping
 </div>
 
 </body>
